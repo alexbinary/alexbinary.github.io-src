@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Comment j'ai implémenté l'accès au micro dans une app SwiftUI"
+title:  "[fr] Comment j'ai implémenté l'accès au micro dans une app SwiftUI"
 date:   2025-02-28 11:02:15 +0100
 ---
 
