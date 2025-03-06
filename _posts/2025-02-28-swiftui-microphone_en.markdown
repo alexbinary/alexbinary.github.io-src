@@ -10,15 +10,17 @@ For the picking assistance module, I envisioned a hands-free feature based on vo
 
 In this article, I’ll discuss how I implemented microphone access in a SwiftUI application.
 
-# Preparation
+
+## Preparation
 
 To allow the app to access the microphone, you need to check **Audio Input** in **Signing & Capabilities** and add the **NSMicrophoneUsageDescription** key in the **Info** tab.
 
-# Basic Structure
+
+## Basic Structure
 
 My test app consists of a single view, with a button to start/stop listening to the microphone. The microphone access functionalities are managed in an `@Observable` controller used as `@State` in the view. The controller exposes `start()` and `stop()` functions, and an observable property `listening`, which is `true` when the microphone is listening and `false` otherwise.
 
-{% highlight swift %}
+```swift
 import SwiftUI
 
 @main
@@ -56,10 +58,10 @@ class SpeechRecognitionController {
         // TODO
     }
 }
-{% endhighlight %}
+```
 
 
-# Checking Microphone Access Permission
+## Checking Microphone Access Permission
 
 Microphone access can be authorized, denied/restricted, or undetermined:
 
@@ -74,7 +76,7 @@ In the view, I display the authorization status. I also create a computed proper
 
 Subsequently, we will request permission when the user clicks the **Start** button. Therefore, this button should be active when the permission is still undetermined. Generally, when the permission is still undetermined, it is more engaging for the user to present the interface as if it were authorized, disabling it only when permission is explicitly denied. This is why `ready` only returns `false` when the permission is known and denied, and `true` in all other cases.
 
-{% highlight swift %}
+```swift
 struct SpeechRecognitionRootView: View {
     @State var controller = SpeechRecognitionController()
     var body: some View {
@@ -111,11 +113,11 @@ class SpeechRecognitionController {
     // ...
     var microphoneAuthorized: Bool?
 }
-{% endhighlight %}
+```
 
 Next, in the controller, I create a computed property to encapsulate the call to the system function `AVCaptureDevice.authorizationStatus(for:)`, indicating that we want to access audio.
 
-{% highlight swift %}
+```swift
 import AVFoundation
 
 class SpeechRecognitionController {
@@ -124,11 +126,11 @@ class SpeechRecognitionController {
         AVCaptureDevice.authorizationStatus(for: .audio)
     }
 }
-{% endhighlight %}
+```
 
 I then create a function that updates the observable property based on the raw value of the permission.
 
-{% highlight swift %}
+```swift
 class SpeechRecognitionController {
     // ...
     func updateMicrophoneAuthorizationStatus() {   
@@ -141,30 +143,31 @@ class SpeechRecognitionController {
         }()
     }
 }
-{% endhighlight %}
+```
 
 `microphoneAuthorized` could be a computed property, but then we wouldn’t have a way to communicate changes to the view. Observability requires a stored property. It’s the explicit update of the property that triggers the view update. The trade-off is that we need to remember to call `updateMicrophoneAuthorizationStatus()` at the appropriate times.
 
 An appropriate moment to update the value is at startup, so I add an initializer in the controller that performs an initial update.
 
-{% highlight swift %}
+```swift
 class SpeechRecognitionController {
     // ...
     init() {
         updateMicrophoneAuthorizationStatus()
     }
 }
-{% endhighlight %}
+```
 
 Thus, when the app starts, the view shows the correct authorization value.
 
-# Requesting Microphone Access Permission
+
+## Requesting Microphone Access Permission
 
 Now we need to request permission to access the microphone.
 
 I create another function to encapsulate the call to the system function. The function is `AVCaptureDevice.requestAccess(for:)`, which returns a boolean `true` if authorized, `false` otherwise. My method returns the complete authorization status after updating the property.
 
-{% highlight swift %}
+```swift
 class SpeechRecognitionController {
     // ...
     func requestMicrophoneAuthorization() async -> AVAuthorizationStatus {
@@ -173,7 +176,7 @@ class SpeechRecognitionController {
         return microphoneAuthorizationStatus
     }
 }
-{% endhighlight %}
+```
 
 Note that if the app has already requested permission and the authorization status is known, `AVCaptureDevice.requestAccess(for:)` does nothing at all. In the opposite case, a dialog box will ask the user whether they want to grant access or not. Therefore, we can systematically call the `requestMicrophoneAuthorization()` method to retrieve the authorization status, asking the question to the user if necessary.
 
@@ -181,7 +184,7 @@ Technically, requesting permission to access the microphone and using the microp
 
 That’s why I call the `requestMicrophoneAuthorization()` method in the `start()` function and not in the `init()`. Since `requestMicrophoneAuthorization()` is `async`, I also modify `start()` to be `async` and change the action of the **Start** button accordingly.
 
-{% highlight swift %}
+```swift
 struct SpeechRecognitionRootView: View {
     @State var controller = SpeechRecognitionController()
     var body: some View {
@@ -214,7 +217,7 @@ class SpeechRecognitionController {
         // next steps will follow here
     }
 }
-{% endhighlight %}
+```
 
 Once the app has requested permission for the first time, an entry is created in the **Privacy** settings in **System Preferences**. The user can then modify the permission at will.
 
@@ -226,7 +229,8 @@ The following command allows you to delete the entry in the **Privacy** settings
 
 Be careful; if `<bundle.id>` is not specified, the permission is reset for **all** apps on the system.
 
-# Accessing Audio Data
+
+## Accessing Audio Data
 
 Everything is finally ready to receive audio data! We use `AVAudioEngine` for this.
 
@@ -234,7 +238,7 @@ I create a new function `startAudio()` that initializes an instance of `AVAudioE
 
 I also create a `stopAudio()` function that stops the `audioEngine` and removes the tap. We call `startAudio()` in `start()` and `stopAudio()` in `stop()`, and we can update the `listening` flag.
 
-{% highlight swift %}
+```swift
 class SpeechRecognitionController {
     // ...
     var audioEngine: AVAudioEngine!
@@ -274,6 +278,6 @@ class SpeechRecognitionController {
         inputNode.removeTap(onBus: 0)
     }
 }
-{% endhighlight %}
+```
 
 And there you go, everything is ready to transmit audio data to the speech recognition module.
