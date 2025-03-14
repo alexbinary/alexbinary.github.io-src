@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[en] How I implemented microphone access in a SwiftUI app"
+title:  "[en] Microphone access in a SwiftUI app"
 date:   2025-02-28 11:02:15 +0100
 ---
 
@@ -152,7 +152,8 @@ An appropriate moment to update the value is at startup, so I add an initializer
 ```swift
 class SpeechRecognitionController {
     // ...
-    init() {
+    override init() {
+        super.init()
         updateMicrophoneAuthorizationStatus()
     }
 }

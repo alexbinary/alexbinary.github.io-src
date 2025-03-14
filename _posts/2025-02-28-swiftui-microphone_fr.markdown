@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[fr] Comment j'ai implémenté l'accès au micro dans une app SwiftUI"
+title:  "[fr] Accès au micro dans une app SwiftUI"
 date:   2025-02-28 11:02:15 +0100
 ---
 
@@ -65,7 +65,7 @@ class SpeechRecognitionController {
 ```
 
 
-## Vérifier si on a la permission d'accès au micro
+## Vérifier la permission d'accès au micro
 
 L’accès au micro peut être autorisé, refusé/restreint ou indéterminé :
 
@@ -164,7 +164,8 @@ Un moment opportun pour mettre à jour la valeur est au démarrage, j'ajoute don
 ```swift
 class SpeechRecognitionController {
     // ...
-    init() {
+    override init() {
+        super.init()
         updateMicrophoneAuthorisationStatus()
     }
 }
