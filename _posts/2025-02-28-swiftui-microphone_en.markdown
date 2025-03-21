@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[en] Microphone access in a SwiftUI app"
+title:  "Microphone access in a SwiftUI app"
 date:   2025-02-28 11:02:15 +0100
 ---
 

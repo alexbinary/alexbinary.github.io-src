@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[en] Speech Recognition in a SwiftUI App"
+title:  "Speech Recognition in a SwiftUI App"
 date:   2025-03-14 10:23:06 +0100
 ---
 

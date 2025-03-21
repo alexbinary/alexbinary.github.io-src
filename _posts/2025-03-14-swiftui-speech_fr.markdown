@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[fr] Reconnaissance vocale dans une app SwiftUI"
+title:  "(fr) Reconnaissance vocale dans une app SwiftUI"
 date:   2025-03-14 10:23:06 +0100
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "[fr] Swift Observation: étude approfondie"
+title:  "(fr) Swift Observation: étude approfondie"
 date:   2025-03-06 11:23:15 +0100
 ---
 
