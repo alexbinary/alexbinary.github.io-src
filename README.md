@@ -14,6 +14,12 @@ I do not want that. I use permalink for all posts.
 Permalinks conflicts trigger a warning at build time.
 
 
+# Themes
+
+bundle show minima
+/Library/Ruby/Gems/2.3.0/gems/minima-2.5
+
+
 # Commands
 
 docker run --rm -it -v .:/app -w /app -p 4000:4000 -p 35729:35729 jekyll/minimal npx -y watchy -w _config.yml -- jekyll serve --livereload --drafts
