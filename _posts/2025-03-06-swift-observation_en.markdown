@@ -497,7 +497,7 @@ struct TestApp: App {
 
 Result:
 
-![](/assets/2025-03-06-swift-observation.gif)
+![](/assets/2025-03-06-swift-observation/1.gif)
 
 When we click on **Change both**, we notice that only one `View update` is emitted, even though both values are updated simultaneously. This indicates optimized performance, where views are recalculated only once, regardless of the number of modifications made to the object.
 
@@ -550,7 +550,7 @@ struct View2: View {
 
 Result:
 
-![](/assets/2025-03-06-swift-observation2.gif)
+![](/assets/2025-03-06-swift-observation/2.gif)
 
 When clicking on **Change ref**, we find that both views update, even if the displayed data did not change. To optimize performance, it is therefore preferable to modify only the properties that have actually changed.
 

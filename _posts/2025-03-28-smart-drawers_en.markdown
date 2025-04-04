@@ -4,7 +4,7 @@ title:  "Project: Smart drawers"
 date:   2025-03-28 09:17:53 +0100
 ---
 
-![](/assets/2025-03-28-smart-drawers_0.jpg){: style="padding-bottom: 1rem"}
+![](/assets/2025-03-28-smart-drawers/0.jpg){: style="padding-bottom: 1rem"}
 
 In this article, I present the general idea and the choice of components.
 Later, I will share project updates.

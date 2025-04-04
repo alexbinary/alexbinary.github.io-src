@@ -264,4 +264,4 @@ class SpeechRecognitionController {
 
 And there, everything is working.
 
-![](/assets/2025-03-14-swiftui-speech.gif)
+![](/assets/2025-03-14-swiftui-speech/1.gif)

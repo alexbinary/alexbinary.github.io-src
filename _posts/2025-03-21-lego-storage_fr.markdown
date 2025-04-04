@@ -4,7 +4,7 @@ title:  "(fr) Mon système de rangement LEGO"
 date:   2025-03-21 09:07:57 +0100
 ---
 
-![](/assets/2025-03-21-lego-storage_0.jpg)
+![](/assets/2025-03-21-lego-storage/0.jpg)
 
 Depuis quelques années je fais de le vente de pièce de LEGO en ligne, et j’ai besoin de ranger et organiser efficacement mon stock de pièces.
 Au cours des dernières années j'ai conçu et fabriqué une solution de rangement sur mesure.
@@ -34,11 +34,11 @@ Je trouve que c'est le ratio parfait.
 Partant de là, en partant du principe que ma boite de base fait 2x2 unités de large et 2 plaques de haut, j'ai expérimenté avec tout un tas de variantes en 1x1, 1x2, 2x3, 2x4, 3x3, etc en version 1, 2, 3 ou 4 plaques de hauteur. Je me suis vite rendu compte que les modèles de grande taille et faible hauteur sont utiles en tant que plateau pour contenir des pièces lors de constructions par exemples.
 J'en ai fait des plus grands, que j'utilise encore couramment aujourd'hui.
 
-[![](/assets/2025-03-21-lego-storage_7.jpg){: width="49%" }{: style="float: left; padding-bottom: 1rem;"}
-](/assets/2025-03-21-lego-storage_7.jpg)
+[![](/assets/2025-03-21-lego-storage/7.jpg){: width="49%" }{: style="float: left; padding-bottom: 1rem;"}
+](/assets/2025-03-21-lego-storage/7.jpg)
 
-[![](/assets/2025-03-21-lego-storage_9.jpg){: width="49%" }{: style="float: right; padding-bottom: 1rem;"}
-](/assets/2025-03-21-lego-storage_9.jpg)
+[![](/assets/2025-03-21-lego-storage/9.jpg){: width="49%" }{: style="float: right; padding-bottom: 1rem;"}
+](/assets/2025-03-21-lego-storage/9.jpg)
 
 {: style="clear: both"}
 
@@ -55,11 +55,11 @@ et ajouté une languette sur la face avant,
 pour faire quelque chose qui ressemble à des tiroirs.
 Je me rapprochais de ce que j'avais en tête depuis le début, et c'était très excitant.
 
-[![](/assets/2025-03-21-lego-storage_11.jpg){: width="49%" }{: style="float: left; padding-bottom: 1rem;"}
-](/assets/2025-03-21-lego-storage_11.jpg)
+[![](/assets/2025-03-21-lego-storage/11.jpg){: width="49%" }{: style="float: left; padding-bottom: 1rem;"}
+](/assets/2025-03-21-lego-storage/11.jpg)
 
-[![](/assets/2025-03-21-lego-storage_10.jpg){: width="49%" }{: style="float: right; padding-bottom: 1rem;"}
-](/assets/2025-03-21-lego-storage_10.jpg)
+[![](/assets/2025-03-21-lego-storage/10.jpg){: width="49%" }{: style="float: right; padding-bottom: 1rem;"}
+](/assets/2025-03-21-lego-storage/10.jpg)
 
 {: style="clear: both"}
 
@@ -89,11 +89,11 @@ j'ai entrepris un second prototype, en utilisant cette fois la scie circulaire s
 Le résultat était nettement meilleur.
 J'utilise encore aujourd'hui ce prototype, avec quelques modification mineures.
 
-[![](/assets/2025-03-21-lego-storage_15.jpg){: width="49%" }{: style="float: left; padding-bottom: 1rem;"}
-](/assets/2025-03-21-lego-storage_15.jpg)
+[![](/assets/2025-03-21-lego-storage/15.jpg){: width="49%" }{: style="float: left; padding-bottom: 1rem;"}
+](/assets/2025-03-21-lego-storage/15.jpg)
 
-[![](/assets/2025-03-21-lego-storage_13.jpg){: width="49%" }{: style="float: right; padding-bottom: 1rem;"}
-](/assets/2025-03-21-lego-storage_13.jpg)
+[![](/assets/2025-03-21-lego-storage/13.jpg){: width="49%" }{: style="float: right; padding-bottom: 1rem;"}
+](/assets/2025-03-21-lego-storage/13.jpg)
 
 {: style="clear: both"}
 
@@ -111,8 +111,8 @@ Le résultat était cependant encourageant, et j'utilise encore ce meuble aujour
 J'ai également ajouté des vraies poignées.
 J'ai choisi un modèle simples mais efficace, pour des poignées discrètes, élégantes et fonctionnelles.
 
-[![](/assets/2025-03-21-lego-storage_3.jpg)
-](/assets/2025-03-21-lego-storage_3.jpg)
+[![](/assets/2025-03-21-lego-storage/3.jpg)
+](/assets/2025-03-21-lego-storage/3.jpg)
 
 Pour le meuble suivant j'ai gardé la même taille de tiroir 
 mais augmenté le nombre de tiroirs de 5 à 16.
@@ -120,8 +120,8 @@ Là on commence à avoir un bon meuble de rangement.
 Pour éviter que le fond ne s'affaisse, j'ai ajouté une cloison qui coupe le tiroir en deux parties et permet de maintenir le fond.
 J'ai également testé un tiroir double hauteur pour pouvoir ranger des pièces plus volumineuses.
 
-[![](/assets/2025-03-21-lego-storage_4.jpg)
-](/assets/2025-03-21-lego-storage_4.jpg)
+[![](/assets/2025-03-21-lego-storage/4.jpg)
+](/assets/2025-03-21-lego-storage/4.jpg)
 
 
 ## Vers plus de qualité
@@ -153,8 +153,8 @@ Au lieu de faire toute une rainure, j'ai simplement fait les perçages à la fra
 Pour tester cette technique j'ai fait un meuble grande largeur, mais avec seulement 5 tiroirs.
 Le résultat n'est pas aussi bon.
 
-[![](/assets/2025-03-21-lego-storage_6.jpg)
-](/assets/2025-03-21-lego-storage_6.jpg)
+[![](/assets/2025-03-21-lego-storage/6.jpg)
+](/assets/2025-03-21-lego-storage/6.jpg)
 
 
 ## Bilan et perspective
@@ -187,5 +187,5 @@ Je réfléchis également à un système de tiroirs connectés, avec ouverture s
 
 Stay tuned.
 
-[![](/assets/2025-03-21-lego-storage_1.jpg)
-](/assets/2025-03-21-lego-storage_1.jpg)
+[![](/assets/2025-03-21-lego-storage/1.jpg)
+](/assets/2025-03-21-lego-storage/1.jpg)

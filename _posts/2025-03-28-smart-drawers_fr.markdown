@@ -4,7 +4,7 @@ title:  "(fr) Projet: tiroirs connectés"
 date:   2025-03-28 09:17:53 +0100
 ---
 
-![](/assets/2025-03-28-smart-drawers_0.jpg){: style="padding-bottom: 1rem"}
+![](/assets/2025-03-28-smart-drawers/0.jpg){: style="padding-bottom: 1rem"}
 
 Dans cet article je présente l'idée générale et le choix des composants.
 Plus tard je présenterai les avancées du projet.
