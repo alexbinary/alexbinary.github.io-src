@@ -6,9 +6,14 @@ layout: page
 
 ## Alexandre Bintz
 
-Maker, coder, thinker
+-- Maker, coder, thinker
 
-*#programming #3dprinting #LEGO #photogaphy*
+*#programming #3dprinting #electronics #woodworking #LEGO #photography*
+
+
+## Projects
+
+[Projects](/projects)
 
 
 ## Links
