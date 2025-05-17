@@ -11,3 +11,6 @@ github_username:  alexbinary
 theme: minima
 plugins:
   - jekyll-feed
+
+pages:
+  - blog.markdown
