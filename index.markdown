@@ -11,9 +11,24 @@ layout: page
 *#programming #3dprinting #electronics #woodworking #LEGO #photography*
 
 
+## Current situation
+
+Living in Strasbourg, France
+
+
 ## Projects
 
-[Projects](/projects)
+- LEGO storage system
+- LEGO storage system - Containers
+- Smart drawers
+- Media remote
+- BrickLink App
+- Compta App
+
+
+## Activities
+
+- Learning Piano
 
 
 ## Links
