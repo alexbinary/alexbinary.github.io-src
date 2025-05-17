@@ -16,7 +16,14 @@ layout: page
 Living in Strasbourg, France
 
 
-## Projects
+## Current interests
+
+- DIY 8-bit computers
+- Ancient Egypt & archeology
+- Space exploration & New Space
+
+
+## Current projects
 
 - 3D printed phone case
 - [LEGO storage system](projects/lego-storage)
@@ -27,7 +34,7 @@ Living in Strasbourg, France
 - Compta App
 
 
-## Activities
+## Current activities
 
 - Learning Piano
 
