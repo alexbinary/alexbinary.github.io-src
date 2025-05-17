@@ -18,6 +18,7 @@ Living in Strasbourg, France
 
 ## Projects
 
+- 3D printed phone case
 - LEGO storage system
 - LEGO storage system - Containers
 - Smart drawers
