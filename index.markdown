@@ -19,7 +19,7 @@ Living in Strasbourg, France
 ## Current interests
 
 - DIY 8-bit computers
-- Ancient Egypt & archeology
+- [Ancient Egypt & archeology](interests/egypt)
 - Space exploration & New Space
 
 
