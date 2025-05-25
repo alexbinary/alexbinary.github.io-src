@@ -27,7 +27,7 @@ Living in Strasbourg, France
 
 - 3D printed phone case
 - [LEGO storage system](projects/lego-storage)
-- LEGO storage system - Containers
+- [LEGO storage system - Containers](projects/lego-storage-containers)
 - [Smart drawers](/projects/smart-drawers)
 - Media remote
 - [BrickLink App](/projects/bricklink-app)
