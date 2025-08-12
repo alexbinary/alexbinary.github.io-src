@@ -1,6 +1,5 @@
 ---
 layout: page
-permalink: projects/lego-storage
 ---
 
 # Project: LEGO Storage System

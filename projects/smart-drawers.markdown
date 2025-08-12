@@ -1,6 +1,5 @@
 ---
 layout: page
-permalink: projects/smart-drawers
 ---
 
 # Project: Smart Drawers

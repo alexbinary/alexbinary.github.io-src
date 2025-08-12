@@ -1,6 +1,5 @@
 ---
 layout: page
-permalink: projects/lego-storage-containers
 ---
 
 # Project: LEGO Storage System - Containers
