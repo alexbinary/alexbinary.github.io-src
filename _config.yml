@@ -12,5 +12,6 @@ theme: minima
 plugins:
   - jekyll-feed
 
+# Pages that appear in the top menu
 pages:
   - blog.markdown
