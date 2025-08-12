@@ -13,7 +13,7 @@ layout: page
 
 ## Current situation
 
-Living in Strasbourg, France
+Living in Toulouse, France
 
 
 ## Current interests
