@@ -8,7 +8,7 @@ layout: page
 
 -- Maker, coder, thinker
 
-*#programming #3dprinting #electronics #woodworking #LEGO #photography*
+*#programming #3dprinting #electronics #woodworking #LEGO #photography #music #engineering*
 
 
 ## Current situation
