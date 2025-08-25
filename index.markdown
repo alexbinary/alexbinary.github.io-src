@@ -2,7 +2,7 @@
 layout: page
 ---
 
-![profile](assets/profile.png){: width="20%" }{: style="float: right; padding-left: 4rem;"}
+![profile](assets/profile3.png){: width="20%" }{: style="float: right; padding-left: 4rem;"}
 
 ## Alexandre Bintz
 
