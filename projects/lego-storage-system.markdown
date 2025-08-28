@@ -26,192 +26,261 @@ Les éléments de la gamme se présentent comme des ensembles de cases carrées 
 Les meubles sont disponibles en plusieurs coloris et peuvent être utilisés nus ou en combinaison avec de nombreux accessoires. Il est ainsi possible d'ajouter des tiroirs, des portes, des étagères supplémentaires, des porte bouteille, des paniers, etc.
 Les cases carrées permettent de combiner les modules et les meubles dans n'importe quelle orientation.
 
+<table style="border:none;">
+    <tr>
+        <td style="border:none;vertical-align: bottom;">
+            <p align="center">
+                <img src="../assets/projects/lego-storage-system/kallax 1.jpg" width="80%" />
+                <br/>
+                <sub>Kallax 2x2</sub>
+            </p>
+        </td>
+        <td style="border:none">
+            <p align="center">
+                <img src="../assets/projects/lego-storage-system/kallax 2.jpg" />
+                <br/>
+                <sub>Kallax 1x4</sub>
+            </p>
+        </td>
+    </tr>
+    <tr style="background:none">
+        <td style="border:none">
+            <p align="center">
+                <img src="../assets/projects/lego-storage-system/kallax 3.jpg" width=350 height=350/>
+                <br/>
+                <sub>Kallax 2x4</sub>
+            </p>
+        </td>
+        <td style="border:none;vertical-align: bottom;">
+            <p align="center">
+                <img src="../assets/projects/lego-storage-system/kallax 4.jpg" style="object-fit: cover" width=350 height=350 />
+                <br/>
+                <sub>Kallax 4x4</sub>
+            </p>
+        </td>
+    </tr>
+</table>
+
+
+Mon idée est de créer un module sur mesure pour le rangement des pièces de LEGO dans la continuité de ce que j'ai déjà fait. Les avantages sont multiples : pas besoin de créer la structure externe du meuble, possibilité d'utiliser des Kallax de différentes tailles pour créer l'ensemble qu'on veut, et possbilité de combiner avec les modules existants pour créer des meubles hybrides répondant à des besoins complexes.
+
+Comme une case n'est pas très large, je pense partir sur un module qui occupe deux cases.
+La conception des étagères fait qu'il est facile d'enlever certains des séparateurs, pour peu que l'étagère se présente dans le bon sens.
+
+Voilà un rendu possible :
+
 <p align="center">
-    <img src="../assets/projects/lego-storage-system/kallax 1.jpg" width="50%" />
+    <img src="../assets/projects/lego-storage-system/leka v2 5.png" width="50%" />
     <br/>
-    <sub>Kallax 2x2</sub>
+    <sub>Rendu possible d'un module tiroirs sur deux cases</sub>
 </p>
 
-Mon idée est de créer un module sur mesure pour le rangement des pièces de LEGO dans la continuité de ce que j'ai déjà fait. Les avantages sont multiples : pas besoin de créer la structure externe du meuble, possibilité d'utiliser des Kallax de différentes tailles pour créer l'ensemble qu'on veut, et possbilité de combiner avec les modules Kallax existant pour créer des meubles hybrides répondant à des besoins complexes.
+### Conception du module
 
-Pour peu que la Kallax se présente dans le bon sens, il est relativement simple d'enlever un séparateur, ce qui permet d'utilier deux cases de manière contigue.
-Comme une case n'est pas très large, ce sera sûrement utile.
-
-Voilà à quoi pourrait ressembler un module tiroir comme je l'imagine, sur deux cases :
-
-<p align="center">
-    <img src="../assets/projects/lego-storage-system/leka v2 1.png" width="50%" />
-    <br/>
-    <sub>Module tiroirs sur deux cases</sub>
-</p>
-
-### Vue d'ensemble de la conception
-
-J'imagine un module où les tiroirs sont maintenus par deux pièces latérales, le tout étant fermé à l'arrière par un panneau fin.
+L'idée générale est d'utiliser deux faces latérales sur lesquelles viennent se fixer les tiroirs.
+Cela permet un module qu'on peut assembler seul et ensuite glisser dans le Kallax.
+L'arrière est fermée par un panneau fin.
 
 <p align="center">
-    <img src="../assets/projects/lego-storage-system/leka v2 4.png" />
+    <img src="../assets/projects/lego-storage-system/leka v2 6.png" width="70%" />
     <br/>
-    <sub>Vue d'ensemble de la conception (module seul)</sub>
+    <sub>Module tiroirs sur deux cases (module seul)</sub>
 </p>
 
-<p align="center">
-    <img src="../assets/projects/lego-storage-system/leka v2 2.png" />
-    <br/>
-    <sub>Vue de dessus en coupe</sub>
-</p>
+Pour dimensionner les éléments, commençons par relever les dimensions du Kallax. Comme on l'a vu, les cases sont carrées.
 
-<p align="center">
-    <img src="../assets/projects/lego-storage-system/leka v2 3.png" />
-    <br/>
-    <sub>Vue de l'arrière en coupe</sub>
-</p>
-
-### Dimensionnement
-
-Un point crucial pour commencer est de déterminer combien de tiroirs je peux faire dans une case et combien de boites ils peuvent accueillir en largeur et en profondeur.
-Il ne faut pas oublier de prendre en compte le système d'ouverture automatique des tiroirs.
-
-Je commence par relever les dimensions du Kallax :
-
-| Dimension | Valeur en mm
+| Dimension Kallax | Valeur en mm
 |-|
 | Profondeur | 390
 | Hauteur d'une case | 335
 | Largeur d'une case | 335
 | Largeur de deux cases (une fois le séparateur retiré) | 687
 
-Ensuite pour déterminer les paramètres et dimensions idéales, je fais des calculateurs sous Numbers (Excel) qui me permettent de faire varier les paramètres pour déterminer les meilleures combinaisons.
+Les paramètres principaux qui qui déterminent les dimensions des éléments sont le nombre de tiroirs par case et le nombre de boites par tiroir en largeur et en profondeur.
 
-#### Dimensionnement en hauteur
+Pour pouvoir expérimenter simplement avec différentes valeurs je crée des calculateurs sous Numbers (Excel). Pour chaque dimension (hauteur, largeur, profondeur), je liste les paramètres qui entrent en jeu et je détermine les relations entre eux le cas échéant.
 
-Jusqu'à présent j'ai fait des hauteur de boite de 30mm, je voudrais tester des tiroirs de hauteur 40.
-Le but est de faire rentrer un maximum de tiroirs en laissant suffisament d'espace entre chaque.
-Le débord façade peut être ajusté pour obtenir un espacement entre les façades de l'ordre de 3mm, qui est une valeur qui donne un bon résultat sur le plan fonctionel et esthétique.
+Commençons par la hauteur. Pour identifier les éléments et leur relation, regardons de plus prêt la conception :
 
-**Paramètres pour la hauteur**
+<p align="center">
+    <img src="../assets/projects/lego-storage-system/leka v2 8.png" width="60%" />
+    <br/>
+    <sub>Zoom sur les éléments qui contribuent à la hauteur</sub>
+</p>
+
+On constate que la hauteur dépend uniquement de l'empilement des tiroirs. Les glissières n'interviennent pas.
+
+Voici les paramètres pour la hauteur :
 
 | Paramètre | Unité | Description / Commentaire | Valeur
 |-
-| Hauteur boite | mm | Hauteur totale d'une boite | TBD
+| Hauteur cadre | mm | Hauteur des côtés du tiroir, égale à la hauteur totale occupée par une boite | TBD
 | Nombre de tiroirs | | Nombre de tiroir dans le module | TBD
-| Epaisseur fond de tiroir | mm | Epaisseur du fond du tiroir, normalement fait en contreplaqué de 4mm | 4
-| Débord façade dessus | mm | Débord de la façade sur le dessus du cadre du tiroir | TBD
-| Hauteur totale tiroir | mm | Hauteur totale d'une façade de tiroir | Hauteur boite + Epaisseur fond + Débord façade
-| Espace entre les façades | mm | Espace entre deux façades et entre les première/dernière façades et le dessus/dessous du meuble. | (Hauteur totale disponible - Nombre de tiroirs × Hauteur totale tiroir) / (Nombre de tiroirs + 1)
+| Epaisseur fond de tiroir | mm | Epaisseur du fond du tiroir. Normalement fait en contreplaqué de 4mm | 4
+| Débord façade dessus | mm | De combien la façade dépasse au dessus du cadre du tiroir | TBD
+| Hauteur totale tiroir | mm | Hauteur totale du tiroir en prenant en compte la façade et le fond | Hauteur cadre + Epaisseur fond + Débord façade
+| Espace entre les façades | mm | Espace entre deux façades et entre les première/dernière façades et le meuble | (Hauteur case - Nombre de tiroirs × Hauteur totale tiroir) / (Nombre de tiroirs + 1)
 
-**Solutions pour la hauteur**
+On peut maintenant tester plusieurs propositions.
+Le but est de faire rentrer un maximum de tiroirs en laissant suffisament d'espace entre chaque.
+On peut jouer sur le débord façade (en restant raisonnable) pour ajuster l'espacement entre les façades.
+Jusque là j'avais un débord de 3 ou 4mm.
+On ne peut pas vraiment descendre en dessous de ça, mais on peut augmenter un peu sans soucis.
+Un espace entre les façade de l'ordre de 3mm donne un bon résultat fonctionnel et esthétique.
+Jusqu'à présent j'ai fait des hauteur de boite de 30mm, mais je voudrais maintenant tester 40.
 
-| Item | Solution 1 | Solution 2 | Solution 3 | Solution 4
+Voici les résultats pour 4 propositions, discutées en détails en dessous :
+
+| | Prop. 1 | Prop. 2 | Prop. 3 | Prop. 4 |
 |-
-| **Hauteur boite** | **30** | **40** | **40** | **35**
-| **Nombre de tiroirs** | **8** | **6** | **7** | **7**
+| **Hauteur boite** | **40** | **40** | **30** | **35**
+| **Nombre de tiroirs** | **6** | **7** | **8** | **7**
 | Epaisseur fond | 4 | 4 | 4 | 4
-| **Débord façade** | **4** | **8** | **0** | **5**
-| Hauteur totale tiroir | 38 | 52 | 44 | 44 |
-| **Espace entre tiroirs** | **3.4** | **3.3** | **3.4** | **3.4**
+| **Débord façade** | **8** | **0** | **4** | **5**
+| Hauteur totale tiroir | 52 | 44 | 38 | 44 |
+| **Espace entre tiroirs** | **3,3** | **3,4** | **3,4** | **3,4**
 
-| Solution | Description | Commentaire |
-|-|-|-|:-:|
-| **1** | 8 tiroirs de 30mm | - 4mm de débord de façade et 3mm d'espacement, c'est très similaire à ce que j'ai actuellement | ✅
-| **3** | 6 tiroirs de 40mm | - passe bien | ✅
-| **2** | 7 tiroirs de 40mm | - 3mm d'espacement sans débord de façade laisse trop peu d'espace | ❌
-| **3** | 7 tiroirs de 35mm | - passe bien<br>- des boites de 35 pourquoi pas (mais attention à ne pas multiplier les formats différents) | garde sous le coude
+Pour répartir correctement 6 tiroirs de 40mm (**prop. 1**) il faut un débord façade de 8mm. C'est un peu beaucoup mais c'est acceptable.
 
-#### Dimensionnement en largeur
+En éliminant complètement le débord de façade on peut faire tenir 7 tiroirs de 40mm (**prop. 2**), mais ça ne laisse que 3mm d'espace total entre le haut des boites et le fond du tiroir du dessus, c'est trop peu.
 
-Je détermine que l'idéal est de faire un module qui occupe deux cases de largeur (il n'est pas compliqué de retirer la cloison, pourvu qu'on prenne la Kallax dans le bon sens). Ça permet de faire tenir 8 boîtes en largeur.
+La hauteur classique de boite de 30mm (**prop. 3**) permet 8 tiroirs avec un débord de façade de 4mm. Avec 3mm d'espace entre les façades, c'est très similaire à ce que j'ai actuellement.
 
-**Paramètre pour la largeur**
+Alternativement, on peut aussi avoir 7 tiroirs de 35mm (**prop. 4**), mais attention à ne pas multiplier les formats différents. Je garde cette solution sous le coude.
+
+Je choisi de partir sur **6 tiroirs de 40mm** (**prop. 1**).
+
+Passons maintenant à la largeur. Regardons de plus près la conception :
+
+<p align="center">
+    <img src="../assets/projects/lego-storage-system/leka v2 9.png" width="90%" />
+    <br/>
+    <sub>Zoom sur les éléments qui contribuent à la largeur</sub>
+</p>
+
+Si les tiroirs sont suffisament larges, il est nécessaire d'ajouter un renfort pour éviter que le fond ne s'affaisse sous le poids du chargement. Les renforts divisent la zone de charge en plusieurs sections.
+
+Contrairement à la hauteur où on pouvait jouer sur le débord façade, en largeur aucun élément ne peut être ajusté arbitrairement. Il y aura donc nécessairement du jeu entre le module et le meuble. Tout l'enjeu est d'arriver à une valeur de jeu ni trop grande ni trop petite.
+
+Voici les paramètres pour la largeur :
 
 | Paramètre | Unité | Description / Commentaire | Valeur
 |-
-| Epaiseur côtés caisson | mm | Epaisseur des côtés du caisson, normalement fait en contreplaqué de 10mm | 10
-| Epaisseur glissière | mm | Epaisseur d'une glissière | 12.7
+| Epaiseur des supports | mm | Epaisseur des faces latérales sur lesquelles sont fixés les tiroirs, normalement fait en contreplaqué de 10mm | 10
+| Epaisseur glissière | mm | Epaisseur d'une glissière | 12,7
 | Taille boite | mm | Taille de base d'une boîte dans la largeur | 75
 | Nombre de boites | | Nombre de boites que le tiroir peut accueillir en largeur | TBD
-| Jeu autour des boites | mm | Jeu pour laisser les boites respirer dans le tiroir. Avec les boites en bois il était nécessaire d’avoir quelques mm de jeu, avec les boites en plastique on devrait pouvoir se passer de jeu puisque les boites l’intègrent déjà dans leurs dimensions | 0
-| Nombre de renforts | | Au delà de 6 ou 7 boites il devient nécessaire d'avoir au moins un renfort | TBD
-| Epaisseur renfort | mm | Epaisseur des pièces intermédiaires qui aident à soutenir le fond de tiroir et qui divisent l'espace interne, normalement fait en contreplaqué de 10mm | 10mm 
-| Nombre de divisions | | Chaque renfort crée une division | Nombre de renforts + 1
-| Largeur utile totale | mm | Largeur totale disponible pour les boites | Nb boite × Taille boite + (Nb divisions) × Jeu
-| Epaisseur côtés cadre | mm | Epaisseur des pièces qui forment les côtés du cadre du tiroir, normalement fait en contreplaqué de 10mm | 10
-| Largeur totale cadre | mm | Largeur externe totale du tiroir sans les glissières et sans la façade | Largeur utile totale + Nb renfort × Epaisseur renfort + Epaisseur côté cadre × 2
-| Largeur totale | mm | Largeur totale du module | Largeur totale cadre + Epaisseur glissière × 2 + Epaisseur côté caisson × 2
-| Jeu | mm | Différence entre la largeur totale du module et l'espace disponible dans la Kallax | Largeur case Kallax - Largeur totale du module
+| Jeu autour des boites | mm | Avec les boites en bois il était nécessaire de laisser quelques mm de jeu dans la zone de charge, mais avec les boites en plastique on devrait pouvoir s'en passer puisque les boites l’intègrent déjà dans leurs dimensions | 0
+| Nombre de renforts | | Nombre de renforts | TBD
+| Epaisseur renfort | mm | Epaisseur des pièces de renfort, normalement faites en contreplaqué de 10mm | 10mm 
+| Nombre de divisions | | Chaque renfort crée une division supplémentaire | Nombre de renforts + 1
+| Largeur utile totale | mm | Largeur totale disponible pour les boites | Nombre de boites × Taille boite + (Nombre de divisions) × Jeu
+| Epaisseur côtés cadre | mm | Epaisseur des pièces qui forment les côtés du cadre du tiroir, normalement faites en contreplaqué de 10mm | 10
+| Largeur totale cadre | mm | Largeur externe totale du tiroir sans les glissières et sans la façade | Largeur utile totale + Nombre de renforts × Epaisseur renfort + Epaisseur côté cadre × 2
+| Largeur totale | mm | Largeur totale du module | Largeur totale cadre + Epaisseur glissière × 2 + Epaisseur support × 2
+| Jeu final | mm | Différence entre la largeur totale du module et l'espace disponible dans la Kallax | Largeur case - Largeur totale du module
 
-**Solutions pour la largeur**
+On peut maintenant tester plusieurs propositions.
+Le but est d'avoir un maximum de boites. Il est possible d'utiliser des demie-boites, mais dans la largeur je préfère un nombre entier si possible.
 
-| Item | Solution 1 | Solution 2 | Solution 3 | Solution 4 | Solution 5
+Voici les résultats pour 5 propositions, discutées en détails en dessous :
+
+| | Prop. 1 | Prop. 2 | Prop. 3 | Prop. 4 | Prop. 5
 |-
-| **Côtés caisson** | **10** | **0** | **10** | **0** | **4**
-| Glissière | 12.7 | 12.7 | 12.7 | 12.7 | 12.7
+| **Support** | **10** | **0** | **10** | **0** | **4**
+| Glissière | 12,7 | 12,7 | 12,7 | 12,7 | 12,7
 | Taille boite | 75 | 75 | 75 | 75 | 75
 | **Nombre boites** | **3½** | **4** | **8** | **8½** | **8½**
 | Jeu | 0 | 0 | 0 | 0 | 0
 | **Renforts** | **0** | **0** | **1** | **0** | **0**
 | Epaisseur renfort | 10 | 10 | 10 | 10 | 10
 | Divisions | 1 | 1 | 2 | 1 | 1
-| Largeur utile totale | 262.5 | 300 | 600 | 637.5 | 637.5
+| Largeur utile totale | 262,5 | 300 | 600 | 637,5 | 637,5
 | **Côtés cadre** | **10** | **4** | **10** | **10** | **4**
-| Largeur totale cadre | 282.5 | 308 | 630 | 657.5 | 645.5
-| Largeur totale | 327.9 | 333.4 | 675.4 | 682.9 | 678.9
-| **Jeu** | **7.1** | **1.6** | **11.6** | **4.1** | **8.1**
+| Largeur totale cadre | 282,5 | 308 | 630 | 657,5 | 645,5
+| Largeur totale | 327,9 | 333,4 | 675,4 | 682,9 | 678,9
+| **Jeu** | **7,1** | **1,6** | **11,6** | **4,1** | **8,1**
 
-| Solution | Description | Commentaire
-|-
-| **1** | 1 case, 3½ boites | - 3½ boites c'est vraiment peu<br>- Je préfère un nombre entier dans la largeur | ❌
-| **2** | 1 case, 4 boites, pas de caisson | - Glissières à fixer directement sur la Kallax, ce qui amène son lot de problèmes<br>- Les côtés des tiroirs en CP4 peuvent s'assembler avec le fond avec la méthode des créneaux, ça peut sûrement tenir la charge, mais j'ai un doute que l'épaisseur soit suffisante pour tenir correctement les glissières | ❌
-| **3** | 2 cases, 8 boites | - Caisson<br>- Cadre de tiroir standard<br>- 8 boites c'est correct<br>- Jeu total confortable | ✅
-| **4** | 2 cases, 8½ boites sans renfort, pas de caisson | - Glissières à fixer directement sur la Kallax<br>- 8 boites sans renfort = risque d'affaissement du fond<br>- Nombre non entier de boites | ❌
-| **5** | 2 cases, 8½ boites sans renfort, caisson 4mm | - J'ai des doutes sur la faisabilité d'un caisson en CP4<br>- Tiroirs en CP4 | ❌
+Je commence par voir combien de boites on peut faire rentrer dans une case.
+Le mieux que j'ai trouvé c'est 3½ (**prop. 1**). C'est vraiment peu, et ce n'est pas un nombre entier.
 
-#### Dimensionnement en profondeur
+Il est possible d'avoir 4 boites (**prop. 2**) si on enlève les faces support et qu'on fait les côtés des tiroirs en contreplaqué de 4mm. Fixer les glissières directement sur la Kallax rend moins simple la mise en place/retrait du module dans la case, mais surtout ça oblige le tiroir à avoir exactement la bonne largeur au risque de ne pas coulisser correctement. J'ai eu des déboirs à ce niveau là sur le meuble C et je préfère éviter ça autant que possible. Et du coup le jeu restant de 1.6mm devrait être intégré dans la largeur du tiroir.
+Pour les côtés des tiroirs en contreplaqué de 4mm au lieu de 10, on est en terrain inconnu. Ils pourraient s'assembler avec le fond avec la méthode des créneaux, mais ça pose la question de la capacité à tenir la charge. J'ai aussi un doute que l'épaisseur soit suffisante pour pouvoir y fixer correctement les glissières.
 
-Pour la profondeur, j'accepte que les tiroirs dépassent un peu à l'arrière. Il y a en général un peu d'espace avec le mur, et si le débord n'est pas trop grand il ne se voit pas. Je voudrais également intégrer mon système d'ouverture automatique, donc il faut compter environ 5cm dans le fond. En utilisant des glissières de 400mm je peux faire tenir 4,5 boites en profondeur, ce qui offre une sortie de 42mm et un débord total de 42mm, ce qui est acceptable.
+Si on veut faire mieux que 3 boites de large, il faut passer sur deux cases.
+Avec les dimensions standard et un renfort, on peut avoir 8 boites (**prop. 3**), ce qui est correct.
+On a un jeu total de 11mm ce qui est un petit peu beaucoup mais reste acceptable.
 
-**Paramètres pour la profondeur**
+En enlevant les faces support et le renfort on peut avoir 8½ boites (**prop. 4**).
+Avec autant boites sans renfort le fond risque de s'affaisser.
+Ajouté à ça les contraintes liées à la suppression des supports, et le fait qu'on a même pas un nombre entier de boites.
+
+Alternativement, en faisant les tiroir en CP4 (et on a vu que ce n'était pas une super solution), on peut garder les supports si on les fait aussi en CP4 (**prop. 5**). Comme avec les tiroirs, pas sûr qu'on puisse fixer correctement les glissières sur du CP4. Et on a toujours un nombre non entier de boites, ça ne vaut pas l'effort selon moi.
+
+La meilleure solution pour moi est donc **8 boites sur deux cases**.
+
+Pour finir, la profondeur. Regardons la conception :
+
+<p align="center">
+    <img src="../assets/projects/lego-storage-system/leka v2 10.png" width="80%" />
+    <br/>
+    <sub>Zoom sur les éléments qui contribuent à la profondeur</sub>
+</p>
+
+Les glissières que j'utilise jusque là, et dont j'ai encore un petit stock, font 400mm de long.
+Les cases Kallax font 390 de profondeur, donc ça dépasse, mais ce n'est pas forcément gênant.
+Il y a en général un peu d'espace avec le mur, et si ça ne dépasse pas trop ça ne se verra pas.
+
+Je veux que le tiroir puisse donner l'impression de sortir plus que sa longueur, pour un accès confortable au fond du tiroir. L'astuce pour ça est de faire un tiroir plus courts que les glissières.
+C'est ce que j'ai fait sur les meubles A et C.
+Ça permet aussi de laisser de la place pour mon système d'ouverture automatique.
+
+Voici les paramètres pour la profondeur :
 
 | Paramètre | Unité | Description / Commentaire | Valeur
 |-
-| Longueur glissière | mm | Les glissières sont disponibles en plusieurs longueurs par multiples de 50mm, celles que j'utilise jusque là font 400mm | 400 ou 350
+| Longueur glissière | mm | Les glissières que j'ai font 400mm, mais le modèle existe en plusieurs longueurs par multiples de 50mm | 400 ou 350
 | Taille boite | mm	| Taille de base d'une boîte dans la profondeur | 75	
-| Nombre de boites || Nombre de boites que le tiroir peut accueillir en profondeur. On peut utiliser des demies longueurs | TBD
-| Jeu autour des boites | mm | Jeu pour laisser les boites respirer dans le tiroir. Avec les boites en bois il était nécessaire d'avoir quelques mm de jeu, avec les boites en plastique on devrait pouvoir se passer de jeu puisque les boites l'intègrent déjà dans leurs dimensions | 0
-| Profondeur utile totale | mm | Profondeur totale disponible pour les boites | Nb boites × Taille boite + Jeu
+| Nombre de boites || Nombre de boites que le tiroir peut accueillir en profondeur | TBD
+| Jeu autour des boites | mm | Avec les boites en bois il était nécessaire d'avoir quelques mm de jeu, mais avec les boites en plastique on devrait pouvoir s'en puisque les boites l'intègrent déjà dans leurs dimensions | 0
+| Profondeur utile totale | mm | Profondeur totale disponible pour les boites | Nombre de boites × Taille boite + Jeu
 | Epaisseur pièce avant	| mm | Epaisseur de la pièce avant du cadre du tiroir, normalement faite en contreplaqué de 10mm | 10
 | Epaisseur pièce arrière | mm | Epaisseur de la pièce arrière du cadre du tiroir, normalement faite en contreplaqué de 10mm | 10
 | Profondeur totale du cadre | mm | Dimension externe du tiroir sans la façade | Profondeur utile + Epaisseur pièce avant + Epaisseur pièce arrière
 | Sortie du tiroir | mm | Différence entre la longueur de la glissière et la longueur du tiroir | Longueur glissière - Profondeur totale cadre
 | Epaisseur façade | mm | Epaisseur de la façade, normalement faite en 3 plis d'épaisseur 19mm | 19
-| Longueur poussoir | mm | Longueur à réserver derrière le tiroir pour le système d'ouverture automatique | 52	
+| Longueur poussoir | mm | Longueur à réserver derrière le tiroir pour le système d'ouverture automatique | 52
 | Epaisseur fond | mm | Epaisseur de la planche qui ferme le meuble à l'arrière. Normalement fait en contreplaqué de 4mm | 4
 | Profondeur totale | mm | Profondeur totale du module | Profondeur totale du cadre + Epaisseur façade + Longueur poussoir + Epaisseur fond
 | Débord arrière | mm | Longueur qui dépasse à l'arrière de la Kallax | Profondeur totale - Profondeur Kallax
 
-**Solutions pour la profondeur**
+Testons plusieurs propositions :
 
-| Item | Solution 1 | Solution 2 | Solution 3
+| | Prop. 1 | Prop. 2 | Prop. 3 | Prop. 4
 |-
-| **Glissière** | **350** | **400** | **400**
-| Taille boite | 75 | 75 | 75
-| **Nombre de boites** | **4** | **5** | **4½**
-| Jeu | 0 | 0 | 0
-| Profondeur utile | 300 | 375 | 337,5
-| Avant | 10 | 10 | 10
-| Arrière | 10 | 10 | 10
-| Profondeur totale cadre | 320 | 395 | 357,5
-| **Sortie** | **30** | **5** | **42,5**
-| Façade | 10 | 19 | 19
-| Poussoir | 52 | 52 | 52
-| Fond | 4 | 4 | 4
-| Profondeur totale | 386 | 470 | 432,5
-| **Débord arrière** | **-4** | **80** | **42,5**
+| **Glissière** | **400** | **400** | **350** | **350**
+| Taille boite | 75 | 75 | 75 | 75
+| **Nombre de boites** | **4½** | **5** | **4** | **4½**
+| Jeu | 0 | 0 | 0 | 0
+| Profondeur utile | 337,5 | 375 | 300 | 337,5
+| Avant | 10 | 10 | 10 | 10
+| Arrière | 10 | 10 | 10 | 10
+| Profondeur totale cadre | 357,5 | 395 | 320 | 357,5
+| **Sortie** | **42,5** | **5** | **30** | **-7,5**
+| Façade | 19 | 19 | 19 | 19
+| Poussoir | 52 | 52 | 52 | 52
+| Fond | 4 | 4 | 4 | 4
+| Profondeur totale | 432,5 | 470 | 386 | 432,5
+| **Débord arrière** | **42,5** | **80** | **5** | **42,5**
 
-| Solution | Description | Commentaire | Choix |
-|----------|-------------|-------------|-------|
-| **1** | Glissières 350mm, 4 boites | - Tombe quasiment juste sans débord<br>- 4 boites c'est peu | ❌ |
-| **2** | Glissières 400mm, 5 boites | - Utilise les glissières en stock<br>- 5 boites c'est bien<br>- 8cm de débord arrière c'est trop | ❌ |
-| **3** | Glissières 400mm, 4½ boites | - Utilise les glissières en stock<br>- Débord arrière acceptable<br>- Bonne sortie<br>- 4½ boites c'est acceptable<br>NB: disposition des meubles A et C | ✅ |
+Avec des glissières de 400mm on peut avoir 4½ boites (**prop. 1**) avec une bonne sortie et un débord arrière acceptable de 4cm. Ça donne les mêmes tiroirs que ce que j'ai sur les meubles A et C.
 
+Monter à 5 boites (**prop. 2**) donne 8cm de débord arrière ce qui est trop.
+Et on a quasiment plus de sortie.
 
+J'ai voulu voir ce que ça donnerait avec des glissières plus courtes (**prop. 3**).
+Avec 4 boites on tombe quasiment juste sans débord à l'arrière, et on a une sortie pas trop mal. Mais 4 boites c'est peu.
+
+Si on essaie 4½ boites (**prop. 4**) on retombe sur quelque chose de similaire à la proposition 1, mais avec une sortie négative (ce qui veut dire que le tiroir ne sortira jamais complètement, la boite du fond est donc en partie condamnée).
+
+Je choisis donc **4½ boites avec des glissières de 400mm**.
