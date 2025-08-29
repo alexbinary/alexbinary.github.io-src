@@ -27,8 +27,6 @@ Living in Toulouse, France
 ## Current projects
 
 - [LEGO storage system](projects/lego-storage-system)
-- [LEGO storage system - Containers](projects/lego-storage-system-containers)
-- [Smart drawers](/projects/smart-drawers)
 - Media remote
 - [BrickLink App](/projects/bricklink-app)
 - Compta App
