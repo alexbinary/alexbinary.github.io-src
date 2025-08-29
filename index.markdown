@@ -18,6 +18,7 @@ Living in Toulouse, France
 
 ## Current interests
 
+- Music
 - DIY 8-bit computers
 - [Ancient Egypt & archeology](interests/egypt)
 - Space exploration & New Space
