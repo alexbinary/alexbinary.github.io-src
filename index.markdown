@@ -16,7 +16,7 @@ layout: page
 Living in Toulouse, France
 
 
-## Current interests
+## Interests
 
 - Music
 - DIY 8-bit computers
@@ -24,7 +24,7 @@ Living in Toulouse, France
 - Space exploration & New Space
 
 
-## Current projects
+## Projects
 
 - [LEGO storage system](projects/lego-storage-system)
 - Media remote
