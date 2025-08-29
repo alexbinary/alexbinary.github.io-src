@@ -9,7 +9,7 @@ layout: page
 
 Fan de LEGO depuis toujours, je tiens depuis 2019 une boutique de vente de pièces en ligne sur la plateforme BrickLink. Pour organiser mon stock j'ai d'abord utilisé un système de rangement à base de casiers en plastiques, mais j'en ai vite vu les limites. Ayant eu ces dernières années l'occasion de m'initier à la menuiserie, j'ai entrepris de fabriquer une solution de rangement sur mesure.
 
-Ce projet a développé avec le temps plusieurs ramifications :
+Avec le temps ce projet a développé plusieurs ramifications :
 
 - La structure de base. Il s'agit d'un système de meubles avec des tiroirs de faible hauteur et compartimentés. J'ai fabriqué plusieurs meubles en faisant évoluer un peu le design et les techniques de fabrication, et j'ai pu me débarasser complètement des casiers en plastiques. Désormais je réfléchis à adapter le design pour en faire un module adapté aux étagères IKEA de type Kallax.
 
@@ -18,9 +18,46 @@ Ce projet a développé avec le temps plusieurs ramifications :
 - Un système d'ouverture automatique des tiroirs. La partie mécanique est développée par mes soins et fabriquée en impression 3D, et le système de commande est basé sur Arduino et peut être connecté à mon logiciel de préparation de commandes. La partie mécanique est globalement validé. La partie électronique reste à finaliser. Ce projet est en voie de finalisation.
 
 
-## Les problèmes des rangements en plastique
+## Papi Max : une solution dédiée mais imparfaite
 
-Pendant un temps j'ai rangé mes pièces dans un système de casiers en plastique, mais j'en ai vite vu les limites. Notamment un manque de confort et de souplesse.
+Quand j'ai ouvert ma boutique ma solution de rangement était *Papi Max StackX Drawers*.
+C'est un produit qui s'adresse spécifiquement aux amateurs de LEGO, et qui promet notamment une forte densité de stockage.
+[Une revue détaillée est disponible sur le site Brick Architect](https://brickarchitect.com/2019/review-papi-max-stackx-drawers/).
+
+Le système se présente sous la forme de modules individuels composés d'un boitier externe  dans lequel glisse un tiroir.
+Les boitiers sont disponibles en blanc ou noir et peuvent s'empiler et s'assembler entre eux.
+Les tiroirs sont transparents et équipés d'une poignée à l'avant.
+Jusqu'à quatre cloisons peuvent être ajoutées dans la largeur et deux dans la longueur pour former jusqu'à 15 compartiments.
+
+
+Les + :
+
+- Vendu par éléments individuels, permettant de former une stucture globale de la taille et forme de son choix
+
+- Agencement interne ajustable
+
+- Possibilité de sortir complètement un tiroir pour l'emporter sur la zone de travail
+
+- Les tiroirs peuvent sortir quasiment jusqu'au bout permettant un accès facile à toute la surface
+
+
+Les - :
+
+- Impossible d'extraire un compartiment individuel pour l'amener sur la zone de travail ou vider son contenu. Ça rend notamment très pénible le déplacement des pièces d'un compartiment à un autre
+
+- Reconfigurer les cloisons demande de vider entièrement le tiroir
+
+- Les cloisons reposent par gravité et ne sont pas vérouillées.
+Avec les manipulations du tiroir elles se soulèvent et laissent fuiter des pièces dans les compartiments voisins
+
+- Il arrive souvent que le tiroir se coince ou se bloque s'il n'est pas manié avec rigueur
+
+- Le plastique transparent des tiroirs est sujet au jaunissement à la lumière du soleil
+
+- Prix élevé
+
+Finalement, le système de cloisons amoviles était séduisant sur le papier mais peu pratique à l'usage.
+Ajouté à ça la basse qualité de construction et le prix élevé, une meilleure solution était nécessaire.
 
 
 ## Les premiers meubles et boites en bois
