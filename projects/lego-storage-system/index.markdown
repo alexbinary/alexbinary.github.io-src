@@ -2,15 +2,53 @@
 layout: page
 ---
 
-# Project: LEGO Storage System
+<h1><u>Project</u>:<br>LEGO Storage System</h1>
 
-## Phase 1: Meubles et boites
+![](/assets/projects/lego-storage-system/0.jpg)
+
+Fan de LEGO depuis toujours, je tiens depuis 2019 une boutique de vente de pièces en ligne sur la plateforme BrickLink. Pour organiser mon stock j'ai d'abord utilisé un système de rangement à base de casiers en plastiques, mais j'en ai vite vu les limites. Ayant eu ces dernières années l'occasion de m'initier à la menuiserie, j'ai entrepris de fabriquer une solution de rangement sur mesure.
+
+Ce projet a développé avec le temps plusieurs ramifications :
+
+- La structure de base. Il s'agit d'un système de meubles avec des tiroirs de faible hauteur et compartimentés. J'ai fabriqué plusieurs meubles en faisant évoluer un peu le design et les techniques de fabrication, et j'ai pu me débarasser complètement des casiers en plastiques. Désormais je réfléchis à adapter le design pour en faire un module adapté aux étagères IKEA de type Kallax.
+
+- L'organisation dans les tiroirs. C'est un système de boites de différents formats permettant d'agencer l'espace selon les besoins. Les premières versions des boites étaient fabriquées en bois découpé au LASER. J'ai fabriqué une quantité astronomique de boites de ce type dans de nombreux formats différents. Par la suite j'ai imaginé un système en impression 3D, vaguement inspiré des solutions de type Gridfinity, et j'ai réduit le nombre de formats pour ne garder que quelques formats essentiels. Le remplacement progressif des boites en bois par les nouvelles boites en plastique est actuellement en cours.
+
+- Un système d'ouverture automatique des tiroirs. La partie mécanique est développée par mes soins et fabriquée en impression 3D, et le système de commande est basé sur Arduino et peut être connecté à mon logiciel de préparation de commandes. Ce projet est en voie de finalisation.
+
+
+## Les débuts de l'aventure BrickLink
+
+Comme beaucoup d'enfants, quand j'étais petit je jouais aux LEGO.
+En grandissant j'ai un peu mis cette activité de côté, même si je n'ai jamais vraiment remisé ma collection.
+Et puis vers 2015 j'ai commencé à racheter des sets, et c'était le début d'une vraie passion d'adulte pour ce jeu de construction.
+
+La communauté LEGO avait bien évolué, et j'étais moi aussi prêt à aborder ce loisir d'une manière nouvelle. J'ai découvert plusieurs sites internet et communautés en ligne, notamment Rebrickable, Brickset, et BrickLink.
+
+BrickLink est une place de marché où amateurs et professionnels du monde entier peuvent vendre des pièces de LEGO au détail. C'est un endroit fantastique pour tout amateur sérieux désireux de réaliser ses propres créations ou des créations de membres de la communauté, ou simplement redonner vie à d'anciens sets incomplets.
+
+Je me suis mis à passer régulièrement des commandes sur BrickLink dans l'optique de recréer certains oeuvres de créateurs mais aussi pour travailler sur des projets personnels.
+
+Et puis vers 2019, j'ai voulu tester l'autre côté et ouvrir une boutique.
+
+
+## Les problèmes des rangements en plastique
+
+Pendant un temps j'ai rangé mes pièces dans un système de casiers en plastique, mais j'en ai vite vu les limites. Notamment un manque de confort et de souplesse.
+
+
+## Les premiers meubles et boites en bois
 
 Articles détaillés :
 - [LEGO Storage System - phase 1 (fr)](phase1_fr)
 - [LEGO Storage System - phase 1 (en)](phase1_en)
 
 ### Meubles
+
+Ces dernières années j'ai eu l'occasion de m'initier à la menuiserie.
+Je voulais agrandir mon stock mais ne voulais pas poursuivre avec la solution de rangement existante, j'ai donc entammé un travail de conception et f
+
+J'ai ainsi fabriqué un ensemble de meubles à tiroirs 
 
 J'ai conçu et fabriqué un ensemble de meubles de type commode comprenant de 5 à une quizaine de tiroirs de faible hauteur.
 

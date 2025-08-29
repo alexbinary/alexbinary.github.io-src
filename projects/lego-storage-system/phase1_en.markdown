@@ -2,7 +2,7 @@
 layout: page
 ---
 
-![](/assets/2025-03-21-lego-storage/0.jpg)
+![](/assets/projects/lego-storage-system/phase1/0.jpg)
 
 For a few years now, I've been selling LEGO pieces online, and I've needed to effectively organize and store my inventory. Over the years, I've designed and built a custom storage solution. In this article, I reflect on this adventure.
 
@@ -19,11 +19,11 @@ For the height, I wanted to respect the ratio of LEGO bricks, considering that m
 
 From there, assuming my base box is 2x2 units wide and 2 plates high, I experimented with a variety of sizes in 1x1, 1x2, 2x3, 2x4, 3x3, etc., in heights of 1, 2, 3, or 4 plates. I quickly realized that larger, shorter models are useful as trays to hold pieces during builds. I made larger versions that I am still using today.
 
-[![](/assets/2025-03-21-lego-storage/7.jpg){: width="49%" }{: style="float: left; padding-bottom: 1rem;"}
-](/assets/2025-03-21-lego-storage/7.jpg)
+[![](/assets/projects/lego-storage-system/phase1/7.jpg){: width="49%" }{: style="float: left; padding-bottom: 1rem;"}
+](/assets/projects/lego-storage-system/phase1/7.jpg)
 
-[![](/assets/2025-03-21-lego-storage/9.jpg){: width="49%" }{: style="float: right; padding-bottom: 1rem;"}
-](/assets/2025-03-21-lego-storage/9.jpg)
+[![](/assets/projects/lego-storage-system/phase1/9.jpg){: width="49%" }{: style="float: right; padding-bottom: 1rem;"}
+](/assets/projects/lego-storage-system/phase1/9.jpg)
 
 {: style="clear: both"}
 
@@ -34,11 +34,11 @@ I started to have a number of loose boxes and felt the need for a higher level o
 
 I then made stackable sleeves in which the boxes could slide, and added a tab on the front face to create something resembling drawers. I was getting closer to what I had envisioned from the beginning, and it was very exciting.
 
-[![](/assets/2025-03-21-lego-storage/11.jpg){: width="49%" }{: style="float: left; padding-bottom: 1rem;"}
-](/assets/2025-03-21-lego-storage/11.jpg)
+[![](/assets/projects/lego-storage-system/phase1/11.jpg){: width="49%" }{: style="float: left; padding-bottom: 1rem;"}
+](/assets/projects/lego-storage-system/phase1/11.jpg)
 
-[![](/assets/2025-03-21-lego-storage/10.jpg){: width="49%" }{: style="float: right; padding-bottom: 1rem;"}
-](/assets/2025-03-21-lego-storage/10.jpg)
+[![](/assets/projects/lego-storage-system/phase1/10.jpg){: width="49%" }{: style="float: right; padding-bottom: 1rem;"}
+](/assets/projects/lego-storage-system/phase1/10.jpg)
 
 {: style="clear: both"}
 
@@ -53,11 +53,11 @@ After finding and ordering full-extension metal slides on Amazon, I made a first
 
 The makerspace that hosts the laser cutter also has a woodshop. After completing the necessary training, I undertook a second prototype, this time using a table saw. The result was much better, and I still use this prototype today, with some minor modifications.
 
-[![](/assets/2025-03-21-lego-storage/15.jpg){: width="49%" }{: style="float: left; padding-bottom: 1rem;"}
-](/assets/2025-03-21-lego-storage/15.jpg)
+[![](/assets/projects/lego-storage-system/phase1/15.jpg){: width="49%" }{: style="float: left; padding-bottom: 1rem;"}
+](/assets/projects/lego-storage-system/phase1/15.jpg)
 
-[![](/assets/2025-03-21-lego-storage/13.jpg){: width="49%" }{: style="float: right; padding-bottom: 1rem;"}
-](/assets/2025-03-21-lego-storage/13.jpg)
+[![](/assets/projects/lego-storage-system/phase1/13.jpg){: width="49%" }{: style="float: right; padding-bottom: 1rem;"}
+](/assets/projects/lego-storage-system/phase1/13.jpg)
 
 {: style="clear: both"}
 
@@ -68,13 +68,13 @@ Encouraged by this result, I wanted to step it up by creating a piece of furnitu
 
 The result was still encouraging, and I still use this prototype today. I also added real handles. I chose a simple yet effective model for discreet, elegant, and functional handles.
 
-[![](/assets/2025-03-21-lego-storage/3.jpg)
-](/assets/2025-03-21-lego-storage/3.jpg)
+[![](/assets/projects/lego-storage-system/phase1/3.jpg)
+](/assets/projects/lego-storage-system/phase1/3.jpg)
 
 For the next piece of furniture, I kept the same drawer size but increased the number of drawers from 5 to 16. This starts making a good storage unit. To prevent the bottom from sagging, I added a partition that divides the drawer into two parts, helping to support the bottom. I also tested a double-height drawer to store larger pieces.
 
-[![](/assets/2025-03-21-lego-storage/4.jpg)
-](/assets/2025-03-21-lego-storage/4.jpg)
+[![](/assets/projects/lego-storage-system/phase1/4.jpg)
+](/assets/projects/lego-storage-system/phase1/4.jpg)
 
 
 ## Towards better quality
@@ -87,8 +87,8 @@ After several experiments to get the hang of the machine and determine the ideal
 
 The result met my expectations. The finish is better than all the furniture made previously. However, machining the grooves takes a lot of machine time, leading to a significant cost. This technique isn't viable for making a large piece of furniture. So I tried something different. Instead of creating a whole groove, I simply made the drill points with the milling machine. To test this technique, I made a wide piece of furniture, but with only 5 drawers. The result wasn't as good.
 
-[![](/assets/2025-03-21-lego-storage/6.jpg)
-](/assets/2025-03-21-lego-storage/6.jpg)
+[![](/assets/projects/lego-storage-system/phase1/6.jpg)
+](/assets/projects/lego-storage-system/phase1/6.jpg)
 
 
 ## Conclusion and future plans
@@ -101,5 +101,5 @@ For the next project, I plan to create a set with a capacity equivalent to all 5
 
 Stay tuned.
 
-[![](/assets/2025-03-21-lego-storage/1.jpg)
-](/assets/2025-03-21-lego-storage/1.jpg)
+[![](/assets/projects/lego-storage-system/phase1/1.jpg)
+](/assets/projects/lego-storage-system/phase1/1.jpg)

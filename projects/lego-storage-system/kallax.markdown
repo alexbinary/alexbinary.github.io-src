@@ -15,14 +15,14 @@ Les cases carrées permettent de combiner les modules et les meubles dans n'impo
     <tr>
         <td style="border:none;vertical-align: bottom;">
             <p align="center">
-                <img src="/assets/projects/lego-storage-system/kallax 1.jpg" width="80%" />
+                <img src="/assets/projects/lego-storage-system/kallax/kallax 1.jpg" width="80%" />
                 <br/>
                 <sub>Kallax 2x2</sub>
             </p>
         </td>
         <td style="border:none">
             <p align="center">
-                <img src="/assets/projects/lego-storage-system/kallax 2.jpg" />
+                <img src="/assets/projects/lego-storage-system/kallax/kallax 2.jpg" />
                 <br/>
                 <sub>Kallax 1x4</sub>
             </p>
@@ -31,14 +31,14 @@ Les cases carrées permettent de combiner les modules et les meubles dans n'impo
     <tr style="background:none">
         <td style="border:none">
             <p align="center">
-                <img src="/assets/projects/lego-storage-system/kallax 3.jpg" width=350 height=350/>
+                <img src="/assets/projects/lego-storage-system/kallax/kallax 3.jpg" width=350 height=350/>
                 <br/>
                 <sub>Kallax 2x4</sub>
             </p>
         </td>
         <td style="border:none;vertical-align: bottom;">
             <p align="center">
-                <img src="/assets/projects/lego-storage-system/kallax 4.jpg" style="object-fit: cover" width=350 height=350 />
+                <img src="/assets/projects/lego-storage-system/kallax/kallax 4.jpg" style="object-fit: cover" width=350 height=350 />
                 <br/>
                 <sub>Kallax 4x4</sub>
             </p>
@@ -55,7 +55,7 @@ La conception des étagères fait qu'il est facile d'enlever certains des sépar
 Voilà un rendu possible :
 
 <p align="center">
-    <img src="/assets/projects/lego-storage-system/leka v2 5.png" width="50%" />
+    <img src="/assets/projects/lego-storage-system/kallax/leka v2 5.png" width="50%" />
     <br/>
     <sub>Rendu possible d'un module tiroirs sur deux cases</sub>
 </p>
@@ -67,7 +67,7 @@ Cela permet un module qu'on peut assembler seul et ensuite glisser dans le Kalla
 L'arrière est fermée par un panneau fin.
 
 <p align="center">
-    <img src="/assets/projects/lego-storage-system/leka v2 6.png" width="70%" />
+    <img src="/assets/projects/lego-storage-system/kallax/leka v2 6.png" width="70%" />
     <br/>
     <sub>Module tiroirs sur deux cases (module seul)</sub>
 </p>
@@ -88,7 +88,7 @@ Pour pouvoir expérimenter simplement avec différentes valeurs je crée des cal
 Commençons par la hauteur. Pour identifier les éléments et leur relation, regardons de plus prêt la conception :
 
 <p align="center">
-    <img src="/assets/projects/lego-storage-system/leka v2 8.png" width="60%" />
+    <img src="/assets/projects/lego-storage-system/kallax/leka v2 8.png" width="60%" />
     <br/>
     <sub>Zoom sur les éléments qui contribuent à la hauteur</sub>
 </p>
@@ -138,7 +138,7 @@ Je choisi de partir sur **6 tiroirs de 40mm** (**prop. 1**).
 Passons maintenant à la largeur. Regardons de plus près la conception :
 
 <p align="center">
-    <img src="/assets/projects/lego-storage-system/leka v2 9.png" width="90%" />
+    <img src="/assets/projects/lego-storage-system/kallax/leka v2 9.png" width="90%" />
     <br/>
     <sub>Zoom sur les éléments qui contribuent à la largeur</sub>
 </p>
@@ -207,7 +207,7 @@ La meilleure solution pour moi est donc **8 boites sur deux cases**.
 Pour finir, la profondeur. Regardons la conception :
 
 <p align="center">
-    <img src="/assets/projects/lego-storage-system/leka v2 10.png" width="80%" />
+    <img src="/assets/projects/lego-storage-system/kallax/leka v2 10.png" width="80%" />
     <br/>
     <sub>Zoom sur les éléments qui contribuent à la profondeur</sub>
 </p>
