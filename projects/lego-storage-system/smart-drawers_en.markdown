@@ -1,7 +1,5 @@
 ---
-layout: post
-title:  "Project: Smart drawers"
-date:   2025-03-28 09:17:53 +0100
+layout: page
 ---
 
 ![](/assets/2025-03-28-smart-drawers/0.jpg){: style="padding-bottom: 1rem"}

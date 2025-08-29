@@ -1,7 +1,5 @@
 ---
-layout: post
-title:  "My custom LEGO storage system"
-date:   2025-03-21 09:07:57 +0100
+layout: page
 ---
 
 ![](/assets/2025-03-21-lego-storage/0.jpg)

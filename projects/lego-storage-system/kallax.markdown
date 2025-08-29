@@ -2,62 +2,7 @@
 layout: page
 ---
 
-# Project: LEGO Storage System
-
-## Meubles
-
-J'ai conçu et fabriqué un ensemble de meubles de type commode comprenant de 5 à une quizaine de tiroirs de faible hauteur.
-
-J'ai tout construit en bois, à partir de panneaux achetés en magasin de bricolage ou récupérés.
-
-Il était important pour moi que l'ouverture des tiroirs donne une impression de qualité. Je ne voulais pas que les tiroirs penchent une fois ouvert, et je ne voulais pas courir le risque que le tiroir tombe si on ouvre un peu trop rapidement.
-
-Je voulais aussi que les tiroirs puissent s'ouvrir en totalité afin de pouvoir exploiter facilement l'intégralité du volume disponible.
-
-J'ai achetés des glissières à sortie totale de marque Junker sur Amazon. Le résultat est très satisfaisant.
-
-Après avoir expérimenté un peu avec des poignées fabriqués en bois, j'ai acheté des poignées en métal.
-
-
-## Boites
-
-Je fabrique des boîtes modulaires en impression 3D pour ranger les pièces de LEGO dans les meubles que j'ai fabriqués.
-
-Les boîtes sont prévues pour s'encastrer dans un système de grille.
-
-Dernièrement j'avais des soucis d'impression car les coins des faces carées rebiquaient (*warping*).
-J'ai d'abord essayé de nettoyer le plateau, pensant que c'était un problème d'adhérance au plateau.
-Ça a aidé un peu, mais le problème persistait.
-
-J'ai pensé que c'était en raison du courant d'air, car j'imprime généralement avec la fenêtre ouverte.
-J'ai donc testé fenêtre fermée, et ce n'était pas beaucoup mieux.
-
-En dernier recours, j'ai testé d'ajouter des supports.
-Là c'était beaucoup mieux, mais les supports apportent d'autres désagréments.
-
-J'en étais là quand j'ai vu une vidéo qui m'a donné l'idée d'arrondir les angles de mes faces carrées qui posaient problème.
-Après un peu de travail pour modifier mon modèle 3D de manière cohérente, je lance un test.
-Et là magie, plus de problème.
-
-En règle générale en impression 3D, il est souvent bon d'arrondir les angles trop durs.
-
-
-## Smart Drawers
-
-L'objectif est de créer un système automatique d'ouverture des tiroirs de mes meubles de rangement de pièces de LEGO.
-
-Je voulais initialement utiliser des aimants mais les premiers tests n'ont pas été concluants.
-
-J'ai finalement conçu un système de poussoir mécanique sur ressort actionné par une languette coulissante.
-
-La languette devait initialement être commandée par un solenoid, mais la force n'était pas suffisante. La version finale utilise un servo moteur.
-
-J'ai passé beaucoup de temps à concevoir le mécanisme mais aujourd'hui j'ai quelque chose qui fonctionne de manière satisfaisante et avec un bon niveau de fiabilité.
-
-La suite est d'équiper les 5 tiroirs du petit meuble que j'utilise pour tester, et de transformer l'électronique qui fonctionne aujoud'hui sur une breadboard en quelque chose de plus permanent. Les réflexions sont en cours sur ce sujet.
-
-
-## Module Kallax
+# Module Kallax
 
 ### Kallax, une étagère versatile
 
@@ -70,14 +15,14 @@ Les cases carrées permettent de combiner les modules et les meubles dans n'impo
     <tr>
         <td style="border:none;vertical-align: bottom;">
             <p align="center">
-                <img src="../assets/projects/lego-storage-system/kallax 1.jpg" width="80%" />
+                <img src="/assets/projects/lego-storage-system/kallax 1.jpg" width="80%" />
                 <br/>
                 <sub>Kallax 2x2</sub>
             </p>
         </td>
         <td style="border:none">
             <p align="center">
-                <img src="../assets/projects/lego-storage-system/kallax 2.jpg" />
+                <img src="/assets/projects/lego-storage-system/kallax 2.jpg" />
                 <br/>
                 <sub>Kallax 1x4</sub>
             </p>
@@ -86,14 +31,14 @@ Les cases carrées permettent de combiner les modules et les meubles dans n'impo
     <tr style="background:none">
         <td style="border:none">
             <p align="center">
-                <img src="../assets/projects/lego-storage-system/kallax 3.jpg" width=350 height=350/>
+                <img src="/assets/projects/lego-storage-system/kallax 3.jpg" width=350 height=350/>
                 <br/>
                 <sub>Kallax 2x4</sub>
             </p>
         </td>
         <td style="border:none;vertical-align: bottom;">
             <p align="center">
-                <img src="../assets/projects/lego-storage-system/kallax 4.jpg" style="object-fit: cover" width=350 height=350 />
+                <img src="/assets/projects/lego-storage-system/kallax 4.jpg" style="object-fit: cover" width=350 height=350 />
                 <br/>
                 <sub>Kallax 4x4</sub>
             </p>
@@ -110,7 +55,7 @@ La conception des étagères fait qu'il est facile d'enlever certains des sépar
 Voilà un rendu possible :
 
 <p align="center">
-    <img src="../assets/projects/lego-storage-system/leka v2 5.png" width="50%" />
+    <img src="/assets/projects/lego-storage-system/leka v2 5.png" width="50%" />
     <br/>
     <sub>Rendu possible d'un module tiroirs sur deux cases</sub>
 </p>
@@ -122,7 +67,7 @@ Cela permet un module qu'on peut assembler seul et ensuite glisser dans le Kalla
 L'arrière est fermée par un panneau fin.
 
 <p align="center">
-    <img src="../assets/projects/lego-storage-system/leka v2 6.png" width="70%" />
+    <img src="/assets/projects/lego-storage-system/leka v2 6.png" width="70%" />
     <br/>
     <sub>Module tiroirs sur deux cases (module seul)</sub>
 </p>
@@ -143,7 +88,7 @@ Pour pouvoir expérimenter simplement avec différentes valeurs je crée des cal
 Commençons par la hauteur. Pour identifier les éléments et leur relation, regardons de plus prêt la conception :
 
 <p align="center">
-    <img src="../assets/projects/lego-storage-system/leka v2 8.png" width="60%" />
+    <img src="/assets/projects/lego-storage-system/leka v2 8.png" width="60%" />
     <br/>
     <sub>Zoom sur les éléments qui contribuent à la hauteur</sub>
 </p>
@@ -193,7 +138,7 @@ Je choisi de partir sur **6 tiroirs de 40mm** (**prop. 1**).
 Passons maintenant à la largeur. Regardons de plus près la conception :
 
 <p align="center">
-    <img src="../assets/projects/lego-storage-system/leka v2 9.png" width="90%" />
+    <img src="/assets/projects/lego-storage-system/leka v2 9.png" width="90%" />
     <br/>
     <sub>Zoom sur les éléments qui contribuent à la largeur</sub>
 </p>
@@ -262,7 +207,7 @@ La meilleure solution pour moi est donc **8 boites sur deux cases**.
 Pour finir, la profondeur. Regardons la conception :
 
 <p align="center">
-    <img src="../assets/projects/lego-storage-system/leka v2 10.png" width="80%" />
+    <img src="/assets/projects/lego-storage-system/leka v2 10.png" width="80%" />
     <br/>
     <sub>Zoom sur les éléments qui contribuent à la profondeur</sub>
 </p>
