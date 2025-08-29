@@ -4,7 +4,8 @@ layout: page
 
 <h1><u>Project</u>:<br>LEGO Storage System</h1>
 
-![](/assets/projects/lego-storage-system/0.jpg)
+[![](/assets/projects/lego-storage-system/4.jpg)
+](/assets/projects/lego-storage-system/4.jpg)
 
 Fan de LEGO depuis toujours, je tiens depuis 2019 une boutique de vente de pièces en ligne sur la plateforme BrickLink. Pour organiser mon stock j'ai d'abord utilisé un système de rangement à base de casiers en plastiques, mais j'en ai vite vu les limites. Ayant eu ces dernières années l'occasion de m'initier à la menuiserie, j'ai entrepris de fabriquer une solution de rangement sur mesure.
 
