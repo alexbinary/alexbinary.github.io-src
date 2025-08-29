@@ -14,7 +14,7 @@ Ce projet a développé avec le temps plusieurs ramifications :
 
 - L'organisation dans les tiroirs. C'est un système de boites de différents formats permettant d'agencer l'espace selon les besoins. Les premières versions des boites étaient fabriquées en bois découpé au LASER. J'ai fabriqué une quantité astronomique de boites de ce type dans de nombreux formats différents. Par la suite j'ai imaginé un système en impression 3D, vaguement inspiré des solutions de type Gridfinity, et j'ai réduit le nombre de formats pour ne garder que quelques formats essentiels. Le remplacement progressif des boites en bois par les nouvelles boites en plastique est actuellement en cours.
 
-- Un système d'ouverture automatique des tiroirs. La partie mécanique est développée par mes soins et fabriquée en impression 3D, et le système de commande est basé sur Arduino et peut être connecté à mon logiciel de préparation de commandes. Ce projet est en voie de finalisation.
+- Un système d'ouverture automatique des tiroirs. La partie mécanique est développée par mes soins et fabriquée en impression 3D, et le système de commande est basé sur Arduino et peut être connecté à mon logiciel de préparation de commandes. La partie mécanique est globalement validé. La partie électronique reste à finaliser. Ce projet est en voie de finalisation.
 
 
 ## Les débuts de l'aventure BrickLink
