@@ -13,7 +13,7 @@ layout: page
 
 ## Current situation
 
-Living in Toulouse, France
+Just moved to Toulouse, France
 
 
 ## Interests
