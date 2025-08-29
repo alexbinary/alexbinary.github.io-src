@@ -26,7 +26,6 @@ Living in Toulouse, France
 
 ## Current projects
 
-- 3D printed phone case
 - [LEGO storage system](projects/lego-storage-system)
 - [LEGO storage system - Containers](projects/lego-storage-system-containers)
 - [Smart drawers](/projects/smart-drawers)
