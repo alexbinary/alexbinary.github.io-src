@@ -34,11 +34,6 @@ Living in Toulouse, France
 - Compta App
 
 
-## Current activities
-
-- Learning Piano
-
-
 ## Links
 
 ### Coding
