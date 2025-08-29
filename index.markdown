@@ -16,6 +16,11 @@ layout: page
 Just moved to Toulouse, France
 
 
+## Current occupations
+
+- [Selling LEGO pieces worldwide on BrickLink](occupations/bricklink)
+
+
 ## Interests
 
 - Music
