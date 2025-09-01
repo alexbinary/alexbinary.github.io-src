@@ -18,6 +18,7 @@ Recently moved to Toulouse, France
 
 ## Current occupations
 
+- Preparing for an Advanced Master in Embedded systems at ISAE SupAero
 - [Selling LEGO pieces worldwide on BrickLink](occupations/bricklink)
 
 
