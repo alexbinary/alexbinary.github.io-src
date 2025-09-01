@@ -3,6 +3,7 @@ layout: topic
 title: Movies
 category: Interest
 last_updated: 2025-09-01 10:10:09
+tags: [movies, tv shows, art, culture]
 ---
 
 J'aime regarder des films et séries, je m'intéresse au processus de production.

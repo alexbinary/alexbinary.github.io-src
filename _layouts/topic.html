@@ -3,7 +3,15 @@ layout: default
 ---
 <article class="post">
 
-  <h1 ><u>{{ page.category | escape }}</u>:<br>{{ page.title | escape }}</h1>
+  <h1><u>{{ page.category | escape }}</u>:<br>{{ page.title | escape }}</h1>
+
+  {% if page.tags %}
+    <div class="post-tags" style="margin-top: -1rem; margin-bottom: 2rem">
+      {% for tag in page.tags %}
+        <i><span class="tag">#{{ tag | escape }}</span></i>
+      {% endfor %}
+    </div>
+  {% endif %}
 
   <div class="post-content">
     {{ content }}

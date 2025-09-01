@@ -3,6 +3,7 @@ layout: topic
 title: Egypt
 category: Interest
 last_updated: 2025-09-01 10:10:09
+tags: [science]
 ---
 
 La civilisation egyptienne s'étale sur une période de près de 3000 ans.

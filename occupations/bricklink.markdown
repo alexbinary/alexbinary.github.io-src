@@ -3,6 +3,7 @@ layout: topic
 title: BrickLink
 category: Occupation
 last_updated: 2025-09-01 10:10:09
+tags: [LEGO]
 ---
 
 Comme beaucoup d'enfants, quand j'étais petit je jouais aux LEGO.
