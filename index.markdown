@@ -5,7 +5,7 @@ last_updated: 2025-09-01 10:09:03
 
 <table style="border: none;">
     <tr>
-        <td style="vertical-align: top; border: none;">
+        <td style="vertical-align: top; border: none; padding: 0 2rem 0 0;">
 
             <h1>Alexandre Bintz</h1>
 
@@ -13,8 +13,11 @@ last_updated: 2025-09-01 10:09:03
 
             <p><i>#programming #3dprinting #electronics #woodworking #LEGO #photography #music #engineering</i></p>
 
+            <p style="margin-top: 3rem">Living in France, recently moved from Strasbourg to Toulouse.
+            <i>Moving is always a challenge but also an opportunity for growth.</i></p>
+
         </td>
-        <td style="border: none;">
+        <td style="vertical-align: top; border: none; padding: 0;">
 
             <img src="assets/profile3.png" width="60%" style="padding-bottom: 1rem;" alt="profile" />
             <ul class="social-media-list">
@@ -42,20 +45,15 @@ last_updated: 2025-09-01 10:09:03
     </tr>
 </table>
 
-
-## Current situation
-
-Recently moved to Toulouse, France
-
 {: style="margin-top: 3rem" }
-## Current occupations
+## Keeping busy 🐜
 
 - Preparing for an Advanced Master in Embedded systems at ISAE SupAero
 - [Selling LEGO pieces worldwide on BrickLink](occupations/bricklink)
 
 
 {: style="margin-top: 3rem" }
-## Current projects
+## Making stuff 🧑‍🔬
 
 - [LEGO storage system](projects/lego-storage-system)
 - Media remote
@@ -64,7 +62,7 @@ Recently moved to Toulouse, France
 
 
 {: style="margin-top: 3rem" }
-## Interests
+## Interests 🤯
 
 - Coding
 - [Movies & TV shows](interests/movies)
@@ -74,14 +72,14 @@ Recently moved to Toulouse, France
 
 
 {: style="margin-top: 3rem" }
-## Latest movies or shows
+## Latest movies or shows 🎞️
 
 - [Weapons](https://www.imdb.com/fr/title/tt26581740/)
 - [Alien Earth](https://www.imdb.com/fr/title/tt13623632/)
 
 
 {: style="margin-top: 3rem" }
-## Latest books
+## Latest books 📚
 
 - [Robotic Exploration of the Solar System: Part 1: The Golden Age 1957-1982](https://www.amazon.fr/Robotic-Exploration-Solar-System-1957-1982/dp/0387493263/)
 - [Henri Lœvenbruck, Nous rêvions juste de liberté](https://www.babelio.com/livres/Loevenbruck-Nous-revions-juste-de-liberte/695248)
@@ -94,7 +92,7 @@ Recently moved to Toulouse, France
 
 
 {: style="margin-top: 3rem" }
-## Favorite YouTube channels
+## Favorite YouTube channels 📺
 
 - [Tantacrul](https://www.youtube.com/@Tantacrul)
 - [DIY Perks](https://www.youtube.com/@DIYPerks)
