@@ -1,12 +1,13 @@
 
-title: Making something great
+title: The making of something great
 description: "
   Alexandre Bintz - maker, coder, thinker
-  #programming #3dprinting #electronics #woodworking #LEGO #photography #music #engineering
   "
+author: Alexandre Bintz
 
 email: alexandre@bintz.xyz
-github_username:  alexbinary
+github_username: alexbinary
+twitter_username: AlexFrom1991
 
 theme: minima
 plugins:

@@ -3,26 +3,58 @@ layout: page
 last_updated: 2025-09-01 10:09:03
 ---
 
-![profile](assets/profile3.png){: width="20%" }{: style="float: right; padding-left: 4rem;"}
+<table style="border: none;">
+    <tr>
+        <td style="vertical-align: top; border: none;">
 
-## Alexandre Bintz
+            <h1>Alexandre Bintz</h1>
 
--- Maker, coder, thinker
+            <p>-- Maker, coder, thinker</p>
 
-*#programming #3dprinting #electronics #woodworking #LEGO #photography #music #engineering*
+            <p><i>#programming #3dprinting #electronics #woodworking #LEGO #photography #music #engineering</i></p>
+
+        </td>
+        <td style="border: none;">
+
+            <img src="assets/profile3.png" width="60%" style="padding-bottom: 1rem;" alt="profile" />
+            <ul class="social-media-list">
+                <li>
+                    <a href="https://github.com/{{ site.github_username| cgi_escape | escape }}">
+                        <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#github' | relative_url }}"></use></svg>
+                        <span class="username">{{ site.github_username| escape }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.twitter.com/{{ site.twitter_username| cgi_escape | escape }}">
+                        <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#twitter' | relative_url }}"></use></svg>
+                        <span class="username">{{ site.twitter_username| escape }}</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:{{ site.email }}">
+                        <svg fill="#828282" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="#828282" width=18><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M22,5V9L12,13,2,9V5A1,1,0,0,1,3,4H21A1,1,0,0,1,22,5ZM2,11.154V19a1,1,0,0,0,1,1H21a1,1,0,0,0,1-1V11.154l-10,4Z"></path></g></svg>
+                        &nbsp;{{ site.email }}
+                    </a>
+                </li>
+            </ul>
+
+        </td>
+    </tr>
+</table>
 
 
 ## Current situation
 
 Recently moved to Toulouse, France
 
-
+{: style="margin-top: 3rem" }
 ## Current occupations
 
 - Preparing for an Advanced Master in Embedded systems at ISAE SupAero
 - [Selling LEGO pieces worldwide on BrickLink](occupations/bricklink)
 
 
+{: style="margin-top: 3rem" }
 ## Current projects
 
 - [LEGO storage system](projects/lego-storage-system)
@@ -31,6 +63,7 @@ Recently moved to Toulouse, France
 - Compta App
 
 
+{: style="margin-top: 3rem" }
 ## Interests
 
 - Coding
@@ -40,12 +73,14 @@ Recently moved to Toulouse, France
 - Space exploration & New Space
 
 
+{: style="margin-top: 3rem" }
 ## Latest movies or shows
 
 - [Weapons](https://www.imdb.com/fr/title/tt26581740/)
 - [Alien Earth](https://www.imdb.com/fr/title/tt13623632/)
 
 
+{: style="margin-top: 3rem" }
 ## Latest books
 
 - [Robotic Exploration of the Solar System: Part 1: The Golden Age 1957-1982](https://www.amazon.fr/Robotic-Exploration-Solar-System-1957-1982/dp/0387493263/)
@@ -58,6 +93,7 @@ Recently moved to Toulouse, France
 - [Robert Charles Wilson, À travers temps](https://www.babelio.com/livres/Wilson--travers-temps/174247)
 
 
+{: style="margin-top: 3rem" }
 ## Favorite YouTube channels
 
 - [Tantacrul](https://www.youtube.com/@Tantacrul)
@@ -66,6 +102,7 @@ Recently moved to Toulouse, France
 - [Sebastian Lague](https://www.youtube.com/@SebastianLague)
 
 
+{: style="margin-top: 3rem" }
 ## Links
 
 ### Coding
