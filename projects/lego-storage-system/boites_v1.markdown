@@ -5,6 +5,9 @@ title: Boites v1
 category: Project
 last_updated: 2025-09-01 10:10:09
 tags: [LEGO, woodworking]
+project_status: complete
+project_current_iteration_title: Boite v2
+project_current_iteration_url: boites_v2
 ---
 
 Depuis quelques années je fais de le vente de pièce de LEGO en ligne, et j’ai besoin de ranger et organiser efficacement mon stock de pièces.

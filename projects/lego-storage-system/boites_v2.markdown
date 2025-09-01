@@ -5,6 +5,7 @@ title: Boites v2
 category: Project
 last_updated: 2025-09-01 10:10:09
 tags: [LEGO, 3dprinting]
+project_status: active
 ---
 
 Je fabrique des boîtes modulaires en impression 3D pour ranger les pièces de LEGO dans les meubles que j'ai fabriqués.

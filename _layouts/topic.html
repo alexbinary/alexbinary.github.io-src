@@ -6,6 +6,15 @@ layout: default
   <h2 style="margin-bottom: 0"><u>{{ page.category | escape }}</u>: {{ page.subtitle | escape }}</h2>
   <h1>{{ page.title | escape }}</h1>
 
+  <div class="post-status" style="margin-top: -1rem; margin-bottom: 2rem; float: right;">
+    {% if page.project_status %}
+      <strong>Project status:</strong> <span>{{ page.project_status | escape }}</span>
+    {% endif %}
+    {% if page.project_current_iteration_title and page.project_current_iteration_url %}
+      &nbsp; | &nbsp; <strong>Current iteration:</strong> <a href="{{ page.project_current_iteration_url | escape }}">{{ page.project_current_iteration_title | escape }}</a>
+    {% endif %}
+  </div>
+
   {% if page.tags %}
     <div class="post-tags" style="margin-top: -1rem; margin-bottom: 2rem">
       {% for tag in page.tags %}
