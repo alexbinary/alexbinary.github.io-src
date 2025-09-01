@@ -33,8 +33,9 @@ Recently moved to Toulouse, France
 
 ## Interests
 
+- Coding
+- [Movies & TV shows](interests/movies)
 - Music
-- DIY 8-bit computers
 - [Ancient Egypt & archeology](interests/egypt)
 - Space exploration & New Space
 
