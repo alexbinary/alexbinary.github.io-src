@@ -13,7 +13,7 @@ layout: page
 
 ## Current situation
 
-Just moved to Toulouse, France
+Recently moved to Toulouse, France
 
 
 ## Current occupations
