@@ -2,6 +2,7 @@
 layout: post
 title:  "Photos"
 date:   2025-04-04 08:52:01 +0100
+tags: [photography, art]
 ---
 
 Here are some pictures I took. You can see more on [my Flickr](https://www.flickr.com/photos/189385048@N05/).

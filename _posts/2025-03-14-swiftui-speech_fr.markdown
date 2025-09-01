@@ -2,6 +2,7 @@
 layout: post
 title:  "(fr) Reconnaissance vocale dans une app SwiftUI"
 date:   2025-03-14 10:23:06 +0100
+tags: [programming]
 ---
 
 Dans un précédent article, nous avons vu l'accès au microphone dans une application SwiftUI sur macOS.

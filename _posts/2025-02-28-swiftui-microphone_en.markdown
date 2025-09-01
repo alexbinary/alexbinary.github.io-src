@@ -2,6 +2,7 @@
 layout: post
 title:  "Microphone access in a SwiftUI app"
 date:   2025-02-28 11:02:15 +0100
+tags: [programming]
 ---
 
 I run an online store for LEGO parts on the BrickLink platform, and I'm developing a macOS application in SwiftUI to help manage my sales.

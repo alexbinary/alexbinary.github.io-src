@@ -5,12 +5,27 @@ layout: default
 
   <h1><u>Tag</u>:<br><i>#{{ page.tag | escape }}</i></h1>
 
+  <h2>Pages</h2>
+
   <ul>
     {% assign current_tag = page.tag %}
     {% for page in site.pages %}
       {% if page.tags contains current_tag %}
         <li>
           <a href="{{ page.url | relative_url }}">{{ page.title | escape }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  <h2>Posts</h2>
+
+  <ul>
+    {% assign current_tag = page.tag %}
+    {% for post in site.posts %}
+      {% if post.tags contains current_tag %}
+        <li>
+          <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
         </li>
       {% endif %}
     {% endfor %}
