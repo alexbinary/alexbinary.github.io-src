@@ -1,9 +1,10 @@
 ---
 layout: topic
-title: LEGO Storage System - Module Kallax
+subtitle: LEGO Storage System
+title: Module Kallax
 category: Project
 last_updated: 2025-09-01 10:10:09
-tags: [LEGO, woodworking, engineering]
+tags: [LEGO, woodworking]
 ---
 
 ### Kallax, une étagère versatile

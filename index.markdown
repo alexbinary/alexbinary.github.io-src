@@ -12,14 +12,14 @@ last_updated: 2025-09-01 10:09:03
             <p>-- Maker, coder, thinker</p>
 
             <p>
-                {% assign tags = "programming, 3dprinting, electronics, woodworking, LEGO, photography, music, engineering" | split: ", "  %}
+                {% assign tags = "programming, 3dprinting, electronics, woodworking, LEGO, photography, music" | split: ", "  %}
                 {% for tag in tags %}
                     <a href="tags/{{ tag }}"><i>#{{ tag }}</i></a>
                 {% endfor %}
             </p>
 
             <p style="margin-top: 3rem">Living in France, recently moved from Strasbourg to Toulouse.
-            <i>Moving is always a challenge but also an opportunity for growth.</i></p>
+            <i>Moving is always a challenge, but challenge make you grow.</i></p>
 
         </td>
         <td style="vertical-align: top; border: none; padding: 0;">

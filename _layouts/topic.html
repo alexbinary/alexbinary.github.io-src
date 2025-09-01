@@ -3,7 +3,8 @@ layout: default
 ---
 <article class="post">
 
-  <h1><u>{{ page.category | escape }}</u>:<br>{{ page.title | escape }}</h1>
+  <h2 style="margin-bottom: 0"><u>{{ page.category | escape }}</u>: {{ page.subtitle | escape }}</h2>
+  <h1>{{ page.title | escape }}</h1>
 
   {% if page.tags %}
     <div class="post-tags" style="margin-top: -1rem; margin-bottom: 2rem">
