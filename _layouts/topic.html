@@ -1,0 +1,15 @@
+---
+layout: default
+---
+<article class="post">
+
+  <h1 ><u>{{ page.category | escape }}</u>:<br>{{ page.title | escape }}</h1>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+  Last updated {{ page.last_updated | date: date_format }}
+
+</article>

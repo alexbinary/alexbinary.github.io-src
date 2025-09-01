@@ -1,8 +1,9 @@
 ---
-layout: page
+layout: topic
+title: LEGO Storage System
+category: Project
+last_updated: 2025-09-01 10:10:09
 ---
-
-<h1><u>Project</u>:<br>LEGO Storage System</h1>
 
 [![](/assets/projects/lego-storage-system/4.jpg)
 ](/assets/projects/lego-storage-system/4.jpg)

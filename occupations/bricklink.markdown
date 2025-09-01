@@ -1,8 +1,9 @@
 ---
-layout: page
+layout: topic
+title: BrickLink
+category: Occupation
+last_updated: 2025-09-01 10:10:09
 ---
-
-<h1><u>Occupation</u>:<br>BrickLink</h1>
 
 Comme beaucoup d'enfants, quand j'étais petit je jouais aux LEGO.
 En grandissant j'ai un peu mis cette activité de côté, même si je n'ai jamais vraiment remisé ma collection.

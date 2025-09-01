@@ -1,5 +1,8 @@
 ---
-layout: page
+layout: topic
+title: LEGO Storage System - phase 1
+category: Project
+last_updated: 2025-09-01 10:10:09
 ---
 
 ![](/assets/projects/lego-storage-system/phase1/0.jpg)
