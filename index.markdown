@@ -11,7 +11,12 @@ last_updated: 2025-09-01 10:09:03
 
             <p>-- Maker, coder, thinker</p>
 
-            <p><i>#programming #3dprinting #electronics #woodworking #LEGO #photography #music #engineering</i></p>
+            <p>
+                {% assign tags = "programming, 3dprinting, electronics, woodworking, LEGO, photography, music, engineering" | split: ", "  %}
+                {% for tag in tags %}
+                    <a href="tags/{{ tag }}"><i>#{{ tag }}</i></a>
+                {% endfor %}
+            </p>
 
             <p style="margin-top: 3rem">Living in France, recently moved from Strasbourg to Toulouse.
             <i>Moving is always a challenge but also an opportunity for growth.</i></p>

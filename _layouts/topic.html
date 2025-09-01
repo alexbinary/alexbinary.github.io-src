@@ -8,7 +8,7 @@ layout: default
   {% if page.tags %}
     <div class="post-tags" style="margin-top: -1rem; margin-bottom: 2rem">
       {% for tag in page.tags %}
-        <i><span class="tag">#{{ tag | escape }}</span></i>
+        <a href="/tags/{{ tag }}"><i>#{{ tag | escape}}</i></a>
       {% endfor %}
     </div>
   {% endif %}

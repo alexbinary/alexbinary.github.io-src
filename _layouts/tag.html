@@ -1,0 +1,19 @@
+---
+layout: default
+---
+<article class="post">
+
+  <h1><u>Tag</u>:<br><i>#{{ page.tag | escape }}</i></h1>
+
+  <ul>
+    {% assign current_tag = page.tag %}
+    {% for page in site.pages %}
+      {% if page.tags contains current_tag %}
+        <li>
+          <a href="{{ page.url | relative_url }}">{{ page.title | escape }}</a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+</article>

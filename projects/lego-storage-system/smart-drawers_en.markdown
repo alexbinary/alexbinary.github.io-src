@@ -3,7 +3,7 @@ layout: topic
 title: Smart Drawers
 category: Project
 last_updated: 2025-09-01 10:10:09
-tags: [LEGO, 3D printing, electronics, enginneering]
+tags: [LEGO, 3dprinting, electronics, engineering]
 ---
 
 ![](/assets/2025-03-28-smart-drawers/0.jpg){: style="padding-bottom: 1rem"}
