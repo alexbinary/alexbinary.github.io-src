@@ -1,9 +1,9 @@
 ---
 layout: topic
-subtitle: LEGO Storage System
 title: Meubles v1
 category: Project
-last_updated: 2025-09-01 10:10:09
+parent_project_title: LEGO Storage System
+parent_project_url: ../lego-storage-system
 tags: [LEGO, woodworking]
 project_status: complete
 project_current_iteration_title: Module Kallax
