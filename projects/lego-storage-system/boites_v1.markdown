@@ -4,26 +4,38 @@ title: Boites v1
 category: Project
 parent_project_title: LEGO Storage System
 parent_project_url: ../lego-storage-system
-last_updated: 2025-09-01 10:10:09
 tags: [LEGO, woodworking]
 project_status: complete
 project_current_iteration_title: Boite v2
 project_current_iteration_url: boites_v2
+last_updated: 2025-09-02
 ---
 
-Depuis quelques années je fais de le vente de pièce de LEGO en ligne, et j’ai besoin de ranger et organiser efficacement mon stock de pièces.
-Au cours des dernières années j'ai conçu et fabriqué une solution de rangement sur mesure.
-Dans cet article je reviens sur cette aventure.
+<table style="border:none">
+    <tr style="background:none">
+        <td style="border:none; padding: 0">
+            <p align="center">
+                <a href="/assets/projects/lego-storage-system/phase1/7.jpg">
+                    <img src="/assets/projects/lego-storage-system/phase1/7.jpg" width=350 height=330 style="object-fit: cover" />
+                </a>
+                <br/>
+                <sub>Premiers casiers avec manchon</sub>
+            </p>
+        </td>
+        <td style="border:none;vertical-align: bottom; padding: 0">
+            <p align="center">
+                <a href="/assets/projects/lego-storage-system/phase1/9.jpg">
+                    <img src="/assets/projects/lego-storage-system/phase1/9.jpg" width=350 height=330 style="object-fit: cover"/>
+                </a>
+                <br/>
+                <sub>Tiroirs avec casiers empilables</sub>
+            </p>
+        </td>
+    </tr>
+</table>
 
---
-
-Courant 2021 j'ai eu l'occasion de me former à la découpe LASER.
-J'ai alors commencé à expérimenter pour fabriquer des boites qui pourraient me servir à ranger et organiser mes pièces de LEGO.
-
---
-
-J'ai près de chez moi un atelier partagé équipé d'une découpeuse LASER.
-Après une séance de formation, j'ai commencé à expérimenter avec cette machine, et en ai vite saisi le potentiel pour fabriquer des boites en bois pour ranger mes pièces de LEGO.
+Courant 2021 j'ai eu l'occasion de me former à la découpe LASER dans un atelier partagé près de chez moi (à l'époque à Strasbourg).
+Après une séance de formation, j'ai commencé à expérimenter avec cette machine, et j'en ai vite saisi le potentiel pour fabriquer des boites qui pourraient servir de base à une [solution de rangement sur mesure](index) pour mes pièces de LEGO pour [ma boutique en ligne](/occupations/bricklink).
 
 Je voulais au départ faire des boites qui soient les plus fines possible afin de maximiser l'espace disponible pour les pièces.
 Après un premier prototype réalisé avec des chutes de contreplaqué de peuplier de 1mm récupérées dans une boutique de modélisme, je me suis fixé sur du contreplaqué de 3mm.
@@ -43,17 +55,10 @@ Je trouve que c'est le ratio parfait.
 Partant de là, en partant du principe que ma boite de base fait 2x2 unités de large et 2 plaques de haut, j'ai expérimenté avec tout un tas de variantes en 1x1, 1x2, 2x3, 2x4, 3x3, etc en version 1, 2, 3 ou 4 plaques de hauteur. Je me suis vite rendu compte que les modèles de grande taille et faible hauteur sont utiles en tant que plateau pour contenir des pièces lors de constructions par exemples.
 J'en ai fait des plus grands, que j'utilise encore couramment aujourd'hui.
 
-[![](/assets/projects/lego-storage-system/phase1/7.jpg){: width="49%" }{: style="float: left; padding-bottom: 1rem;"}
-](/assets/projects/lego-storage-system/phase1/7.jpg)
+Quand j'ai commencé à avoir un certain nombre de boites en vrac, le besoin d'un niveau supérieur de rangement s'est fait sentir. J'ai alors développé progressivement des [meubles à tiroirs](meubles_v1) pour ranger les boites.
 
-[![](/assets/projects/lego-storage-system/phase1/9.jpg){: width="49%" }{: style="float: right; padding-bottom: 1rem;"}
-](/assets/projects/lego-storage-system/phase1/9.jpg)
-
-&nbsp;
-{: style="clear: both"}
-
-## Bilan et perspective
-
-Le système de boites modulaires me permet de sortir les boîtes pour facilement prélever les pièces,
+Le système de tiroirs compartimentés avec les boites me permet de sortir les boîtes pour facilement prélever les pièces,
 et de reconfigurer l'agencement dans les tiroirs en fonction des besoins,
 et c'est vraiment très appréciable.
+
+Par la suite j'ai [réimaginé les boites en impression 3D](boites_v2), en m'inspirant des solutions de type Gridfinity.

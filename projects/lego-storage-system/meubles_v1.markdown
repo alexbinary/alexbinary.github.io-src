@@ -14,7 +14,7 @@ last_updated: 2025-09-02
 [![](/assets/projects/lego-storage-system/phase1/1.jpg)
 ](/assets/projects/lego-storage-system/phase1/1.jpg)
 
-Dans le but de créer une [solution de rangement sur mesure](index) pour mes pièces de LEGO pour [ma boutique en ligne](/occupations/bricklink), j'ai commencé par mettre expérimenter avec [un système de boites](boites_v1). Puis quand j'ai commencé à avoir un certain nombre de boites en vrac, le besoin d'un niveau supérieur de rangement s'est fait sentir. J'ai alors développé progressivement des meubles à tiroirs pour ranger les boites. J'ai expérimenté avec différents designs et techniques de fabrication, et j'ai aujourd'hui un ensemble de 5 meubles dont je me sers au quotidien. Une partie a été réalisée en matériaux de récupération.
+Dans le but de créer une [solution de rangement sur mesure](index) pour mes pièces de LEGO pour [ma boutique en ligne](/occupations/bricklink), j'ai d'abord commencé par mettre expérimenter avec [un système de boites](boites_v1). Puis quand j'ai commencé à avoir un certain nombre de boites en vrac, le besoin d'un niveau supérieur de rangement s'est fait sentir. J'ai alors développé progressivement des meubles à tiroirs pour ranger les boites. J'ai expérimenté avec différents designs et techniques de fabrication, et j'ai aujourd'hui un ensemble de 5 meubles dont je me sers au quotidien. Une partie a été réalisée en matériaux de récupération.
 
 
 ## Les premiers tiroirs
