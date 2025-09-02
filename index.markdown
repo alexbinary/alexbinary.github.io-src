@@ -60,7 +60,7 @@ last_updated: 2025-09-01 10:09:03
 {: style="margin-top: 3rem" }
 ## Making stuff 🧑‍🔬
 
-- [LEGO storage system](projects/lego-storage-system)
+- [LEGO Storage System](projects/lego-storage-system)
 - Media remote
 - [BrickLink App](/projects/bricklink-app)
 - Compta App

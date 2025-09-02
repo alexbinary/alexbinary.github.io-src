@@ -14,6 +14,27 @@ Depuis quelques années je fais de le vente de pièce de LEGO en ligne, et j’a
 Au cours des dernières années j'ai conçu et fabriqué une solution de rangement sur mesure.
 Dans cet article je reviens sur cette aventure.
 
+--
+
+Ces dernières années j'ai eu l'occasion de m'initier à la menuiserie.
+Je voulais agrandir mon stock mais ne voulais pas poursuivre avec la solution de rangement existante, j'ai donc entammé un travail de conception et f
+
+J'ai ainsi fabriqué un ensemble de meubles à tiroirs 
+
+J'ai conçu et fabriqué un ensemble de meubles de type commode comprenant de 5 à une quizaine de tiroirs de faible hauteur.
+
+J'ai tout construit en bois, à partir de panneaux achetés en magasin de bricolage ou récupérés.
+
+Il était important pour moi que l'ouverture des tiroirs donne une impression de qualité. Je ne voulais pas que les tiroirs penchent une fois ouvert, et je ne voulais pas courir le risque que le tiroir tombe si on ouvre un peu trop rapidement.
+
+Je voulais aussi que les tiroirs puissent s'ouvrir en totalité afin de pouvoir exploiter facilement l'intégralité du volume disponible.
+
+J'ai achetés des glissières à sortie totale de marque Junker sur Amazon. Le résultat est très satisfaisant.
+
+Après avoir expérimenté un peu avec des poignées fabriqués en bois, j'ai acheté des poignées en métal.
+
+--
+
 ## Des proto-tiroirs
 
 Je commençais à avoir un certain nombre de boites en vrac et le besoin d'un niveau supérieur de rangement se faisait sentir.

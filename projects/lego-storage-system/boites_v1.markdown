@@ -16,6 +16,11 @@ Dans cet article je reviens sur cette aventure.
 
 --
 
+Courant 2021 j'ai eu l'occasion de me former à la découpe LASER.
+J'ai alors commencé à expérimenter pour fabriquer des boites qui pourraient me servir à ranger et organiser mes pièces de LEGO.
+
+--
+
 J'ai près de chez moi un atelier partagé équipé d'une découpeuse LASER.
 Après une séance de formation, j'ai commencé à expérimenter avec cette machine, et en ai vite saisi le potentiel pour fabriquer des boites en bois pour ranger mes pièces de LEGO.
 
