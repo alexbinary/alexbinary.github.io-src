@@ -51,3 +51,9 @@ J'en ai fait des plus grands, que j'utilise encore couramment aujourd'hui.
 
 &nbsp;
 {: style="clear: both"}
+
+## Bilan et perspective
+
+Le système de boites modulaires me permet de sortir les boîtes pour facilement prélever les pièces,
+et de reconfigurer l'agencement dans les tiroirs en fonction des besoins,
+et c'est vraiment très appréciable.

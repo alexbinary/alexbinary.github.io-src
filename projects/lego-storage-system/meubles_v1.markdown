@@ -8,37 +8,18 @@ tags: [LEGO, woodworking]
 project_status: complete
 project_current_iteration_title: Module Kallax
 project_current_iteration_url: meubles_v2
+last_updated: 2025-09-02
 ---
 
-Depuis quelques années je fais de le vente de pièce de LEGO en ligne, et j’ai besoin de ranger et organiser efficacement mon stock de pièces.
-Au cours des dernières années j'ai conçu et fabriqué une solution de rangement sur mesure.
-Dans cet article je reviens sur cette aventure.
+[![](/assets/projects/lego-storage-system/phase1/1.jpg)
+](/assets/projects/lego-storage-system/phase1/1.jpg)
 
---
+Dans le but de créer une [solution de rangement sur mesure](index) pour mes pièces de LEGO pour [ma boutique en ligne](/occupations/bricklink), j'ai commencé par mettre expérimenter avec [un système de boites](boites_v1). Puis quand j'ai commencé à avoir un certain nombre de boites en vrac, le besoin d'un niveau supérieur de rangement s'est fait sentir. J'ai alors développé progressivement des meubles à tiroirs pour ranger les boites. J'ai expérimenté avec différents designs et techniques de fabrication, et j'ai aujourd'hui un ensemble de 5 meubles dont je me sers au quotidien. Une partie a été réalisée en matériaux de récupération.
 
-Ces dernières années j'ai eu l'occasion de m'initier à la menuiserie.
-Je voulais agrandir mon stock mais ne voulais pas poursuivre avec la solution de rangement existante, j'ai donc entammé un travail de conception et f
 
-J'ai ainsi fabriqué un ensemble de meubles à tiroirs 
+## Les premiers tiroirs
 
-J'ai conçu et fabriqué un ensemble de meubles de type commode comprenant de 5 à une quizaine de tiroirs de faible hauteur.
-
-J'ai tout construit en bois, à partir de panneaux achetés en magasin de bricolage ou récupérés.
-
-Il était important pour moi que l'ouverture des tiroirs donne une impression de qualité. Je ne voulais pas que les tiroirs penchent une fois ouvert, et je ne voulais pas courir le risque que le tiroir tombe si on ouvre un peu trop rapidement.
-
-Je voulais aussi que les tiroirs puissent s'ouvrir en totalité afin de pouvoir exploiter facilement l'intégralité du volume disponible.
-
-J'ai achetés des glissières à sortie totale de marque Junker sur Amazon. Le résultat est très satisfaisant.
-
-Après avoir expérimenté un peu avec des poignées fabriqués en bois, j'ai acheté des poignées en métal.
-
---
-
-## Des proto-tiroirs
-
-Je commençais à avoir un certain nombre de boites en vrac et le besoin d'un niveau supérieur de rangement se faisait sentir.
-Toujours en découpe LASER, j'ai commencé par créer des grandes boites destinées à accueillir plusieurs petites boites.
+Avec la même technique en découpe LASER que pour [les boites](boites_v1) que je venais de développer, j'ai commencé par créer des grandes boites destinées à accueillir plusieurs petites boites.
 Ça m'a permi de jouer avec le système modulaire et donné un premier apperçu de ce qu'un tiroir plein pourrait donner.
 C'était très encourageant.
 
@@ -47,22 +28,37 @@ et ajouté une languette sur la face avant,
 pour faire quelque chose qui ressemble à des tiroirs.
 Je me rapprochais de ce que j'avais en tête depuis le début, et c'était très excitant.
 
-[![](/assets/projects/lego-storage-system/phase1/11.jpg){: width="49%" }{: style="float: left; padding-bottom: 1rem;"}
-](/assets/projects/lego-storage-system/phase1/11.jpg)
+<table style="border:none">
+    <tr style="background:none">
+        <td style="border:none; padding: 0">
+            <p align="center">
+                <a href="/assets/projects/lego-storage-system/phase1/11.jpg">
+                    <img src="/assets/projects/lego-storage-system/phase1/11.jpg" width=350 height=250 style="object-fit: cover" />
+                </a>
+                <br/>
+                <sub>Premiers casiers avec manchon</sub>
+            </p>
+        </td>
+        <td style="border:none;vertical-align: bottom; padding: 0">
+            <p align="center">
+                <a href="/assets/projects/lego-storage-system/phase1/10.jpg">
+                    <img src="/assets/projects/lego-storage-system/phase1/10.jpg" width=350 height=250 style="object-fit: cover"/>
+                </a>
+                <br/>
+                <sub>Tiroirs avec casiers empilables</sub>
+            </p>
+        </td>
+    </tr>
+</table>
 
-[![](/assets/projects/lego-storage-system/phase1/10.jpg){: width="49%" }{: style="float: right; padding-bottom: 1rem;"}
-](/assets/projects/lego-storage-system/phase1/10.jpg)
 
-{: style="clear: both"}
-
-
-## Des vrais tiroirs
+## Les premiers *vrais* tiroirs
 
 Le rendu jusque là était très encourageant, mais je touchais aux limites de la découpe LASER,
 et il était temps de passer au niveau supérieur.
 
 J'ai cherché des glissières pour faire des tiroirs en bonne et due forme.
-La sensation de qualité à l'ouverture et fermeture des tiroirs était un critère important.
+La sensation de qualité à l'ouverture et fermeture des tiroirs était un critère important pour moi.
 Je voulais que mes tiroirs donnent une impression de solidité et de qualité,
 avec une ouverture et fermeture fluide,
 sans pencher à mesure que le tiroir s'ouvre,
@@ -90,7 +86,7 @@ J'utilise encore aujourd'hui ce prototype, avec quelques modification mineures.
 {: style="clear: both"}
 
 
-## Des meubles plus grands
+## Passage à la vitesse supérieure
 
 Fort de ce résultat,
 j'ai voulu passer à la vitesse supérieure en créant un meuble sur le même modèle mais deux fois plus large.
@@ -150,11 +146,8 @@ Le résultat n'est pas aussi bon.
 
 ## Bilan et perspective
 
-Ce projet est lancé depuis presque 4 ans maintenant.
-Je dispose aujourd'hui d'un total de 5 meubles de différentes capacités que j'utilise au quotidien pour ranger mes pièces de LEGO pour ma boutique en ligne.
-Le système de boites modulaires me permet de sortir les boîtes pour facilement prélever les pièces,
-et de reconfigurer l'agencement dans les tiroirs en fonction des besoins,
-et c'est vraiment très appréciable.
+4 ans après les premières expérimentations,
+je dispose aujourd'hui d'un total de 5 meubles de différentes capacités que j'utilise au quotidien pour ranger mes pièces de LEGO pour ma boutique en ligne.
 
 J'ai toujours besoin de plus de place de rangement,
 et je prévois de fabriquer encore d'autres meubles,
@@ -173,5 +166,4 @@ La solution la plus simple est de faire des tiroirs plus courts que les glissiè
 
 Pour les prochains meubles je voudrais essayer d'ajouter une grande illustration qui s'étale sur les façades des tiroirs.
 
-[![](/assets/projects/lego-storage-system/phase1/1.jpg)
-](/assets/projects/lego-storage-system/phase1/1.jpg)
+Les prochains meubles seront des [modules à insérer dans des étagères IKEA de type Kallax](meubles_v2).
