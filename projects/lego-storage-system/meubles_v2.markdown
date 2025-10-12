@@ -17,16 +17,16 @@ Les éléments de la gamme se présentent comme des ensembles de cases carrées 
 Les meubles sont disponibles en plusieurs coloris et peuvent être utilisés nus ou en combinaison avec de nombreux accessoires. Il est ainsi possible d'ajouter des tiroirs, des portes, des étagères supplémentaires, des porte bouteille, des paniers, etc.
 Les cases carrées permettent de combiner les modules et les meubles dans n'importe quelle orientation.
 
-<table style="border:none;">
+<table>
     <tr>
-        <td style="border:none;vertical-align: bottom;">
+        <td style="vertical-align: bottom;">
             <p align="center">
                 <img src="/assets/projects/lego-storage-system/kallax/kallax 1.jpg" width="80%" />
                 <br/>
                 <sub>Kallax 2x2</sub>
             </p>
         </td>
-        <td style="border:none">
+        <td>
             <p align="center">
                 <img src="/assets/projects/lego-storage-system/kallax/kallax 2.jpg" />
                 <br/>
@@ -35,14 +35,14 @@ Les cases carrées permettent de combiner les modules et les meubles dans n'impo
         </td>
     </tr>
     <tr style="background:none">
-        <td style="border:none">
+        <td>
             <p align="center">
                 <img src="/assets/projects/lego-storage-system/kallax/kallax 3.jpg" width=350 height=350/>
                 <br/>
                 <sub>Kallax 2x4</sub>
             </p>
         </td>
-        <td style="border:none;vertical-align: bottom;">
+        <td style="vertical-align: bottom;">
             <p align="center">
                 <img src="/assets/projects/lego-storage-system/kallax/kallax 4.jpg" style="object-fit: cover" width=350 height=350 />
                 <br/>

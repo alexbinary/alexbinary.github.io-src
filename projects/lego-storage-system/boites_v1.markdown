@@ -10,9 +10,9 @@ project_current_iteration_url: boites_v2
 last_updated: 2025-09-02
 ---
 
-<table style="border:none">
+<table>
     <tr style="background:none">
-        <td style="border:none; padding: 0">
+        <td style="padding: 0">
             <p align="center">
                 <a href="/assets/projects/lego-storage-system/phase1/7.jpg">
                     <img src="/assets/projects/lego-storage-system/phase1/7.jpg" width=350 height=330 style="object-fit: cover" />
@@ -21,7 +21,7 @@ last_updated: 2025-09-02
                 <sub>Des boites</sub>
             </p>
         </td>
-        <td style="border:none;vertical-align: bottom; padding: 0">
+        <td style="vertical-align: bottom; padding: 0">
             <p align="center">
                 <a href="/assets/projects/lego-storage-system/phase1/9.jpg">
                     <img src="/assets/projects/lego-storage-system/phase1/9.jpg" width=350 height=330 style="object-fit: cover"/>
@@ -46,16 +46,16 @@ J'ai commencé par réfléchir aux méthodes possibles pour d'une part joindre d
 Pour l'assemblage plan, une première idée était de réduire l'épaisseur sur l'extrémité des deux pièces et de les coller l'une sur l'autre pour former une pièce quasi continue dans surépaisseur.
 Une variante consiste à diviser en plusieurs petites zones et alterner le sens, dans l'espoir de réduire le besoin de collage.
 
-<table style="border:none">
+<table>
     <tr style="background:none">
-        <td style="border:none; padding: 0; vertical-align: top">
+        <td style="padding: 0; vertical-align: top">
             <p align="center">
                 <a href="/assets/projects/lego-storage-system/boites_v1/boites_v1_3.png">
                     <img src="/assets/projects/lego-storage-system/boites_v1/boites_v1_3.png" style="object-fit: cover" />
                 </a>
             </p>
         </td>
-        <td style="border:none;vertical-align: center; padding: 0">
+        <td style="vertical-align: center; padding: 0">
             <p align="center">
                 <a href="/assets/projects/lego-storage-system/boites_v1/boites_v1_4.png">
                     <img src="/assets/projects/lego-storage-system/boites_v1/boites_v1_4.png" style="object-fit: cover"/>
@@ -64,12 +64,12 @@ Une variante consiste à diviser en plusieurs petites zones et alterner le sens,
         </td>
     </tr>
     <tr style="background: none;">
-        <td style="border:none; padding: 0">
+        <td style="padding: 0">
             <p align="center">
                 <sub>Technique "assemblage overlap"</sub>
             </p>
         </td>
-        <td style="border:none; padding: 0">
+        <td style="padding: 0">
             <p align="center">
                 <sub>Technique "assemblage overlap crossed"</sub>
             </p>
@@ -80,16 +80,16 @@ Une variante consiste à diviser en plusieurs petites zones et alterner le sens,
 Pour le pliage, une première idée était de faire une rainure de sorte à laisser juste une faible épaisseur de matériaux, suffisament pour qu'il puisse être plié. Mais ça me paraissait délicat à réaliser.
 Une autre idée était de faire des découpes parallèles alternées qui permettent d'augmenter la souplesse générale de la pièce, permettant de la courber.
 
-<table style="border:none">
+<table>
     <tr style="background:none">
-        <td style="border:none; padding: 0; vertical-align: top">
+        <td style="padding: 0; vertical-align: top">
             <p align="center">
                 <a href="/assets/projects/lego-storage-system/boites_v1/boites_v1_1.png">
                     <img src="/assets/projects/lego-storage-system/boites_v1/boites_v1_1.png" style="object-fit: cover" />
                 </a>
             </p>
         </td>
-        <td style="border:none;vertical-align: center; padding: 0">
+        <td style="vertical-align: center; padding: 0">
             <p align="center">
                 <a href="/assets/projects/lego-storage-system/boites_v1/boites_v1_2.png">
                     <img src="/assets/projects/lego-storage-system/boites_v1/boites_v1_2.png" style="object-fit: cover"/>
@@ -98,12 +98,12 @@ Une autre idée était de faire des découpes parallèles alternées qui permett
         </td>
     </tr>
     <tr style="background: none;">
-        <td style="border:none; padding: 0">
+        <td style="padding: 0">
             <p align="center">
                 <sub>Technique "pliage ligne"</sub>
             </p>
         </td>
-        <td style="border:none; padding: 0">
+        <td style="padding: 0">
             <p align="center">
                 <sub>Technique "pliage spring"</sub>
             </p>
@@ -173,16 +173,16 @@ Pour tenter de déterminer la forme j'ai modélisé l'assemblage dans Blender.
 J'ai commencé par créer deux quart de cylindre que j'ai disposé en angle à 90°, puis j'ai ajusté les points des extrémités pour que les formes se touchent dans se croiser.
 Ensuite j'ai dupliqué les pièces et je les ai "déplié" en appliquant une rotation à chaque arrête pour obtenir une forme plate.
 
-<table style="border:none">
+<table>
     <tr style="background:none">
-        <td style="border:none; padding: 0; vertical-align: top">
+        <td style="padding: 0; vertical-align: top">
             <p align="center">
                 <a href="/assets/projects/lego-storage-system/boites_v1/boites_v1_10.png">
                     <img src="/assets/projects/lego-storage-system/boites_v1/boites_v1_10.png" width=350 height=300 style="object-fit: cover" />
                 </a>
             </p>
         </td>
-        <td style="border:none;vertical-align: center; padding: 0">
+        <td style="vertical-align: center; padding: 0">
             <p align="center">
                 <a href="/assets/projects/lego-storage-system/boites_v1/boites_v1_11.png">
                     <img src="/assets/projects/lego-storage-system/boites_v1/boites_v1_11.png" width=350 height=300 style="object-fit: cover"/>
@@ -191,12 +191,12 @@ Ensuite j'ai dupliqué les pièces et je les ai "déplié" en appliquant une rot
         </td>
     </tr>
     <tr style="background: none;">
-        <td style="border:none; padding: 0">
+        <td style="padding: 0">
             <p align="center">
                 <sub>Vue 3D de l'angle avec les pièces dépliées</sub>
             </p>
         </td>
-        <td style="border:none; padding: 0">
+        <td style="padding: 0">
             <p align="center">
                 <sub>Vue du dessus</sub>
             </p>

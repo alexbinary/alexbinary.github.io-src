@@ -27,9 +27,9 @@ et ajouté une languette sur la face avant,
 pour faire quelque chose qui ressemble à des tiroirs.
 Je me rapprochais de ce que j'avais en tête depuis le début, et c'était très excitant.
 
-<table style="border:none">
+<table>
     <tr style="background:none">
-        <td style="border:none; padding: 0">
+        <td style="padding: 0">
             <p align="center">
                 <a href="/assets/projects/lego-storage-system/phase1/11.jpg">
                     <img src="/assets/projects/lego-storage-system/phase1/11.jpg" width=350 height=250 style="object-fit: cover" />
@@ -38,7 +38,7 @@ Je me rapprochais de ce que j'avais en tête depuis le début, et c'était très
                 <sub>Premiers casiers avec manchon</sub>
             </p>
         </td>
-        <td style="border:none;vertical-align: bottom; padding: 0">
+        <td style="vertical-align: bottom; padding: 0">
             <p align="center">
                 <a href="/assets/projects/lego-storage-system/phase1/10.jpg">
                     <img src="/assets/projects/lego-storage-system/phase1/10.jpg" width=350 height=250 style="object-fit: cover"/>

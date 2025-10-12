@@ -1,0 +1,30 @@
+table {
+    border: none;
+    color: black;
+}
+
+table td {
+    border: none;
+}
+
+.intro {
+    display: flex;
+    gap: 2rem;
+}
+
+.intro-item-1 {
+    flex: 2;
+}
+
+.intro-item-2 {
+    flex: 1;
+}
+
+@media (max-width: 768px) {
+    .intro {
+        flex-direction: column-reverse;
+    }
+    .intro-item-2 {
+        text-align: center;
+    }
+}
