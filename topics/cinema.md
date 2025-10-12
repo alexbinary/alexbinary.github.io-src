@@ -1,9 +1,9 @@
 ---
 layout: topic
-topic: movies
-title: Movies
+topic: cinema
+title: Cinema
 last_updated: 2025-09-01 10:10:09
-topics: [movies, tvshows, art, culture]
+topics: [tvshows, art, culture]
 ---
 
 J'aime regarder des films et séries, je m'intéresse au processus de production.
