@@ -22,7 +22,7 @@ layout: default
   {% if page.topics %}
     <div class="post-topics" style="margin-top: -1rem; margin-bottom: 2rem">
       {% for topic in page.topics %}
-        <a href="/topics/{{ topic }}"><i>#{{ topic | escape}}</i></a>
+        <a href="/{{ topic }}"><i>#{{ topic | escape}}</i></a>
       {% endfor %}
     </div>
   {% endif %}

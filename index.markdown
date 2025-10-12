@@ -13,10 +13,10 @@ last_updated: 2025-10-12
 
             <p>
                 I'm interested in 
-                {% assign topics = "science, space, programming, 3D printing, electronics, woodworking, LEGO, photography, music, cinema" | split: ", "  %}
+                {% assign topics = "science, space, programming, 3dprinting, electronics, woodworking, LEGO, photography, music, cinema" | split: ", "  %}
                 {% assign formatted_topics = "" | split: "" %}
                 {% for topic in topics %}
-                    {% capture link %}<a href="/topics/{{ topic }}">{{ topic | strip }}</a>{% endcapture %}
+                    {% capture link %}<a href="/{{ topic }}">{{ topic | strip }}</a>{% endcapture %}
                     {% assign formatted_topics = formatted_topics | push: link %}
                 {% endfor %}
                 {{ formatted_topics | join: ', ' }}.

@@ -1,6 +1,7 @@
 ---
 layout: topic
 topic: cinema
+permalink: /cinema
 title: Cinema
 last_updated: 2025-09-01 10:10:09
 topics: [tvshows, art, culture]
