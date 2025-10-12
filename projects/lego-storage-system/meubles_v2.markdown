@@ -4,10 +4,12 @@ title: Module Kallax
 category: Project
 parent_project_title: LEGO Storage System
 parent_project_url: ../lego-storage-system
-last_updated: 2025-09-01 10:10:09
+last_updated: 2025-09-02
 tags: [LEGO, woodworking]
 project_status: active
 ---
+
+Après avoir réalisé une série de [meubles indépendants](meubles_v1) pour ranger mes pièces de LEGO pour [ma boutique en ligne](/occupations/bricklink), je réfléchis désormais à adapter le design pour en faire un module à intégrer dans des étagères IKEA de type Kallax. J'en suis encore à la phase de conception.
 
 ### Kallax, une étagère versatile
 
@@ -68,8 +70,8 @@ Voilà un rendu possible :
 ### Conception du module
 
 L'idée générale est d'utiliser deux faces latérales sur lesquelles viennent se fixer les tiroirs.
-Cela permet un module qu'on peut assembler seul et ensuite glisser dans le Kallax.
-L'arrière est fermée par un panneau fin.
+Cela donne un module qu'on peut assembler seul et ensuite glisser dans le Kallax.
+L'arrière est fermée par un panneau fin. Les façades sont flush avec la Kallax.
 
 <p align="center">
     <img src="/assets/projects/lego-storage-system/kallax/leka v2 6.png" width="70%" />
@@ -86,16 +88,16 @@ Pour dimensionner les éléments, commençons par relever les dimensions du Kall
 | Largeur d'une case | 335
 | Largeur de deux cases (une fois le séparateur retiré) | 687
 
-Les paramètres principaux qui qui déterminent les dimensions des éléments sont le nombre de tiroirs par case et le nombre de boites par tiroir en largeur et en profondeur.
+Les paramètres principaux qui déterminent les dimensions des éléments sont le nombre de tiroirs par case et le nombre de boites par tiroir en largeur et en profondeur.
 
 Pour pouvoir expérimenter simplement avec différentes valeurs je crée des calculateurs sous Numbers (Excel). Pour chaque dimension (hauteur, largeur, profondeur), je liste les paramètres qui entrent en jeu et je détermine les relations entre eux le cas échéant.
 
-Commençons par la hauteur. Pour identifier les éléments et leur relation, regardons de plus prêt la conception :
+Commençons par la hauteur. Pour identifier les éléments et leur relation, regardons de plus près la conception :
 
 <p align="center">
     <img src="/assets/projects/lego-storage-system/kallax/leka v2 8.png" width="60%" />
     <br/>
-    <sub>Zoom sur les éléments qui contribuent à la hauteur</sub>
+    <sub>Zoom sur les éléments qui contribuent à la hauteur (vue arrière)</sub>
 </p>
 
 On constate que la hauteur dépend uniquement de l'empilement des tiroirs. Les glissières n'interviennent pas.
@@ -145,7 +147,7 @@ Passons maintenant à la largeur. Regardons de plus près la conception :
 <p align="center">
     <img src="/assets/projects/lego-storage-system/kallax/leka v2 9.png" width="90%" />
     <br/>
-    <sub>Zoom sur les éléments qui contribuent à la largeur</sub>
+    <sub>Zoom sur les éléments qui contribuent à la largeur (vue du dessus)</sub>
 </p>
 
 Si les tiroirs sont suffisament larges, il est nécessaire d'ajouter un renfort pour éviter que le fond ne s'affaisse sous le poids du chargement. Les renforts divisent la zone de charge en plusieurs sections.
@@ -214,7 +216,7 @@ Pour finir, la profondeur. Regardons la conception :
 <p align="center">
     <img src="/assets/projects/lego-storage-system/kallax/leka v2 10.png" width="80%" />
     <br/>
-    <sub>Zoom sur les éléments qui contribuent à la profondeur</sub>
+    <sub>Zoom sur les éléments qui contribuent à la profondeur (vue du dessus)</sub>
 </p>
 
 Les glissières que j'utilise jusque là, et dont j'ai encore un petit stock, font 400mm de long.
@@ -274,3 +276,43 @@ Avec 4 boites on tombe quasiment juste sans débord à l'arrière, et on a une s
 Si on essaie 4½ boites (**prop. 4**) on retombe sur quelque chose de similaire à la proposition 1, mais avec une sortie négative (ce qui veut dire que le tiroir ne sortira jamais complètement, la boite du fond est donc en partie condamnée).
 
 Je choisis donc **4½ boites avec des glissières de 400mm**.
+
+
+### Amélioration des façades
+
+Sur les [itérations précédentes](meubles_v1) je fixais chaque façade par rapport à son tiroir respectif. Malgré le soin apporté au positionnement des tiroirs les uns par rapport aux autres, je n'ai jamais réussi à avoir un rendu parfait (sauf peut-être avec le meuble A mais au prix d'un temps d'usinage prohibitif à plus grande échelle).
+
+Pour cette itération je voudrais trouver une manière de positionner les façades une fois les tiroirs en place, pour pouvoir les positionner relativement les unes aux autres dans leur configuration finale.
+Je pense que c'est le plus simple pour atteindre un rendu global optimal sans chercher la perfection
+dans le positionnement des glissières.
+Il y a un challenge sur le fait de pouvoir positionner les façades sur les tiroirs alors que ceux-ci sont en place dans le meuble.
+La solution que j'ai vue plusieurs fois est d'avoir un moyen de fixer temporairement les façades depuis l'avant, puis démonter le tiroir pour fixer définitivement depuis l'arrière.
+
+Jusqu'à présent les façades sont positionnées et fixées principalement via les perçages pour les poignées, puis l'assemblage et consolidé avec deux vis sur les extrémités. C'est simple et efficace.
+
+<p align="center">
+    <img src="/assets/projects/lego-storage-system/kallax/leka v2 11.png" width="80%" />
+    <br/>
+    <sub>Fixation et positionnement des façades par les poignées (vue du dessus)</sub>
+</p>
+
+L'enjeu se situe surtout sur le positionnement vertical, une première idée serait donc d'allonger les  perçages pour les poignées, de fixer les poignées à l'envers (la poignée à l'intérieur du tiroir) de sorte à pouvoir serrer depuis l'extérieur, puis de consolider l'assemblage avant de remettre la poignée dans le bon sens.
+
+On peut allonger le perçage de quelques millimètres en haut et en bas par rapport à sa position de référence, sans oublier d'allonger le fraisage pour la tête de vis également.
+On n'agit que sur le perçage dans le cadre du tiroir, pas sur la façade, de sorte que la poignée est toujours bien positionnée par rapport à la façade, et c'est l'ensemble qui peut être ajusté sur le cadre du tiroir.
+
+
+### Techniques de fabrication
+
+Sur les dernières itérations j'ai découpé les façades dans la même pièce que le cadre.
+Ça rend bien mais ça demande d'utiliser la fraiseuse numérique et ça prend du temps.
+
+Dans le cas Kallax il n'y a pas de cadre à faire, on peut donc fabriquer les façades de manière classique à la scie.
+
+
+### Illustration
+
+J'aimerais essayer de graver au LASER une illustration complexe qui s'étend sur toutes les façades de façon continue. J'ai commencé à réfléchir au design.
+
+L'idée est de graver toute l'illustration en une fois avant de découper les façades.
+L'espacement final entre les pièces étant du même ordre de grandeur que la lame de scie, le rendu devrait rester correct sans qu'on ait besoin de le prendre en compte lors de la gravure.
