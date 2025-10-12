@@ -34,8 +34,25 @@ last_updated: 2025-10-12
 {: style="margin-top: 3rem" }
 {% include heading-with-icon.html text="Latest movies or shows" icon="🎞️" %}
 
-- [Weapons](https://www.imdb.com/fr/title/tt26581740/)
-- [Alien Earth](https://www.imdb.com/fr/title/tt13623632/)
+<div class="cards-container">
+
+    {% include card.html
+        title="Weapons"
+        url="https://www.imdb.com/fr/title/tt26581740/"
+        subtitle="2025 · Zach Cregger"
+        text="The sudden disappearance of seventeen third-graders, unraveling dark secrets in a small town."
+        image_url="https://m.media-amazon.com/images/M/MV5BMGJkYzFkNWUtYTBmNC00ZDNiLTlmYTgtN2EwMDY2NDQxN2E3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+    %}
+
+    {% include card.html
+        title="Alien Earth"
+        url="https://www.imdb.com/fr/title/tt13623632/"
+        subtitle="2025 · Disney+"
+        text="A mysterious spaceship crashes, a young woman and soldiers face Earth’s greatest threat."
+        image_url="https://m.media-amazon.com/images/M/MV5BOGIyNGRiNzgtOWQxZC00YzJmLThlZTYtYTMyMDk0YWZjMTk5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+    %}
+
+</div>
 
 
 {: style="margin-top: 3rem" }
