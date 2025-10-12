@@ -12,7 +12,3 @@ twitter_username: AlexFrom1991
 theme: minima
 plugins:
   - jekyll-feed
-
-# Pages that appear in the top menu
-pages:
-  - blog.markdown
