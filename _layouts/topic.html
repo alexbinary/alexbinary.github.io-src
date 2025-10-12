@@ -5,7 +5,7 @@ layout: default
 
   <h2 style="margin-bottom: 0"><u>Topic</u>:
   </h2>
-  <h1>{{ page.topic | escape | ucfirst }}</h1>
+  <h1>{{ page.title | default: page.topic | escape | ucfirst }}</h1>
 
   {% if page.topics %}
     <div class="post-topics" style="margin-top: -1rem; margin-bottom: 2rem">

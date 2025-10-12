@@ -13,13 +13,13 @@ last_updated: 2025-10-12
 
             <p>
                 I'm interested in 
-                {% assign topics = "science, space, programming, 3dprinting, electronics, woodworking, LEGO, photography, music, cinema" | split: ", "  %}
-                {% assign formatted_topics = "" | split: "" %}
+                {% assign topics = "science, space, programming, 3D printing, electronics, woodworking, LEGO, photography, music, cinema" | split: ", "  %}
+                {% assign links = "" | split: "" %}
                 {% for topic in topics %}
-                    {% capture link %}<a href="/{{ topic }}">{{ topic | strip }}</a>{% endcapture %}
-                    {% assign formatted_topics = formatted_topics | push: link %}
+                    {% capture link %}<a href="/{{ topic | split: " " | join: "" }}">{{ topic }}</a>{% endcapture %}
+                    {% assign links = links | push: link %}
                 {% endfor %}
-                {{ formatted_topics | join: ', ' }}.
+                {{ links | join: ', ' }}.
                 Click any of these to see related content.
             </p>
 
@@ -75,9 +75,9 @@ last_updated: 2025-10-12
 ## Interests 🤯
 
 - Coding
-- [Movies & TV shows](topics/movies)
+- [Movies & TV shows](/movies)
 - Music
-- [Ancient Egypt & archeology](topics/egypt)
+- [Ancient Egypt & archeology](/egypt)
 - Space exploration & New Space
 
 
