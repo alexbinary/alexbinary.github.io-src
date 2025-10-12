@@ -44,4 +44,8 @@ table td {
     .heading-with-icon .icon {
         font-size: 1.2em;
     }
+
+    footer .wrapper {
+        flex-direction: column;
+    }
 }
