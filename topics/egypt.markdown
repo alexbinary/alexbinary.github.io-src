@@ -1,7 +1,8 @@
 ---
-layout: interest
+layout: topic
 title: Egypt
 last_updated: 2025-09-01 10:10:09
+topic: egypt
 topics: [science]
 ---
 

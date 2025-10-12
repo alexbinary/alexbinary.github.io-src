@@ -75,9 +75,9 @@ last_updated: 2025-10-12
 ## Interests 🤯
 
 - Coding
-- [Movies & TV shows](interests/movies)
+- [Movies & TV shows](topics/movies)
 - Music
-- [Ancient Egypt & archeology](interests/egypt)
+- [Ancient Egypt & archeology](topics/egypt)
 - Space exploration & New Space
 
 

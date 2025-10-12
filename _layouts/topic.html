@@ -3,7 +3,21 @@ layout: default
 ---
 <article class="post">
 
-  <h1>Topic: {{ page.topic | escape | ucfirst }}</h1>
+  <h2 style="margin-bottom: 0"><u>Topic</u>:
+  </h2>
+  <h1>{{ page.topic | escape | ucfirst }}</h1>
+
+  {% if page.topics %}
+    <div class="post-topics" style="margin-top: -1rem; margin-bottom: 2rem">
+      {% for topic in page.topics %}
+        <a href="/topics/{{ topic | escape }}"><i>#{{ topic | escape}}</i></a>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="post-content">
+    {{ content }}
+  </div>
 
   <h2>Pages</h2>
 
@@ -30,5 +44,8 @@ layout: default
       {% endif %}
     {% endfor %}
   </ul>
+
+  {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+  Last updated {{ page.last_updated | date: date_format }}
 
 </article>
