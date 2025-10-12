@@ -25,7 +25,7 @@ last_updated: 2025-10-12
 {% include heading-with-icon.html text="Interests" icon="🤯" %}
 
 - Coding
-- [Movies & TV shows](/movies)
+- [Movies & TV shows](/cinema)
 - Music
 - [Ancient Egypt & archeology](/egypt)
 - Space exploration & New Space
