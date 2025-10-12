@@ -6,14 +6,14 @@ last_updated: 2025-10-12
 {% include intro.html %}
 
 {: style="margin-top: 3rem" }
-## Keeping busy 🐜
+{% include heading-with-icon.html text="Current activities" icon="🐜" %}
 
 - Preparing for an Advanced Master in Embedded systems at ISAE SupAero
 - [Selling LEGO pieces worldwide on BrickLink](occupations/bricklink)
 
 
 {: style="margin-top: 3rem" }
-## Making stuff 🧑‍🔬
+{% include heading-with-icon.html text="Making stuff" icon="🧑‍🔬" %}
 
 - [LEGO Storage System](projects/lego-storage-system) 🔥
 - Media remote
@@ -22,7 +22,7 @@ last_updated: 2025-10-12
 
 
 {: style="margin-top: 3rem" }
-## Interests 🤯
+{% include heading-with-icon.html text="Interests" icon="🤯" %}
 
 - Coding
 - [Movies & TV shows](/movies)
@@ -32,14 +32,14 @@ last_updated: 2025-10-12
 
 
 {: style="margin-top: 3rem" }
-## Latest movies or shows 🎞️
+{% include heading-with-icon.html text="Latest movies or shows" icon="🎞️" %}
 
 - [Weapons](https://www.imdb.com/fr/title/tt26581740/)
 - [Alien Earth](https://www.imdb.com/fr/title/tt13623632/)
 
 
 {: style="margin-top: 3rem" }
-## Latest books 📚
+{% include heading-with-icon.html text="Latest books" icon="📚" %}
 
 - [Robotic Exploration of the Solar System: Part 1: The Golden Age 1957-1982](https://www.amazon.fr/Robotic-Exploration-Solar-System-1957-1982/dp/0387493263/)
 - [Henri Lœvenbruck, Nous rêvions juste de liberté](https://www.babelio.com/livres/Loevenbruck-Nous-revions-juste-de-liberte/695248)
@@ -52,7 +52,7 @@ last_updated: 2025-10-12
 
 
 {: style="margin-top: 3rem" }
-## Favorite YouTube channels 📺
+{% include heading-with-icon.html text="Favorite YouTube channels" icon="📺" %}
 
 - [Tantacrul](https://www.youtube.com/@Tantacrul)
 - [DIY Perks](https://www.youtube.com/@DIYPerks)
@@ -61,7 +61,7 @@ last_updated: 2025-10-12
 
 
 {: style="margin-top: 3rem" }
-## Links
+{% include heading-with-icon.html text="Links" icon="🔗" %}
 
 ### Coding
 

@@ -20,11 +20,28 @@ table td {
     flex: 1;
 }
 
+.heading-with-icon {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 20px;
+}
+
 @media (max-width: 768px) {
+
     .intro {
         flex-direction: column-reverse;
     }
+
     .intro-item-2 {
         text-align: center;
+    }
+
+    .heading-with-icon {
+        justify-content: space-between;
+    }
+
+    .heading-with-icon .icon {
+        font-size: 1.2em;
     }
 }
