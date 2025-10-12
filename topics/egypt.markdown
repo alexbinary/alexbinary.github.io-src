@@ -1,8 +1,9 @@
 ---
 layout: topic
 title: Egypt
+is_topic_of_interest: true
 permalink: /egypt
-last_updated: 2025-09-01 10:10:09
+last_updated: 2025-10-12
 topic: egypt
 topics: [science]
 ---

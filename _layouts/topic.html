@@ -3,15 +3,19 @@ layout: default
 ---
 <article class="post">
 
-  <h2 style="margin-bottom: 0"><u>Topic</u>:
+  <h2 style="margin-bottom: 0"><u>Topic{%if page.is_topic_of_interest %} of interest{% endif %}</u>:
   </h2>
   <h1>{{ page.title | default: page.topic | escape | ucfirst }}</h1>
 
   {% if page.topics %}
     <div class="post-topics" style="margin-top: -1rem; margin-bottom: 2rem">
+      Related topics:
+      {% assign links = "" | split: "" %}
       {% for topic in page.topics %}
-        <a href="/{{ topic | escape }}"><i>#{{ topic | escape}}</i></a>
+        {% capture link %}<a href="/{{ topic | split: " " | join: ""}}">{{ topic | escape }}</a>{% endcapture %}
+        {% assign links = links | push: link %}
       {% endfor %}
+      {{ links | join: ', ' }}
     </div>
   {% endif %}
 
@@ -19,31 +23,71 @@ layout: default
     {{ content }}
   </div>
 
-  <h2>Pages</h2>
+  {% comment %} Project pages {% endcomment %}
 
-  <ul>
-    {% assign current_topic = page.topic %}
-    {% for page in site.pages %}
-      {% if page.topics contains current_topic %}
+  {% assign current_topic = page.topic %}
+  {% assign topic_project_pages = "" | split: "" %}
+  {% for page in site.pages %}
+    {% if page.topics contains current_topic and page.layout == "project" %}
+      {% assign topic_project_pages = topic_project_pages | push: page %}
+    {% endif %}
+  {% endfor %}
+
+  {% if topic_project_pages.size > 0 %}
+    <h2>Projects involving <i>{{ current_topic | escape }}</i></h2>
+    <ul>
+      {% for page in topic_project_pages %}
         <li>
           <a href="{{ page.url | relative_url }}">{{ page.title | escape }}</a>
         </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
+      {% endfor %}
+    </ul>
+  {% endif %}
 
-  <h2>Posts</h2>
+  {% comment %} Others pages {% endcomment %}
+  
+  {% assign current_topic = page.topic %}
+  {% assign topic_pages = "" | split: "" %}
+  {% for page in site.pages %}
+    {% if page.topics contains current_topic and page.layout != "project" %}
+      {% assign topic_pages = topic_pages | push: page %}
+    {% endif %}
+  {% endfor %}
+
+  {% if topic_pages.size > 0 %}
+    <h2>Pages about <i>{{ current_topic | escape }}</i></h2>
+    <ul>
+      {% for page in topic_pages %}
+        <li>
+          <a href="{{ page.url | relative_url }}">{{ page.layout | ucfirst }}: {{ page.title | escape }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% comment %} Blog posts {% endcomment %}
 
   <ul>
     {% assign current_topic = page.topic %}
+    {% assign topic_posts = "" | split: "" %}
     {% for post in site.posts %}
       {% if post.topics contains current_topic %}
-        <li>
-          <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
-        </li>
+        {% assign topic_posts = topic_posts | push: post %}
       {% endif %}
     {% endfor %}
   </ul>
+
+  {% if topic_posts.size > 0 %}
+    <h2>Blog posts about <i>{{ current_topic | escape }}</i></h2>
+    <ul>
+      {% for post in topic_posts %}
+        <li>
+          <a href="{{ post.url | relative_url }}">{{ post.date | date: "%b %-d, %Y" }} - {{ post.title | escape }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  
 
   {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
   Last updated {{ page.last_updated | date: date_format }}

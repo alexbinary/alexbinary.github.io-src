@@ -2,9 +2,10 @@
 layout: topic
 topic: cinema
 permalink: /cinema
+is_topic_of_interest: true
 title: Cinema
-last_updated: 2025-09-01 10:10:09
-topics: [tvshows, art, culture]
+last_updated: 2025-10-12
+topics: [TV shows, art, culture]
 ---
 
 J'aime regarder des films et séries, je m'intéresse au processus de production.
