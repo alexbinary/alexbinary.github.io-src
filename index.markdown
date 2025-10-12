@@ -1,21 +1,26 @@
 ---
 layout: page
-last_updated: 2025-09-01 10:09:03
+last_updated: 2025-10-12
 ---
 
-<table style="border: none;">
+<table style="border: none; color: black;">
     <tr>
         <td style="vertical-align: top; border: none; padding: 0 2rem 0 0;">
 
-            <h1>Alexandre Bintz</h1>
+            <h1>Hi, I'm Alex 👋</h1>
 
-            <p>-- Maker, coder, thinker</p>
+            <p>I'm an engineer and maker.</p>
 
             <p>
+                I'm interested in 
                 {% assign tags = "programming, 3dprinting, electronics, woodworking, LEGO, photography, music" | split: ", "  %}
+                {% assign formatted_tags = "" | split: "" %}
                 {% for tag in tags %}
-                    <a href="tags/{{ tag }}"><i>#{{ tag }}</i></a>
+                    {% capture link %}<a href="/tags/{{ tag }}">{{ tag | strip }}</a>{% endcapture %}
+                    {% assign formatted_tags = formatted_tags | push: link %}
                 {% endfor %}
+                {{ formatted_tags | join: ', ' }}.
+                Click any of these to see related content.
             </p>
 
             <p style="margin-top: 3rem">Living in France, recently moved from Strasbourg to Toulouse.
