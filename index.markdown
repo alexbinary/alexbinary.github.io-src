@@ -41,20 +41,79 @@ last_updated: 2025-10-12
 {: style="margin-top: 3rem" }
 {% include heading-with-icon.html text="Latest books" icon="📚" %}
 
-- [Robotic Exploration of the Solar System: Part 1: The Golden Age 1957-1982](https://www.amazon.fr/Robotic-Exploration-Solar-System-1957-1982/dp/0387493263/)
-- [Henri Lœvenbruck, Nous rêvions juste de liberté](https://www.babelio.com/livres/Loevenbruck-Nous-revions-juste-de-liberte/695248)
-- [Henri Lœvenbruck, Pour ne rien regretter](https://www.babelio.com/livres/Loevenbruck-Pour-ne-rien-regretter/1701851)
-- [Guillaume Musso, Central Park](https://www.babelio.com/livres/Musso-Central-Park/572676)
-- [Guillaume Musso, L'instant présent](https://www.babelio.com/livres/Musso-Linstant-present/689939)
-- [Robert Charles Wilson, Bios](https://www.babelio.com/livres/Wilson-Bios/51027)
-- [Robert Charles Wilson, Darwinia](https://www.babelio.com/livres/Wilson-Darwinia/25807)
-- [Robert Charles Wilson, À travers temps](https://www.babelio.com/livres/Wilson--travers-temps/174247)
+<div class="cards-container">
+
+    {% include card.html
+        title="Robotic Exploration of the Solar System: Part 1: The Golden Age 1957-1982"
+        url="https://www.amazon.fr/Robotic-Exploration-Solar-System-1957-1982/dp/0387493263/"
+        subtitle=""
+        text="A detailed chronicle of the pioneering era of robotic space exploration."
+        image_url="https://m.media-amazon.com/images/I/612FXRjH+BL._SY385_.jpg"
+    %}
+
+    {% include card.html
+        title="Nous rêvions juste de liberté"
+        url="https://www.babelio.com/livres/Loevenbruck-Nous-revions-juste-de-liberte/695248"
+        subtitle="Henri Lœvenbruck"
+        text="A powerful tale of youth, rebellion, and the longing for freedom."
+        image_url="https://www.babelio.com/couv/CVT_Nous-revions-juste-de-liberte_7184.jpg"
+    %}
+
+    {% include card.html
+        title="Pour ne rien regretter"
+        url="https://www.babelio.com/livres/Loevenbruck-Pour-ne-rien-regretter/1701851"
+        subtitle="Henri Lœvenbruck"
+        text="An emotional journey about choices, regrets, and the paths not taken in life."
+        image_url="https://m.media-amazon.com/images/I/41F7LLUEpAL._SX195_.jpg"
+    %}
+
+    {% include card.html
+        title="Central Park"
+        url="https://www.babelio.com/livres/Musso-Central-Park/572676"
+        subtitle="Guillaume Musso"
+        text="A gripping psychological thriller beginning with a mysterious awakening in Central Park."
+        image_url="https://www.babelio.com/couv/CVT_CVT_Central-Park_5496.jpg"
+    %}
+
+    {% include card.html
+        title="L'instant présent"
+        url="https://www.babelio.com/livres/Musso-Linstant-present/689939"
+        subtitle="Guillaume Musso"
+        text="A suspenseful and romantic tale exploring time, memory, and second chances."
+        image_url="https://www.babelio.com/couv/CVT_Linstant-present_1566.jpg"
+    %}
+
+    {% include card.html
+        title="Bios"
+        url="https://www.babelio.com/livres/Wilson-Bios/51027"
+        subtitle="Robert Charles Wilson"
+        text="A sci-fi thriller set on a deadly alien world where human survival is pushed to its limits."
+        image_url="https://www.babelio.com/couv/CVT_cvt_Bios_8931.jpg"
+    %}
+
+    {% include card.html
+        title="Darwinia"
+        url="https://www.babelio.com/livres/Wilson-Darwinia/25807"
+        subtitle="Robert Charles Wilson"
+        text="A mind-bending alternate history where Europe is replaced by a mysterious, alien continent."
+        image_url="https://www.babelio.com/couv/CVT_cvt_Darwinia_8342.jpg"
+    %}
+
+    {% include card.html
+        title="À travers temps"
+        url="https://www.babelio.com/livres/Wilson--travers-temps/174247"
+        subtitle="Robert Charles Wilson"
+        text="An epic story of time travel, memory, and the fragile threads of human connection."
+        image_url="https://www.babelio.com/couv/CVT_11478_658119.jpg"
+    %}
+
+</div>
 
 
 {: style="margin-top: 3rem" }
 {% include heading-with-icon.html text="Favorite YouTube channels" icon="📺" %}
 
-<div class="cards-container">
+<div class="cards-container yt-cards-container">
 
     {% include card.html
         title="Tantacrul"

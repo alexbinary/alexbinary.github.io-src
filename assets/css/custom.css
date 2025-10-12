@@ -86,12 +86,18 @@ table td {
 
 @media (max-width: 768px) {
     .card img {
+        aspect-ratio: 155/255;
+    }
+
+    .yt-cards-container .card img {
         max-width: 60px;
+        aspect-ratio: inherit;
     }
 }
 
 .card-content {
-    padding: 15px;
+    padding: 10px;
+    padding-left: 15px;
     text-align: left;
 }
 
@@ -101,6 +107,12 @@ table td {
 
 .card-title .external-link .external-icon {
     display: none;
+}
+
+.card-subtitle {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 10px;
 }
 
 .card-text {
