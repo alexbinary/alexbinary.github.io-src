@@ -105,10 +105,6 @@ table td {
     font-weight: bold;
 }
 
-.card-title .external-link .external-icon {
-    display: none;
-}
-
 .card-subtitle {
     font-style: italic;
     color: #666;

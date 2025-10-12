@@ -167,15 +167,62 @@ last_updated: 2025-10-12
 
 ### Coding
 
-- Github: [https://github.com/alexbinary](https://github.com/alexbinary)
+<div class="cards-container">
 
+    {% include card.html
+        title="Github"
+        text="My coding projects"
+        url="https://github.com/alexbinary"
+        image_url="https://avatars.githubusercontent.com/u/3055394?v=4"
+    %}
+
+</div>
+
+{: style="margin-top: 2rem" }
 ### Photography
 
-- Flickr: [https://www.flickr.com/photos/189385048@N05/](https://www.flickr.com/photos/189385048@N05/)
-- Instagram: [https://www.instagram.com/al.exandre1859](https://www.instagram.com/al.exandre1859)
+<div class="cards-container">
 
+    {% include card.html
+        title="Instagram"
+        text="A selection of my best photographs with filter"
+        url="https://www.instagram.com/al.exandre1859"
+        image_url="/assets/2025-04-04-photos/203902881_1941499075999282_4032388649777417923_n.jpg"
+    %}
+
+    {% include card.html
+        title="Flickr"
+        text="All my photographs"
+        url="https://www.flickr.com/photos/189385048@N05/"
+        image_url="https://farm66.staticflickr.com/65535/coverphoto/189385048@N05_h.jpg?1639592419#189385048@N05"
+    %}
+
+</div>
+
+{: style="margin-top: 2rem" }
 ### LEGO
 
-- Flickr: [https://www.flickr.com/photos/163799831@N07/](https://www.flickr.com/photos/163799831@N07/)
-- Rebrickable: [https://rebrickable.com/users/alexbinary/](https://rebrickable.com/users/alexbinary/)
-- BrickLink: [https://store.bricklink.com/alexbinary](https://store.bricklink.com/alexbinary)
+<div class="cards-container">
+
+    {% include card.html
+        title="Flickr"
+        text="Photographs dedicated to LEGO"
+        url="https://www.flickr.com/photos/163799831@N07/"
+        image_url="https://live.staticflickr.com/7867/buddyicons/163799831@N07_r.jpg?1555350484#163799831@N07"
+    %}
+
+    {% include card.html
+        title="Rebrickable"
+        text="I upload some of my MOCS, and set list"
+        url="https://rebrickable.com/users/alexbinary/"
+        image_url="https://rebrickable.com/static/img/def_av.png"
+    %}
+
+    {% include card.html
+        title="BrickLink"
+        text="My BrickLink store!"
+        url="https://store.bricklink.com/alexbinary"
+        image_url="https://static.bricklink.com/clone/img/store-default-image.png"
+    %}
+
+</div>
