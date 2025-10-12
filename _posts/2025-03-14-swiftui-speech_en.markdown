@@ -2,7 +2,7 @@
 layout: post
 title:  "Speech Recognition in a SwiftUI App"
 date:   2025-03-14 10:23:06 +0100
-tags: [programming]
+topics: [programming]
 ---
 
 In a previous article, we explored microphone access in a SwiftUI application on macOS. In this article, we will add speech recognition using the [Speech](https://developer.apple.com/documentation/speech) framework.

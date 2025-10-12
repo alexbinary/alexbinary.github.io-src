@@ -4,7 +4,7 @@ title: Module Kallax
 parent_project_title: LEGO Storage System
 parent_project_url: ../lego-storage-system
 last_updated: 2025-09-02
-tags: [LEGO, woodworking]
+topics: [LEGO, woodworking]
 project_status: active
 ---
 

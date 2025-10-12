@@ -3,7 +3,7 @@ layout: project
 title: Meubles v1
 parent_project_title: LEGO Storage System
 parent_project_url: ../lego-storage-system
-tags: [LEGO, woodworking]
+topics: [LEGO, woodworking]
 project_status: complete
 project_current_iteration_title: Module Kallax
 project_current_iteration_url: meubles_v2

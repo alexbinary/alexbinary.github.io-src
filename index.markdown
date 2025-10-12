@@ -13,13 +13,13 @@ last_updated: 2025-10-12
 
             <p>
                 I'm interested in 
-                {% assign tags = "programming, 3dprinting, electronics, woodworking, LEGO, photography, music" | split: ", "  %}
-                {% assign formatted_tags = "" | split: "" %}
-                {% for tag in tags %}
-                    {% capture link %}<a href="/tags/{{ tag }}">{{ tag | strip }}</a>{% endcapture %}
-                    {% assign formatted_tags = formatted_tags | push: link %}
+                {% assign topics = "programming, 3D printing, electronics, woodworking, LEGO, photography, music" | split: ", "  %}
+                {% assign formatted_topics = "" | split: "" %}
+                {% for topic in topics %}
+                    {% capture link %}<a href="/topics/{{ topic }}">{{ topic | strip }}</a>{% endcapture %}
+                    {% assign formatted_topics = formatted_topics | push: link %}
                 {% endfor %}
-                {{ formatted_tags | join: ', ' }}.
+                {{ formatted_topics | join: ', ' }}.
                 Click any of these to see related content.
             </p>
 

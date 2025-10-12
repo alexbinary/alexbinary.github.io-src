@@ -2,7 +2,7 @@
 layout: post
 title:  "Swift Observation: in-depth analysis"
 date:   2025-03-06 11:23:15 +0100
-tags: [programming]
+topics: [programming]
 ---
 
 Introduced in 2023, the [Observation](https://developer.apple.com/documentation/observation) framework aims to simplify existing reactive mechanisms while improving application performance.

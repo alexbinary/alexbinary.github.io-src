@@ -2,7 +2,7 @@
 layout: post
 title:  "(fr) Accès au micro dans une app SwiftUI"
 date:   2025-02-28 11:02:15 +0100
-tags: [programming]
+topics: [programming]
 ---
 
 J'ai une activité de vente en ligne de pièces de LEGO sur la plateforme BrickLink,

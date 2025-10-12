@@ -4,7 +4,7 @@ title: Boites v2
 parent_project_title: LEGO Storage System
 parent_project_url: ../lego-storage-system
 last_updated: 2025-09-01 10:10:09
-tags: [LEGO, 3dprinting]
+topics: [LEGO, 3dprinting]
 project_status: active
 ---
 

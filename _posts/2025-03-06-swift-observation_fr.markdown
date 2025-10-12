@@ -2,7 +2,7 @@
 layout: post
 title:  "(fr) Swift Observation: étude approfondie"
 date:   2025-03-06 11:23:15 +0100
-tags: [programming]
+topics: [programming]
 ---
 
 Introduit en 2023, le framework [Observation](https://developer.apple.com/documentation/observation)

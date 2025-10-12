@@ -3,14 +3,14 @@ layout: default
 ---
 <article class="post">
 
-  <h1>Topic: {{ page.tag | escape | ucfirst }}</h1>
+  <h1>Topic: {{ page.topic | escape | ucfirst }}</h1>
 
   <h2>Pages</h2>
 
   <ul>
-    {% assign current_tag = page.tag %}
+    {% assign current_topic = page.topic %}
     {% for page in site.pages %}
-      {% if page.tags contains current_tag %}
+      {% if page.topics contains current_topic %}
         <li>
           <a href="{{ page.url | relative_url }}">{{ page.title | escape }}</a>
         </li>
@@ -21,9 +21,9 @@ layout: default
   <h2>Posts</h2>
 
   <ul>
-    {% assign current_tag = page.tag %}
+    {% assign current_topic = page.topic %}
     {% for post in site.posts %}
-      {% if post.tags contains current_tag %}
+      {% if post.topics contains current_topic %}
         <li>
           <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
         </li>
