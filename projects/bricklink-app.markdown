@@ -1,7 +1,6 @@
 ---
-layout: topic
+layout: project
 title: BrickLink App
-category: Project
 last_updated: 2025-09-01 10:10:09
 tags: [LEGO, programming]
 project_status: active

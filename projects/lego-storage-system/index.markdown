@@ -1,7 +1,6 @@
 ---
-layout: topic
+layout: project
 title: LEGO Storage System
-category: Project
 tags: [LEGO, woodworking, 3dprinting, electronics]
 project_status: active
 last_updated: 2025-09-02

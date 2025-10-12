@@ -1,7 +1,6 @@
 ---
-layout: topic
+layout: project
 title: Meubles v1
-category: Project
 parent_project_title: LEGO Storage System
 parent_project_url: ../lego-storage-system
 tags: [LEGO, woodworking]

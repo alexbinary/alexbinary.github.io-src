@@ -1,7 +1,6 @@
 ---
-layout: topic
+layout: interest
 title: Movies
-category: Interest
 last_updated: 2025-09-01 10:10:09
 tags: [movies, tvshows, art, culture]
 ---
