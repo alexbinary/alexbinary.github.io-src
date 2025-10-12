@@ -8,7 +8,7 @@ last_updated: 2025-10-12
 {: style="margin-top: 3rem" }
 {% include heading-with-icon.html text="Current activities" icon="🐜" %}
 
-- Preparing for an Advanced Master in Embedded systems at ISAE SupAero
+- [Advanced Master in Embedded systems at ISAE-SUPAERO](https://www.isae-supaero.fr/en/programmes/advanced-master-embedded-systems-ems/)
 - [Selling LEGO pieces worldwide on BrickLink](occupations/bricklink)
 
 

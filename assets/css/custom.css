@@ -33,6 +33,15 @@ table td {
     gap: 8px;
 }
 
+.external-link .external-icon {
+    margin-left: 0.5em;
+}
+
+.external-link .external-icon path {
+    fill: gray;
+    stroke: gray;
+}
+
 @media (max-width: 768px) {
 
     .intro {
