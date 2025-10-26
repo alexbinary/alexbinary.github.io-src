@@ -5,6 +5,8 @@ last_updated: 2025-10-26
 
 {% include intro.html %}
 
+<p class="aerospace-icons">🪐🛰️</p>
+
 {% comment %}
 
 {: style="margin-top: 3rem" }

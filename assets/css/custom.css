@@ -38,15 +38,32 @@ table td {
     .intro-item-2 {
         text-align: center;
     }
+}
+
+
+
+/* ---- Footer */
+
+
+.site-footer {
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+}
+
+@media (max-width: 768px) {
 
     footer .wrapper {
         flex-direction: column;
     }
 }
 
-.site-footer {
-    border-top: 3px solid black;
-    border-bottom: 3px solid black;
+
+/* ---- aerospace-icons */
+
+
+.aerospace-icons {
+    font-size: 3em;
+    text-align: center;
 }
 
 
