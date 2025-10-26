@@ -1,16 +1,15 @@
 <a href="{{ include.url }}" class="activity-card no-external-link-icon">
     <div class="external-link"></div>
-    <div class="activity-card-header">
-        <div class="activity-card-pointer">👉</div>
+    <div class="activity-card-pointer">👉</div>
+    <div class="activity-card-img-and-content">
         <img src="{{ include.image_url }}" alt="Card Image" />
-        <div class="activity-card-pointer ghost">👉</div>
-    </div>
-    <div class="activity-card-content">
-        <div class="activity-card-title-and-subtitle">
-            <div class="activity-card-title">{{ include.title }}</div>
-            &nbsp;-&nbsp;
-            <div class="activity-card-subtitle">{{ include.subtitle }}</div>
+        <div class="activity-card-content">
+            <div class="activity-card-title-and-subtitle">
+                <div class="activity-card-title">{{ include.title }}</div>
+                &nbsp;-&nbsp;
+                <div class="activity-card-subtitle">{{ include.subtitle }}</div>
+            </div>
+            <div class="activity-card-text">{{ include.text }}</div>
         </div>
-        <div class="activity-card-text">{{ include.text }}</div>
     </div>
 </a>
