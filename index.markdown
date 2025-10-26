@@ -185,55 +185,39 @@ last_updated: 2025-10-26
 {: style="margin-top: 3rem" }
 {% include heading-with-icon.html text="Links" icon="🔗" %}
 
-### Coding
-
 <div class="cards-container">
 
-    {% include card.html
+    {% include link.html
         title="Github"
         text="My coding projects"
         url="https://github.com/alexbinary"
         image_url="https://avatars.githubusercontent.com/u/3055394?v=4"
     %}
 
-</div>
-
-{: style="margin-top: 2rem" }
-### Photography
-
-<div class="cards-container">
-
-    {% include card.html
+    {% include link.html
+        title="Flickr"
+        text="My photography"
+        url="https://www.flickr.com/photos/189385048@N05/"
+        image_url="https://farm66.staticflickr.com/65535/coverphoto/189385048@N05_h.jpg?1639592419#189385048@N05"
+    %}
+    
+    {% include link.html
         title="Instagram"
-        text="A selection of my best photographs with filter"
+        text="My best photographs"
         url="https://www.instagram.com/al.exandre1859"
         image_url="/assets/2025-04-04-photos/203902881_1941499075999282_4032388649777417923_n.jpg"
     %}
 
-    {% include card.html
-        title="Flickr"
-        text="All my photographs"
-        url="https://www.flickr.com/photos/189385048@N05/"
-        image_url="https://farm66.staticflickr.com/65535/coverphoto/189385048@N05_h.jpg?1639592419#189385048@N05"
-    %}
-
-</div>
-
-{: style="margin-top: 2rem" }
-### LEGO
-
-<div class="cards-container">
-
-    {% include card.html
-        title="Flickr"
-        text="Photographs dedicated to LEGO"
+    {% include link.html
+        title="Flickr (LEGO)"
+        text="LEGO Photography"
         url="https://www.flickr.com/photos/163799831@N07/"
         image_url="https://live.staticflickr.com/7867/buddyicons/163799831@N07_r.jpg?1555350484#163799831@N07"
     %}
 
-    {% include card.html
+    {% include link.html
         title="Rebrickable"
-        text="I upload some of my MOCS, and set list"
+        text="My LEGO creations"
         url="https://rebrickable.com/users/alexbinary/"
         image_url="https://rebrickable.com/static/img/def_av.png"
     %}
