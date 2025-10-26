@@ -40,6 +40,18 @@ table td {
     }
 }
 
+section {
+    margin-top: 5rem;
+}
+
+section:last-of-type {
+    margin-bottom: 5rem;
+}
+
+.ghost {
+    opacity: 0;
+}
+
 
 
 /* ---- Footer */
@@ -95,10 +107,79 @@ table td {
 
 
 
-/* ---- Links */
+/* ---- Activity cards */
 
 
-.link {
+.activity-card {
+    display: block;
+    margin-top: 1rem;
+    background: #fafafa;
+    border: 1px solid #eee;
+    padding: 0.7rem;
+    padding-bottom: 1rem;
+    border-radius: 8px;
+    color: black;
+    position: relative;
+}
+
+.activity-card .external-link {
+    position: absolute;
+    right: 0.5rem;
+}
+
+.activity-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.activity-card-pointer {
+    font-size: 3rem;
+}
+
+.activity-card img {
+    width: 30%;
+}
+
+@media (max-width: 768px) {
+
+    .activity-card-header {
+        justify-content: center;
+    }
+
+    .activity-card-pointer {
+        display: none;
+    }
+
+    .activity-card img {
+        width: 60%;
+    }
+}
+
+.activity-card-content {
+    color: black;
+}
+
+.activity-card-title-and-subtitle {
+    display: flex;
+}
+
+.activity-card-subtitle {
+    font-style: italic;
+    color: #666;
+}
+
+.activity-card-text {
+    font-weight: bold;
+}
+
+
+
+/* ---- Link cards */
+
+
+.link-card {
     display: flex;
     margin-bottom: 14px;
     background: #eee;
@@ -109,19 +190,19 @@ table td {
         transform 0.2s ease;
 }
 
-.link:hover {
+.link-card:hover {
     text-decoration: none;
     background: #e7e7e7;
     transform: scale(1.01);
 }
 
-.link img {
+.link-card img {
     max-width: 40px;
     height: auto;
     object-fit: cover;
 }
 
-.link-content {
+.link-card-content {
     padding: 10px;
     padding-left: 15px;
     flex: 1 1 auto;
@@ -130,40 +211,40 @@ table td {
 
 @media (max-width: 768px) {
 
-    .link-content {
+    .link-card-content {
         padding-left: 10px;
     }
 }
 
-.link-title-and-text {
+.link-card-title-and-text {
     display: inline-flex;
     justify-content: space-between;
     width: 100%;
 }
 
-.link-title {
+.link-card-title {
     font-weight: bold;
     color: #1756a9;
 }
 
-.link-text {
+.link-card-text {
     font-size: 1em;
     color: black;
     flex: 1;
 }
 
-.link-text .text {
+.link-card-text .text {
     flex: 1;
 }
 
-.link-url {
+.link-card-url {
     font-style: italic;
     color: #666;
 }
 
 @media (max-width: 768px) {
 
-    .link-url {
+    .link-card-url {
         font-size: 0.8em;
     }
 }

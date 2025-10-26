@@ -7,31 +7,31 @@ last_updated: 2025-10-26
 
 <p class="aerospace-icons">🪐🛰️</p>
 
+<section>
+    {% include heading-with-icon.html text="My main activities" icon="📂" %}
+
+    <div class="cards-container">
+
+        {% include activity-card.html
+            title="ISAE-SUPAERO"
+            subtitle="Toulouse, France"
+            text="Advanced Master® in Embedded systems"
+            url="https://www.isae-supaero.fr/en/programmes/advanced-master-embedded-systems-ems/"
+            image_url="https://www.isae-supaero.fr/wp-content/uploads/2025/03/logo.svg"
+        %}
+
+        {% include activity-card.html
+            title="BrickLink Store"
+            subtitle="Online shop"
+            text="I sell LEGO pieces worldwide, visit my store!"
+            url="https://store.bricklink.com/alexbinary"
+            image_url="/assets/BrickLink_logo.svg"
+        %}
+
+    </div>
+</section>
+
 {% comment %}
-
-{: style="margin-top: 3rem" }
-{% include heading-with-icon.html text="Current activities" icon="🐜" %}
-
-<div class="cards-container">
-
-    {% include card.html
-        title="ISAE-SUPAERO"
-        subtitle="Toulouse, France"
-        text="Advanced Master in Embedded systems"
-        url="https://www.isae-supaero.fr/en/programmes/advanced-master-embedded-systems-ems/"
-        image_url="https://www.isae-supaero.fr/wp-content/uploads/2025/03/logo.svg"
-    %}
-
-    {% include card.html
-        title="BrickLink Store"
-        subtitle="Online shop"
-        text="Selling LEGO pieces worldwide"
-        url="https://store.bricklink.com/alexbinary"
-        image_url="https://static.bricklink.com/clone/img/store-default-image.png"
-    %}
-
-</div>
-
 
 {: style="margin-top: 3rem" }
 {% include heading-with-icon.html text="Personal projects" icon="🧑‍🔬" %}
@@ -184,44 +184,45 @@ last_updated: 2025-10-26
 
 {% endcomment %}
 
-{: style="margin-top: 3rem" }
-{% include heading-with-icon.html text="Links" icon="🔗" %}
+<section>
+    {% include heading-with-icon.html text="My online activities" icon="👨‍💻" %}
 
-<div class="cards-container">
+    <div class="cards-container">
 
-    {% include link.html
-        title="Github"
-        text="My coding projects"
-        url="https://github.com/alexbinary"
-        image_url="https://avatars.githubusercontent.com/u/3055394?v=4"
-    %}
+        {% include link-card.html
+            title="Github"
+            text="My coding projects"
+            url="https://github.com/alexbinary"
+            image_url="https://avatars.githubusercontent.com/u/3055394?v=4"
+        %}
 
-    {% include link.html
-        title="Flickr"
-        text="My photography"
-        url="https://www.flickr.com/photos/189385048@N05/"
-        image_url="https://farm66.staticflickr.com/65535/coverphoto/189385048@N05_h.jpg?1639592419#189385048@N05"
-    %}
-    
-    {% include link.html
-        title="Instagram"
-        text="My best photographs"
-        url="https://www.instagram.com/al.exandre1859"
-        image_url="/assets/2025-04-04-photos/203902881_1941499075999282_4032388649777417923_n.jpg"
-    %}
+        {% include link-card.html
+            title="Flickr"
+            text="My photography"
+            url="https://www.flickr.com/photos/189385048@N05/"
+            image_url="https://farm66.staticflickr.com/65535/coverphoto/189385048@N05_h.jpg?1639592419#189385048@N05"
+        %}
+        
+        {% include link-card.html
+            title="Instagram"
+            text="My best photographs"
+            url="https://www.instagram.com/al.exandre1859"
+            image_url="/assets/2025-04-04-photos/203902881_1941499075999282_4032388649777417923_n.jpg"
+        %}
 
-    {% include link.html
-        title="Flickr (LEGO)"
-        text="LEGO Photography"
-        url="https://www.flickr.com/photos/163799831@N07/"
-        image_url="https://live.staticflickr.com/7867/buddyicons/163799831@N07_r.jpg?1555350484#163799831@N07"
-    %}
+        {% include link-card.html
+            title="Flickr (LEGO)"
+            text="LEGO Photography"
+            url="https://www.flickr.com/photos/163799831@N07/"
+            image_url="https://live.staticflickr.com/7867/buddyicons/163799831@N07_r.jpg?1555350484#163799831@N07"
+        %}
 
-    {% include link.html
-        title="Rebrickable"
-        text="My LEGO creations"
-        url="https://rebrickable.com/users/alexbinary/"
-        image_url="https://rebrickable.com/static/img/def_av.png"
-    %}
+        {% include link-card.html
+            title="Rebrickable"
+            text="My LEGO creations"
+            url="https://rebrickable.com/users/alexbinary/"
+            image_url="https://rebrickable.com/static/img/def_av.png"
+        %}
 
-</div>
+    </div>
+</section>
