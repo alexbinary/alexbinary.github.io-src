@@ -1,38 +1,54 @@
 ---
 layout: page
-last_updated: 2025-10-12
+last_updated: 2025-10-26
 ---
 
 {% include intro.html %}
 
-{: style="margin-top: 3rem" }
+<!-- {: style="margin-top: 3rem" }
 {% include heading-with-icon.html text="Current activities" icon="🐜" %}
 
-- [Advanced Master in Embedded systems at ISAE-SUPAERO](https://www.isae-supaero.fr/en/programmes/advanced-master-embedded-systems-ems/)
-- [Selling LEGO pieces worldwide on BrickLink](occupations/bricklink)
+<div class="cards-container">
+
+    {% include card.html
+        title="ISAE-SUPAERO"
+        subtitle="Toulouse, France"
+        text="Advanced Master in Embedded systems"
+        url="https://www.isae-supaero.fr/en/programmes/advanced-master-embedded-systems-ems/"
+        image_url="https://www.isae-supaero.fr/wp-content/uploads/2025/03/logo.svg"
+    %}
+
+    {% include card.html
+        title="BrickLink Store"
+        subtitle="Online shop"
+        text="Selling LEGO pieces worldwide"
+        url="https://store.bricklink.com/alexbinary"
+        image_url="https://static.bricklink.com/clone/img/store-default-image.png"
+    %}
+
+</div> -->
 
 
-{: style="margin-top: 3rem" }
+<!-- {: style="margin-top: 3rem" }
 {% include heading-with-icon.html text="Personal projects" icon="🧑‍🔬" %}
 
 - [LEGO Storage System](projects/lego-storage-system) 🔥
 - Media remote
 - [BrickLink App](/projects/bricklink-app)
-- Compta App
+- Compta App -->
 
 
-{: style="margin-top: 3rem" }
+<!-- {: style="margin-top: 3rem" }
 {% include heading-with-icon.html text="Current topics of interests" icon="👀" %}
 
 - Coding
-- [Movies & TV shows](/cinema)
+- Movies & TV shows
 - Music
-- [Ancient Egypt & archeology](/egypt)
-- Space exploration & New Space
+- Space exploration & New Space -->
 
 
-{: style="margin-top: 3rem" }
-{% include heading-with-icon.html text="Latest movies or shows" icon="🎞️" %}
+<!-- {: style="margin-top: 3rem" }
+{% include heading-with-icon.html text="Latest movies or shows I liked" icon="🎞️" %}
 
 <div class="cards-container">
 
@@ -56,7 +72,7 @@ last_updated: 2025-10-12
 
 
 {: style="margin-top: 3rem" }
-{% include heading-with-icon.html text="Latest books" icon="📚" %}
+{% include heading-with-icon.html text="Latest books I liked" icon="📚" %}
 
 <div class="cards-container">
 
@@ -128,7 +144,7 @@ last_updated: 2025-10-12
 
 
 {: style="margin-top: 3rem" }
-{% include heading-with-icon.html text="Favorite YouTube channels" icon="📺" %}
+{% include heading-with-icon.html text="YouTube channels I like" icon="📺" %}
 
 <div class="cards-container yt-cards-container">
 
@@ -160,7 +176,7 @@ last_updated: 2025-10-12
         text="algorithms, simulations & game dev"
     %}
 
-</div>
+</div> -->
 
 {: style="margin-top: 3rem" }
 {% include heading-with-icon.html text="Links" icon="🔗" %}
@@ -216,13 +232,6 @@ last_updated: 2025-10-12
         text="I upload some of my MOCS, and set list"
         url="https://rebrickable.com/users/alexbinary/"
         image_url="https://rebrickable.com/static/img/def_av.png"
-    %}
-
-    {% include card.html
-        title="BrickLink"
-        text="My BrickLink store!"
-        url="https://store.bricklink.com/alexbinary"
-        image_url="https://static.bricklink.com/clone/img/store-default-image.png"
     %}
 
 </div>

@@ -10,7 +10,8 @@
             {% assign topics = "science, space, programming, 3D printing, electronics, woodworking, LEGO, photography, music, cinema" | split: ", "  %}
             {% assign links = "" | split: "" %}
             {% for topic in topics %}
-                {% capture link %}<a href="/{{ topic | split: " " | join: "" }}">{{ topic }}</a>{% endcapture %}
+                {% comment %} {% capture link %}<a href="/{{ topic | split: " " | join: "" }}">{{ topic }}</a>{% endcapture %} {% endcomment %}
+                {% capture link %}{{ topic }}{% endcapture %}
                 {% assign links = links | push: link %}
             {% endfor %}
             {{ links | join: ', ' }}.
