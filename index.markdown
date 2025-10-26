@@ -5,7 +5,9 @@ last_updated: 2025-10-26
 
 {% include intro.html %}
 
-<!-- {: style="margin-top: 3rem" }
+{% comment %}
+
+{: style="margin-top: 3rem" }
 {% include heading-with-icon.html text="Current activities" icon="🐜" %}
 
 <div class="cards-container">
@@ -26,28 +28,28 @@ last_updated: 2025-10-26
         image_url="https://static.bricklink.com/clone/img/store-default-image.png"
     %}
 
-</div> -->
+</div>
 
 
-<!-- {: style="margin-top: 3rem" }
+{: style="margin-top: 3rem" }
 {% include heading-with-icon.html text="Personal projects" icon="🧑‍🔬" %}
 
 - [LEGO Storage System](projects/lego-storage-system) 🔥
 - Media remote
 - [BrickLink App](/projects/bricklink-app)
-- Compta App -->
+- Compta App
 
 
-<!-- {: style="margin-top: 3rem" }
+{: style="margin-top: 3rem" }
 {% include heading-with-icon.html text="Current topics of interests" icon="👀" %}
 
 - Coding
 - Movies & TV shows
 - Music
-- Space exploration & New Space -->
+- Space exploration & New Space
 
 
-<!-- {: style="margin-top: 3rem" }
+{: style="margin-top: 3rem" }
 {% include heading-with-icon.html text="Latest movies or shows I liked" icon="🎞️" %}
 
 <div class="cards-container">
@@ -176,7 +178,9 @@ last_updated: 2025-10-26
         text="algorithms, simulations & game dev"
     %}
 
-</div> -->
+</div>
+
+{% endcomment %}
 
 {: style="margin-top: 3rem" }
 {% include heading-with-icon.html text="Links" icon="🔗" %}
