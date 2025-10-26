@@ -189,18 +189,10 @@ section:last-of-type {
 .link-card {
     display: flex;
     margin-bottom: 14px;
-    background: #eee;
+    background: #fafafa;
+    border: 1px solid #eee;
     border-radius: 8px;
     overflow: hidden;
-    transition:
-        background-color 0.3s ease,
-        transform 0.2s ease;
-}
-
-.link-card:hover {
-    text-decoration: none;
-    background: #e7e7e7;
-    transform: scale(1.01);
 }
 
 .link-card img {
