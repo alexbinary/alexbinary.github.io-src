@@ -32,12 +32,24 @@ lang: fr
     </div>
 </section>
 
+<section>
+    {% include heading-with-icon.html text="Mon dernier projet" icon="🧑‍🔬" %}
+
+    <div class="cards-container">
+
+        {% include project-card.html
+            title="Solution de rangement LEGO"
+            subtitle="Solution DIY personnalisée pour le rangement des pièces LEGO"
+            text="J'ai construit un meuble sur mesure pour organiser l'inventaire de ma boutique en ligne #menuiserie #decoupe-laser"
+            url="/projects/lego-storage-system"
+            image_url="/assets/projects/lego-storage-system/4.jpg"    %}
+
+    </div>
+
+</section>
+
 {% comment %}
 
-{: style="margin-top: 3rem" }
-{% include heading-with-icon.html text="Projets personnels" icon="🧑‍🔬" %}
-
-- [Système de rangement LEGO](projects/lego-storage-system) 🔥
 - Télécommande multimédia
 - [Application BrickLink](/projects/bricklink-app)
 - Application de comptabilité
