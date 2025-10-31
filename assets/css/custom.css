@@ -269,6 +269,75 @@ section:last-of-type {
 
 
 
+/* ---- Project cards */
+
+
+.project-card {
+    margin-top: 1rem;
+    background: #fafafa;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.project-card img {
+    position: absolute;
+    transform: scale(1);
+    transition: transform 10s;
+}
+
+.project-card:hover img {
+    transform: scale(10);
+    transition: transform 100s;
+}
+
+.project-card-content {
+    color: black;
+    z-index: 1;
+    background: linear-gradient(to right, transparent, #fafafaf0 35%);
+    padding: 0.7rem;
+    padding-bottom: 1rem;
+    padding-left: 40%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+
+    .project-card img {
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .project-card-content {
+        background: linear-gradient(to bottom, transparent, #fafafaf0 45%);
+        padding: 0.7rem;
+        padding-top: 50%;
+    }
+
+    .project-card-content svg {
+        width: 2rem;
+    }
+}
+
+.project-card-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.project-card-text {
+    margin-top: 1rem;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+
+
 /* ---- Link cards */
 
 
