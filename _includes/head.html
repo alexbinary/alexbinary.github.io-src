@@ -2,7 +2,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {%- seo -%}
+    
+    <title>{{ site.description[page.lang] }}</title>
+    <meta name="description" content="{{ site.description[page.lang] }}" />
+    <meta name="author" content="{{ site.author }}" />
+
+    <meta property="og:title" content="{{ site.description[page.lang] }}" />
+    <meta property="og:site_name" content="{{ site.description[page.lang] }}" />
+    <meta property="og:description" content="{{ site.description[page.lang] }}" />
+    <meta property="og:locale" content="{{ page.lang }}" />
+    <meta property="og:type" content="website" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta property="twitter:title" content="{{ site.description[page.lang] }}" />
+
     <link rel="stylesheet" href="{{ "/assets/main.css" | relative_url }}">
     <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
     {%- feed_meta -%}

@@ -11,7 +11,10 @@ layout: default
     {{ content }}
   </div>
 
-  {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-  Last updated {{ page.last_updated | date: date_format }}
+  {% if page.lang == 'en' %}
+    Last updated {{ page.last_updated | date: "%b %-d, %Y" }}
+  {% else %}
+    Dernière mise à jour le {{ page.last_updated | date: "%-d %b %Y" }}
+  {% endif %}
 
 </article>

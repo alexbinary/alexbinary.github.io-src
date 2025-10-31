@@ -1,6 +1,7 @@
 ---
 layout: page
 last_updated: 2025-10-31
+lang: fr
 ---
 
 {% include intro_fr.html %}
