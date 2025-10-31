@@ -1,0 +1,228 @@
+---
+layout: page
+last_updated: 2025-10-31
+---
+
+{% include intro_fr.html %}
+
+<p class="aerospace-icons">🪐🛰️</p>
+
+<section>
+    {% include heading-with-icon.html text="Mes activités principales" icon="📂" %}
+
+    <div class="cards-container">
+
+        {% include activity-card.html
+            title="ISAE-SUPAERO"
+            subtitle="Toulouse, France"
+            text="Mastère Spécialisé® en systèmes embarqués"
+            url="https://www.isae-supaero.fr/en/programmes/advanced-master-embedded-systems-ems/"
+            image_url="https://www.isae-supaero.fr/wp-content/uploads/2025/03/logo.svg"
+        %}
+
+        {% include activity-card.html
+            title="Boutique BrickLink"
+            subtitle="Vente en ligne"
+            text="Je vends des pièces de LEGO dans le monde entier"
+            url="https://store.bricklink.com/alexbinary"
+            image_url="/assets/BrickLink_logo.svg"
+        %}
+
+    </div>
+</section>
+
+{% comment %}
+
+{: style="margin-top: 3rem" }
+{% include heading-with-icon.html text="Projets personnels" icon="🧑‍🔬" %}
+
+- [Système de rangement LEGO](projects/lego-storage-system) 🔥
+- Télécommande multimédia
+- [Application BrickLink](/projects/bricklink-app)
+- Application de comptabilité
+
+
+{: style="margin-top: 3rem" }
+{% include heading-with-icon.html text="Sujets d'intérêt actuels" icon="👀" %}
+
+- Programmation
+- Films & séries
+- Musique
+- Exploration spatiale & New Space
+
+
+{: style="margin-top: 3rem" }
+{% include heading-with-icon.html text="Derniers films ou séries que j'ai aimés" icon="🎞️" %}
+
+<div class="cards-container">
+
+    {% include card.html
+        title="Weapons"
+        url="https://www.imdb.com/fr/title/tt26581740/"
+        subtitle="2025 · Zach Cregger"
+        text="La disparition soudaine de dix-sept élèves de troisième, dévoilant des secrets sombres dans une petite ville."
+        image_url="https://m.media-amazon.com/images/M/MV5BMGJkYzFkNWUtYTBmNC00ZDNiLTlmYTgtN2EwMDY2NDQxN2E3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+    %}
+
+    {% include card.html
+        title="Alien Earth"
+        url="https://www.imdb.com/fr/title/tt13623632/"
+        subtitle="2025 · Disney+"
+        text="Un vaisseau spatial mystérieux s'écrase, une jeune femme et des soldats affrontent la plus grande menace de la Terre."
+        image_url="https://m.media-amazon.com/images/M/MV5BOGIyNGRiNzgtOWQxZC00YzJmLThlZTYtYTMyMDk0YWZjMTk5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+    %}
+
+</div>
+
+
+{: style="margin-top: 3rem" }
+{% include heading-with-icon.html text="Derniers livres que j'ai appréciés" icon="📚" %}
+
+<div class="cards-container">
+
+    {% include card.html
+        title="Robotic Exploration of the Solar System: Part 1: The Golden Age 1957-1982"
+        url="https://www.amazon.fr/Robotic-Exploration-Solar-System-1957-1982/dp/0387493263/"
+        subtitle=""
+        text="Une chronique détaillée de l'ère pionnière de l'exploration robotique du système solaire."
+        image_url="https://m.media-amazon.com/images/I/612FXRjH+BL._SY385_.jpg"
+    %}
+
+    {% include card.html
+        title="Nous rêvions juste de liberté"
+        url="https://www.babelio.com/livres/Loevenbruck-Nous-revions-juste-de-liberte/695248"
+        subtitle="Henri Lœvenbruck"
+        text="Un récit puissant sur la jeunesse, la rébellion et le désir de liberté."
+        image_url="https://www.babelio.com/couv/CVT_Nous-revions-juste-de-liberte_7184.jpg"
+    %}
+
+    {% include card.html
+        title="Pour ne rien regretter"
+        url="https://www.babelio.com/livres/Loevenbruck-Pour-ne-rien-regretter/1701851"
+        subtitle="Henri Lœvenbruck"
+        text="Un voyage émotionnel sur les choix, les regrets et les chemins non empruntés."
+        image_url="https://m.media-amazon.com/images/I/41F7LLUEpAL._SX195_.jpg"
+    %}
+
+    {% include card.html
+        title="Central Park"
+        url="https://www.babelio.com/livres/Musso-Central-Park/572676"
+        subtitle="Guillaume Musso"
+        text="Un thriller psychologique haletant qui commence par un réveil mystérieux à Central Park."
+        image_url="https://www.babelio.com/couv/CVT_CVT_Central-Park_5496.jpg"
+    %}
+
+    {% include card.html
+        title="L'instant présent"
+        url="https://www.babelio.com/livres/Musso-Linstant-present/689939"
+        subtitle="Guillaume Musso"
+        text="Un récit romantique et plein de suspense explorant le temps, la mémoire et les secondes chances."
+        image_url="https://www.babelio.com/couv/CVT_Linstant-present_1566.jpg"
+    %}
+
+    {% include card.html
+        title="Bios"
+        url="https://www.babelio.com/livres/Wilson-Bios/51027"
+        subtitle="Robert Charles Wilson"
+        text="Un thriller de science-fiction situé sur un monde alien mortel où la survie humaine est mise à l'épreuve."
+        image_url="https://www.babelio.com/couv/CVT_cvt_Bios_8931.jpg"
+    %}
+
+    {% include card.html
+        title="Darwinia"
+        url="https://www.babelio.com/livres/Wilson-Darwinia/25807"
+        subtitle="Robert Charles Wilson"
+        text="Une histoire déroutante d'histoire alternative où l'Europe est remplacée par un continent mystérieux et étranger."
+        image_url="https://www.babelio.com/couv/CVT_cvt_Darwinia_8342.jpg"
+    %}
+
+    {% include card.html
+        title="À travers temps"
+        url="https://www.babelio.com/livres/Wilson--travers-temps/174247"
+        subtitle="Robert Charles Wilson"
+        text="Une épopée sur les voyages dans le temps, la mémoire et les liens fragiles entre les êtres humains."
+        image_url="https://www.babelio.com/couv/CVT_11478_658119.jpg"
+    %}
+
+</div>
+
+
+{: style="margin-top: 3rem" }
+{% include heading-with-icon.html text="Chaînes YouTube que j'aime" icon="📺" %}
+
+<div class="cards-container yt-cards-container">
+
+    {% include card.html
+        title="Tantacrul"
+        url="https://www.youtube.com/@Tantacrul"
+        image_url="https://yt3.googleusercontent.com/ytc/AIdro_kfBfBABvGzPoazpxLm35feN55rYWbc9dxVyvCUCzstZwU=s160-c-k-c0x00ffffff-no-rj"
+        text="essais vidéo et analyses matérielles"
+    %}
+
+    {% include card.html
+        title="DIY Perks"
+        url="https://www.youtube.com/@DIYPerks"
+        image_url="https://yt3.googleusercontent.com/ytc/AIdro_m8aksXNScLOKv-RBjATnijOQ9SyYcq5X0k14hSWvpENx4=s160-c-k-c0x00ffffff-no-rj"
+        text="constructions matérielles ingénieuses et tutoriels"
+    %}
+
+    {% include card.html
+        title="Ben Eater"
+        url="https://www.youtube.com/@BenEater"
+        image_url="https://yt3.googleusercontent.com/ytc/AIdro_kzQ9Fabth3QHyk1YLRHA62goVPgxJdd68G0CPIs0tU3A=s160-c-k-c0x00ffffff-no-rj"
+        text="architecture informatique et électronique"
+    %}
+
+    {% include card.html
+        title="Sebastian Lague"
+        url="https://www.youtube.com/@SebastianLague"
+        image_url="https://yt3.googleusercontent.com/ytc/AIdro_knyJw3jL_6AGomJmGe3VvfIYxWzZC9Y8z90Liru4G0UHM=s160-c-k-c0x00ffffff-no-rj"
+        text="algorithmes, simulations et développement de jeux"
+    %}
+
+</div>
+
+{% endcomment %}
+
+<section>
+    {% include heading-with-icon.html text="Mes activités en ligne" icon="👨‍💻" %}
+
+    <div class="cards-container">
+
+        {% include link-card.html
+            title="Github"
+            text="Mes projets de code"
+            url="https://github.com/alexbinary"
+            image_url="https://avatars.githubusercontent.com/u/3055394?v=4"
+        %}
+
+        {% include link-card.html
+            title="Flickr"
+            text="Mon activité photo"
+            url="https://www.flickr.com/photos/189385048@N05/"
+            image_url="https://farm66.staticflickr.com/65535/coverphoto/189385048@N05_h.jpg?1639592419#189385048@N05"
+        %}
+        
+        {% include link-card.html
+            title="Instagram"
+            text="Mes plus belles photos"
+            url="https://www.instagram.com/al.exandre1859"
+            image_url="/assets/2025-04-04-photos/203902881_1941499075999282_4032388649777417923_n.jpg"
+        %}
+
+        {% include link-card.html
+            title="Flickr (LEGO)"
+            text="Photos LEGO"
+            url="https://www.flickr.com/photos/163799831@N07/"
+            image_url="https://live.staticflickr.com/7867/buddyicons/163799831@N07_r.jpg?1555350484#163799831@N07"
+        %}
+
+        {% include link-card.html
+            title="Rebrickable"
+            text="Mes créations LEGO"
+            url="https://rebrickable.com/users/alexbinary/"
+            image_url="https://rebrickable.com/static/img/def_av.png"
+        %}
+
+    </div>
+</section>

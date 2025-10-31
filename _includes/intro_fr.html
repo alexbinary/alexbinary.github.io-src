@@ -1,0 +1,52 @@
+<div class="intro">
+
+    <div class="intro-item-1">
+
+        <h1>Bonjour, moi c'est Alex 👋</h1>
+
+        <p>Je suis ingénieur et maker.</p>
+
+        <p>Je m'intéresse à 
+            {% assign topics = "la science, l'espace, la programmation, l'impression 3D, l'électronique, le travail du bois, les LEGO, la photographie, la musique, le cinéma" | split: ", "  %}
+            {% assign links = "" | split: "" %}
+            {% for topic in topics %}
+                {% comment %} {% capture link %}<a href="/{{ topic | split: " " | join: "" }}">{{ topic }}</a>{% endcapture %} {% endcomment %}
+                {% capture link %}{{ topic }}{% endcapture %}
+                {% assign links = links | push: link %}
+            {% endfor %}
+            {{ links | join: ', ' }}, et d'autres choses.
+        </p>
+
+        <p style="margin-top:3em"></p>
+        <p>📍 Je vis actuellement en France.</p>
+
+        
+        <p><i>J'étais bien installé à Strasbourg mais j'ai décidé de suivre ma passion et de déménager à Toulouse pour poursuivre une carrière dans l'aérospatiale.</i></p>
+
+    </div>
+    <div class="intro-item-2">
+
+        <img src="assets/profile3.png" width="60%" style="padding-bottom: 1rem;" alt="profil" />
+        <ul class="social-media-list" style="text-align: left">
+            <li>
+                <a href="https://github.com/{{ site.github_username| cgi_escape | escape }}">
+                    <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#github' | relative_url }}"></use></svg>
+                    <span class="username">{{ site.github_username| escape }}</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://www.twitter.com/{{ site.twitter_username| cgi_escape | escape }}">
+                    <svg class="svg-icon"><use xlink:href="{{ '/assets/minima-social-icons.svg#twitter' | relative_url }}"></use></svg>
+                    <span class="username">{{ site.twitter_username| escape }}</span>
+                </a>
+            </li>
+            <li>
+                <a href="mailto:{{ site.email }}">
+                    <svg fill="#828282" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="#828282" width=18><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M22,5V9L12,13,2,9V5A1,1,0,0,1,3,4H21A1,1,0,0,1,22,5ZM2,11.154V19a1,1,0,0,0,1,1H21a1,1,0,0,0,1-1V11.154l-10,4Z"></path></g></svg>
+                    &nbsp;{{ site.email }}
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</div>
