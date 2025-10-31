@@ -18,7 +18,7 @@ langs:
     flag: 🇺🇸
     title_active: You are viewing the English version of this page
     title_inactive: Switch to English
-    url: /en
+    url: /
     available_info: "This page is available <a href='%URL%'>in English %FLAG%</a>"
   fr:
     flag: 🇫🇷
