@@ -31,7 +31,6 @@ layout: default
     {{ content }}
   </div>
 
-  {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-  Last updated {{ page.last_updated | date: date_format }}
+  {% include last_updated.html %}
 
 </article>
