@@ -19,8 +19,10 @@ langs:
     title_active: You are viewing the English version of this page
     title_inactive: Switch to English
     url: /en
+    available_info: "This page is available <a href='%URL%'>in English %FLAG%</a>"
   fr:
     flag: 🇫🇷
     title_active: Vous lisez la version en français de cette page
     title_inactive: Passer en français
     url: /fr
+    available_info: "Cette page est disponible <a href='%URL%'>en français %FLAG%</a>"

@@ -9,6 +9,26 @@
 
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
+
+      {% if page.lang == 'fr' %}
+        {% assign avail_lang = 'en' %}
+      {% elsif page.lang == 'en' %}
+        {% assign avail_lang = 'fr' %}
+      {% endif %}
+
+      {% assign current = site.langs[page.lang] %}
+      {% assign avail = site.langs[avail_lang] %}
+
+      {% assign message = avail.available_info
+        | replace: '%URL%', avail.url
+        | replace: '%FLAG%', avail.flag %}
+
+        <div class="lang-available-banner">
+          <div class="lang-available-banner-content">
+            <p>{{ message }}</p>
+          </div>  
+        </div>
+
         {{ content }}
       </div>
     </main>
