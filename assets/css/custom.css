@@ -487,3 +487,78 @@ article.project .separator {
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
+
+article.project {
+    text-align: justify;
+}
+
+article.project h3 {
+    margin-top: 2rem;
+}
+
+ul.plus,
+ul.minus {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+ul.plus li,
+ul.minus li {
+    position: relative;
+    padding-left: 2em;
+    margin-bottom: 0.8rem;
+}
+
+ul.plus li::before,
+ul.minus li::before {
+    content: "👉 ";
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+
+
+/* ---- Inline images */
+
+
+.inline-image-container {
+    margin-top: 2rem;
+}
+
+.inline-image-container-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.inline-image-item {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    flex: 1;
+}
+
+.inline-image-item img {
+    object-fit: cover;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+
+    .inline-image-container-row.mobile-column {
+        flex-direction: column;
+    }
+
+    .inline-image-item img {
+        width: 100% !important;
+    }
+}
+
+.inline-image-item p {
+    margin: 0;
+}
+
+.inline-image-item .image-legend {
+    margin-top: 0.3rem;
+}
