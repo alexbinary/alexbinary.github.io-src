@@ -9,46 +9,44 @@ last_updated: 2025-09-02
 [![](/assets/projects/lego-storage-system/4.jpg)
 ](/assets/projects/lego-storage-system/4.jpg)
 
-Fan de [LEGO](/LEGO) depuis toujours, je tiens depuis 2019 une [boutique de vente de pièces en ligne](/occupations/bricklink) sur la plateforme BrickLink. Pour organiser mon stock j'ai d'abord utilisé un système de rangement à base de casiers en plastiques, mais j'en ai vite vu les limites. Ayant eu ces dernières années l'occasion de m'initier à la [menuiserie](/woodworking), j'ai entrepris de fabriquer une solution de rangement sur mesure.
+Depuis 2019 je tiens une [boutique de vente de pièces en ligne](https://store.bricklink.com/alexbinary) sur la plateforme BrickLink. Les clients peuvent commander des pièces individuelles parmis plusieurs milliers de références uniques. Une bonne organisation du stock est donc critique. Au début j'utilisais une solution du commerce, elle m'a permis de démarrer mais elle a fini par montrer ses limites. J'ai alors entrepris de fabriquer une solution de rangement entièrement sur mesure.
 
-Le projet comporte aujourd'hui trois grands axes : les meubles, les boites, et le système d'ouverture automatique des tiroirs.
+### Papi Max StackX Drawers: Avantages et inconvénients
 
-### Les meubles
+<p align="center">
+    <a href="/assets/projects/lego-storage-system/papimax3.JPG">
+        <img src="/assets/projects/lego-storage-system/papimax3.JPG" style="width:100%" />
+    </a>
+    <br>
+    <sub>Papi Max StackX Drawers</sub>
+</p>
 
-C'est la structure externe. Il s'agit de meubles de type commode avec des tiroirs de faible hauteur compartimentés. J'ai fabriqué plusieurs meubles en faisant évoluer un peu le design et les techniques de fabrication, et j'ai pu me débarasser complètement des casiers en plastiques.
+<table>
+    <tr style="background:none">
+        <td style="padding: 0">
+            <p align="center">
+                <a href="/assets/projects/lego-storage-system/papimax1.jpg">
+                    <img src="/assets/projects/lego-storage-system/papimax1.jpg" width=350 height=250 style="object-fit: cover" />
+                </a>
+                <br/>
+                <sub>Premiers casiers avec manchon</sub>
+            </p>
+        </td>
+        <td style="vertical-align: bottom; padding: 0">
+            <p align="center">
+                <a href="/assets/projects/lego-storage-system/papimax4.jpg">
+                    <img src="/assets/projects/lego-storage-system/papimax4.jpg" width=350 height=250 style="object-fit: cover"/>
+                </a>
+                <br/>
+                <sub>Tiroirs avec casiers empilables</sub>
+            </p>
+        </td>
+    </tr>
+</table>
 
-Page dédiée : [Meubles v1](meubles_v1)
+[Une revue détaillée du produit est disponible sur le site Brick Architect](https://brickarchitect.com/2019/review-papi-max-stackx-drawers/)
 
-Désormais je réfléchis à adapter le design pour en faire un module à intégrer dans des étagères IKEA de type Kallax.
-
-Page dédiée : [Meubles v2](meubles_v2)
-
-### Les boites
-
-C'est le système d'organisation dans les tiroirs. Il s'agit de boites de différents formats permettant d'agencer l'espace selon les besoins. Les premières versions des boites étaient fabriquées en bois découpé au LASER. J'ai fabriqué une quantité astronomique de boites de ce type dans de nombreux formats différents.
-
-Page dédiée : [Boites v1](boites_v1)
-
-Par la suite j'ai imaginé un système en impression 3D, vaguement inspiré des solutions de type Gridfinity, et j'ai réduit le nombre de formats pour ne garder que quelques formats essentiels.
-
-Page dédiée : [Boites v2](boites_v2)
-
-Je remplace progressivement les boites en bois par les nouvelles boites en plastique.
-
-### Le système d'ouverture automatique des tiroirs
-
-C'est un système qui comprend une partie mécanique réalisée en impression 3D et un système de commande basé sur Arduino. Le système peut être connecté à mon logiciel de préparation de commandes. La partie mécanique est globalement validée. La partie électronique reste à finaliser.
-
-Page dédiée : [Smart drawers](smart-drawers_fr)
-
---
-
-### Les plus et les moins des casiers en plastique
-
-Quand j'ai ouvert ma boutique ma solution de rangement était *Papi Max StackX Drawers*.
-C'est un produit qui s'adresse spécifiquement aux amateurs de LEGO, et qui promet notamment une forte densité de stockage.
-[Une revue détaillée est disponible sur le site Brick Architect](https://brickarchitect.com/2019/review-papi-max-stackx-drawers/).
-
+*Papi Max StackX Drawers* est un produit qui s'adresse spécifiquement aux amateurs de LEGO, et qui promet notamment une forte densité de stockage.
 Le système se présente sous la forme de modules individuels composés d'un boitier externe  dans lequel glisse un tiroir.
 Les boitiers sont disponibles en blanc ou noir et peuvent s'empiler et s'assembler entre eux.
 Les tiroirs sont transparents et équipés d'une poignée à l'avant.
@@ -70,4 +68,141 @@ Avec les manipulations du tiroir elles se soulèvent et laissent fuiter des piè
 - Prix élevé
 
 Finalement, le système de cloisons amoviles était séduisant sur le papier mais peu pratique à l'usage.
-Ajouté à ça la basse qualité de construction et le prix élevé étaient prohibitifs pour continuer avec cette solution.
+Ajouté à ça, la basse qualité de construction et le prix élevé étaient prohibitifs pour continuer avec cette solution.
+
+
+### Une solution DIY sur mesure
+
+Ma solution repose sur un système des boites modulaires que l'on peut emporter, déplacer et agencer à loisir dans des grands tiroirs. L'ouverture des tiroirs est fluide, sans effort et donne une impression de qualité.
+
+<table>
+    <tr style="background:none">
+        <td style="padding: 0">
+            <p align="center">
+                <a href="/assets/projects/lego-storage-system/phase1/1.jpg">
+                    <img src="/assets/projects/lego-storage-system/phase1/1.jpg" width=350 height=250 style="object-fit: cover" />
+                </a>
+                <br/>
+                <sub>Un ensemble de meubles</sub>
+            </p>
+        </td>
+        <td style="vertical-align: bottom; padding: 0">
+            <p align="center">
+                <a href="/assets/projects/lego-storage-system/4.jpg">
+                    <img src="/assets/projects/lego-storage-system/4.jpg" width=350 height=250 style="object-fit: cover"/>
+                </a>
+                <br/>
+                <sub>Des casiers dans les tiroirs</sub>
+            </p>
+        </td>
+    </tr>
+</table>
+
+Le développement s'est fait par exploration progressive.
+J'ai commencé par développer les boites puis les tiroirs pour les ranger.
+
+
+### Développement des boites
+
+Courant 2021 j'ai eu l'occasion de me former à la découpe LASER dans un atelier partagé près de chez moi.
+Après une séance de formation, j'ai commencé à expérimenter avec cette machine, et j'en ai vite saisi le potentiel pour fabriquer des boites qui pourraient servir de base à une solution de rangement sur mesure.
+
+Après avoir rapidement exploré différentes techniques d'assemblage et de construction des boites, je me suis fixé sur un assemblage par <b>créneaux serrés</b>.
+
+<p align="center">
+    <a href="/assets/projects/lego-storage-system/boites_v1/boites_v1_5.png">
+        <img src="/assets/projects/lego-storage-system/boites_v1/boites_v1_5.png" style="width:60%" />
+    </a>
+    <br>
+    <sub>Technique d'assemblage par créneaux</sub>
+</p>
+
+J'ai calqué la taille des premières boites sur la taille des compartiments du système de rangement que j'utilisais à l'époque, soit une boite carré de 75mm de côté.
+Une boite avec ces dimensions peut accueillir une pièce de LEGO de 8 unités de long avec juste ce qu'il faut de marge.
+Pour la hauteur j'ai voulu respecter le ratio des briques LEGO, en considérant que ma boite était équivalente à une brique de 2x2.
+Les experts de la brique danoise savent que 2 unités LEGO correspondent à 5 hauteurs de plaque, et la hauteur d'une brique fait 3 plaques de haut.
+Pour une boite de 75mm de côté on arrive donc à une hauteur de 75*3/5 = 45mm.
+Je trouvais ça trop haut, alors je suis descendu à 2 plaques au lieu de 3, soit 30mm.
+Je trouve que c'est le ratio parfait.
+
+Partant de là, en partant du principe que ma boite de base fait 2x2 unités de large et 2 plaques de haut, j'ai expérimenté avec tout un tas de variantes en 1x1, 1x2, 2x3, 2x4, 3x3, etc en version 1, 2, 3 ou 4 plaques de hauteur. Je me suis vite rendu compte que les modèles de grande taille et faible hauteur sont utiles en tant que plateau pour contenir des pièces lors de constructions par exemples.
+J'en ai fait des plus grands, que j'utilise encore couramment aujourd'hui.
+
+
+<p align="center">
+    <a href="/assets/projects/lego-storage-system/phase1/9.jpg">
+        <img src="/assets/projects/lego-storage-system/phase1/9.jpg" style="width:100%" />
+    </a>
+    <br>
+    <sub>Des boites</sub>
+</p>
+
+
+### Développement des meubles
+
+Quand j'ai commencé à avoir un certain nombre de boites en vrac, le besoin d'un niveau supérieur de rangement s'est fait sentir. J'ai alors développé progressivement des meubles à tiroirs pour ranger les boites. J'ai expérimenté avec différents designs et techniques de fabrication, et j'ai aujourd'hui un ensemble de 5 meubles dont je me sers au quotidien. Une partie a été réalisée en matériaux de récupération.
+
+La sensation de qualité à l'ouverture et fermeture des tiroirs était un critère important pour moi.
+Je voulais que mes tiroirs donnent une impression de solidité et de qualité,
+avec une ouverture et fermeture fluide,
+sans pencher à mesure que le tiroir s'ouvre,
+et sans peur de déloger le tiroir si on ouvre un peu trop vite.
+Je voulais aussi que les tiroirs puissent s'ouvrir sur la totalité de la profondeur pour permettre d'accéder même aux boites du fond.
+
+Après avoir trouvé et commandé des glissières métalliques à sortie totale sur Amazon,
+j'ai fabriqué un premier prototype de meuble avec du contreplaqué de peuplier de 10mm.
+J'ai découpé les pièces avec une scie sauteuse mais le résultat était très moyen.
+Rien n'était vraiment droit, et l'ouverture/fermeture des tiroirs n'était pas fluide
+et les tiroirs ouverts entraient en collision.
+
+L'atelier partagé qui héberge la découpe LASER possède également un atelier bois.
+Après avoir fait les formations nécessaires, 
+j'ai entrepris un second prototype, en utilisant cette fois la scie circulaire sur table.
+Le résultat était nettement meilleur.
+
+
+<table>
+    <tr style="background:none">
+        <td style="padding: 0">
+            <p align="center">
+                <a href="/assets/projects/lego-storage-system/phase1/15.jpg">
+                    <img src="/assets/projects/lego-storage-system/phase1/15.jpg" width=350 height=250 style="object-fit: cover" />
+                </a>
+                <br/>
+                <sub>Premiers essais avec les glissières</sub>
+            </p>
+        </td>
+        <td style="vertical-align: bottom; padding: 0">
+            <p align="center">
+                <a href="/assets/projects/lego-storage-system/phase1/13.jpg">
+                    <img src="/assets/projects/lego-storage-system/phase1/13.jpg" width=350 height=250 style="object-fit: cover"/>
+                </a>
+                <br/>
+                <sub>Premier prototype fonctionnel</sub>
+            </p>
+        </td>
+    </tr>
+</table>
+
+Je suis ensuite passé à la vitesse supérieure en créant un meuble deux fois plus large, puis un meuble comprenant 16 tiroirs, dont un double hauteur pour des pièces plus volumineuses.
+Pour éviter que le fond ne s'affaisse, j'ai ajouté une cloison qui coupe le tiroir en deux parties et permet de maintenir le fond.
+
+
+## Bilan et perspective
+
+Je dispose aujourd'hui d'un total de 5 meubles de différentes capacités que j'utilise au quotidien pour ranger mes pièces de LEGO pour ma boutique en ligne.
+
+J'ai toujours besoin de plus de place de rangement,
+et je prévois de fabriquer encore d'autres meubles,
+en cherchant toujours à améliorer la conception.
+Le positionnement des tiroirs n'est toujours pas idéal sans exploser le budger en temps d'usinage.
+
+Aussi, les glissières actuelles ne permettent pas au tiroir de sortir plus que sa profondeur,
+ce qui rend encore l'accès aux boites du fond difficile,
+surtout quand il y a la poignée du tiroir du dessus juste au dessus.
+
+Pour les prochains meubles je voudrais essayer d'ajouter une grande illustration qui s'étale sur les façades des tiroirs.
+
+Je réflechis aussi à faire des modules à insérer dans des étagères IKEA de type Kallax.
+
+--
