@@ -23,6 +23,26 @@
 
 
 
+/* ---- Header */
+
+
+header .wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+header .wrapper .lang-and-menu {
+    display: flex;
+    gap: 2rem;
+    line-height: 54px;
+}
+
+header .wrapper::after {
+    display: none;
+}
+
+
+
 /* ---- Lang select */
 
 
@@ -41,6 +61,8 @@
 
 
 /* ---- Lang available banner */
+
+
 .lang-available-banner p {
     margin: 0;
 }
