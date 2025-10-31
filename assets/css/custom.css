@@ -23,6 +23,23 @@
 
 
 
+/* ---- Lang */
+
+
+.lang-select .lang {
+    padding: 5px;
+}
+
+
+.lang-select .lang.active,
+.lang-select .lang:hover {
+    background: lightgray;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+
+
 /* ---- General */
 
 

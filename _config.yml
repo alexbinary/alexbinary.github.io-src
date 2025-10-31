@@ -12,3 +12,15 @@ twitter_username: AlexFrom1991
 theme: minima
 plugins:
   - jekyll-feed
+
+langs:
+  en:
+    flag: 🇺🇸
+    title_active: You are viewing the English version of this page
+    title_inactive: Switch to English
+    url: /en
+  fr:
+    flag: 🇫🇷
+    title_active: Vous lisez la version en français de cette page
+    title_inactive: Passer en français
+    url: /fr
