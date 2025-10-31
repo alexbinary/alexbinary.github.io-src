@@ -1,31 +1,41 @@
 ---
 layout: default
 ---
-<article class="post">
+<article class="post project">
 
-  <h2 style="margin-bottom: 0"><u>Project</u>:
-  {% if page.parent_project_title %}
-    <a href="{{ page.parent_project_url | escape }}">{{ page.parent_project_title | escape }}</a>
-  {% endif %}
-  </h2>
-  <h1>{{ page.title | escape }}</h1>
+  <header>
+    <img src="{{ page.image }}">
 
-  <div class="post-status" style="margin-top: -1rem; margin-bottom: 2rem; float: right;">
-    {% if page.project_status %}
-      <strong>Project status:</strong> <span>{{ page.project_status | escape }}</span>
-    {% endif %}
-    {% if page.project_current_iteration_title and page.project_current_iteration_url %}
-      &nbsp; | &nbsp; <strong>Current iteration:</strong> <a href="{{ page.project_current_iteration_url | escape }}">{{ page.project_current_iteration_title | escape }}</a>
-    {% endif %}
-  </div>
-
-  {% if page.topics %}
-    <div class="post-topics" style="margin-top: -1rem; margin-bottom: 2rem">
-      {% for topic in page.topics %}
-        <a href="/{{ topic }}"><i>#{{ topic | escape}}</i></a>
-      {% endfor %}
+    <div class="header-content">
+      <div>
+        <span class="content-type">Project</span>
+        <div class="project-status">
+          {% if page.project_status %}
+            <strong>Status:</strong> <span>{{ page.project_status | escape }}</span>
+          {% endif %}
+          {% if page.project_current_iteration_title and page.project_current_iteration_url %}
+            &nbsp; | &nbsp; <strong>Current iteration:</strong> <a href="{{ page.project_current_iteration_url | escape }}">{{ page.project_current_iteration_title | escape }}</a>
+          {% endif %}
+        </div>
+      </div>
+      
+      <h1>{{ page.title | escape }}</h1>
+    
+       {% if page.topics %}
+        <div class="project-topics">
+          {% for topic in page.topics %}
+            {% comment %} <a href="/{{ topic }}"><i>#{{ topic | escape}}</i></a> {% endcomment %}
+            #{{ topic | escape}}
+          {% endfor %}
+        </div>
+      {% endif %}
     </div>
-  {% endif %}
+
+  </header>
+
+  
+
+  <div class="separator"></div>
 
   <div class="post-content">
     {{ content }}

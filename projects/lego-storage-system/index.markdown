@@ -2,12 +2,11 @@
 layout: project
 title: LEGO Storage System
 topics: [LEGO, woodworking, 3dprinting, electronics]
-project_status: active
-last_updated: 2025-09-02
+image: /assets/projects/lego-storage-system/4.jpg
+project_status: 'complete ✅'
+last_updated: 2025-10-31
+lang: fr
 ---
-
-[![](/assets/projects/lego-storage-system/4.jpg)
-](/assets/projects/lego-storage-system/4.jpg)
 
 Depuis 2019 je tiens une [boutique de vente de pièces en ligne](https://store.bricklink.com/alexbinary) sur la plateforme BrickLink. Les clients peuvent commander des pièces individuelles parmis plusieurs milliers de références uniques. Une bonne organisation du stock est donc critique. Au début j'utilisais une solution du commerce, elle m'a permis de démarrer mais elle a fini par montrer ses limites. J'ai alors entrepris de fabriquer une solution de rangement entièrement sur mesure.
 
