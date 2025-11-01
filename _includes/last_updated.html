@@ -1,5 +1,7 @@
-{% if page.lang == 'en' %}
-Last updated {{ page.last_updated | date: "%b %-d, %Y" }}
-{% else %}
-Dernière mise à jour le {{ page.last_updated | date: "%-d %b %Y" }}
-{% endif %}
+<div class="last-updated">
+    {% if page.lang == 'en' %}
+    Last updated {{ page.last_updated | date: "%b %-d, %Y" }}
+    {% else %}
+    Dernière mise à jour le {{ page.last_updated | date: "%-d %b %Y" }}
+    {% endif %}
+</div>

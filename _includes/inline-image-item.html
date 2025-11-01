@@ -1,7 +1,13 @@
+{% if page.lang == 'fr' %}
+    {% assign title = "Cliquer pour agrandir l'image" %}
+{% elsif page.lang == 'en' %}
+    {% assign title = "Click to view full size image" %}
+{% endif %}
+
 <div class="inline-image-item">
     <p>
-        <a href="{{ include.url }}" title="Click to view full size image">
-            <img src="{{ include.url }}" alt="{{ include.alt }}"
+        <a href="{{ include.url }}" title="{{ title }}">
+            <img src="{{ include.url }}" alt="{{ include.alt | escape }}"
             width="{{ include.width }}" height="{{ include.height }}"
             style="width:{{ include.width }}" />
         </a>
