@@ -8,10 +8,22 @@ layout: default
 
     <div class="header-content">
       <div>
-        <span class="content-type">Project</span>
+        <span class="content-type">
+          {% if page.lang == 'en' %}
+            Project
+          {% else %}
+            Projet
+          {% endif %}
+        </span>
         <div class="project-status">
           {% if page.project_status %}
-            <strong>Status:</strong> <span>{{ page.project_status | escape }}</span>
+            <strong>
+              {% if page.lang == 'en' %}
+                Status:
+              {% else %}
+                Statut:
+              {% endif %}
+            </strong> <span>{{ page.project_status | escape }}</span>
           {% endif %}
           {% if page.project_current_iteration_title and page.project_current_iteration_url %}
             &nbsp; | &nbsp; <strong>Current iteration:</strong> <a href="{{ page.project_current_iteration_url | escape }}">{{ page.project_current_iteration_title | escape }}</a>

@@ -1,16 +1,15 @@
 ---
 layout: project
-title: LEGO Storage System
-topics: [LEGO, woodworking, 3dprinting, electronics]
+title: Rangement LEGO
+topics: [LEGO, menuiserie]
 image: /assets/projects/lego-storage-system/4.jpg
-project_status: 'complete ✅'
+project_status: 'terminé ✅'
 last_updated: 2025-10-31
 lang: fr
 ---
 
 Depuis 2019 je tiens une [boutique de vente de pièces en ligne](https://store.bricklink.com/alexbinary) sur la plateforme BrickLink. Les clients peuvent commander des pièces individuelles parmis plusieurs milliers de références uniques. Une bonne organisation du stock est donc critique. Au début j'utilisais une solution du commerce, elle m'a permis de démarrer mais elle a fini par montrer ses limites. J'ai alors entrepris de fabriquer une solution de rangement entièrement sur mesure.
 
-{:style="margin-top: 3rem;"}
 ### Papi Max StackX Drawers: Avantages et inconvénients
 
 *Papi Max StackX Drawers* est un produit qui s'adresse spécifiquement aux amateurs de LEGO, et qui promet notamment une forte densité de stockage.
