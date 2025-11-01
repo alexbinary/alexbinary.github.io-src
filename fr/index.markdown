@@ -39,7 +39,7 @@ lang: fr
 
         {% include project-card.html
             title="Solution de rangement LEGO"
-            subtitle="Solution DIY personnalisée pour le rangement des pièces LEGO"
+            subtitle="Solution DIY pour le rangement des pièces de LEGO"
             text="J'ai construit un meuble sur mesure pour organiser l'inventaire de ma boutique en ligne #menuiserie #decoupe-laser"
             url="/projects/lego-storage-system"
             image_url="/assets/projects/lego-storage-system/4.jpg"    %}
