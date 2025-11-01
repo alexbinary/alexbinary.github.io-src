@@ -210,6 +210,10 @@ section:last-of-type {
     gap: 2rem;
 }
 
+.activity-card:hover {
+    text-decoration: none;
+}
+
 .activity-card .external-link {
     position: absolute;
     right: 0.5rem;
@@ -252,6 +256,10 @@ section:last-of-type {
 
 .activity-card-content {
     color: black;
+}
+
+.activity-card:hover .activity-card-content {
+    text-decoration: underline;
 }
 
 .activity-card-title-and-subtitle {
@@ -413,7 +421,6 @@ article.project header {
     overflow: hidden;
     position: relative;
     display: flex;
-    background: #fafafa;
 }
 
 article.project h1,
@@ -432,6 +439,7 @@ article.project header img {
 
 article.project .header-content {
     background: #fafafaf0;
+    border-radius: 8px;
     padding: 2rem;
     width: 100%;
     margin-top: 15rem;
