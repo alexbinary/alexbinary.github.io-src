@@ -26,7 +26,7 @@ Up to four dividers can be added in width and two in length to form up to 15 com
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/lego-storage-system/papimax3.JPG"
+            url="/assets/projects/lego-storage-system/papimax3.jpg"
             width="100%"
             legend="Individual elements can be stacked and assembled freely"
             alt="A photo showing 20 modules assembled in 4 stacks of 3 and 2 stacks of 4"

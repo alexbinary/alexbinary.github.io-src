@@ -25,7 +25,7 @@ Jusqu'à quatre cloisons peuvent être ajoutées dans la largeur et deux dans la
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/lego-storage-system/papimax3.JPG"
+            url="/assets/projects/lego-storage-system/papimax3.jpg"
             width="100%"
             legend="Les éléments individuels peuvent être empilés et assemblés entre eux librement"
             alt="Une photo montrant 20 modules assemblés en 4 piles de 3 et 2 piles de 4"
