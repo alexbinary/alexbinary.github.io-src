@@ -18,9 +18,10 @@
 
       {% assign current = site.langs[page.lang] %}
       {% assign avail = site.langs[avail_lang] %}
+      {% assign key = 'lang_' | append: avail_lang %}
 
       {% assign message = avail.available_info
-        | replace: '%URL%', avail.url
+        | replace: '%URL%', page[key]
         | replace: '%FLAG%', avail.flag %}
 
         <div class="lang-available-banner">

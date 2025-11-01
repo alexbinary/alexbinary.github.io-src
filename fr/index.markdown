@@ -2,6 +2,7 @@
 layout: page
 last_updated: 2025-10-31
 lang: fr
+lang_en: /
 ---
 
 {% include intro_fr.html %}
@@ -41,7 +42,7 @@ lang: fr
             title="Solution de rangement LEGO"
             subtitle="Solution DIY pour le rangement des pièces de LEGO"
             text="J'ai construit un meuble sur mesure pour organiser l'inventaire de ma boutique en ligne #menuiserie #decoupe-laser"
-            url="/projects/lego-storage-system"
+            url="/fr/projets/rangement-lego"
             image_url="/assets/projects/lego-storage-system/4.jpg"    %}
 
     </div>

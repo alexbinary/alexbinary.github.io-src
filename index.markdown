@@ -2,6 +2,7 @@
 layout: page
 last_updated: 2025-10-26
 lang: en
+lang_fr: /fr
 ---
 
 {% include intro.html %}
@@ -41,7 +42,7 @@ lang: en
             title="LEGO Storage System"
             subtitle="DIY Custom solution for storage of LEGO parts"
             text="Custom built furniture to organize my inventory for my online shop with #woodworking #LASERcutter"
-            url="/projects/lego-storage-system"
+            url="/en/projects/lego-storage-system"
             image_url="/assets/projects/lego-storage-system/4.jpg"
         %}
 

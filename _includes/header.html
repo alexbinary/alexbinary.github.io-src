@@ -27,11 +27,12 @@
         {% for item in site.langs %}
           {% assign code = item[0] %}
           {% assign lang = item[1] %}
+          {% assign key = 'lang_' | append: code %}
 
           {% if page.lang == code %}
             <span class="lang active" title="{{ lang.title_active }}">{{ lang.flag }}</span>
           {% else %}
-            <a href="{{ lang.url }}" class="lang" title="{{ lang.title_inactive }}">{{ lang.flag }}</a>
+            <a href="{{ page[key] }}" class="lang" title="{{ lang.title_inactive }}">{{ lang.flag }}</a>
           {% endif %}
         {% endfor %}
 

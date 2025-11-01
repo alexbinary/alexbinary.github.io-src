@@ -6,6 +6,7 @@ image: /assets/projects/lego-storage-system/4.jpg
 project_status: 'complete ✅'
 last_updated: 2025-10-31
 lang: en
+lang_fr: /fr/projets/rangement-lego
 ---
 
 Since 2019, I've been running an [online parts store](https://store.bricklink.com/alexbinary) on the BrickLink platform. Customers can order individual parts from several thousand unique references. Good stock organization is therefore critical. Initially, I used an off-the-shelf solution that helped me get started but eventually showed its limitations. I then undertook to create a completely custom storage solution.
