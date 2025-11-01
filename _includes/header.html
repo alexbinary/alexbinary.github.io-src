@@ -1,7 +1,13 @@
 <header class="site-header" role="banner">
 
+  {% if page.lang == 'fr' %}
+    {% assign url = "/fr" %}
+  {% elsif page.lang == 'en' %}
+      {% assign url = "/" %}
+  {% endif %}
+
   <div class="wrapper">
-    <a class="site-title" rel="author" href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+    <a class="site-title" rel="author" href="{{ url }}">{{ site.title | escape }}</a>
 
     <div class="lang-and-menu">
 
