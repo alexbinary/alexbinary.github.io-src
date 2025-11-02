@@ -399,6 +399,7 @@ section:last-of-type {
 .inspiration-card-content {
     color: black;
     padding: 1rem 0.2rem;
+    padding-right: 2rem
 }
 
 .inspiration-card-title {
@@ -422,6 +423,33 @@ section:last-of-type {
     color: #666;
     font-size: 0.9rem;
     margin-top: -0.4rem;
+}
+
+@media (max-width: 768px) {
+
+    .inspiration-card {
+        align-items: start;
+        padding: 0.6rem;
+    }
+
+    .inspiration-card .img-container {
+        padding: 0;
+        text-align: center;
+        width: 5rem;
+    }
+
+    .inspiration-card-content {
+        padding: 0;
+        margin-top: -0.2rem;
+        padding-left: 0.4rem;
+        padding-bottom: 0.7rem;
+        padding-right: 2rem;
+
+    }
+
+    .inspiration-card-subtitle {
+        margin-top: 0;
+    }
 }
 
 .inspiration-card-text {
