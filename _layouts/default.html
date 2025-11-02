@@ -31,6 +31,15 @@
         </div>
 
         {{ content }}
+
+        <p class="ai-disclaimer">
+          {% if page.lang == 'fr' %}
+            J'utilise des outils d'IA générative pour rédiger et/ou traduire le contenu de ce site.
+            L'IA est un outil de productivité et d'inspiration, je m'assure toujours que les textes finaux reflètent fidèlement ma voix.
+            {% elsif page.lang == 'en' %}
+            I use generative AI to write and/or translate the content featured on this website. AI serves only as a tool for productivity and inspiration, I make sure that the final texts always reflect my personal voice and style.
+          {% endif %}
+        </p>
       </div>
     </main>
 
