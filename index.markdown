@@ -56,6 +56,37 @@ lang_fr: /fr
 - [BrickLink App](/projects/bricklink-app)
 - Compta App
 
+{% endcomment %}
+
+
+<section>
+    {% include heading-with-icon.html text="My inspiration" icon="🌱" %}
+
+    <div class="cards-container">
+
+        {% include inspiration-card.html
+        title="Sebastian Lague's <i>Coding Adventure</i> series"
+            picto="📺"
+            subtitle="Videos about coding physics simulation"
+            url="https://www.youtube.com/watch?v=Qz0KTGYJtUk&list=PLFt_AvWsXl0ehjAfLFsp1PGaatzAwo0uK&index=11"
+            image_url="https://yt3.googleusercontent.com/ytc/AIdro_knyJw3jL_6AGomJmGe3VvfIYxWzZC9Y8z90Liru4G0UHM=s160-c-k-c0x00ffffff-no-rj"
+            text="Humble exploration with great narrative and visuals 🎯"
+        %}
+
+        {% include inspiration-card.html
+            title="Take on Me: Cover by Ashley Johnson"
+            picto="🎶"
+            subtitle="Music from The Last of Us Part II"
+            url="https://www.youtube.com/watch?v=axsIHXxQox4"
+            image_url="https://i.ytimg.com/vi/axsIHXxQox4/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAG1Qtwd6vo0TzZAKxpwB6BJ21p1w"
+            text="Deceptively simple guitar cover carrying so much emotion 🫠"
+        %}
+
+    </div>
+</section>
+
+
+{% comment %}
 
 {: style="margin-top: 3rem" }
 {% include heading-with-icon.html text="Current topics of interests" icon="👀" %}
