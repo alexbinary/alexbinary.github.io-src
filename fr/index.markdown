@@ -55,6 +55,37 @@ lang_en: /
 - [Application BrickLink](/projects/bricklink-app)
 - Application de comptabilité
 
+{% endcomment %}
+
+
+<section>
+    {% include heading-with-icon.html text="Mes inspirations" icon="🌱" %}
+
+    <div class="cards-container">
+
+        {% include inspiration-card.html
+            title="Série <i>Coding Adventure</i> de Sebastian Lague"
+            picto="📺"
+            subtitle="Vidéos sur la programmation de simulations physique"
+            url="https://www.youtube.com/watch?v=Qz0KTGYJtUk&list=PLFt_AvWsXl0ehjAfLFsp1PGaatzAwo0uK&index=11"
+            image_url="https://yt3.googleusercontent.com/ytc/AIdro_knyJw3jL_6AGomJmGe3VvfIYxWzZC9Y8z90Liru4G0UHM=s160-c-k-c0x00ffffff-no-rj"
+            text="Exploration avec narration et visuels captivants 🎯 (en anglais)"
+        %}
+
+        {% include inspiration-card.html
+            title="Take on Me : Reprise par Ashley Johnson"
+            picto="🎶"
+            subtitle="Musique de The Last of Us Part II"
+            url="https://www.youtube.com/watch?v=axsIHXxQox4"
+            image_url="https://i.ytimg.com/vi/axsIHXxQox4/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAG1Qtwd6vo0TzZAKxpwB6BJ21p1w"
+            text="Une reprise à la guitare très simple mais pleine d'émotion 🫠"
+        %}
+
+    </div>
+</section>
+
+
+{% comment %}
 
 {: style="margin-top: 3rem" }
 {% include heading-with-icon.html text="Sujets d'intérêt actuels" icon="👀" %}
