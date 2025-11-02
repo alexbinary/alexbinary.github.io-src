@@ -59,7 +59,7 @@ lang_en: /
 
 
 <section>
-    {% include heading-with-icon.html text="Mes inspirations" icon="🌱" %}
+    {% include heading-with-icon.html text="Choses qui m'inspirent" icon="🌱" %}
 
     <div class="cards-container">
 
@@ -69,7 +69,7 @@ lang_en: /
             subtitle="Vidéos sur la programmation de simulations physique"
             url="https://www.youtube.com/watch?v=Qz0KTGYJtUk&list=PLFt_AvWsXl0ehjAfLFsp1PGaatzAwo0uK&index=11"
             image_url="https://yt3.googleusercontent.com/ytc/AIdro_knyJw3jL_6AGomJmGe3VvfIYxWzZC9Y8z90Liru4G0UHM=s160-c-k-c0x00ffffff-no-rj"
-            text="Exploration avec narration et visuels captivants 🎯 (en anglais)"
+            text="Exploration avec narration et visuels captivants 🎯 (en&nbsp;anglais)"
         %}
 
         {% include inspiration-card.html

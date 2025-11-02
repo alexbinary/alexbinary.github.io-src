@@ -60,7 +60,7 @@ lang_fr: /fr
 
 
 <section>
-    {% include heading-with-icon.html text="My inspiration" icon="🌱" %}
+    {% include heading-with-icon.html text="Things that inspire me" icon="🌱" %}
 
     <div class="cards-container">
 

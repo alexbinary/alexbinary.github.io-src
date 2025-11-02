@@ -373,14 +373,21 @@ section:last-of-type {
     display: flex;
     gap: 0.7rem;
     align-items: center;
-    background: #fafafa;
-    border: 1px solid #eee;
+    /* border: 1px solid #c8c8c8; */
 }
 
 .inspiration-card .external-link {
     position: absolute;
     right: 0.8rem;
     top: 0.5rem;
+}
+
+.inspiration-card .background-image {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    filter: blur(0.8rem);
+    opacity: 0.4;
 }
 
 .inspiration-card .img-container {
@@ -443,7 +450,7 @@ section:last-of-type {
         margin-top: -0.2rem;
         padding-left: 0.4rem;
         padding-bottom: 0.7rem;
-        padding-right: 2rem;
+        padding-right: 1.6rem;
 
     }
 
