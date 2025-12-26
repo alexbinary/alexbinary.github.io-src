@@ -82,6 +82,16 @@ lang_fr: /fr
             text="Deceptively simple guitar cover carrying so much emotion 🫠"
         %}
 
+        {% comment %}
+
+        Ben eater: The SID: Classic 8-bit sound
+        https://www.youtube.com/watch?v=LSMQ3U1Thzw
+
+        Deep Blue vs Gaskaroff
+        https://www.youtube.com/watch?v=Yo5vRHJ5y0Y
+
+        {% endcomment %}
+
     </div>
 </section>
 
@@ -269,6 +279,10 @@ lang_fr: /fr
             url="https://rebrickable.com/users/alexbinary/"
             image_url="https://rebrickable.com/static/img/def_av.png"
         %}
+
+        {% comment %}
+        Stargate in 4 min
+        {% endcomment %}
 
     </div>
 </section>
