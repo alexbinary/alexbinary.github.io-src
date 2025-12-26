@@ -55,7 +55,7 @@ Jusqu'à quatre cloisons peuvent être ajoutées dans la largeur et deux dans la
 
 #### Les 👍
 
-<ul class="plus">
+<ul class="list-pointer-style">
 <li>Vendu par éléments individuels, permettant de former une stucture globale de la taille et forme de son choix</li>
 <li>Agencement interne ajustable</li>
 <li>Possibilité de sortir complètement un tiroir pour l'emporter sur la zone de travail</li>
@@ -64,7 +64,7 @@ Jusqu'à quatre cloisons peuvent être ajoutées dans la largeur et deux dans la
 
 #### Les 👎
 
-<ul class="minus">
+<ul class="list-pointer-style">
 <li>Impossible d'extraire un compartiment individuel pour l'amener sur la zone de travail ou vider son contenu (ça rend notamment très pénible le déplacement des pièces d'un compartiment à un autre)</li>
 <li>Difficile de reconfigurer les cloisons quand les compartiments sont occupés</li>
 <li>Les cloisons ne sont pas vérouillées et peuvent se soulever et laisser fuiter des pièces dans les compartiments voisins</li>

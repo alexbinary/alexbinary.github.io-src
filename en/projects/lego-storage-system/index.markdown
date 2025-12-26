@@ -56,7 +56,7 @@ Up to four dividers can be added in width and two in length to form up to 15 com
 
 #### The pros 👍
 
-<ul class="plus">
+<ul class="list-pointer-style">
 <li>Sold as individual elements, allowing to form an overall structure of any size and shape</li>
 <li>Adjustable internal layout</li>
 <li>Possibility to completely remove a drawer to take it to the work area</li>
@@ -65,7 +65,7 @@ Up to four dividers can be added in width and two in length to form up to 15 com
 
 #### The cons 👎
 
-<ul class="minus">
+<ul class="list-pointer-style">
 <li>Impossible to extract an individual compartment to bring it to the work area or empty its contents (this makes moving pieces from one compartment to another very tedious)</li>
 <li>Difficult to reconfigure dividers when compartments are occupied</li>
 <li>Dividers are not locked and can lift up and let pieces leak into neighboring compartments</li>
