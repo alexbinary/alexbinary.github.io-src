@@ -2,7 +2,10 @@
     <div class="external-link"></div>
     <div class="activity-card-pointer">👉</div>
     <div class="activity-card-img-and-content">
-        <img src="{{ include.image_url }}" alt="Card Image" />
+        <img src="{{ include.image_url }}" alt="Card Image" class="color-scheme-light"/>
+        {% if include.image_url_dark %}
+            <img src="{{ include.image_url_dark }}" alt="Card Image" class="color-scheme-dark"/>
+        {% endif %}
         <div class="activity-card-content">
             <div class="activity-card-title-and-subtitle">
                 <div class="activity-card-title">{{ include.title }}</div>

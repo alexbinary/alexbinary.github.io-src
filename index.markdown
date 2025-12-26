@@ -20,6 +20,7 @@ lang_fr: /fr
             text="Advanced Master® in Embedded systems"
             url="https://www.isae-supaero.fr/en/programmes/advanced-master-embedded-systems-ems/"
             image_url="https://www.isae-supaero.fr/wp-content/uploads/2025/03/logo.svg"
+            image_url_dark="https://www.isae-supaero.fr/wp-content/uploads/2025/03/logo.svg"
         %}
 
         {% include activity-card.html
@@ -28,6 +29,7 @@ lang_fr: /fr
             text="I sell LEGO pieces worldwide, visit my store!"
             url="https://store.bricklink.com/alexbinary"
             image_url="/assets/BrickLink_logo.svg"
+            image_url_dark="/assets/BrickLink_logo-inverted.svg"
         %}
 
     </div>
