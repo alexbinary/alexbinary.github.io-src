@@ -286,9 +286,12 @@ lang_fr: /fr
             image_url="https://rebrickable.com/static/img/def_av.png"
         %}
 
-        {% comment %}
-        Stargate in 4 min
-        {% endcomment %}
+        {% include link-card.html
+            title="YouTube"
+            text="Editing Stargate"
+            url="https://www.youtube.com/playlist?list=PL2ml2VtSiJHGieeRn3JBA-ejggvwbAtdZ"
+            image_url="https://i.ytimg.com/vi/cNh_yNhvXGM/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBQztCBxezmk4QQ7z8v0suh9SOFnQ"
+        %}
 
     </div>
 </section>
