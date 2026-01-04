@@ -1,6 +1,6 @@
 ---
 layout: page
-last_updated: 2025-11-02
+last_updated: 2026-01-04
 lang: en
 lang_fr: /fr
 ---
