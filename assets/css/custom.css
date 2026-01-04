@@ -349,6 +349,7 @@ ul.list-pointer-style li::before {
     background: var(--activity-card-bg-color);
     border: 1px solid var(--activity-card-border-color);
     padding: 0.7rem;
+    padding-left: 2rem;
     padding-bottom: 1rem;
     border-radius: 8px;
     position: relative;
@@ -367,10 +368,6 @@ ul.list-pointer-style li::before {
     top: 0.5rem;
 }
 
-.activity-card-pointer {
-    font-size: 2rem;
-}
-
 .activity-card img {
     width: 20%;
 }
@@ -385,10 +382,6 @@ ul.list-pointer-style li::before {
 }
 
 @media (max-width: 768px) {
-
-    .activity-card-pointer {
-        display: none;
-    }
 
     .activity-card-img-and-content {
         flex-direction: column;
