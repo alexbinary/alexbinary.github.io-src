@@ -247,7 +247,7 @@ lang_fr: /fr
 {% endcomment %}
 
 <section>
-    {% include heading-with-icon.html text="My online activities" icon="👨‍💻" %}
+    {% include heading-with-icon.html text="Other online activities" icon="👨‍💻" %}
 
     <div class="cards-container">
 
