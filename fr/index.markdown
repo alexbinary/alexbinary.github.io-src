@@ -91,6 +91,19 @@ lang_en: /
 </section>
 
 
+<section>
+    {% include heading-with-icon.html text="Réflexions du moment" icon="💭" %}
+
+    <div class="cards-container">
+
+        {% include reflexion-card.html
+            title="Vouloir changer les gens est vain. La meilleure chose qu'on peut faire est de se concentrer sur soi-même et d'exprimer ce qu'on ressent avec honnêteté. Les gens changent quand ils y sont prêts."
+        %}
+
+    </div>
+</section>
+
+
 {% comment %}
 
 {: style="margin-top: 3rem" }

@@ -102,6 +102,19 @@ lang_fr: /fr
 </section>
 
 
+<section>
+    {% include heading-with-icon.html text="Ideas in my head" icon="💭" %}
+
+    <div class="cards-container">
+
+        {% include reflexion-card.html
+            title="We cannot change people. The best thing we can do is focus on ourselves and express how we feel with honesty. People change when they are ready."
+        %}
+
+    </div>
+</section>
+
+
 {% comment %}
 
 {: style="margin-top: 3rem" }
