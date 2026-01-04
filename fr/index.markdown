@@ -10,7 +10,7 @@ lang_en: /
 <p class="aerospace-icons">🪐🛰️</p>
 
 <section>
-    {% include heading-with-icon.html text="Mes activités principales" icon="📂" %}
+    {% include heading-with-icon.html text="Mon activité principale" icon="📂" %}
 
     <div class="cards-container">
 
@@ -23,6 +23,8 @@ lang_en: /
             image_url_dark="https://www.isae-supaero.fr/wp-content/uploads/2025/03/logo.svg"
         %}
 
+        {% comment %}
+
         {% include activity-card.html
             title="Boutique BrickLink"
             subtitle="Vente en ligne"
@@ -31,6 +33,8 @@ lang_en: /
             image_url="/assets/BrickLink_logo.svg"
             image_url_dark="/assets/BrickLink_logo-inverted.svg"
         %}
+
+        {% endcomment %}
 
     </div>
 </section>
