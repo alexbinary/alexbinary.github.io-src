@@ -592,16 +592,20 @@ ul.list-pointer-style li::before {
 .link-card {
     display: flex;
     margin-bottom: 14px;
+    overflow: hidden;
+
     background: var(--link-card-bg-color);
     border: 1px solid var(--link-card-border-color);
-    border-radius: 8px;
-    overflow: hidden;
+    border-radius: 12px;
 }
 
 .link-card img {
-    max-width: 40px;
-    height: auto;
+    max-width: 60px;
     object-fit: cover;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    margin: 8px;
+    margin-right: 0;
 }
 
 .link-card-content {
@@ -613,8 +617,29 @@ ul.list-pointer-style li::before {
 
 @media (max-width: 768px) {
 
+    .link-card {
+        display: flex;
+        margin-bottom: 14px;
+        overflow: hidden;
+
+        background: none;
+        border: none;
+    }
+
+    .link-card img {
+        max-width: 40px;
+        object-fit: cover;
+        height: auto;
+        aspect-ratio: inherit;
+        margin: 0px;
+        margin-right: 4px;
+    }
+
     .link-card-content {
         padding-left: 10px;
+        background: var(--link-card-bg-color);
+        border: 1px solid var(--link-card-border-color);
+        border-radius: 8px;
     }
 }
 
@@ -642,6 +667,7 @@ ul.list-pointer-style li::before {
 .link-card-url {
     font-style: italic;
     color: var(--fg-color-1);
+    white-space: nowrap;
 }
 
 @media (max-width: 768px) {
