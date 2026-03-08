@@ -96,6 +96,9 @@ lang_fr: /fr
         Deep Blue vs Gaskaroff
         https://www.youtube.com/watch?v=Yo5vRHJ5y0Y
 
+        Emergence, infinity, the universe
+        https://www.youtube.com/watch?v=0HqUYpGQIfs
+
         {% endcomment %}
 
     </div>
