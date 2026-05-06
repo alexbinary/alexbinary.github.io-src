@@ -13,6 +13,8 @@ theme: minima
 plugins:
   - jekyll-feed
 
+destination: ../build
+
 langs:
   en:
     flag: 🇺🇸

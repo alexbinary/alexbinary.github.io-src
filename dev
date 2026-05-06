@@ -1,0 +1,13 @@
+case "$1" in
+	deploy)
+        rm -r ../build/*
+		docker run --rm -it -v .:/app -v ../build:/build -w /app jekyll/minimal jekyll build
+		cd ../build
+		git add .
+		git commit -m "commit"
+		git push
+		;;
+	*)
+		echo "Usage: dev deploy"
+		;;
+esac
