@@ -54,7 +54,7 @@ lang_en: /
 </section>
 
 <section>
-    {% include heading-with-icon.html text="Mon dernier projet" icon="🧑‍🔬" %}
+    {% include heading-with-icon.html text="Projet à la une" icon="💫" %}
 
     <div class="cards-container">
 

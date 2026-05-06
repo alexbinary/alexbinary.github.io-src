@@ -53,7 +53,7 @@ lang_fr: /fr
 </section>
 
 <section>
-    {% include heading-with-icon.html text="My latest project" icon="🧑‍🔬" %}
+    {% include heading-with-icon.html text="Featured project" icon="💫" %}
 
     <div class="cards-container">
 
