@@ -7,38 +7,6 @@ lang_en: /
 
 {% include intro_fr.html %}
 
-<p class="aerospace-icons">🪐🛰️</p>
-
-<section>
-    {% include heading-with-icon.html text="Mon activité principale" icon="📂" %}
-
-    <div class="cards-container">
-
-        {% include activity-card.html
-            title="ISAE-SUPAERO"
-            subtitle="Toulouse, France"
-            text="Mastère Spécialisé® en systèmes embarqués"
-            url="https://www.isae-supaero.fr/en/programmes/advanced-master-embedded-systems-ems/"
-            image_url="https://www.isae-supaero.fr/wp-content/uploads/2025/03/logo.svg"
-            image_url_dark="https://www.isae-supaero.fr/wp-content/uploads/2025/03/logo.svg"
-        %}
-
-        {% comment %}
-
-        {% include activity-card.html
-            title="Boutique BrickLink"
-            subtitle="Vente en ligne"
-            text="Je vends des pièces de LEGO dans le monde entier"
-            url="https://store.bricklink.com/alexbinary"
-            image_url="/assets/BrickLink_logo.svg"
-            image_url_dark="/assets/BrickLink_logo-inverted.svg"
-        %}
-
-        {% endcomment %}
-
-    </div>
-</section>
-
 <section>
     {% include heading-with-icon.html text="Mon dernier projet" icon="🧑‍🔬" %}
 

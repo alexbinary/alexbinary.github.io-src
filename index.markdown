@@ -7,38 +7,6 @@ lang_fr: /fr
 
 {% include intro.html %}
 
-<p class="aerospace-icons">🪐🛰️</p>
-
-<section>
-    {% include heading-with-icon.html text="My main activity" icon="📂" %}
-
-    <div class="cards-container">
-
-        {% include activity-card.html
-            title="ISAE-SUPAERO"
-            subtitle="Toulouse, France"
-            text="Advanced Master® in Embedded systems"
-            url="https://www.isae-supaero.fr/en/programmes/advanced-master-embedded-systems-ems/"
-            image_url="https://www.isae-supaero.fr/wp-content/uploads/2025/03/logo.svg"
-            image_url_dark="https://www.isae-supaero.fr/wp-content/uploads/2025/03/logo.svg"
-        %}
-
-        {% comment %}
-
-        {% include activity-card.html
-            title="BrickLink Store"
-            subtitle="Online shop"
-            text="I sell LEGO pieces worldwide, visit my store!"
-            url="https://store.bricklink.com/alexbinary"
-            image_url="/assets/BrickLink_logo.svg"
-            image_url_dark="/assets/BrickLink_logo-inverted.svg"
-        %}
-
-        {% endcomment %}
-
-    </div>
-</section>
-
 <section>
     {% include heading-with-icon.html text="My latest project" icon="🧑‍🔬" %}
 
