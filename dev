@@ -1,4 +1,7 @@
 case "$1" in
+	start)
+		docker run --rm -it -v .:/app -v ../build:/build -w /app -p 4000:4000 -p 35729:35729 jekyll/minimal jekyll serve --livereload --drafts
+		;;
 	deploy)
         rm -r ../build/*
 		docker run --rm -it -v .:/app -v ../build:/build -w /app jekyll/minimal jekyll build
@@ -8,6 +11,6 @@ case "$1" in
 		git push
 		;;
 	*)
-		echo "Usage: dev deploy"
+		echo "Usage: dev {start|deploy}"
 		;;
 esac
