@@ -1,11 +1,56 @@
 ---
 layout: page
-last_updated: 2026-01-04
+last_updated: 2026-05-06
 lang: en
 lang_fr: /fr
 ---
 
 {% include intro.html %}
+
+<section>
+    {% include heading-with-icon.html text="Find me online" icon="🎯" %}
+
+    <div class="cards-container links-cards-container">
+
+        {% include link-card.html
+            text="I host my coding projects on <span class='link-card-title external-link-icon no-wrap'>Github</span>"
+            url="https://github.com/alexbinary"
+            image_url_light="/assets/github_light.png"
+            image_url_dark="/assets/github_dark.png"
+        %}
+
+        {% include link-card.html
+            text="I post street photography on <span class='link-card-title external-link-icon no-wrap'>Flickr</span>"
+            url="https://www.flickr.com/photos/189385048@N05/"
+            image_url="https://live.staticflickr.com/65535/50148054053_c78e0b402f.jpg"
+        %}
+        
+        {% include link-card.html
+            text="I post my best photographs on <span class='link-card-title external-link-icon no-wrap'>Instagram</span>"
+            url="https://www.instagram.com/al.exandre1859"
+            image_url="/assets/2025-04-04-photos/203902881_1941499075999282_4032388649777417923_n.jpg"
+        %}
+
+        {% include link-card.html
+            text="I also post LEGO photography on <span class='link-card-title external-link-icon no-wrap'>Flickr</span>"
+            url="https://www.flickr.com/photos/163799831@N07/"
+            image_url="https://live.staticflickr.com/7867/buddyicons/163799831@N07_r.jpg?1555350484#163799831@N07"
+        %}
+
+        {% include link-card.html
+            text="I post custom LEGO creations (MOCs) on <span class='link-card-title external-link-icon no-wrap'>Rebrickable</span>"
+            url="https://rebrickable.com/users/alexbinary/"
+            image_url="https://cdn.rebrickable.com/media/thumbs/mocs/moc-82694/242475.jpg/1000x800.jpg?1752647141.64937"
+        %}
+
+        {% include link-card.html
+            text="I edit Stargate episodes on <span class='link-card-title external-link-icon no-wrap'>YouTube</span>"
+            url="https://www.youtube.com/playlist?list=PL2ml2VtSiJHGieeRn3JBA-ejggvwbAtdZ"
+            image_url="https://i.ytimg.com/vi/cNh_yNhvXGM/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBQztCBxezmk4QQ7z8v0suh9SOFnQ"
+        %}
+
+    </div>
+</section>
 
 <section>
     {% include heading-with-icon.html text="My latest project" icon="🧑‍🔬" %}
@@ -229,53 +274,3 @@ lang_fr: /fr
 </div>
 
 {% endcomment %}
-
-<section>
-    {% include heading-with-icon.html text="Other online activities" icon="👨‍💻" %}
-
-    <div class="cards-container">
-
-        {% include link-card.html
-            title="Github"
-            text="My coding projects"
-            url="https://github.com/alexbinary"
-            image_url="https://avatars.githubusercontent.com/u/3055394?v=4"
-        %}
-
-        {% include link-card.html
-            title="Flickr"
-            text="My photography"
-            url="https://www.flickr.com/photos/189385048@N05/"
-            image_url="https://farm66.staticflickr.com/65535/coverphoto/189385048@N05_h.jpg?1639592419#189385048@N05"
-        %}
-        
-        {% include link-card.html
-            title="Instagram"
-            text="My best photographs"
-            url="https://www.instagram.com/al.exandre1859"
-            image_url="/assets/2025-04-04-photos/203902881_1941499075999282_4032388649777417923_n.jpg"
-        %}
-
-        {% include link-card.html
-            title="Flickr (LEGO)"
-            text="LEGO Photography"
-            url="https://www.flickr.com/photos/163799831@N07/"
-            image_url="https://live.staticflickr.com/7867/buddyicons/163799831@N07_r.jpg?1555350484#163799831@N07"
-        %}
-
-        {% include link-card.html
-            title="Rebrickable"
-            text="My LEGO creations"
-            url="https://rebrickable.com/users/alexbinary/"
-            image_url="https://rebrickable.com/static/img/def_av.png"
-        %}
-
-        {% include link-card.html
-            title="YouTube"
-            text="Editing Stargate"
-            url="https://www.youtube.com/playlist?list=PL2ml2VtSiJHGieeRn3JBA-ejggvwbAtdZ"
-            image_url="https://i.ytimg.com/vi/cNh_yNhvXGM/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBQztCBxezmk4QQ7z8v0suh9SOFnQ"
-        %}
-
-    </div>
-</section>

@@ -1,11 +1,12 @@
 <a href="{{ include.url }}" class="link-card no-external-link-icon">
-    <img src="{{ include.image_url }}" alt="Link image" />
-    <div class="link-card-content">
-        <div class="link-card-title-and-text external-link">
-            <span class="link-card-title">{{ include.title }}</span>
-            &nbsp;-&nbsp;
-            <span class="link-card-text">{{ include.text }}</span>
-        </div>
-        <div class="link-card-url">{{ include.url }}</div>
-    </div>
+    {% if include.image_url %}
+        <img src="{{ include.image_url }}" alt="Link image"/>
+    {% endif %}
+    {% if include.image_url_light %}
+        <img src="{{ include.image_url_light }}" alt="Link image" class="color-scheme-light"/>
+    {% endif %}
+    {% if include.image_url_dark %}
+        <img src="{{ include.image_url_dark }}" alt="Link image" class="color-scheme-dark"/>
+    {% endif %}
+    <span class="link-card-content">{{ include.text }}</span>
 </a>
