@@ -103,7 +103,7 @@ a:visited {
     border-bottom: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
 
     .site-footer .wrapper {
         flex-direction: column;
@@ -269,7 +269,7 @@ ul.list-pointer-style li::before {
     border-radius: 8px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
 
     .inline-image-container-row.mobile-column {
         flex-direction: column;
@@ -296,7 +296,7 @@ ul.list-pointer-style li::before {
     display: none;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 800px) {
 
     .inline-image-container-row#casier img {
         height: 450px;
@@ -321,7 +321,7 @@ ul.list-pointer-style li::before {
     flex: 1;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
 
     .intro {
         flex-direction: column-reverse;
@@ -370,7 +370,7 @@ ul.list-pointer-style li::before {
     justify-content: space-between;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
 
     .project-card img {
         height: 100%;
@@ -470,7 +470,7 @@ ul.list-pointer-style li::before {
     margin-top: -0.4rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
 
     .inspiration-card {
         align-items: start;
@@ -512,7 +512,7 @@ ul.list-pointer-style li::before {
     padding: 2rem;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
 
     .reflexion-card {
         padding: 1rem;
@@ -664,7 +664,7 @@ article.project .content-type {
     color: rgb(0, 0, 0);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
 
     article.project header {
         display: block;
@@ -740,13 +740,13 @@ article.project h3 {
     opacity: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 800px) {
     .mobile-only {
         display: none;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 800px) {
     .desktop-only {
         display: none;
     }
