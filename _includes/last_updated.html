@@ -2,6 +2,6 @@
     {% if page.lang == 'en' %}
     Last updated {{ page.last_updated | date: "%b %-d, %Y" }}
     {% else %}
-    Dernière mise à jour le {{ page.last_updated | date: "%-d %b %Y" }}
+    Dernière mise à jour le {{ page.last_updated | date_with_locale: "%-d %b %Y", "fr" }}
     {% endif %}
 </div>
