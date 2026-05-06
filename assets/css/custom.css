@@ -209,11 +209,11 @@ table td {
 /* ---- External link icon */
 
 
-.external-link .external-icon {
+.external-icon {
     margin-left: 0.5em;
 }
 
-.external-link .external-icon path {
+.external-icon path {
     fill: gray;
     stroke: gray;
 }
