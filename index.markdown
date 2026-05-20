@@ -1,11 +1,60 @@
 ---
 layout: page
-last_updated: 2026-05-06
+last_updated: 2026-05-20
 lang: en
 lang_fr: /fr
 ---
 
 {% include intro.html %}
+
+{% comment %}
+
+<section>
+    {% include heading-with-icon.html text="What I am working on" icon="🧑‍🔬" %}
+
+    <div class="cards-container">
+
+        {% include project-card.html
+            title="LEGO Storage System"
+            subtitle="DIY Custom solution for storage of LEGO parts"
+            text="Custom built furniture to store and organize my collection #woodworking #LASERcutter"
+            url="/en/projects/lego-storage-system"
+            image_url="/assets/projects/lego-storage-system/illus1.jpg"
+        %}
+
+        {% comment %}
+
+        {% include project-card.html
+            title="Media remote"
+            subtitle="DIY remote for watching movies on my computer"
+            text="ESP32 Bluetooth HID controller with 3D printed case and custom PCB #electronics #arduino #3dprinting #kicad"
+            url="/en/projects/lego-storage-system"
+            image_url="/assets/projects/lego-storage-system/4.jpg"
+        %}
+
+        {% endcomment %}
+
+    </div>
+
+</section>
+
+{% endcomment %}
+
+{% comment %}
+
+<section>
+    {% include heading-with-icon.html text="Other activities" icon="🧩" %}
+
+    <div class="cards-container">
+
+        Watching handmade Hero
+        Building along Ben Eater 8bit computer
+
+    </div>
+
+</section>
+
+{% endcomment %}
 
 <section>
     {% include heading-with-icon.html text="Find me online" icon="🎯" %}
@@ -52,23 +101,6 @@ lang_fr: /fr
     </div>
 </section>
 
-<section>
-    {% include heading-with-icon.html text="Featured project" icon="💫" %}
-
-    <div class="cards-container">
-
-        {% include project-card.html
-            title="LEGO Storage System"
-            subtitle="DIY Custom solution for storage of LEGO parts"
-            text="Custom built furniture to organize my inventory for my online shop with #woodworking #LASERcutter"
-            url="/en/projects/lego-storage-system"
-            image_url="/assets/projects/lego-storage-system/4.jpg"
-        %}
-
-    </div>
-
-</section>
-
 {% comment %}
 
 - Media remote
@@ -77,6 +109,7 @@ lang_fr: /fr
 
 {% endcomment %}
 
+{% comment %}
 
 <section>
     {% include heading-with-icon.html text="Things that inspire me" icon="🌱" %}
@@ -117,6 +150,8 @@ lang_fr: /fr
     </div>
 </section>
 
+{% endcomment %}
+{% comment %}
 
 <section>
     {% include heading-with-icon.html text="Ideas in my head" icon="💭" %}
@@ -129,6 +164,8 @@ lang_fr: /fr
 
     </div>
 </section>
+
+{% endcomment %}
 
 
 {% comment %}

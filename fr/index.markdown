@@ -1,12 +1,31 @@
 ---
 layout: page
-last_updated: 2026-05-06
+last_updated: 2026-05-20
 lang: fr
 lang_en: /
 ---
 
 {% include intro_fr.html %}
 
+{% comment %}
+
+<section>
+    {% include heading-with-icon.html text="Projets du moment" icon="🧑‍🔬" %}
+
+    <div class="cards-container">
+
+        {% include project-card.html
+            title="Solution de rangement LEGO"
+            subtitle="Solution DIY pour le rangement des pièces de LEGO"
+            text="J'ai construit un meuble sur mesure pour stocker et organiser ma collection #menuiserie #decoupelaser"
+            url="/fr/projets/rangement-lego"
+            image_url="/assets/projects/lego-storage-system/4.jpg"    %}
+
+    </div>
+
+</section>
+
+{% endcomment %}
 
 <section>
     {% include heading-with-icon.html text="Où me trouver" icon="🎯" %}
@@ -53,22 +72,6 @@ lang_en: /
     </div>
 </section>
 
-<section>
-    {% include heading-with-icon.html text="Projet à la une" icon="💫" %}
-
-    <div class="cards-container">
-
-        {% include project-card.html
-            title="Solution de rangement LEGO"
-            subtitle="Solution DIY pour le rangement des pièces de LEGO"
-            text="J'ai construit un meuble sur mesure pour organiser l'inventaire de ma boutique en ligne #menuiserie #decoupe-laser"
-            url="/fr/projets/rangement-lego"
-            image_url="/assets/projects/lego-storage-system/4.jpg"    %}
-
-    </div>
-
-</section>
-
 {% comment %}
 
 - Télécommande multimédia
@@ -77,6 +80,7 @@ lang_en: /
 
 {% endcomment %}
 
+{% comment %}
 
 <section>
     {% include heading-with-icon.html text="Choses qui m'inspirent" icon="🌱" %}
@@ -116,6 +120,8 @@ lang_en: /
 
     </div>
 </section>
+
+{% endcomment %}
 
 
 {% comment %}
