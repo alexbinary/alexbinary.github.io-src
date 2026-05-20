@@ -2,6 +2,11 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "label": "dev: start",
+            "type": "shell",
+            "command": "./dev start"
+        },
+        {
             "label": "dev: deploy",
             "type": "shell",
             "command": "./dev deploy"
