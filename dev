@@ -1,6 +1,8 @@
 case "$1" in
 	open)
 		code .
+		clear
+		git status
 		;;
 	start)
 		open --background -a Docker
