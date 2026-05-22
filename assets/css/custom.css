@@ -315,6 +315,11 @@ ul.list-pointer-style li::before {
     gap: 2rem;
 }
 
+.intro img.profile {
+    max-width: 60%;
+    padding-bottom: 1rem;
+}
+
 .intro-item-1 {
     flex: 2;
 }
@@ -323,7 +328,7 @@ ul.list-pointer-style li::before {
     flex: 1;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 600px) {
 
     .intro {
         flex-direction: column-reverse;
@@ -331,6 +336,14 @@ ul.list-pointer-style li::before {
 
     .intro-item-2 {
         text-align: center;
+        display: flex;
+        gap: 1rem;
+        align-items: flex-end;
+    }
+
+    .intro img.profile {
+        max-width: 40%;
+        padding-bottom: 0;
     }
 }
 
