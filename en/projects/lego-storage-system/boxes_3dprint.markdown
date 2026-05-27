@@ -1,11 +1,5 @@
 ---
-layout: project
-title: Boites v2
-parent_project_title: LEGO Storage System
-parent_project_url: ../lego-storage-system
-last_updated: 2025-09-01 10:10:09
-topics: [LEGO, 3dprinting]
-project_status: active
+layout: default
 ---
 
 Je fabrique des boîtes modulaires en impression 3D pour ranger les pièces de LEGO dans les meubles que j'ai fabriqués.

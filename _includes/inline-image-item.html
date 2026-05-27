@@ -4,7 +4,7 @@
     {% assign title = "Click to view full size image" %}
 {% endif %}
 
-<div class="inline-image-item">
+<div class="inline-image-item" id="{{ include.id }}">
     <p>
         <a href="{{ include.url }}" title="{{ title }}">
             <img src="{{ include.url }}" alt="{{ include.alt | escape }}"

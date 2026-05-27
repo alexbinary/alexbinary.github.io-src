@@ -7,8 +7,6 @@ lang_fr: /fr
 
 {% include intro.html %}
 
-{% comment %}
-
 <section>
     {% include heading-with-icon.html text="What I am working on" icon="🧑‍🔬" %}
 
@@ -16,8 +14,8 @@ lang_fr: /fr
 
         {% include project-card.html
             title="LEGO Storage System"
-            subtitle="DIY Custom solution for storage of LEGO parts"
-            text="Custom built furniture to store and organize my collection #woodworking #LASERcutter"
+            subtitle="Custom built furniture to store and organize my collection of parts"
+            text="#woodworking #lasercutting #3dprinting"
             url="/en/projects/lego-storage-system"
             image_url="/assets/projects/lego-storage-system/illus1.jpg"
         %}
@@ -37,8 +35,6 @@ lang_fr: /fr
     </div>
 
 </section>
-
-{% endcomment %}
 
 {% comment %}
 

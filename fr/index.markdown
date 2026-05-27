@@ -7,8 +7,6 @@ lang_en: /
 
 {% include intro_fr.html %}
 
-{% comment %}
-
 <section>
     {% include heading-with-icon.html text="Projets du moment" icon="🧑‍🔬" %}
 
@@ -17,15 +15,14 @@ lang_en: /
         {% include project-card.html
             title="Solution de rangement LEGO"
             subtitle="Solution DIY pour le rangement des pièces de LEGO"
-            text="J'ai construit un meuble sur mesure pour stocker et organiser ma collection #menuiserie #decoupelaser"
+            text="J'ai construit un meuble sur mesure pour stocker et organiser ma collection #menuiserie #decoupelaser #impression3d"
             url="/fr/projets/rangement-lego"
-            image_url="/assets/projects/lego-storage-system/4.jpg"    %}
+            image_url="/assets/projects/lego-storage-system/illus1.jpg"
+        %}
 
     </div>
 
 </section>
-
-{% endcomment %}
 
 <section>
     {% include heading-with-icon.html text="Où me trouver" icon="🎯" %}

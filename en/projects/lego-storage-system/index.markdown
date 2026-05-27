@@ -1,17 +1,19 @@
 ---
 layout: project
 title: LEGO Storage System
-topics: [LEGO, woodworking]
-image: /assets/projects/lego-storage-system/4.jpg
-project_status: 'complete ✅'
-last_updated: 2025-10-31
+topics: [lego, lasercutting, woodworking, 3dprinting]
+image: /assets/projects/lego-storage-system/illus2.jpg
+project_status: 'ongoing 🧑‍💻'
+last_updated: 2026-05-28
 lang: en
 lang_fr: /fr/projets/rangement-lego
 ---
 
-Since 2019, I have been running an [online store for LEGO parts](https://store.bricklink.com/alexbinary) on BrickLink. Customers can order individual parts from several thousand unique references. Good stock organization is therefore critical. At first, I used a commercial solution, which helped me get started but eventually showed its limitations. I then undertook to create a completely custom storage solution.
+I have always been a fan of LEGO, and nowadays I have many parts that I need to store. I want them to be neatly organized so that I can quickly find the ones I need when I want to build something. Since 2019 I have also been running an [online shop on BrickLink](https://store.bricklink.com/alexbinary) where customers can order individual parts, and good organization is critical.
 
-Let's start by presenting the commercial solution.
+At first, I used a commercial solution, which helped me get started but eventually showed its limitations. After that I undertook to create a custom storage solution. Over several years, I have designed and manufactured boxes out of wood with a LASER cutter, learned woodworking and built custom cabinets, upgraded the box system with 3D printing, and designed custom modules for IKEA shelves.
+
+This is the story of that project.
 
 ### The pros and cons of *Papi Max StackX Drawers*
 
@@ -74,8 +76,8 @@ Up to four dividers can be added in width and two in length to form up to 15 com
 <li>High price</li>
 </ul>
 
-Eventually, the removable divider system was appealing on paper but impractical in use.
-Added to that, the low build quality and high price were prohibitive to continue with this solution.
+At the end, the removable divider system was appealing on paper but impractical in use.
+Furthermore the low build quality and high price were prohibitive to continue with this solution.
 
 ### LASER cutting and modular boxes
 
@@ -95,7 +97,7 @@ After a training session, I started experimenting with this machine, and I quick
         
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/laser2.jpg"
-            legend="First creation"
+            legend="First tests"
             alt='A photo showing a wooden plate with a shape cut out with the word "Alex" engraved on it'
             width="350"
             height="330"
@@ -104,7 +106,7 @@ After a training session, I started experimenting with this machine, and I quick
     </div>
 </div>
 
-After quickly exploring different box assembly and construction techniques, I settled on a <b>tight notch</b> assembly.
+After exploring different box assembly and construction techniques (which you can read all about [here](boxes/laser)), I settled on a <b>tight notch</b> assembly.
 By adjusting the relative size of the notches well, it's possible to assemble the pieces with a mallet and it holds perfectly without glue.
 A simple solution as I like them.
 
@@ -126,13 +128,14 @@ I based the size of the first boxes on the size of the previous compartments, re
 A box with these dimensions can accommodate a LEGO piece 8 units long with just enough margin.
 For the height, I wanted to respect the LEGO brick ratio, considering that my box was equivalent to a 2x2 brick.
 LEGO experts know that the height of a 2x2 brick equals 3/5th of its width.
-For a 75mm side box, we thus get a height of 75*3/5 = 45mm.
-I found this too high, so I removed one third (which in the LEGO world corresponds to going from brick height to two plate height) which gives 30mm.
+For a 75mm side box, we thus get a height of 45mm.
+I found this too high, so I removed one third (which in the LEGO world corresponds to going from one brick height to two plate height) which gives 30mm.
 I find this to be the perfect ratio.
 
 From there, assuming my base box is 2x2 units wide and 2 plates high, I experimented with all kinds of variants in 1x1, 1x2, 2x3, 2x4, 3x3, etc. in versions of 1, 2, 3, or 4 plates high.
 
-<div class="inline-image-container">
+<div class="inline-image-container mobile-column">
+
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
@@ -172,52 +175,41 @@ From there, assuming my base box is 2x2 units wide and 2 plates high, I experime
         %}
 
     </div>
+
 </div>
 
 I quickly realized that large size and low height models are useful as trays for containing pieces during construction, for example.
 I made bigger ones, which I still commonly use today.
 
-### Some drawers to store the boxes
+Detailed read: [LASER cut LEGO boxes](boxes/laser)
 
-When I started having a certain number of loose boxes, the need for a higher level of storage became apparent. I started experimenting with a module system similar to *Papi Max*, using the same LASER cutting manufacturing technique as for the boxes. It wasn't perfect but it was very encouraging and motivated me to continue.
+### Drawers to store the boxes
 
-<div class="inline-image-container mobile-only">
-    <div class="inline-image-container-row mobile-column" id="casier">
+The boxes were a good start, but now I needed a place to store them. I started experimenting with a module system similar to *Papi Max*, using the same LASER cutting manufacturing technique as for the boxes. It wasn't perfect but it was very encouraging and motivated me to continue.
 
-        {% include inline-image-item.html
-            url="/assets/projects/lego-storage-system/casier1_3.jpg"
-            legend="First LASER cut drawers"
-            alt="A photo showing closed drawers, clearly showing the individual modules that house each drawer"
-        %}
+<div class="inline-image-container">
 
-        {% include inline-image-item.html
-            url="/assets/projects/lego-storage-system/casier2_1.jpg"
-            legend="Each drawer slides in its module"
-            alt="A photo showing 5 LASER cut drawers partially open"
-        %}
-        
-    </div>
-</div>
-
-<div class="inline-image-container desktop-only">
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/casier1_3.jpg"
             legend="First LASER cut drawers"
+            height="350"
             alt="A photo showing closed drawers, clearly showing the individual modules that house each drawer"
         %}
 
         {% include inline-image-item.html
-            url="/assets/projects/lego-storage-system/casier2_2.jpg"
+            id="casier"
+            url="/assets/projects/lego-storage-system/casier2_1.jpg"
             legend="Each drawer slides in its module"
+            height="350"
             alt="A photo showing 5 LASER cut drawers partially open"
         %}
         
     </div>
 </div>
 
-For the next step, I wanted a quality feel when opening and closing the drawers.
+For the real drawers, I wanted a quality feel when opening and closing the drawers.
 This was important to me.
 I wanted my drawers to give an impression of solidity and quality,
 with smooth opening and closing,
@@ -241,8 +233,8 @@ After some research, I found a model of full extension slides on Amazon, availab
 </div>
 
 After some experimentation with the slides, I built a first furniture prototype with 10mm poplar plywood.
-I cut the pieces with a jigsaw but the result was very mediocre.
-Nothing was really straight, and the opening/closing of drawers wasn't smooth
+I cut the pieces with a handheld jigsaw but the result was very mediocre.
+Despite my best efforts nothing was really straight, and the opening/closing of drawers wasn't smooth
 and open drawers would collide.
 
 The makerspace that houses the LASER cutter also has a woodworking shop.
@@ -268,7 +260,7 @@ The result was significantly better.
     </div>
 </div>
 
-### Real large furniture
+### Real large cabinets
 
 I had a prototype that I really liked and I was now very eager to continue by making larger furniture.
 I started by making a piece twice as wide based on the same model as the prototype.
@@ -296,10 +288,9 @@ Compared to the previous model, I added a partition that cuts the drawer in two 
     </div>
 </div>
 
-### Conclusion and next steps
-
-I now have a total of 5 pieces of furniture of different capacities that I use daily to store my LEGO pieces for my online store.
-The modular box system allows carrying, moving, and arranging compartments in drawers at will. Drawer opening is smooth, effortless, and gives a quality feel that I really like.
+After that I continued experimenting with new techniques and designs.
+I ended up with a total of 5 pieces of furniture of different capacities and each one with its own identity.
+The modular box system allows carrying, moving, and arranging compartments in drawers at will. Drawer opening is smooth, effortless, and gives a quality feel that I really like. I was very happy.
 
 <div class="inline-image-container">
 
@@ -307,14 +298,14 @@ The modular box system allows carrying, moving, and arranging compartments in dr
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/phase1/1.jpg"
-            height="250"
-            legend="The complete setup I use today"
+            height="550"
+            legend="The complete setup I ended up with"
             alt="A photo showing a stack composed from bottom to top of a large cabinet with 16 drawers, two cabinets with 5 drawers, and two small half-width cabinets with 5 drawers each"
         %}
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/4.jpg"
-            height="250"
+            height="550"
             legend="View inside a drawer"
             alt="A photo showing the inside of a drawer divided in two parts, each filled with boxes of different formats containing LEGO pieces of various sizes and quantities arranged on a well-defined grid"
         %}
@@ -322,14 +313,92 @@ The modular box system allows carrying, moving, and arranging compartments in dr
     </div>
 </div>
 
-I always need more storage space,
-and I plan to make more furniture,
-always seeking to improve the design.
-I'd like to succeed in better aligning the drawers with each other.
-I'd also like to find a solution to the fact that the slides don't allow the drawer to extend beyond its depth,
-which still makes access to the back boxes difficult,
-especially when there's the handle of the drawer above just overhead.
+### Exploring IKEA and 3D printing
 
-For the next pieces of furniture, I'd like to try adding a large illustration that spans across the drawer fronts.
+I wanted to continue expanding the storage capacity, and I took some time to think about the next thing I wanted to do. For a while I wanted to take the latest design and make a big integrated unit that would basically be an equivalent of the whole set of what I had so far, and maybe add more general compartments and shelves. I even started design work on that idea.
 
-I'm also thinking about making modules to insert into IKEA Kallax shelves.
+I was envisionning an ever expanding setup that could end up being very large, but building custom furniture out of wood is not cheap and takes time, and I wasn't sure I wanted to continue on that route. So I started exploring other options. I had seen people use the ALEX cabinets from IKEA for LEGO storage and decided to give it a try. That was also the time I was finally able to acquire a 3D printer, and I was curious to try to make boxes with 3D printing instead of LASER cutting.
+
+I got inspired by the [Gridfinity](https://www.youtube.com/watch?v=ra_9zU-mnl8) system, which covers the bottom of the drawers with a grid that holds the boxes perfectly aligned even if some are missing. I took the idea but designed my own version of the grid and boxes from scratch. I added vertical tabs to help pick up the boxes in the drawers, which had always been a pain point with the wooden box. To find the size of the boxes I measured the length and width of the ALEX drawers and found that the largest common divider of both was 30mm. So that was the base unit of my modular box system.
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row mobile-column">
+        
+        {% include inline-image-item.html
+            url="/assets/projects/lego-storage-system/alex 3.jpg"
+            legend="The IKEA ALEX cabinet I purchased"
+            alt="A picture of a white cabinet with six drawers."
+            height="350"
+        %}
+
+        {% include inline-image-item.html
+            url="/assets/projects/lego-storage-system/alex 4.jpg"
+            legend="Custom designed 3D printed boxes on a grid"
+            alt="A view inside a drawer of the cabinet shown on the previous picture. In the foreground we see greyish blue boxes. On the back of the drawer we see that underneath the boxes there is grid."
+            height="350"
+        %}
+
+    </div>
+    
+</div>
+
+I printed a lot of boxes and grids. The system worked well, but there was a few issues. The ALEX drawers do not come out completly, which leaves a significant portion of the drawer inaccessible from the top. The only practical solution is to use long boxes that extend all the way to the back of the drawer. They can be used to store large pieces of smaller pieces in large quantities, but that is a pretty big constraint. Also, the drawer are quite deep and since I do not have large quantities of each piece it is not very practical. So the ALEX route seemed to be a dead end.
+
+However the 3D printed boxes and grids idea stuck and I started using it in my previously built cabinets. I improved on the design, raising the bottom to have a flat surface, adding rounded edges and experimenting with smaller tab designs (or not tab at all) to fit in the smaller space available. I printed boxes with every color of filament I had on hand, and for a time it was a multicolor mess. But then I found one I felt comfortable scaling and stuck with it: BambuLab Matte Apple Green (11502).
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row mobile-column">
+        
+        {% include inline-image-item.html
+            url="/assets/projects/lego-storage-system/boxes 1.jpg?"
+            legend="Different colors and designs mixed together"
+            alt="A view inside a drawer containing many boxes filled with LEGO pieces. The boxes are of different colors and shape variations."
+            height="300"
+        %}
+
+        {% include inline-image-item.html
+            url="/assets/projects/lego-storage-system/boxes 2.jpg"
+            legend="The Apple Green color I chose to go with"
+            alt="A view inside a drawer containing many boxes filled with LEGO pieces. The boxes are all the same color, a light apple green, and same shape."
+            height="300"
+        %}
+
+    </div>
+
+</div>
+
+### The KALLAX way forward
+
+Some time passed, and when I started thinking about extending my storage again, I turned to another IKEA classic: KALLAX, a series that offers modular shelving. The main feature is that all compartements are identical, and a wide variety of accessories are available to be inserted into the compartment to add doors, drawers, additional shelves, etc. The units themselves come in various configurations like 2x2, 4x4, 2x4, 5x5, etc, and can be combined however you like.
+
+My long term goal was to make a storage system that could evolve and adapt to my needs, while looking good and consistent all the way through. I wanted to go for something that was simple, flexible and easily scalable. By making modules that can be integrated into KALLAX units instead of standalone cabinets, I wouldn't have to build the exterior frame, I can configure the ensemble as I want, and I can combine different modules to build a flexible setup. Since one compartment is quite tiny, I envisionned modules that would span two compartments. The design of the KALLAX units makes it easy to remove the separator between two compartments while leaving the other ones untouched.
+
+Again I needed to decide the size of the boxes. I had been completly free to choose the size for the first wooden cabinet and completly constrained by the size of the ALEX drawers, but this time was in between. The drawers and the structure had to fit in the width but could be smaller, and I had some freedom for the depth, and I could make the boxes as tall as I wanted. After running the numbers I landed on 85mm base width and 45mm height.
+
+I made a one-compartment module to validate the design, and then went on with a two-compartment module.
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row mobile-column">
+        
+        {% include inline-image-item.html
+            url="/assets/projects/lego-storage-system/leka 2.jpg"
+            legend="First one-compartment prototype module in a 2x2 unit"
+            alt="A picture of a black 2x2 KALLAX unit with a 6 drawers module in the top left compartment. The drawers face are made of wood and feature metal handles."
+            height="350"
+        %}
+
+        {% include inline-image-item.html
+            url="/assets/projects/lego-storage-system/leka 1.jpg"
+            legend="Second two-compartment prototype module in a 2x2 unit"
+            alt="A picture of a black 2x2 KALLAX unit with a 6 drawers module occupying the two top compartments. The drawers face are made of wood and feature metal handles."
+            height="350"
+        %}
+
+    </div>
+
+</div>
+
+I am currently migrating my LEGO parts to this new system, printing as many boxes as needed, and plan on building more modules like this.

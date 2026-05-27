@@ -1,11 +1,5 @@
 ---
-layout: project
-title: Module Kallax
-parent_project_title: LEGO Storage System
-parent_project_url: ../lego-storage-system
-last_updated: 2025-09-02
-topics: [LEGO, woodworking]
-project_status: active
+layout: default
 ---
 
 Après avoir réalisé une série de [meubles indépendants](meubles_v1) pour ranger mes pièces de LEGO pour [ma boutique en ligne](/occupations/bricklink), je réfléchis désormais à adapter le design pour en faire un module à intégrer dans des étagères IKEA de type Kallax. J'en suis encore à la phase de conception.

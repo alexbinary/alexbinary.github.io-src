@@ -1,13 +1,5 @@
 ---
-layout: project
-title: Meubles v1
-parent_project_title: LEGO Storage System
-parent_project_url: ../lego-storage-system
-topics: [LEGO, woodworking]
-project_status: complete
-project_current_iteration_title: Module Kallax
-project_current_iteration_url: meubles_v2
-last_updated: 2025-09-02
+layout: default
 ---
 
 [![](/assets/projects/lego-storage-system/phase1/1.jpg)

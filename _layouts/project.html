@@ -4,7 +4,9 @@ layout: default
 <article class="post project">
 
   <header>
-    <img src="{{ page.image }}">
+    <div class="image-container">
+      <img src="{{ page.image }}">
+    </div>
 
     <div class="header-content">
       <div>
@@ -25,18 +27,27 @@ layout: default
               {% endif %}
             </strong> <span>{{ page.project_status | escape }}</span>
           {% endif %}
-          {% if page.project_current_iteration_title and page.project_current_iteration_url %}
-            &nbsp; | &nbsp; <strong>Current iteration:</strong> <a href="{{ page.project_current_iteration_url | escape }}">{{ page.project_current_iteration_title | escape }}</a>
-          {% endif %}
         </div>
       </div>
       
-      <h1>{{ page.title | escape }}</h1>
+      <div class="title">
+        <h1>{{ page.title | escape }}</h1>
+
+        {% if page.project_parent_title and page.project_parent_url %}
+          <p class="parent-project">
+            {% if page.lang == 'en' %}
+              Part of
+            {% else %}
+              Projet parent: 
+            {% endif %}
+            <a href="{{ page.project_parent_url | escape }}">{{ page.project_parent_title | escape }}</a>
+          </p>
+        {% endif %}
+      </div>
     
        {% if page.topics %}
         <div class="project-topics">
           {% for topic in page.topics %}
-            {% comment %} <a href="/{{ topic }}"><i>#{{ topic | escape}}</i></a> {% endcomment %}
             #{{ topic | escape}}
           {% endfor %}
         </div>

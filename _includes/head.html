@@ -7,11 +7,15 @@
     <meta name="theme-color" content="#fdfdfd" media="(prefers-color-scheme: light)">
     <meta name="theme-color" content="#212121" media="(prefers-color-scheme: dark)">
     
-    <title>{{ site.description[page.lang] }}</title>
+    {%- assign title = site.description[page.lang] -%}
+    {%- if page.title -%}
+        {%- assign title = page.title | append: " - " | append: site.description[page.lang] -%}
+    {%- endif -%}
+    <title>{{ title }}</title>
     <meta name="description" content="{{ site.description[page.lang] }}" />
     <meta name="author" content="{{ site.author }}" />
 
-    <meta property="og:title" content="{{ site.description[page.lang] }}" />
+    <meta property="og:title" content="{{ title }}" />
     <meta property="og:site_name" content="{{ site.description[page.lang] }}" />
     <meta property="og:description" content="{{ site.description[page.lang] }}" />
     <meta property="og:locale" content="{{ page.lang }}" />

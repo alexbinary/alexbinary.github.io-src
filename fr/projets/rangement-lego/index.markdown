@@ -1,17 +1,19 @@
 ---
 layout: project
 title: Rangement LEGO
-topics: [LEGO, menuiserie]
-image: /assets/projects/lego-storage-system/4.jpg
-project_status: 'terminé ✅'
-last_updated: 2025-10-31
+topics: [lego, decoupelaser, menuiserie, impression3d]
+image: /assets/projects/lego-storage-system/illus2.jpg
+project_status: 'en cours 🧑‍💻'
+last_updated: 2026-05-28
 lang: fr
 lang_en: /en/projects/lego-storage-system
 ---
 
-Depuis 2019 je tiens une [boutique en ligne de vente de pièces de LEGO](https://store.bricklink.com/alexbinary) sur la plateforme BrickLink. Les clients peuvent commander des pièces individuelles parmis plusieurs milliers de références uniques. Une bonne organisation du stock est donc critique. Au début j'utilisais une solution du commerce, elle m'a permis de démarrer mais elle a fini par montrer ses limites. J'ai alors entrepris de fabriquer une solution de rangement entièrement sur mesure.
+Je suis fan de LEGO depuis longtemps, et je possède aujourd'hui une importante collection de pièces que j'ai besoin de ranger. Je veux que les pièces soient bien organisées pour pouvoir trouver rapidement celles dont j'ai besoin quand je construis quelque chose. Depuis 2019 je tiens également une [boutique en ligne](https://store.bricklink.com/alexbinary) sur la plateforme BrickLink, où les clients peuvent commander des pièces individuelles, et il est donc nécessaire d'être bien organisé.
 
-Commençons par présenter la solution du commerce.
+Au début j'utilisais une solution du commerce. Elle m'a permis de démarrer mais elle a fini par montrer ses limites. J'ai alors entrepris de fabriquer une solution de rangement entièrement sur mesure. Au cours des dernières années j'ai conçu et fabriqué des boites en bois en découpe LASER, appris la menuiserie et construit des meubles sur mesure, amélioré les boites en bois avec de l'impression 3D, et fabriqué des modules pour les étagères IKEA KALLAX.
+
+Je reviens ici sur l'histoire de ce projet.
 
 ### Avantages et inconvénients de *Papi Max StackX Drawers*
 
@@ -22,6 +24,7 @@ Les tiroirs sont transparents et équipés d'une poignée à l'avant.
 Jusqu'à quatre cloisons peuvent être ajoutées dans la largeur et deux dans la longueur pour former jusqu'à 15 compartiments.
 
 <div class="inline-image-container">
+
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
@@ -32,6 +35,7 @@ Jusqu'à quatre cloisons peuvent être ajoutées dans la largeur et deux dans la
         %}
 
     </div>
+
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
@@ -49,6 +53,7 @@ Jusqu'à quatre cloisons peuvent être ajoutées dans la largeur et deux dans la
         %}
 
     </div>
+
 </div>
 
 [Un test détaillée du produit est disponible sur le site Brick Architect (en anglais)](https://brickarchitect.com/2019/review-papi-max-stackx-drawers/)
@@ -83,6 +88,7 @@ Courant 2021 j'ai eu l'occasion de me former à la découpe LASER dans un atelie
 Après une séance de formation, j'ai commencé à expérimenter avec cette machine, et j'en ai vite saisi le potentiel pour fabriquer des boites qui pourraient servir de base à une solution de rangement sur mesure, où l'on peut emporter, déplacer et agencer à loisir des compartiments dans des tiroirs. 
 
 <div class="inline-image-container">
+
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
@@ -95,20 +101,22 @@ Après une séance de formation, j'ai commencé à expérimenter avec cette mach
         
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/laser2.jpg"
-            legend="Première réalisation"
+            legend="Premiers tests"
             alt='Une photo montrant une plaquette de bois dans laquelle est découpée une forme sur laquelle est gravé le mot "Alex"'
             width="350"
             height="330"
         %}
 
     </div>
+
 </div>
 
-Après avoir rapidement exploré différentes techniques d'assemblage et de construction des boites, je me suis fixé sur un assemblage par <b>créneaux serrés</b>.
+Après avoir exploré différentes techniques d'assemblage et de construction des boites (que je détaille [ici](/fr/projets/rangement-lego/boites/laser)), je me suis fixé sur un assemblage par <b>créneaux serrés</b>.
 En ajustant bien la taille relative des créneaux il est possible d'assembler les pièces au maillet et ça tient parfaitement sans colle.
 Une solution simple comme j'aime.
 
 <div class="inline-image-container">
+
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
@@ -118,6 +126,7 @@ Une solution simple comme j'aime.
             alt="Un dessin illustrant deux pièces dans lequelles sont découpées des encoches complémentaires permettant un assemblage"
         %}
     </div>
+
 </div>
 
 L'idée ensuite était de faire un système des boites modulaires que l'on peut agencer à loisir dans des grands tiroirs. Ce système permet d'emporter, de déplacer, et de vider facilement les compartiments.
@@ -126,13 +135,14 @@ J'ai calqué la taille des premières boites sur la taille des compartiments pr�
 Une boite avec ces dimensions peut accueillir une pièce de LEGO de 8 unités de long avec juste ce qu'il faut de marge.
 Pour la hauteur j'ai voulu respecter le ratio des briques LEGO, en considérant que ma boite était équivalente à une brique de 2x2.
 Les experts de la brique danoise savent que la hauteur d'une brique 2x2 est égale à 3/5e de sa largeur.
-Pour une boite de 75mm de côté on arrive donc à une hauteur de 75*3/5 = 45mm.
+Pour une boite de 75mm de côté on arrive donc à une hauteur de 45mm.
 Je trouvais ça trop haut, alors j'ai enlevé un tier (ce qui dans le monde LEGO correspond à passer de la hauteur d'une brique à la hauteur de deux plaques) ce qui donne 30mm.
 Je trouve que c'est le ratio parfait.
 
 Partant de là, en partant du principe que ma boite de base fait 2x2 unités de large et 2 plaques de haut, j'ai expérimenté avec tout un tas de variantes en 1x1, 1x2, 2x3, 2x4, 3x3, etc en version 1, 2, 3 ou 4 plaques de hauteur. 
 
-<div class="inline-image-container">
+<div class="inline-image-container mobile-column">
+
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
@@ -172,52 +182,42 @@ Partant de là, en partant du principe que ma boite de base fait 2x2 unités de 
         %}
 
     </div>
+
 </div>
 
 Je me suis vite rendu compte que les modèles de grande taille et faible hauteur sont utiles en tant que plateau pour contenir des pièces lors de constructions par exemples.
 J'en ai fait des plus grands, que j'utilise encore couramment aujourd'hui.
 
+Article détaillé: [Boites LEGO en découpe LASER](/fr/projets/rangement-lego/boites/laser)
+
 ### Des tiroirs pour ranger les boites
 
-Quand j'ai commencé à avoir un certain nombre de boites en vrac, le besoin d'un niveau supérieur de rangement s'est fait sentir. J'ai commencé par expérimenter avec un système de modules semblables au *Papi Max*, avec la même technique de fabrication en découpe LASER que pour les boites. Ce n'était pas parfait mais c'était très encourageant et ça m'a motivé à continuer.
+Les boites constituaient un bon début, mais j'avais désormais besoin d'un endroit où les ranger. J'ai commencé par expérimenter avec un système de modules semblables au *Papi Max*, avec la même technique de fabrication en découpe LASER que pour les boites. Ce n'était pas parfait mais c'était très encourageant et ça m'a motivé à continuer.
 
-<div class="inline-image-container mobile-only">
-    <div class="inline-image-container-row mobile-column" id="casier">
+<div class="inline-image-container">
 
-        {% include inline-image-item.html
-            url="/assets/projects/lego-storage-system/casier1_3.jpg"
-            legend="Premiers tiroirs en découpe LASER"
-            alt="Une photo montrant les tiroirs fermés, on voit bien les modules individuels qui hébergent chaque tiroir"
-        %}
-
-        {% include inline-image-item.html
-            url="/assets/projects/lego-storage-system/casier2_1.jpg"
-            legend="Chaque tiroir coulisse dans son module"
-            alt="Une photo montrant 5 tiroirs découpés au LASER partiellement ouverts"
-        %}
-        
-    </div>
-</div>
-
-<div class="inline-image-container desktop-only">
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/casier1_3.jpg"
             legend="Premiers tiroirs en découpe LASER"
+            height="350"
             alt="Une photo montrant les tiroirs fermés, on voit bien les modules individuels qui hébergent chaque tiroir"
         %}
 
         {% include inline-image-item.html
-            url="/assets/projects/lego-storage-system/casier2_2.jpg"
+            id="casier"
+            url="/assets/projects/lego-storage-system/casier2_1.jpg"
             legend="Chaque tiroir coulisse dans son module"
+            height="350"
             alt="Une photo montrant 5 tiroirs découpés au LASER partiellement ouverts"
         %}
         
     </div>
+
 </div>
 
-Pour la suite, je voulais une sensation de qualité à l'ouverture et fermeture des tiroirs.
+Pour les vrais tiroirs, je voulais une sensation de qualité à l'ouverture et fermeture des tiroirs.
 C'était important pour moi.
 Je voulais que mes tiroirs donnent une impression de solidité et de qualité,
 avec une ouverture et fermeture fluide,
@@ -296,11 +296,7 @@ Par rapport au modèle précédent j'ai ajouté une cloison qui coupe le tiroir 
     </div>
 </div>
 
-
-### Bilan et perspective
-
-Je dispose aujourd'hui d'un total de 5 meubles de différentes capacités que j'utilise au quotidien pour ranger mes pièces de LEGO pour ma boutique en ligne.
-Le système des boites modulaires permet d'emporter, déplacer et agencer à loisir les compartiments dans les tiroirs. L'ouverture des tiroirs est fluide, sans effort et donne une impression de qualité que j'aime beaucoup.
+J'ai ensuite continué à expérimenter avec de nouvelles techniques et nouveaux designs. Je suis arrivé à un total de 5 meubles de différentes capacité avec chacun une identité propre. Le système des boites modulaires permet d'emporter, déplacer et agencer à loisir les compartiments dans les tiroirs. L'ouverture des tiroirs est fluide, sans effort et donne une impression de qualité que j'aime beaucoup.
 
 <div class="inline-image-container">
 
@@ -308,14 +304,14 @@ Le système des boites modulaires permet d'emporter, déplacer et agencer à loi
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/phase1/1.jpg"
-            height="250"
-            legend="L'ensemble complet que j'utilise aujourd'hui"
+            height="550"
+            legend="L'ensemble des 5 meubles"
             alt="Une photo montrant un empilement composé de bas en haut d'un grand meuble de 16 tiroirs, deux meubles de 5 tiroirs, et deux petits meubles demie largeur de 5 tiroirs chacun"
         %}
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/4.jpg"
-            height="250"
+            height="550"
             legend="Vue de l'intérieur d'un tiroir"
             alt="Une photo montrant l'intérieur d'un tiroir divisé en deux partie, chacun remplie de boites de différents formats contenant des pièces de LEGO en différentes tailles et quantité agencées sur une grille bien définie"
         %}
@@ -323,14 +319,93 @@ Le système des boites modulaires permet d'emporter, déplacer et agencer à loi
     </div>
 </div>
 
-J'ai toujours besoin de plus de place de rangement,
-et je prévois de fabriquer encore d'autres meubles,
-en cherchant toujours à améliorer la conception.
-J'aimerais réussir à aligner mieux les tiroirs entre eux.
-J'aimerais aussi trouver une solution au fait que les glissières ne permettent pas au tiroir de sortir plus que sa profondeur,
-ce qui rend encore l'accès aux boites du fond difficile,
-surtout quand il y a la poignée du tiroir du dessus juste au dessus.
 
-Pour les prochains meubles je voudrais essayer d'ajouter une grande illustration qui s'étale sur les façades des tiroirs.
+### IKEA et impression 3D
 
-Je réflechis aussi à faire des modules à insérer dans des étagères IKEA de type Kallax.
+Je voulais continuer à augmenter la capacité de stockage, et j’ai pris le temps de réfléchir à la prochaine étape. Depuis un moment, je voulais reprendre le dernier design et créer une grande unité intégrée qui serait en quelque sorte l’équivalent de l’ensemble de ce que j’avais jusque-là, avec peut-être davantage de compartiments et d’étagères polyvalents. J’ai même commencé un travail de conception sur cette idée.
+
+J’ai imaginé un setup qui pourrait évoluer et devenir très grand, mais fabriquer des meubles sur mesure en bois coûte cher et prend du temps, et je n’étais pas certain de vouloir continuer dans cette direction. J’ai donc commencé à explorer d’autres options. J’avais vu des gens utiliser les caissons ALEX d’IKEA pour ranger leurs LEGO et j’ai décidé d’essayer. C’est aussi à cette époque que j’ai enfin pu acquérir une imprimante 3D, et j’étais curieux d’essayer de fabriquer des boîtes en impression 3D plutôt qu’en découpe LASER.
+
+Je me suis inspiré du système [Gridfinity](https://www.youtube.com/watch?v=ra_9zU-mnl8) qui recouvre le fond des tiroirs d’une grille permettant de maintenir les boîtes parfaitement alignées. J’ai repris l’idée, mais j’ai conçu ma propre version de la grille et des boîtes entièrement à partir de zéro. J’ai ajouté des languettes verticales pour faciliter la prise en main des boîtes dans les tiroirs, ce qui avait toujours été un point faible avec les boîtes en bois. Pour déterminer la taille des boîtes, j’ai mesuré la longueur et la largeur des tiroirs ALEX et constaté que leur plus grand diviseur commun était 30 mm. Cela est donc devenu l’unité de base de mon système modulaire de boîtes.
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row mobile-column">
+        
+        {% include inline-image-item.html
+            url="/assets/projects/lego-storage-system/alex 3.jpg"
+            legend="Le caisson IKEA ALEX que j’ai acheté"
+            alt="Une photo d’un meuble blanc avec six tiroirs."
+            height="350"
+        %}
+
+        {% include inline-image-item.html
+            url="/assets/projects/lego-storage-system/alex 4.jpg"
+            legend="Boîtes imprimées en 3D conçues sur mesure sur une grille"
+            alt="Vue de l’intérieur d’un tiroir du meuble montré sur l’image précédente. Au premier plan, on voit des boîtes bleu grisâtre. À l’arrière du tiroir, on distingue une grille sous les boîtes."
+            height="350"
+        %}
+
+    </div>
+
+</div>
+
+J’ai imprimé beaucoup de boîtes et de grilles. Le système fonctionnait bien, mais il présentait quelques problèmes. Les tiroirs ALEX ne s’ouvrent pas complètement, ce qui laisse une partie importante du tiroir inaccessible par le dessus. La seule solution pratique est d’utiliser des boîtes qui s’étendent jusqu’au fond du tiroir. Elles peuvent servir à stocker de grandes pièces ou de petites pièces en grande quantité, mais cela représente une contrainte assez importante. De plus, les tiroirs sont assez profonds et, comme je ne possède pas de grandes quantités de chaque pièce, ce n’est pas très pratique. La solution ALEX semblait donc être une impasse.
+
+Cependant, l’idée des boîtes et des grilles imprimées en 3D m’a bien plu et j’ai commencé à l’utiliser dans les meubles que j’avais construits auparavant. J’ai amélioré le design en surélevant le fond pour obtenir une surface plane, en ajoutant des bords arrondis et en expérimentant avec des languettes plus petites ou même sans languette afin de s’adapter à l’espace réduit disponible. J’ai imprimé des boîtes avec toutes les couleurs de filament que j’avais sous la main, et pendant un temps c’était un véritable patchwork multicolore. Puis j’ai trouvé une couleur avec laquelle je me sentais prêt à passer à l’échelle et je m’y suis tenu : BambuLab Matte Apple Green (11502).
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row mobile-column">
+        
+        {% include inline-image-item.html
+            url="/assets/projects/lego-storage-system/boxes 1.jpg?"
+            legend="Différentes couleurs et designs mélangés"
+            alt="Vue de l’intérieur d’un tiroir contenant de nombreuses boîtes remplies de pièces LEGO. Les boîtes ont différentes couleurs et variations de forme."
+            height="300"
+        %}
+
+        {% include inline-image-item.html
+            url="/assets/projects/lego-storage-system/boxes 2.jpg"
+            legend="La couleur Apple Green que j’ai choisie"
+            alt="Vue de l’intérieur d’un tiroir contenant de nombreuses boîtes remplies de pièces LEGO. Les boîtes sont toutes de la même couleur, un vert pomme clair, et de la même forme."
+            height="300"
+        %}
+
+    </div>
+
+</div>
+
+### La suite en KALLAX
+
+Un certain temps s’est écoulé, et lorsque j’ai recommencé à réfléchir à une extension de mon système de stockage, je me suis tourné vers un autre classique d’IKEA : KALLAX, une gamme proposant des étagères modulaires. Sa principale caractéristique est que tous les compartiments sont identiques, et qu’il existe une grande variété d’accessoires permettant d'ajouter des portes, des tiroirs, des étagères supplémentaires, etc. Les unités elles-mêmes sont disponibles dans différentes configurations comme 2x2, 4x4, 2x4, 5x5, etc., et peuvent être combinées comme on le souhaite.
+
+Mon objectif à long terme était de créer un système de rangement capable d’évoluer et de s’adapter à mes besoins, tout en conservant un aspect cohérent et esthétique. Je voulais quelque chose de simple, flexible et facilement extensible. En fabriquant des modules pouvant être intégrés dans des unités KALLAX plutôt que des meubles indépendants, je n’ai plus besoin de construire la structure extérieure, je peux configurer l’ensemble comme je le souhaite et combiner différents modules pour créer une installation flexible. Comme un compartiment seul est assez petit, j’ai imaginé des modules couvrant deux compartiments. La conception des unités KALLAX permet de retirer facilement la séparation entre deux compartiments sans toucher aux autres.
+
+Pour les premier meubles en bois j’avais été totalement libre de choisir les dimensions des boites. Avec les tiroirs ALEX j'étais totalement contraint par la taille des tiroirs. Cette fois-ci c’était entre les deux. Les tiroirs et la structure devaient respecter la largeur disponible mais pouvaient être plus petits, j’avais une certaine liberté pour la profondeur, et je pouvais rendre les boîtes aussi hautes que je le souhaitais. Après plusieurs calculs, je suis arrivé à une largeur de base de 85 mm et une hauteur de 45 mm.
+
+J’ai fabriqué un module à un compartiment pour valider le concept, puis je suis passé à un module à deux compartiments.
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row mobile-column">
+        
+        {% include inline-image-item.html
+            url="/assets/projects/lego-storage-system/leka 2.jpg"
+            legend="Premier prototype de module à un compartiment dans une unité 2x2"
+            alt="Une photo d’une unité KALLAX noire 2x2 avec un module à six tiroirs dans le compartiment supérieur gauche. Les façades des tiroirs sont en bois et comportent des poignées métalliques."
+            height="350"
+        %}
+
+        {% include inline-image-item.html
+            url="/assets/projects/lego-storage-system/leka 1.jpg"
+            legend="Second prototype de module à deux compartiments dans une unité 2x2"
+            alt="Une photo d’une unité KALLAX noire 2x2 avec un module à six tiroirs occupant les deux compartiments supérieurs. Les façades des tiroirs sont en bois et comportent des poignées métalliques."
+            height="350"
+        %}
+
+    </div>
+
+</div>
+
+Je suis actuellement en train de transférer mes pièces LEGO vers ce nouveau système, en imprimant autant de boîtes que nécessaire, et je prévois de construire davantage de modules de ce type.
