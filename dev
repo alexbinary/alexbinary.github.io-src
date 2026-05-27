@@ -1,5 +1,6 @@
 case "$1" in
 	open)
+		open .
 		code .
 		clear
 		git status
