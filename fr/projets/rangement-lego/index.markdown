@@ -111,7 +111,7 @@ Après une séance de formation, j'ai commencé à expérimenter avec cette mach
 
 </div>
 
-Après avoir exploré différentes techniques d'assemblage et de construction des boites (que je détaille [ici](/fr/projets/rangement-lego/boites/laser)), je me suis fixé sur un assemblage par <b>créneaux serrés</b>.
+Après avoir exploré différentes techniques d'assemblage et de construction des boites (que je détaille [ici](/fr/projets/boites-laser)), je me suis fixé sur un assemblage par <b>créneaux serrés</b>.
 En ajustant bien la taille relative des créneaux il est possible d'assembler les pièces au maillet et ça tient parfaitement sans colle.
 Une solution simple comme j'aime.
 
@@ -188,7 +188,7 @@ Partant de là, en partant du principe que ma boite de base fait 2x2 unités de 
 Je me suis vite rendu compte que les modèles de grande taille et faible hauteur sont utiles en tant que plateau pour contenir des pièces lors de constructions par exemples.
 J'en ai fait des plus grands, que j'utilise encore couramment aujourd'hui.
 
-Article détaillé: [Boites LEGO en découpe LASER](/fr/projets/rangement-lego/boites/laser)
+Article détaillé: [Boites en découpe LASER](/fr/projets/boites-laser)
 
 ### Des tiroirs pour ranger les boites
 

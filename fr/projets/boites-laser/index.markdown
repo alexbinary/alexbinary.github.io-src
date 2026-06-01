@@ -1,19 +1,17 @@
 ---
 layout: project
-title: Boites LEGO en découpe LASER
-topics: [lego, decoupelaser]
+title: Boites en découpe LASER
+topics: [decoupelaser]
 image: /assets/projects/lego-storage-system/boites1.jpg
-project_status: 'en cours 🧑‍💻'
-project_parent_title: Rangement LEGO
-project_parent_url: /fr/projets/rangement-lego
+project_status: 'terminé ✅'
 last_updated: 2026-05-28
 lang: fr
-lang_en: /en/projects/lego-storage-system/boxes/laser
+lang_en: /en/projects/laser-boxes
 ---
 
 Courant 2021 je cherchais à remplacer la solution commerciale que j'utilisais pour ranger ma collection de pièces de LEGO. J'ai eu l'occasion de me former à la découpe LASER dans un atelier partagé près de chez moi, et j'ai vite saisi le potentiel pour fabriquer des boites qui pourraient servir de base à une solution de rangement sur mesure.
 
-J'ai commencé par explorer différentes techniques et designs avant de m'arrêter sur un système de créneaux serrés.
+J'ai commencé par explorer différentes techniques et designs avant de m'arrêter sur un système de créneaux serrés. Cette technique est devenue la base de nombreuses créations bien au-delà du rangement de LEGO.
 
 {% comment %}
 Pour faciliter la conception des différentes pièces j'ai codé un outil pour générer les tracés de découpe.

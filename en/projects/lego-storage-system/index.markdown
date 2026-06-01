@@ -106,7 +106,7 @@ After a training session, I started experimenting with this machine, and I quick
     </div>
 </div>
 
-After exploring different box assembly and construction techniques (which you can read all about [here](boxes/laser)), I settled on a <b>tight notch</b> assembly.
+After exploring different box assembly and construction techniques (which you can read all about [here](/en/projects/laser-boxes)), I settled on a <b>tight notch</b> assembly.
 By adjusting the relative size of the notches well, it's possible to assemble the pieces with a mallet and it holds perfectly without glue.
 A simple solution as I like them.
 
@@ -181,7 +181,7 @@ From there, assuming my base box is 2x2 units wide and 2 plates high, I experime
 I quickly realized that large size and low height models are useful as trays for containing pieces during construction, for example.
 I made bigger ones, which I still commonly use today.
 
-Detailed read: [LASER cut LEGO boxes](boxes/laser)
+Detailed read: [LASER cut boxes](/en/projects/laser-boxes)
 
 ### Drawers to store the boxes
 
@@ -294,7 +294,7 @@ The modular box system allows carrying, moving, and arranging compartments in dr
 
 <div class="inline-image-container">
 
-    <div class="inline-image-container-row">
+    <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/phase1/1.jpg"
@@ -369,13 +369,15 @@ However the 3D printed boxes and grids idea stuck and I started using it in my p
 
 </div>
 
-### The KALLAX way forward
+### What about KALLAX ?
 
-Some time passed, and when I started thinking about extending my storage again, I turned to another IKEA classic: KALLAX, a series that offers modular shelving. The main feature is that all compartements are identical, and a wide variety of accessories are available to be inserted into the compartment to add doors, drawers, additional shelves, etc. The units themselves come in various configurations like 2x2, 4x4, 2x4, 5x5, etc, and can be combined however you like.
+Some time passed, and when I started thinking about extending my storage again, I turned to another IKEA classic: KALLAX, a series that offers modular shelving. The main feature is that all compartments are identical, and a wide variety of accessories are available to be inserted into the compartments to add doors, drawers, additional shelves, etc. The units themselves come in various configurations like 2x2, 4x4, 2x4, 5x5, etc, and can be combined however you like.
 
-My long term goal was to make a storage system that could evolve and adapt to my needs, while looking good and consistent all the way through. I wanted to go for something that was simple, flexible and easily scalable. By making modules that can be integrated into KALLAX units instead of standalone cabinets, I wouldn't have to build the exterior frame, I can configure the ensemble as I want, and I can combine different modules to build a flexible setup. Since one compartment is quite tiny, I envisionned modules that would span two compartments. The design of the KALLAX units makes it easy to remove the separator between two compartments while leaving the other ones untouched.
+My long term goal was to make a storage system that could evolve and adapt to my needs, while looking good and consistent all the way through. I wanted to go for something that was simple to build, flexible and easily scalable. By making modules that can be integrated into KALLAX units instead of standalone cabinets, I wouldn't have to build the exterior frame, I can configure the ensemble as I want, and I can combine different modules to build a flexible setup. Seemed like a very good solution.
 
-Again I needed to decide the size of the boxes. I had been completly free to choose the size for the first wooden cabinet and completly constrained by the size of the ALEX drawers, but this time was in between. The drawers and the structure had to fit in the width but could be smaller, and I had some freedom for the depth, and I could make the boxes as tall as I wanted. After running the numbers I landed on 85mm base width and 45mm height.
+Since one compartment is quite tiny, I envisionned modules that would span two compartments. The design of the KALLAX units makes it easy to remove the separator between two compartments while leaving the other ones untouched.
+
+Again I needed to decide the size of the boxes. I had been completly free to choose the size for the first wooden cabinet and completly constrained by the size of the ALEX drawers, but this time was in between. The drawers and the structure had to fit in the KALLAX width but could be smaller, I had some freedom for the depth, and I could make the boxes as tall as I wanted. After running the numbers I landed on 85mm base width and 45mm height.
 
 I made a one-compartment module to validate the design, and then went on with a two-compartment module.
 

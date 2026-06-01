@@ -1,19 +1,17 @@
 ---
 layout: project
-title: LASER cut LEGO boxes
-topics: [lego, lasercutting]
+title: LASER cut boxes
+topics: [lasercutting]
 image: /assets/projects/lego-storage-system/boites1.jpg
-project_status: 'ongoing 🧑‍💻'
-project_parent_title: LEGO Storage System
-project_parent_url: /en/projects/lego-storage-system
+project_status: 'done ✅'
 last_updated: 2026-05-28
 lang: en
-lang_fr: /fr/projets/rangement-lego/boites/laser
+lang_fr: /fr/projets/boites-laser
 ---
 
 Back in 2021, I was looking for a replacement for the commercial solution I had been using to store my LEGO parts collection. Around that time, I had the opportunity to learn laser cutting at a local makerspace, and I quickly realized the potential of using it to build boxes that could serve as the foundation of a custom storage system.
 
-I started by exploring different techniques and designs before settling on a tight finger-joint system.
+I started by exploring different techniques and designs before settling on a tight finger-joint system. This constituted the foundation of many creations that went well beyond the initial LEGO storage problem.
 
 {% comment %}
 To make designing the various parts easier, I wrote a tool to generate the cutting paths automatically.
