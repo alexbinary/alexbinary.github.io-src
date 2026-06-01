@@ -45,13 +45,26 @@ layout: default
         {% endif %}
       </div>
     
-       {% if page.topics %}
+      {% if page.topics %}
         <div class="project-topics">
           {% for topic in page.topics %}
             #{{ topic | escape}}
           {% endfor %}
         </div>
       {% endif %}
+
+      {% if page.project_github %}
+        <div class="project-topics">
+          <a href="{{ page.project_github }}">
+            {% if page.lang == 'en' %}
+              The code for this project is on GitHub
+            {% else %}
+              Le code de ce projet est sur GitHub
+            {% endif %}
+          </a>
+        </div>
+      {% endif %}
+
     </div>
 
   </header>

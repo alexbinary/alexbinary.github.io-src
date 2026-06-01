@@ -13,6 +13,15 @@ lang_fr: /fr
     <div class="cards-container">
 
         {% include project-card.html
+            title="Optic simulator"
+            subtitle="Graphical simulation software to understand light and optical systems"
+            text="#programming #swiftui"
+            url="/en/projects/optics-simulator"
+            image_url="/assets/projects/optics-simulator/screenshot1.png"
+            image_class="image_top_0"
+        %}
+
+        {% include project-card.html
             title="LEGO Storage System"
             subtitle="Custom built furniture to store and organize my collection of parts"
             text="#woodworking #lasercutting #3dprinting"

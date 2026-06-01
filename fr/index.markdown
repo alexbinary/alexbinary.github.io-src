@@ -8,10 +8,19 @@ lang_en: /
 {% include intro_fr.html %}
 
 <section>
-    {% include heading-with-icon.html text="Projets du moment" icon="🧑‍🔬" %}
+    {% include heading-with-icon.html text="Projets récents" icon="🧑‍🔬" %}
 
     <div class="cards-container">
 
+        {% include project-card.html
+            title="Simulateur optique"
+            subtitle="Logiciel de simulation graphique pour comprendre le fonctionnement de la lumière et des systèmes optiques"
+            text="#programmation #swiftui"
+            url="/fr/projets/simulateur-optique"
+            image_url="/assets/projects/optics-simulator/screenshot1.png"
+            image_class="image_top_0"
+        %}
+        
         {% include project-card.html
             title="Solution de rangement LEGO"
             subtitle="Solution DIY pour le rangement des pièces de LEGO"
