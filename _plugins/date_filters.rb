@@ -1,25 +1,35 @@
 require "date"
 
 module Jekyll
-  module DateWithLocaleFilter
-    MONTHS = {
-      "fr" => %w[janvier février mars avril mai juin juillet août septembre octobre novembre décembre]
-    }
-  
-    def date_with_locale(input, format, locale)
+  module DateCustomFilter
+
+    MONTHS = [
+      nil,
+      "janvier", "février", "mars", "avril", "mai", "juin",
+      "juillet", "août", "septembre", "octobre", "novembre", "décembre",
+    ]
+    
+    def date_custom(input, locale)
       
-      formatted = input.to_date.strftime(format)
-      
-      if locale != 'en' && (format.include?("%B") || format.include?("%b"))
-        MONTHS[locale].each_with_index do |month, i|
-          en_month = Date::MONTHNAMES[i + 1]
-          formatted.gsub!(en_month, month)
+      if locale == 'en'
+        formatted = date_to_string(input, "ordinal", "US")
+
+      elsif locale == 'fr'
+        
+        date = input.to_date
+
+        day = "#{date.day}"
+        if date.day == 1
+          day = "#{day}er"
         end
+
+        formatted = "#{day} #{MONTHS[date.month]} #{date.year}"
+        
       end
-      
+
       formatted
     end
   end
 end
 
-Liquid::Template.register_filter(Jekyll::DateWithLocaleFilter)
+Liquid::Template.register_filter(Jekyll::DateCustomFilter)
