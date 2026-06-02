@@ -1,0 +1,16 @@
+{% if page.lang == 'fr' %}
+    {% assign title = "Cliquer pour agrandir l'image" %}
+{% elsif page.lang == 'en' %}
+    {% assign title = "Click to view full size image" %}
+{% endif %}
+
+<div class="inline-image-item" id="{{ include.id }}">
+    <p>
+        <a href="{{ include.url }}" title="{{ title }}">
+            <video playsinline loop muted autoplay src="{{ include.url }}" alt="{{ include.alt | escape }}"
+            width="{{ include.width }}" height="{{ include.height }}"
+            style="width:{{ include.width }}" />
+        </a>
+    </p>
+    <p class="image-legend">{{ include.legend }}</p>
+</div>

@@ -41,8 +41,8 @@ To verify that something is happening in the processor, I connect the four least
 
     <div class="inline-image-container-row">
 
-        {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7380.gif"
+        {% include inline-video-item.html
+            url="/assets/projects/emulation/IMG_7380.mp4"
             legend="My 6502 in operation"
             width="50%"
             alt="A video showing an experimental electronic circuit. It shows a breadboard with a rapidly blinking LED, and a second module containing the 6502 connected to four LEDs that light up sequentially in a counting pattern."
@@ -61,8 +61,8 @@ When the processor starts or is reset, it looks for the address of the first ins
 
     <div class="inline-image-container-row mobile-column">
 
-        {% include inline-image-item.html
-            url="/assets/projects/emulation/ADDR.gif"
+        {% include inline-video-item.html
+            url="/assets/projects/emulation/ADDR.mp4"
             legend="Reading the address bus in real time"
             height="550"
             alt="A video capture of the Arduino software showing a program and 4-bit data scrolling by. The data shows a counting pattern."

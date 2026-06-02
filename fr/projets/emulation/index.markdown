@@ -44,8 +44,8 @@ Pour vérifier qu'il se passe quelque chose dans le processeur j'ai connecté le
 
     <div class="inline-image-container-row">
 
-        {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7380.gif"
+        {% include inline-video-item.html
+            url="/assets/projects/emulation/IMG_7380.mp4"
             legend="Mon 6502 en fonctionnement"
             width="50%"
             alt="Une vidéo montrant un montage éléctronique expérimental. On voit une première breadboard avec une LED qui clignote rapidement, et un second module comprenant le 6502 connecté à 4 LEDs qui s'allument successivement dans un motif de comptage."
@@ -65,8 +65,8 @@ Lorsque le processeur démarre ou est réinitialisé, il va chercher l'adresse d
 
     <div class="inline-image-container-row mobile-column">
 
-        {% include inline-image-item.html
-            url="/assets/projects/emulation/ADDR.gif"
+        {% include inline-video-item.html
+            url="/assets/projects/emulation/ADDR.mp4"
             legend="Lecture du bus d'adresse en temps réel"
             height="550"
             alt="Une capture vidéo du logiciel Arduino où l'on voit un programme et des données 4 bits qui défilent. Les données montrent un motif de comptage."
