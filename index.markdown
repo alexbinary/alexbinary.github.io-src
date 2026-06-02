@@ -8,10 +8,18 @@ lang_fr: /fr
 {% include intro.html %}
 
 <section>
-    {% include heading-with-icon.html text="What I am working on" icon="🧑‍🔬" %}
+    {% include heading-with-icon.html text="My current projects" icon="🧑‍🔬" %}
 
     <div class="cards-container">
 
+        {% include project-card.html
+            title="Hardware emulator"
+            subtitle="Making simple programmable hardware and writing an emulator for it"
+            text="#electronics #programming #6502"
+            url="/en/projects/emulation"
+            image_url="/assets/projects/emulation/IMG_7377.JPG"
+        %}
+        
         {% include project-card.html
             title="Optic simulator"
             subtitle="Graphical simulation software to understand light and optical systems"

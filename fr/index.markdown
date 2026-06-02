@@ -8,9 +8,17 @@ lang_en: /
 {% include intro_fr.html %}
 
 <section>
-    {% include heading-with-icon.html text="Projets récents" icon="🧑‍🔬" %}
+    {% include heading-with-icon.html text="Mes projets du moment" icon="🧑‍🔬" %}
 
     <div class="cards-container">
+
+        {% include project-card.html
+            title="Emulateur matériel"
+            subtitle="Création d'un système programmable simple et de l'émulateur correspondant"
+            text="#electronique #programmation #6502"
+            url="/fr/projets/emulation"
+            image_url="/assets/projects/emulation/IMG_7377.JPG"
+        %}
 
         {% include project-card.html
             title="Simulateur optique"
@@ -23,8 +31,8 @@ lang_en: /
         
         {% include project-card.html
             title="Solution de rangement LEGO"
-            subtitle="Solution DIY pour le rangement des pièces de LEGO"
-            text="J'ai construit un meuble sur mesure pour stocker et organiser ma collection #menuiserie #decoupelaser #impression3d"
+            subtitle="Solution sur mesure pour stocker et organiser ma collection de pièces"
+            text="#menuiserie #decoupelaser #impression3d"
             url="/fr/projets/rangement-lego"
             image_url="/assets/projects/lego-storage-system/illus1.jpg"
         %}
