@@ -22,4 +22,14 @@ layout: default
 
   <p><strong>Page not found :(</strong></p>
   <p>The requested page could not be found.</p>
+
+  <p>Redirecting to the homepage...</p>
+  <script>
+    var path = window.location.pathname;
+    if (path.startsWith('/fr/')) {
+      window.location.replace("/fr");
+    } else {
+      window.location.replace("/");
+    }
+  </script>
 </div>
