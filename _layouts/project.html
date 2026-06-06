@@ -53,15 +53,39 @@ layout: default
         </div>
       {% endif %}
 
-      {% if page.project_github %}
+      {% if page.project_githubs %}
         <div class="project-topics">
-          <a href="{{ page.project_github }}">
-            {% if page.lang == 'en' %}
-              The code for this project is on GitHub
+
+          {% assign github_links = page.project_githubs %}
+          {% assign links_count = github_links | size %}
+
+          {% if page.lang == 'en' %}
+            {% if links_count == 1 %}
+              <a href="{{ github_links[0] }}">
+                The code for this project is on GitHub
+              </a>
             {% else %}
-              Le code de ce projet est sur GitHub
+              <p>The code for this project is available on GitHub
+                {% for url in github_links %}
+                  {% if forloop.first %}{% else %}{% if forloop.last %} and {% else %}, {% endif %}{% endif %}
+                  <a href="{{ url }}">here</a>
+                {% endfor %}
+              </p>
             {% endif %}
-          </a>
+          {% else %}
+            {% if links_count == 1 %}
+              <a href="{{ github_links[0] }}">
+                Le code de ce projet est sur GitHub
+              </a>
+            {% else %}
+              <p>Le code de ce projet est disponible sur GitHub
+                {% for url in github_links %}
+                  {% if forloop.first %}{% else %}{% if forloop.last %} et {% else %}, {% endif %}{% endif %}
+                  <a href="{{ url }}">ici</a>
+                {% endfor %}
+              </p>
+            {% endif %}
+          {% endif %}
         </div>
       {% endif %}
 

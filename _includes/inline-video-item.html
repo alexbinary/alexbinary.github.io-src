@@ -4,7 +4,7 @@
     {% assign title = "Click to view full size image" %}
 {% endif %}
 
-<div class="inline-image-item" id="{{ include.id }}">
+<figure class="inline-image-item" id="{{ include.id }}">
     <p>
         <a href="{{ include.url }}" title="{{ title }}">
             <video playsinline loop muted autoplay src="{{ include.url }}" alt="{{ include.alt | escape }}"
@@ -12,5 +12,5 @@
             style="width:{{ include.width }}" />
         </a>
     </p>
-    <p class="image-legend">{{ include.legend }}</p>
-</div>
+    <figcaption class="image-legend">{{ include.legend }}</figcaption>
+</figure>

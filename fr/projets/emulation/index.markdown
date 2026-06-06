@@ -1,10 +1,13 @@
 ---
 layout: project
 title: Emulation matérielle
-topics: [emulation, electronique, programmation, 6502]
+topics: [6502, arduino, electronique, programmation, emulation]
 image: /assets/projects/emulation/IMG_7377.JPG
 project_status: 'en cours 🧑‍💻'
-project_github: https://github.com/alexbinary/arduino-6502
+project_githubs: [
+  https://github.com/alexbinary/arduino-6502,
+  https://github.com/alexbinary/arduino-eeprom-programmer,
+]
 last_updated: 2026-06-06
 lang: fr
 lang_en: /en/projects/emulation
@@ -33,9 +36,9 @@ Mon objectif est de créer un système capable d’exécuter un programme assemb
 
 ## Premiers pas avec le 6502
 
-Le 6502 est un microprocesseur, et sa fonction principale est donc d'exécuter des instructions. Contrairement à un microcontrôleur, il n'a aucune mémoire interne et aucun périphérique. Il interragit avec le monde extérieur via un bus de données et un bus d'addresse, sur lesquels il peut lire et écrire des données. Les instructions à éxécuter, les données à traiter, et les données produites, tout passe par le bus. En général on connecte sur le bus une mémoire qui contient le programme et les données de travail, et des périphérique comme un afficheur, une carte son, etc.
+Le [6502](https://www.westerndesigncenter.com/wdc/documentation/w65c02s.pdf) est un microprocesseur, et sa fonction principale est donc d'exécuter des instructions. Contrairement à un microcontrôleur, il n'a aucune mémoire interne et aucun périphérique. Il interragit avec le monde extérieur via un bus de données et un bus d'addresse, sur lesquels il peut lire et écrire des données. Les instructions à éxécuter, les données à traiter, et les données produites, tout passe par le bus. En général on connecte sur le bus une mémoire qui contient le programme et les données de travail, et des périphérique comme un afficheur, une carte son, etc.
 
-Pour commencer en douceur je suis la [série de vidéos de Ben Eater consacrée à la construction d’un ordinateur basé sur le 6502](https://www.youtube.com/playlist?list=PLowKtXNTBypFbtuVMUVXNR0z1mu7dp7eH). Je commence par installer le 6502 sur une breadboard, je connecte l'alimentation et les signaux de contrôle de base, et j'ajoute un bouton reset. Le signal d’horloge est généré par un module basé sur un circuit 555 que j’ai construit précédemment en suivant les [vidéos de Ben Eater sur le sujet](https://www.youtube.com/watch?v=kRlSFm519Bo). J'utilise un Arduino Uno comme source d'alimentation et pour faire des observations par la suite.
+Pour commencer en douceur je suis la [série de vidéos de Ben Eater consacrée à la construction d’un ordinateur basé sur le 6502](https://www.youtube.com/playlist?list=PLowKtXNTBypFbtuVMUVXNR0z1mu7dp7eH). Je commence par installer le 6502 sur une breadboard, je connecte l'alimentation et les signaux de contrôle de base, et j'ajoute un bouton reset. Le signal d’horloge est généré par un module basé sur un circuit 555 que j’ai construit précédemment en suivant les [vidéos de Ben Eater sur le sujet](https://www.youtube.com/watch?v=kRlSFm519Bo). J'utilise mon [Arduino Uno R4 Wi-Fi](https://docs.arduino.cc/resources/datasheets/ABX00087-datasheet.pdf) comme source d'alimentation et pour faire des observations par la suite.
 
 Pour vérifier qu'il se passe quelque chose dans le processeur j'ai connecté les 4 bits de poids faible du bus d'adresse sur 4 LEDs, et j'ai constaté une activité. J'ai également connecté les lignes du bus de données directement sur l'alim ou la masse avec des résitances pour faire en sorte qu'à chaque fois que le CPU lit une donnée sur le bus il récupère la valeur `0xEA`, qui correspond à l'instruction `NOP` (« No Operation »). Quand on observe les lignes d'adresse, on constate un comptage, qui correspond au fait que le CPU lit les instructions les unes après les autres dans la mémoire.
 
@@ -259,7 +262,7 @@ Le code Arduino est disponible [sur GitHub](https://github.com/alexbinary/arduin
 
 ## Découverte de l'EEPROM
 
-L'Arduino est bien sympatique, mais dans le système final les données sont stockées dans une puce mémoire. J'utilise ici une puce EEPROM de 32ko. C'est une mémoire destinée à être utilisée en lecture seule, mais qu'on peut effacer et programmer éléctroniquement.
+L'Arduino est bien sympatique, mais dans le système final les données sont stockées dans une puce mémoire. J'utilise ici une puce EEPROM [AT28C256](https://ww1.microchip.com/downloads/en/DeviceDoc/doc0006.pdf). C'est une mémoire de 32ko destinée à être utilisée en lecture seule, mais qu'on peut effacer et programmer éléctroniquement.
 
 Je veux commencer par la base, en faisant des lectures et écritures en manipulant directement les signaux de contrôle. Sur une breadboard je connecte huit LEDs au bus de données de la ROM et je force toutes les lignes d'adresse à zéro à l'aide de cavaliers, sauf les quatre bits de poids faible que je connecte avec des fils de connexion repositionnables facilement.
 
@@ -494,6 +497,116 @@ J'alimente, je fais un reset du CPU, et voici le résultat :
 Tout fonctionne comme prévu 🎉
 
 
+## Les registres à décalage
+
+Maintenant que le système est en mesure de lire des programmes arbitrairement longs, il est nécessaire de pouvoir programmer la ROM plus de 16 octets à la fois. Jusque là je n'utilisais que 4 lignes d'adresses car l'Arduino n'a pas assez de broches pour utiliser les 15 lignes en même temps, mais il est possible de produire plus de sortie grâce à un composant qu'on appelle *registre à décalage*.
+
+Un registre à décalage est capable de produire plusieurs sorties à partir d'un seul bit d'entrée. On envoie les valeurs une par une et elles sont distribuées sur les lignes de sorties, dans l'ordre. Chaque nouvelle donnée "pouse" les données déjà présente d'un cran. Il est possible de connecter plusieurs registres les uns à la suite des autres pour produire un nombre arbitraire de sorties. On peut également figer la sortie le temps qu'on pousse toutes les données pour éviter que les appareils connectés ne voient les données se déplacer d'une ligne à l'autre, ce qui pourrait avoir des conséquences indésirables.
+
+J'utilise le circuit [74HC595](https://www.ti.com/lit/ds/symlink/sn74hc595.pdf) que j'avais en stock. C'est un registre à décalage qui possède 8 lignes de sortie. Pour contrôler 15 lignes d'adresse il en faut donc deux. Comme d'habitude je commence par les bases, avec un montage minimal pour me familiariser avec le fonctionnement. Je place un registre à décalage et 8 LEDs avec leur résistances. 
+
+Le 74HC595 possède en tout 5 signaux de contrôle :
+
+| Signal | Signification | Fonction
+|-|-|
+| `/OE` | Output Enabled | Active la sortie des données
+| `SER` | Serial input | Reçoit la donnée d'entrée
+| `SRCLK` | Shift register clock | Pousse la donnée d'entrée dans le registre et décale les données existantes
+| `RCLK` | Storage register clock | Libère la sortie pour refléter les données internes
+| `/SRCLR` | Overriding clear | Efface tout
+
+Je connecte l'alimentation et la masse, et je mets `/SRCLR` à `1` car je ne prévois pas de l'utiliser. Je mets `/OE` à `0` pour activer la sortie, et le reste sera piloté manuellement. Je passe `SER` à `1`, puis passe `SRCLK` à `1` puis à nouveau à `0`. J'essaie plusieurs fois avec différentes valeurs mais les tests ne sont pas très concluants. J'ai soit toutes les LEDs allumées, soit toutes éteintes. Je soupçonne des mauvais contacts, mais à un moment j'ai les 4 premières éteintes et les autres allumées. Je me dit que mes manipulations manuelles provoquent peut-être plusieurs pulse sur `SRCLK` ce qui a pour effet de pousser plusieurs données d'un coup. Je décide donc de passer au pilotage par Arduino.
+
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/emulation/IMG_7402.JPG"
+            legend="Premier montage expérimental du registre à décalage avec Arduino"
+            width="50%"
+        %}
+
+    </div>
+
+</div>
+
+
+Je connecte les signaux de contrôle sur l'Arduino et code un programme de test. Je commence par essayer de pousser un bit à la fois. Ça a l'air de bien fonctionner. J'écris une fonction de test qui pousse alternativement un `1` et un `0` avec un délai entre chaque. Ça fonctionne comme attendu. Je teste ensuite une fonction capable de pousser un octet. Tout fonctionne bien. Au début j'avais mis des temporisations mais en fait elles ne sont pas nécessaire. J'ai connecté une LED supplémentaire pour afficher la valeur du dernier bit de donnée dans le registre. Contrairement aux autres cette donnée est toujours à jour avec l'état interne même si on fige la sortie, car elle est destinée à être connectée au registre suivant quand on chaine plusieurs.
+
+
+<div class="inline-image-container mobile-column">
+
+    <div class="inline-image-container-row mobile-column">
+
+        {% include inline-video-item.html
+            url="/assets/projects/emulation/IMG_7403.mp4"
+            legend="Injection de 1, 0, 1, 0, etc"
+        %}
+
+        {% include inline-video-item.html
+            url="/assets/projects/emulation/IMG_7405.mp4"
+            legend="Injection de 0xEA"
+        %}
+
+    </div>
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/emulation/push.png"
+            legend="Code pour pousser les données dans le registre à décalage"
+            width="50%"
+        %}
+
+    </div>
+
+</div>
+
+
+Arduino fournit une fonction `shiftOut()` qui permet de pousser 8 bits de données. Je teste en lui passant les pins que j'ai configurées pour la donnée d'entrée et pour la clock et vérifie que ça fonctionne bien. La fonction pousse les données mais ne met pas à jour la sortie, donc il faut toujours faire ça manuellement.
+
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/emulation/shift.png"
+            legend="La fonction shiftOut() permet de pousser 8 bits"
+            width="50%"
+        %}
+
+    </div>
+
+</div>
+
+
+Je teste maintenant d'ajouter un registre. Je le place sur la breadboard à côté du premier, je connecte l'alimentation, `/OE` et `/SRCLR`. Je ne peux pas ajouter d'autres LEDs donc je laisse les 4 premières connectées au 4 premières sorties du premier registre, et je connecte les 4 dernières au 4 dernières sorties du second registre. Et au début, rien ne fonctionne. C'est parce que j'avais oublié de connecter les signaux `SER`, `RCLK` et `SRCLK` du premier registre sur le second. Une fois fait ça fonctionne bien. Je teste en poussant un `1` puis que des `0` pour voir avancer le `1`. Comme attendu il traverse les 4 premières LEDs, puis après un temps réapparait sur les 4 suivantes.
+
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row mobile-column">
+
+        {% include inline-image-item.html
+            url="/assets/projects/emulation/IMG_7408.JPG"
+            legend="Montage avec deux registres"
+        %}
+
+        {% include inline-video-item.html
+            url="/assets/projects/emulation/IMG_7410.mp4"
+            legend="Déplacement d'un bit au travers de deux registres"
+        %}
+
+    </div>
+
+</div>
+
+Le code Arduino est disponible [sur GitHub](https://github.com/alexbinary/arduino-eeprom-programmer).
+
+
 ## La suite
 
-Le système est désormais capable de lire des programmes abritrairement longs. Encore faut-il être capable de programmer la ROM sur plus que 16 octets. J'ai quelques idées pour ça. L'objectif ensuite est d'utiliser une puce d'entrées-sorties qui permettra de connecter des périphériques et d'avoir enfin des résultats observables.
+Les registres à décalage vont permettre de créer un circuit de programmation complète de la ROM avec Arduino malgré la limitation du nombre de broches. Une fois capable d'écrire des programmes arbitrairement longs, je pourrai commencer à installer une puce d'entrées-sorties qui permettra de connecter des périphériques au 6502 et d'avoir enfin des résultats observables sans instruments.
