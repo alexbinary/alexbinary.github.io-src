@@ -24,7 +24,7 @@ Le but quand on écrit un émulateur est de comprendre l'effet de chaque instruc
 Pour mettre en pratique ces réflexions et les confronter à la réalité, mon but est de créer de zéro un système matériel simple qui puisse être programmé, et ensuite écrire un émulateur pour ce système. Créer le système matériel à émuler permet d'avoir une référence précise et permet de comparer l'exécution des programmes et valider l'émulateur. Si j'écris l'émulateur en "imaginant" le hardware émulé, qu'est-ce qui me permet de dire que le résultat est juste ?
 
 
-## Le choix du hardware
+## Le hardware cible
 
 J’ai choisi de construire un système basé sur le microprocesseur 6502. Le 6502 est un microprocesseur relativement simple idéal pour débuter. Il est aussi très célèbre puisque c'est le processeur utilisé par de nombreux appareils grand public des années 1980, notamment l’Apple II, le Commodore 64 et l'Atari 2600. Des versions modernisées sont toujours en production aujourd'hui et il existe une large communauté de passionnés.
 
@@ -85,7 +85,7 @@ Lorsque le processeur démarre ou est réinitialisé, il va chercher l'adresse d
 Le code Arduino est disponible [sur GitHub](https://github.com/alexbinary/arduino-6502).
 
 
-## Données dynamiques
+## Premier programme
 
 La prochaine étape est de fournir au CPU des données dynamiques en fonction de l'adresse qu'il demande, de sorte à former un programme qui ait du sens. Classiquement c'est le rôle d'une puce mémoire. Mais dans un premier temps j'expérimente avec Arduino.
 
@@ -257,7 +257,7 @@ Le résultat correspond bien à ce qui est attendu :
 Le code Arduino est disponible [sur GitHub](https://github.com/alexbinary/arduino-6502).
 
 
-## Utilisation d'une EEPROM
+## Découverte de l'EEPROM
 
 L'Arduino est bien sympatique, mais dans le système final les données sont stockées dans une puce mémoire. J'utilise ici une puce EEPROM de 32ko. C'est une mémoire destinée à être utilisée en lecture seule, mais qu'on peut effacer et programmer éléctroniquement.
 
@@ -352,7 +352,7 @@ Dans un premier temps le programme parcours séquentiellement les 16 adresses et
 Le code Arduino est disponible [sur GitHub](https://github.com/alexbinary/arduino-6502).
 
 
-## Connexion au 6502
+## Connexion de l'EEPROM au 6502
 
 L'objectif maintenant est de connecter la ROM au CPU pour que celui-ci lise et exécute le programme. En laissant la ROM sur sa breadboard, je relie désormais les 4 lignes d'adresse et le bus de données sur les broches correspondantes du 6502. Ce faisant je remarque que j'avais du aller un peu vite quand j'ai choisi les quatre lignes d'adresse à manipuler sur la ROM car ce n'était pas du tout les quatre bits de poids faible, bien que c'était mon intention. Il s'agissait en fait des lignes 13, 8, 9 et 11. En réalité ce n'est pas gênant, du moment que je connecte au CPU les mêmes lignes de la même manière, il retrouvera les données aux adresses attendues.
 
@@ -424,6 +424,76 @@ Les premières observations m'ont laissé perplexe. Les résultats n'avaient pas
 </div>
 
 
+Je veux maintenant connecter la ROM de façon semi-permanente au 6502 sur la même breadboard et câbler proprement toutes les lignes d’adresse et de données. Mais avant ça il faut revoir la programmation de la ROM car cette fois les lignes d'adresses seront câblées correctement et le CPU ne retrouvera donc pas les données que j'ai programmé précédement en utilisant les mauvaises lignes d'adresse. Il y a aussi le fait qu'au démarrage le CPU va lire le vecteur reset situé aux adresses `0xFFFC` et `0xFFFD` pour savoir à partir de quelle adresse il doit commencer à exécuter les instructions. Avec 4 lignes d'adresse on pouvait placer le vecteur reset aux adresses `0x000C` et `0x000D`, mais avec un adressage complet ça ne fonctionnera pas. 
+
+La ROM utilise 15 lignes d'adresse (32k adressable) alors que le CPU en utilise 16 (64k adressable). Pour l'instant je connecte les 15 premières lignes et je laisse la 16e du CPU non connectée. Ainsi quand le CPU demande l'adresse `0xFFFC`, ça correspondra à l'adresse `0x7FFC` dans la ROM. C'est donc là qu'il faut placer le vecteur reset. On peut ensuite placer le programme où on veut dans la mémoire, tant qu'on renseigne l'adresse correspondante dans le vecteur reset.
+
+Je décide de commencer par écrire le programme à l'adresse `0x0000`, et d'écrire ensuite le vecteur reset. Je reprends mon montage de programmation et je connecte toutes les lignes d’adresse à `0` en laissant cette fois les 4 vraies lignes de poids faible ajustables. Je lance la programmation avec le code Arduino utilisé précédemment.
+
+Pour écrire le vecteur reset, je décide par soucis de simplicité d'écrire à nouveau tout le programme à l'adresse `0x7FF0`, ce qui permet de faire exactement la même manip que précédemment mais cette fois avec les lignes d'adresse à `1`. Le vecteur reset étant `00`<span class="fixed-space"> </span>`00`, ça devrait fonctionner, mais pour rendre les choses intéressantes je décide de modifier la valeur et de mettre `0xFFF0`, ce qui aura pour effet d'exécuter le programme situé en `0x7FF0` et non en `0x0000`.
+
+Résumé des écritures dans la ROM :
+
+| Addr | Données | Commentaire
+|---|---|---|
+| `0x0000` | `AD 09 00` | `LDA $0009` |
+| `0x0003` | `AD 0A 00` | `LDA $000A` |
+| `0x0006` | `6D 0B 00` | `ADC $000B` |
+| `0x0009` | `28`       |             |
+| `0x000A` | `02`       |             |
+| `0x000B` | `0A`       |             |
+| `0x000C` | `00`       |             |
+| `0x000D` | `00`       |             |
+| `0x7FF0` | `AD 09 00` | `LDA $0009` |
+| `0x7FF3` | `AD 0A 00` | `LDA $000A` |
+| `0x7FF6` | `6D 0B 00` | `ADC $000B` |
+| `0x7FF9` | `28`       |             |
+| `0x7FFA` | `02`       |             |
+| `0x7FFB` | `0A`       |             |
+| `0x7FFC` | `F0`       |             |
+| `0x7FFD` | `FF`       |             |
+
+
+La ROM étant prête, je l'installe sur la breadboard à côté du 6502. Pour l'instant je force `/CE` à `0`, `/OE` à `0` et `/WE` à `1`, la ROM sera toujours active et ne fonctionnera qu'en écriture. Je connecte ensuite les lignes d'adresse et les lignes de données. J'essaie de faire quelque chose de propre, en m’inspirant des [techniques de Ben Eater](https://www.youtube.com/watch?v=PE-_rJqvDhQ).
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/emulation/IMG_7399.JPG"
+            legend="L'EEPROM connectée au 6502"
+            width="50%"
+        %}
+
+    </div>
+
+</div>
+
+Pour l'observation j'utilise des nappes pour les bus, c'est plus propre que les fils volants. Comme précédemment c'est l'Arduino qui fait la clock, et j'observe uniquement les 4 LSB de l'adresse (les vrais maintenant).
+
+J'alimente, je fais un reset du CPU, et voici le résultat :
+
+| Adresse théorique | Adresse observée | Data
+|---|---|---|
+| `0xFFFc` | `0xc` | `f0` |
+| `0xFFFd` | `0xd` | `ff` |
+| `0x7FF0` | `0x0` | `ad` |
+| `0x7FF1` | `0x1` | `09` |
+| `0x7FF2` | `0x2` | `00` |
+| `0x0009` | `0x9` | `28` |
+| `0x7FF3` | `0x3` | `ad` |
+| `0x7FF4` | `0x4` | `0a` |
+| `0x7FF5` | `0x5` | `00` |
+| `0x000a` | `0xa` | `02` |
+| `0x7FF6` | `0x6` | `6d` |
+| `0x7FF7` | `0x7` | `0b` |
+| `0x7FF8` | `0x8` | `00` |
+| `0x000b` | `0xb` | `0a` |
+
+Tout fonctionne comme prévu 🎉
+
+
 ## La suite
 
-Je veux maintenant connecter la ROM au 6502 de manière un peu plus permanente sur la même breadboard, câbler toutes les lignes d'adresse et de données, ainsi que la logique d'activation de la puce. Pour ça il sera utile de pouvoir programmer l'intrégralité de la mémoire disponible, et j'ai quelques idées à ce sujet. Après ça je pourrais commencer à installer la puce d'entrées-sorties qui permettra d'avoir enfin des résultats observables.
+Le système est désormais capable de lire des programmes abritrairement longs. Encore faut-il être capable de programmer la ROM sur plus que 16 octets. J'ai quelques idées pour ça. L'objectif ensuite est d'utiliser une puce d'entrées-sorties qui permettra de connecter des périphériques et d'avoir enfin des résultats observables.

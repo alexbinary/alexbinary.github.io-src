@@ -23,13 +23,15 @@ The aim when writing an emulator is to understand the effect of each instruction
 
 To put these ideas into practice and test them against reality, I want to create a simple, programmable hardware system from scratch, and then write an emulator for this system. Creating the hardware system to be emulated provides a precise reference and allows for comparison of program execution and validation of the emulator. If I write the emulator by "imagining" the emulated hardware, what allows me to say that the result is accurate?
 
-## Hardware Choice
+
+## The target hardware
 
 I chose to build a system based on the 6502 microprocessor. The 6502 is a relatively simple microprocessor, ideal for beginners. It's also very well-known, being the CPU of many consumer devices in the 1980s, notably the Apple II, Commodore 64 and Atari 2600. Modernized versions are still in production today, and there's a large community of enthusiasts.
 
 My goal is to create a system capable of executing an assembly program and producing an observable result based on user actions. Simple buttons will suffice for user actions, and initially, I plan to use a few LEDs for outputs. Later, I might try incorporating an OLED screen I have on hand; that would make it closer to a game console 🎮.
 
-## First Steps with the 6502
+
+## First steps with the 6502
 
 Being a microprocessor, the 6502's main function is to execute instructions. Unlike a microcontroller, it has no internal memory or peripherals. It interacts with the outside world via a data and address bus, on which it can read and write data. The instructions to be executed, the data to be processed, and the output data all pass through the bus. Generally, a memory containing the program and working data is connected to the bus, along with peripherals such as a display, a sound card, etc.
 
@@ -80,7 +82,7 @@ When the processor starts or is reset, it looks for the address of the first ins
 Arduino code is available [on GitHub](https://github.com/alexbinary/arduino-6502).
 
 
-## Dynamic Data
+## First program
 
 The next step is to provide the CPU with dynamic data based on the address it requests, so that it can execute a meaningful program. Traditionally, this is the role of a memory chip. For now, however, I am experimenting with an Arduino.
 
@@ -344,7 +346,7 @@ Initially, the program sequentially scans the 16 addresses and displays the corr
 Arduino code is available [on GitHub](https://github.com/alexbinary/arduino-6502).
 
 
-## Connecting to the 6502
+## Connecting the EEPROM to the 6502
 
 The goal now is to connect the ROM to the CPU so that it can read and execute the program. Leaving the ROM on its breadboard, I connect the four address lines and the data bus to the corresponding pins on the 6502. While doing this, I realize that the address lines I choose to manipulate on the ROM were not actually the four least significant bits as I intended. They were in fact lines 13, 8, 9, and 11. That is actually not an issue. As long as I connect the same line to the CPU in the same way, it will find the data at the expected address.
 
@@ -415,8 +417,75 @@ My first observations left me puzzled. The results did not seem to match my expe
 </div>
 
 
-## What's Next
+Now I want to connect the ROM in a semi-permanent way to the 6502 on the same breadboard and wire all the address and data lines correctly. But before that I need to revise the ROM programming, because this time the address lines will be correctly wired and the CPU will therefore not find the data I previously programmed using the wrong address lines. There is also the fact that at startup, the CPU reads the reset vector at addresses `0xFFFC` and `0xFFFD` to know where it should start executing instructions from. With 4 address lines it was possible to place the reset vector at addresses `0x000C` and `0x000D`, but this will no longer work with full addressing.
 
-The next step is to connect the ROM to the 6502 in a more permanent way on the same breadboard, wiring up all address and data lines as well as the chip-enable logic. To do that, it will be useful to be able to program the entire memory space, and I have a few ideas about how to achieve this.
+The ROM uses 15 address lines (32KB addressable), while the CPU uses 16 (64KB addressable). For now I connect the first 15 lines and leave the CPU’s 16th line unconnected. Thus, when the CPU requests address `0xFFFC`, it will correspond to address `0x7FFC` in the ROM. That is therefore where the reset vector must go. We can then place the program anywhere in memory, as long as we specify the corresponding address in the reset vector.
 
-After that, I can start installing the I/O chip that will make it possible to produce more directly observable results, and maybe drive some peripherals?
+I decide to start by writing the program at address `0x0000`, write the reset vector later. I go back to my programming setup and connect all address lines to `0`, while making sure to leave the actual 4 least significant address lines adjustable. I run the programming using the same Arduino code as before.
+
+To write the reset vector, I decide for simplicity to write the entire program again at address `0x7FF0`, which allows me to repear the same operation but with the address lines set to `1`. The reset vector being `00 00`, it should work, however to make things more interesting I decide to modify the value and set it to `0xFFF0`, which will cause the program located at `0x7FF0` to execute instead of the one at `0x0000`.
+
+Summary of the writes to the ROM:
+
+| Addr     | Data       | Comment     |
+| -------- | ---------- | ----------- |
+| `0x0000` | `AD 09 00` | `LDA $0009` |
+| `0x0003` | `AD 0A 00` | `LDA $000A` |
+| `0x0006` | `6D 0B 00` | `ADC $000B` |
+| `0x0009` | `28`       |             |
+| `0x000A` | `02`       |             |
+| `0x000B` | `0A`       |             |
+| `0x000C` | `00`       |             |
+| `0x000D` | `00`       |             |
+| `0x7FF0` | `AD 09 00` | `LDA $0009` |
+| `0x7FF3` | `AD 0A 00` | `LDA $000A` |
+| `0x7FF6` | `6D 0B 00` | `ADC $000B` |
+| `0x7FF9` | `28`       |             |
+| `0x7FFA` | `02`       |             |
+| `0x7FFB` | `0A`       |             |
+| `0x7FFC` | `F0`       |             |
+| `0x7FFD` | `FF`       |             |
+
+The ROM now ready, I install it on the breadboard next to the 6502. I force `/CE` to `0`, `/OE` to `0`, and `/WE` to `1`, making the ROM always active and in read mode. I then connect the address lines and data lines. I try to do something nice, inspired by [Ben Eater’s techniques](https://www.youtube.com/watch?v=PE-_rJqvDhQ).
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/emulation/IMG_7399.JPG"
+            legend="The EEPROM connected to the 6502"
+            width="50%"
+        %}
+
+    </div>
+
+</div>
+
+For observation I use ribbon cables for the buses; it’s cleaner than loose jumper wires. As before, the Arduino provides the clock, and I only observe the 4 least significant bits of the address.
+
+I power up the board, reset the CPU, and here is the result:
+
+| Theoretical address | Observed address | Data |
+| ------------------- | ---------------- | ---- |
+| `0xFFFC`            | `0xC`            | `f0` |
+| `0xFFFD`            | `0xD`            | `ff` |
+| `0x7FF0`            | `0x0`            | `ad` |
+| `0x7FF1`            | `0x1`            | `09` |
+| `0x7FF2`            | `0x2`            | `00` |
+| `0x0009`            | `0x9`            | `28` |
+| `0x7FF3`            | `0x3`            | `ad` |
+| `0x7FF4`            | `0x4`            | `0a` |
+| `0x7FF5`            | `0x5`            | `00` |
+| `0x000a`            | `0xA`            | `02` |
+| `0x7FF6`            | `0x6`            | `6d` |
+| `0x7FF7`            | `0x7`            | `0b` |
+| `0x7FF8`            | `0x8`            | `00` |
+| `0x000b`            | `0xB`            | `0a` |
+
+Everything works as expected 🎉
+
+
+## Next
+
+The system is now capable of reading arbitrary long programs, which is nice, but we still need to be able to program more than 16 bytes at a time. I have a few ideas for that. The next goal is to use an input/output chip that will allow peripherals to be connected and finally produce observable results.
