@@ -852,11 +852,28 @@ To determine which component should be active, we use the address bus. With 16 a
 
 Until now I had tied the EEPROM's *Chip Select* (`/CE`) low so that the ROM was always active. As a result, the entire address space was assigned to it. The ROM only has 15 address lines (32 KB addressable), and we left the 16th address line disconnected. Consequently, when the CPU uses an address in the range `0x0000–0x7FFF`, it maps directly to an address in the ROM. But the same is true for addresses `0x8000–0xFFFF` because looking at only the 15 first lines, the addresses are identical. From the CPU's perspective, the ROM contents appear duplicated.
 
+| Bin | Hex
+|-|-
+| `0000 0000 0000 0000` | `0x0000`
+| `0111 1111 1111 1111` | `0x7FFF`
+| `1000 0000 0000 0000` | `0x8000`
+| `1111 1111 1111 1111` | `0xFFFF`
+
 Since the 16th address line (`A15`) is not used to address data within the ROM, we can use it for Chip Select. If we connect it directly to the ROM's `/CE` input, the chip —being active when the signal is `0`— will only respond to addresses in the range `0x0000–0x7FFF`. We have therefore allocated `0x0000–0x7FFF` to the EEPROM and freed the remainder for other devices. However, recall that on startup the CPU reads addresses `0xFFFC` and `0xFFFD` (the reset vector), and with this memory layout that would no longer work. We could add a component whose sole purpose is to respond to those two addresses, but we would then have to keep its value updated according to where the program starts in ROM. A simpler solution is to allocate the range `0x8000–0xFFFF` to the ROM instead. We can do this by inverting `A15` (using a NOT gate) before connecting it to `/CE`. This way, address `0x7FFC` in ROM corresponds to address `0xFFFC` from the CPU's perspective. On the other hand, ROM address `0x0000` becomes CPU address `0x8000`. We'll need to keep this in mind when writing programs later.
 
 We can now consider how to allocate the address space to the VIA. We already know that its range must be within `0x0000–0x7FFF`. We could allocate the entire range, and as long as we don't add any other components this wouldn't cause a problem. However, I plan to add at least one RAM chip later, so let's do something a bit better.The VIA only has 16 registers, so in principle it only requires 16 addresses. Of course, its allocated range can be larger than that.
 
 I'm starting to run out of breadboards, and the ones already in use are fairly crowded, so I'd like a solution that requires as few connections and components as possible. The VIA has two *Chip Select* signals: `CS1` and `/CS2`. The chip is enabled when `CS1` is `1` and `/CS2` is `0`. We already know that the VIA must be disabled whenever the 16th address line (`A15`) is `1`, because that corresponds to the range assigned to the ROM. Therefore we can connect `A15` directly to `/CS2`. If we stop there, we have effectively assigned the entire range `0x0000–0x7FFF` to the VIA. Now imagine connecting `A14` to `CS1`. The VIA would then only be active when `A15 = 0` and `A14 = 1`, which corresponds to addresses `0x4000–0x7FFF`. If we added `A13` through an AND gate, we would reduce the range to `0x6000–0x7FFF`. Adding `A12` would further reduce it to `0x7000–0x7FFF`. The more we shrink the allocated memory range, the more space we leave available for other devices, but the more logic is required to generate the *Chip Select* signals.
+
+| Bin | Hex
+|-|-
+| `0000 0000 0000 0000` | `0x0000`
+| `0100 0000 0000 0000` | `0x4000`
+| `0110 0000 0000 0000` | `0x6000`
+| `0111 0000 0000 0000` | `0x7000`
+| `0111 1111 1111 1111` | `0x7FFF`
+| `1000 0000 0000 0000` | `0x8000`
+| `1111 1111 1111 1111` | `0xFFFF`
 
 For now, I choose to keep things simple and stop at `A14`. This allows `CS1` and `/CS2` to be connected directly without additional logic, and the address-space tradeoff is acceptable for the moment.
 

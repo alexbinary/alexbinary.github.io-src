@@ -862,11 +862,28 @@ Pour déterminer quel composant doit être actif on utilise le bus d'adresses. A
 
 Jusqu'à maintenant j'avais forcé le *Chip Select* (signal `/CE`) de l'EEPROM pour qu'elle soit toujours active. L'intégralité de l'espace d'adressage lui était par conséquent attribuée. La ROM possède seulement 15 lignes d'adresse (32k adressable), et on avait laissé la 16e ligne déconnectée. Par conséquent quand le CPU utilise une adresse dans la plage `0x0000-0x7FFF`, ça correspond directement à une adresse dans la ROM. Mais c'est également le cas pour les adresses `0x8000-0xFFFF` car si on ne prend en compte que les 15 premiers bits de l'adresses, les adresses sont identiques. Du point de vue du CPU le contenu de la ROM apparait dupliqué.
 
+| Binaire | Hexadécimal
+|-|-
+| `0000 0000 0000 0000` | `0x0000`
+| `0111 1111 1111 1111` | `0x7FFF`
+| `1000 0000 0000 0000` | `0x8000`
+| `1111 1111 1111 1111` | `0xFFFF`
+
 La 16e ligne d'adresse (`A15`) étant inutilisée pour adresser les données dans la ROM, on peut l'utiliser pour le *Chip Select*. Si on la connecte directement sur l'entrée `/CE` de la ROM, étant donné que la puce est activée si le signal est à `0`, celle-ci ne répondra plus qu'aux adresse dans la plage `0x0000-0x7FFF`. On a ainsi alloué la plage `0x0000-0x7FFF` à l'EEPROM et libéré le reste pour d'autres composants. Cependant, rappelons-nous qu'au démarrage le CPU interroge les adresses `0xFFFC` et `0xFFFD` (vecteur reset), et dans cette configuration de la mémoire ça ne fonctionnerait pas. On pourrait rajouter un composant dont la tâche est de répondre spécifiquement à ces deux adresses, mais on devrait alors veiller à mettre à jour la valeur en fonction d'où on place le début du programme dans la ROM. Le plus simple est en fait d'allouer la plage `0x8000-0xFFFF` à la ROM. On peut faire ça en inversant `A15` (avec une porte logique NOT) avant de le connecter sur `/CE`. Ainsi l'adresse `0x7FFC` dans la ROM correspondra à l'adresse `0xFFFC` du point de vue du CPU. En revanche, l'adresse `0x0000` de la ROM se retrouve à l'adresse `0x8000` du point de vue du CPU. Il faudra donc être vigilant lors de l'écriture du programme.
 
 On peut maintenant réfléchir à l'espace mémoire à allouer au VIA. On sait déjà que cette plage doit être comprise dans la plage `0x0000-0x7FFF`. On pourrait allouer toute la plage, et tant qu'on ajoute pas d'autres composants sur le bus ça ne pose pas de problème. Mais je prévois d'ajouter au moins une puce de RAM par la suite, donc essayons de faire mieux que ça. Pour rappel le VIA n'a que 16 registres, la plage d'adresse n'a donc besoin de contenir au minimum que 16 adresses. Elle peut évidemment être plus grande que ça.
 
 Je commence à être à court de breadboards, et celles déjà utilisées sont déjà bien chargées, je voudrais donc une solution qui utilise un minimum de connexions et un minimum de composants. Le VIA possède deux signaux *Chip Select* : `CS1` et `/CS2`. La puce est activée lorsque `CS1` est à `1` et `/CS2` à `0`. On sait déjà que le VIA doit être désactivé lorsque la 16e ligne d'adresse (`A15`) est à `1`, puisque ça correspond à la plage allouée à la ROM. On peut donc connecter `A15` sur `/CS2`. Si on s'arrête là on a effectivement alloué la plage `0x0000-0x7FFF` au VIA. Imaginons maintenant qu'on branche `A14` sur `CS1`. Le VIA ne serait alors actif que lorsque la 16e ligne d'adresse (`A15`) est à `0` et la 15e (`A14`) est à `1`, ce qui correspond à la plage d'adresses `0x4000-0x7FFF`. Si on ajoutait `A13` avec un ET on réduirait à la plage `0x6000-0x7FFF`. Et si on ajoutait encore `A12` ça donnerait `0x7000-0x7FFF`. Plus on réduit la plage mémoire allouée et plus on laisse de l'espace pour autre chose, mais plus ça demande de logique pour le *Chip Select*.
+
+| Binaire | Hexadécimal
+|-|-
+| `0000 0000 0000 0000` | `0x0000`
+| `0100 0000 0000 0000` | `0x4000`
+| `0110 0000 0000 0000` | `0x6000`
+| `0111 0000 0000 0000` | `0x7000`
+| `0111 1111 1111 1111` | `0x7FFF`
+| `1000 0000 0000 0000` | `0x8000`
+| `1111 1111 1111 1111` | `0xFFFF`
 
 Je choisis de rester simple pour l'instant et de m'arrêter à `A14`. Ça permet de connecter `CS1` et `/CS2` diretement sans introduire de logique supplémentaire, et le compromis en terme d'allocation de l'espace d'adresse est ok pour l'instant.
 
