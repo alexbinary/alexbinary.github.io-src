@@ -1,0 +1,21 @@
+
+- id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
+  name:
+    en: Hardware emulation
+    fr: Emulation matérielle
+  url:
+    en: /en/projects/emulation
+    fr: /fr/projets/emulation
+  status:
+    en: 'active 🧑‍💻'
+    fr: 'en cours 🧑‍💻'
+  
+- id: ec2e67a6-246f-484e-abc7-6387aa07874a
+  name:
+    en: Optics simulator
+    fr: Simulateur optique
+  
+- id: 5cfedf56-5aa3-4518-918a-54e86b3fb24d
+  name:
+    en: LEGO Storage System
+    fr: Rangement LEGO

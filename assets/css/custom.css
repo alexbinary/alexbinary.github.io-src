@@ -545,6 +545,94 @@ ul.list-pointer-style li::before {
 
 
 
+/* ---- Post cards */
+
+
+.post-cards-container {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.post-card {
+    background-color: var(--bg-color-1);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+@media (prefers-color-scheme: light) {
+
+    .post-card {
+        border: 1px solid lightgray
+    }
+}
+
+.post-card img {
+    height: 5rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+.post-card-content {
+    padding: 0.7rem;
+    padding-bottom: 2rem;
+}
+
+.post-card p,
+.post-card h3 {
+    margin: 0;
+    padding: 0;
+    color: var(--fg-color-0);
+}
+
+.post-card .post-card-meta {
+    color: var(--fg-color-1)
+}
+
+.post-card p {
+    text-align: justify;
+}
+
+.post-card h3 {
+    font-weight: lighter;
+}
+
+.post-card:hover a {
+    text-decoration: none;
+}
+
+.post-card .post-card-topics {
+    color: var(--fg-color-1);
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-bottom: 0.7rem;
+}
+
+.post-card .read-more {
+    position: absolute;
+    bottom: 0.7rem;
+    right: 0.7rem;
+    color: var(--fg-color-1);
+}
+
+.post-card .read-more svg {
+    width: 0.5rem;
+    position: relative;
+    top: 0.2rem;
+}
+
+@media (max-width: 600px) {
+
+    .post-cards-container {
+        display: grid;
+        grid-template-columns: 100%;
+    }
+}
+
+
+
 /* ---- Inspiration cards */
 
 
@@ -724,7 +812,7 @@ ul.list-pointer-style li::before {
 
 
 
-/* ---- Project header */
+/* ---- Project page */
 
 
 article.project header {
@@ -744,7 +832,6 @@ article.project .content-type {
 article.project h1 {
     font-family: 'Verdana';
     margin-top: 1rem;
-    /* text-align: center; */
     margin-bottom: 0;
     width: fit-content;
 }
@@ -753,13 +840,11 @@ article.project .title {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    /* text-align: right; */
     width: fit-content;
     margin: auto;
 }
 
 article.project .parent-project {
-    /* text-align: center; */
     display: inline;
     width: fit-content;
     margin-bottom: 0;
@@ -819,14 +904,6 @@ article.project .content-type {
     }
 }
 
-article.project .separator {
-    border-bottom: 1px solid lightgray;
-    width: 60%;
-    margin: auto;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
-
 article.project {
     text-align: justify;
 }
@@ -837,16 +914,77 @@ article.project h3 {
 
 
 
+/* ---- Project post */
+
+
+article.project-post .title h1 {
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+article.project-post .project-post-title p {
+    margin-bottom: 0;
+}
+
+article.project-post .project-post-title h2 {
+    margin-bottom: 0;
+    font-size: 2.5rem;
+}
+
+article.project-post .project-topics {
+    text-align: left;
+    margin-top: 0;
+}
+
+article.project-post .project-github {
+    margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+
+    article.project-post .title h1 {
+        font-size: 1.2rem;
+        margin-bottom: 1.3rem;
+        margin-top: 1.5rem;
+    }
+
+    article.project-post .project-post-title h2 {
+        font-size: 1.8rem;
+    }
+}
+
+
+
+/* ---- Separator */
+
+
+.separator {
+    border-bottom: 1px solid lightgray;
+    width: 60%;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.separator-small {
+
+    width: 10%;
+    margin: 0;
+    margin-bottom: 2rem;
+}
+
+
+
 /* ---- Last updated */
 
 
-.last-updated::before {
+.last-updated {
 
-    content: "";
     display: block;
-    width: 10%;
-    border-top: 1px solid lightgray;
     margin-bottom: 1rem;
+    font-style: italic;
+    color: var(--fg-color-1);
 }
 
 

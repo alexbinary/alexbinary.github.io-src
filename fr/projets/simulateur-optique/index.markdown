@@ -4,7 +4,7 @@ title: Simulateur optique
 topics: [swiftui, programmation, optique, physique]
 image: /assets/projects/optics-simulator/screenshot1.png
 project_status: 'en cours 🧑‍💻'
-project_githubs: [https://github.com/alexbinary/OpticsSimulator]
+githubs: [https://github.com/alexbinary/OpticsSimulator]
 last_updated: 2026-06-01
 lang: fr
 lang_en: /en/projects/optics-simulator

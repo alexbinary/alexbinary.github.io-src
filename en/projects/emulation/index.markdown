@@ -1,10 +1,9 @@
 ---
 layout: project
-title: Hardware emulation
-topics: [6502, arduino, electronics, programming, emulation]
+project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
+topics: [6502, arduino, electronics, programming]
 image: /assets/projects/emulation/IMG_7377.JPG
-project_status: 'active 🧑‍💻'
-project_githubs: [
+githubs: [
     https://github.com/alexbinary/arduino-6502,
     https://github.com/alexbinary/arduino-eeprom-programmer,
 ]

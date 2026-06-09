@@ -42,6 +42,49 @@ lang_en: /
 </section>
 
 <section>
+    {% include heading-with-icon.html text="Dernières publications" icon="📝" %}
+
+    <div class="cards-container post-cards-container">
+        {% assign posts = site.posts | where: "lang", page.lang %}
+        {% for post in posts limit:100 %}
+            <article class="post-card">
+                <a href="{{ post.url }}">
+                    <img src="{{ post.image }}">
+                    <div class="post-card-content">
+                        <p class="post-card-meta">
+                            {{ post.date | date_custom: page.lang }}, 
+                            {% if page.lang == 'en' %}
+                                project
+                            {% else %}
+                                projet
+                            {% endif %}
+
+                            {%- assign project = site.data.projects | where: "id", post.project_id | first -%}
+                            "{{ project.name[page.lang] }}"
+
+                        </p>
+                        <h3 class="post-card-title">{{ post.title }}</h3>
+                        
+                        <p class="post-card-excerpt mobile-only">{{ post.excerpt | strip_html | truncate: 180 }}</p>
+                        <p class="post-card-excerpt desktop-only">{{ post.excerpt | strip_html | truncate: 420 }}</p>
+
+                        <p class="read-more">
+                            {% if page.lang == 'en' %}
+                                Read more 
+                            {% else %}
+                                Lire la suite
+                            {% endif %}
+                            <svg data-v-992f7eb0="" data-v-2645ef6c="" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="svg-icon inline-chevron-right-icon icon-inline chevron" viewBox="0 0 14 14" data-v-7df597aa=""><path data-v-992f7eb0="" d="m4.81347656 13.1269531c.22558594 0 .41015625-.0820312.56738282-.2324219l5.31835942-5.19531245c.1845703-.19140625.2802734-.38964844.2802734-.63574219 0-.23925781-.0888672-.45117187-.2802734-.62890625l-5.31835942-5.20214843c-.15722657-.15039063-.34179688-.23242188-.56738282-.23242188-.45800781 0-.81347656.35546875-.81347656.80664062 0 .21875.09570312.43066407.24609375.58789063l4.79199219 4.67578125-4.79199219 4.6621094c-.15722656.1640625-.24609375.3623047-.24609375.5878906 0 .4511719.35546875.8066406.81347656.8066406z"></path></svg>    
+                        </p>
+                    </div>
+                </a>
+            </article>
+        {% endfor %}
+    </div>
+
+</section>
+
+<section>
     {% include heading-with-icon.html text="Où me trouver" icon="🎯" %}
 
     <div class="cards-container links-cards-container">

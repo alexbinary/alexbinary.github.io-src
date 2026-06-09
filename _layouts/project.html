@@ -1,6 +1,9 @@
 ---
 layout: default
 ---
+
+{%- assign project = site.data.projects | where: "id", page.project_id | first -%}
+        
 <article class="post project">
 
   <header>
@@ -12,37 +15,24 @@ layout: default
       <div>
         <span class="content-type">
           {% if page.lang == 'en' %}
-            Project
+            Project overview
           {% else %}
-            Projet
+            Présentation projet
           {% endif %}
         </span>
         <div class="project-status">
-          {% if page.project_status %}
-            <strong>
-              {% if page.lang == 'en' %}
-                Status:
-              {% else %}
-                Statut:
-              {% endif %}
-            </strong> <span>{{ page.project_status | escape }}</span>
-          {% endif %}
+          <strong>
+            {% if page.lang == 'en' %}
+              Status:
+            {% else %}
+              Statut:
+            {% endif %}
+          </strong> <span>{{ project.status[page.lang] }}</span>
         </div>
       </div>
       
       <div class="title">
-        <h1>{{ page.title | escape }}</h1>
-
-        {% if page.project_parent_title and page.project_parent_url %}
-          <p class="parent-project">
-            {% if page.lang == 'en' %}
-              Part of
-            {% else %}
-              Projet parent: 
-            {% endif %}
-            <a href="{{ page.project_parent_url | escape }}">{{ page.project_parent_title | escape }}</a>
-          </p>
-        {% endif %}
+        <h1>{{ project.name[page.lang] }}</h1>
       </div>
     
       {% if page.topics %}
@@ -53,52 +43,18 @@ layout: default
         </div>
       {% endif %}
 
-      {% if page.project_githubs %}
-        <div class="project-topics">
-
-          {% assign github_links = page.project_githubs %}
-          {% assign links_count = github_links | size %}
-
-          {% if page.lang == 'en' %}
-            {% if links_count == 1 %}
-              <a href="{{ github_links[0] }}">
-                The code for this project is on GitHub
-              </a>
-            {% else %}
-              <p>The code for this project is available on GitHub
-                {% for url in github_links %}
-                  {% if forloop.first %}{% else %}{% if forloop.last %} and {% else %}, {% endif %}{% endif %}
-                  <a href="{{ url }}">here</a>
-                {% endfor %}
-              </p>
-            {% endif %}
-          {% else %}
-            {% if links_count == 1 %}
-              <a href="{{ github_links[0] }}">
-                Le code de ce projet est sur GitHub
-              </a>
-            {% else %}
-              <p>Le code de ce projet est disponible sur GitHub
-                {% for url in github_links %}
-                  {% if forloop.first %}{% else %}{% if forloop.last %} et {% else %}, {% endif %}{% endif %}
-                  <a href="{{ url }}">ici</a>
-                {% endfor %}
-              </p>
-            {% endif %}
-          {% endif %}
-        </div>
-      {% endif %}
-
     </div>
 
   </header>
 
   <div class="separator"></div>
 
+  {% include last_updated.html %}
+
   <div class="post-content">
     {{ content }}
   </div>
 
-  {% include last_updated.html %}
+  <div class="separator separator-small"></div>
 
 </article>
