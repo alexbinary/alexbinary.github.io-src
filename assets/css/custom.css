@@ -484,6 +484,7 @@ ul.list-pointer-style li::before {
     border-radius: 8px;
     overflow: hidden;
     background-color: var(--bg-color-1);
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.166);
 }
 
 .project-card-content {
@@ -497,7 +498,7 @@ ul.list-pointer-style li::before {
     color: black;
 }
 
-.project-card:hover {
+.project-card:hover a {
     text-decoration: none;
 }
 
@@ -532,6 +533,11 @@ ul.list-pointer-style li::before {
     */
 }
 
+.project-card-content svg {
+    width: 1rem;
+    flex-shrink: 0;
+}
+
 @media (max-width: 600px) {
 
     .project-card-content {
@@ -560,6 +566,88 @@ ul.list-pointer-style li::before {
     }
 }
 
+.project-card-posts {
+    padding: 0.7rem;
+    border-top: 1px solid lightgray;
+}
+
+.project-card-posts a {
+    color: var(--fg-color-0);
+    opacity: 0.9;
+}
+
+.project-card-posts-meta {
+    color: var(--fg-color-1);
+    font-size: 0.8rem;
+    margin-bottom: 0;
+}
+
+.project-card-posts-content {
+    display: flex;
+    gap: 1rem;
+    align-items: baseline;
+    justify-content: space-between;
+    /*
+    */
+}
+
+.project-card-posts-title-text {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*
+    */
+}
+
+.project-card-posts-content h3 {
+    flex-shrink: 0;
+    font-size: 1.3rem;
+    /*
+    text-overflow: ellipsis;
+    overflow: hidden;
+    */
+}
+
+.project-card-posts-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+
+.project-card-posts-content h3,
+.project-card-posts-content p {
+    margin-bottom: 0.4rem;
+}
+
+.project-card-posts svg {
+    width: 0.7rem;
+    flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+
+    .project-card-posts-content h3,
+    .project-card-posts-content p {
+        margin-bottom: 0rem;
+    }
+
+    .project-card-posts-title-text {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .project-card-posts-text {
+        white-space: initial;
+    }
+
+    .project-card-posts svg {
+        margin-right: 0.6rem;
+    }
+}
+
 
 
 /* ---- Post cards */
@@ -572,6 +660,7 @@ ul.list-pointer-style li::before {
 .post-card {
     overflow: hidden;
     position: relative;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.166);
     /*
     */
 }
@@ -596,12 +685,12 @@ ul.list-pointer-style li::before {
 
 .post-card-content {
     background-color: var(--bg-color-1);
-    margin: 1px;
+    /* margin: 1px; */
     margin-top: 5rem;
     border-radius: 8px;
     padding: 0.7rem;
     padding-bottom: 2rem;
-    height: calc(100% - 1px - 5rem - 0.7rem - 2rem);
+    height: calc(100% - 5rem - 0.7rem - 2rem);
     /*
     */
 }
@@ -843,6 +932,7 @@ ul.list-pointer-style li::before {
     background: var(--link-card-bg-color);
     border: 1px solid var(--link-card-border-color);
     border-radius: 12px;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.166);
 }
 
 .link-card:hover {
@@ -894,6 +984,7 @@ article.project header {
     overflow: hidden;
     position: relative;
     display: flex;
+    box-shadow: 3px 3px rgba(0, 0, 0, 0.166);
 }
 
 article.project h1,

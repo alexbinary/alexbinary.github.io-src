@@ -8,7 +8,42 @@ lang_en: /
 {% include intro_fr.html %}
 
 <section>
-    {% include heading-with-icon.html text="Mes derniers billets" icon="📝" %}
+    {% include heading-with-icon.html text="Mes projets du moment" icon="🧑‍🔬" %}
+
+    <div class="cards-container">
+
+        {% include project-card.html
+            project_id="a10edb47-8a09-4f84-9f5d-214ac597b2ad"
+            title="Emulateur matériel"
+            subtitle="Création d'un système programmable simple et de l'émulateur correspondant"
+            text="#electronique #programmation #6502"
+            url="/fr/projets/emulation"
+            image_url="/assets/projects/emulation/IMG_7377.JPG"
+        %}
+
+        {% include project-card.html
+            title="Simulateur optique"
+            subtitle="Logiciel de simulation graphique pour comprendre le fonctionnement de la lumière et des systèmes optiques"
+            text="#programmation #swiftui"
+            url="/fr/projets/simulateur-optique"
+            image_url="/assets/projects/optics-simulator/card-illus.png"
+            image_class="image_top_0"
+        %}
+        
+        {% include project-card.html
+            title="Solution de rangement LEGO"
+            subtitle="Solution sur mesure pour stocker et organiser ma collection de pièces"
+            text="#menuiserie #decoupelaser #impression3d"
+            url="/fr/projets/rangement-lego"
+            image_url="/assets/projects/lego-storage-system/illus1.jpg"
+        %}
+
+    </div>
+
+</section>
+
+<section>
+    {% include heading-with-icon.html text="Billets récents" icon="📝" %}
 
     <div class="cards-container post-cards-container">
 
@@ -53,41 +88,7 @@ lang_en: /
 </section>
 
 <section>
-    {% include heading-with-icon.html text="Mes projets du moment" icon="🧑‍🔬" %}
-
-    <div class="cards-container">
-
-        {% include project-card.html
-            title="Emulateur matériel"
-            subtitle="Création d'un système programmable simple et de l'émulateur correspondant"
-            text="#electronique #programmation #6502"
-            url="/fr/projets/emulation"
-            image_url="/assets/projects/emulation/IMG_7377.JPG"
-        %}
-
-        {% include project-card.html
-            title="Simulateur optique"
-            subtitle="Logiciel de simulation graphique pour comprendre le fonctionnement de la lumière et des systèmes optiques"
-            text="#programmation #swiftui"
-            url="/fr/projets/simulateur-optique"
-            image_url="/assets/projects/optics-simulator/card-illus.png"
-            image_class="image_top_0"
-        %}
-        
-        {% include project-card.html
-            title="Solution de rangement LEGO"
-            subtitle="Solution sur mesure pour stocker et organiser ma collection de pièces"
-            text="#menuiserie #decoupelaser #impression3d"
-            url="/fr/projets/rangement-lego"
-            image_url="/assets/projects/lego-storage-system/illus1.jpg"
-        %}
-
-    </div>
-
-</section>
-
-<section>
-    {% include heading-with-icon.html text="Où me trouver" icon="🎯" %}
+    {% include heading-with-icon.html text="Autres présences en ligne" icon="🎯" %}
 
     <div class="cards-container links-cards-container">
 
