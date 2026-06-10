@@ -549,54 +549,108 @@ ul.list-pointer-style li::before {
 
 
 .post-cards-container {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    gap: 1rem;
-    justify-content: space-between;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    position: relative;
+}
+
+.post-cards-scroll-container {
+    overflow: scroll;
+    /* padding-bottom: 1rem; */
+    scrollbar-width: none;
+    position: relative;
+}
+
+.post-cards-top-container {
+    position: relative;
+}
+
+.post-cards-top-container .disclosure {
+    height: 15rem;
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 0.5rem;
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    background-color: red;
+    background: linear-gradient(to right, transparent, #fafafae4 35%, white 75%);
+    /*
+    */
+
 }
 
 .post-card {
-    background-color: var(--bg-color-1);
+    display: inline-block;
+    width: 29%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-right: 0.7rem;
+    height: 15rem;
+    background: #fafafa38;
     border-radius: 8px;
+    /*
+    border: 1px solid black;
+    */
     overflow: hidden;
     position: relative;
 }
 
 @media (prefers-color-scheme: light) {
 
-    .post-card {
-        border: 1px solid lightgray
-    }
+    .post-card {}
 }
 
 .post-card img {
-    height: 5rem;
-    width: 100%;
-    object-fit: cover;
+    position: absolute;
+    z-index: -1;
+    height: 100%;
+    /*
+    */
 }
 
 .post-card-content {
+    /* border: 1px solid lightgray; */
     padding: 0.7rem;
     padding-bottom: 2rem;
+    border-radius: 8px;
+    margin: 4px;
+    /* margin-bottom: 1rem; */
+    /* margin-right: 1rem; */
+    background-color: var(--bg-color-1);
+    height: calc(100% - 0.7rem - 2rem - 4px - 4px);
+    overflow: hidden;
+    position: relative;
 }
 
 .post-card p,
 .post-card h3 {
     margin: 0;
     padding: 0;
-    color: var(--fg-color-0);
+    color: #252525;
 }
 
 .post-card .post-card-meta {
-    color: var(--fg-color-1)
+    color: var(--fg-color-1);
+    font-size: 0.8rem;
 }
 
-.post-card p {
+.post-card .project-name {
+    font-style: italic;
+}
+
+.post-card .post-card-excerpt {
     text-align: justify;
+    font-size: 0.9rem;
 }
 
 .post-card h3 {
     font-weight: lighter;
+    line-height: 110%;
+    margin-bottom: 0.2rem;
+    font-size: 1.3rem;
 }
 
 .post-card:hover a {
@@ -612,9 +666,19 @@ ul.list-pointer-style li::before {
 
 .post-card .read-more {
     position: absolute;
-    bottom: 0.7rem;
-    right: 0.7rem;
+    bottom: 0;
+    right: 0;
+    padding: 0.2rem;
+    padding-bottom: 0.5rem;
+    padding-top: 2rem;
+    text-align: end;
     color: var(--fg-color-1);
+    font-size: 0.9rem;
+    width: 100%;
+    background: linear-gradient(to bottom, transparent, #fafafaf0 45%);
+    /* background: var(--bg-color-1); */
+    /* background-color: red; */
+    /* border: 1px solid red; */
 }
 
 .post-card .read-more svg {
