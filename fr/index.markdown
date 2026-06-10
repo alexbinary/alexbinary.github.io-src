@@ -10,51 +10,43 @@ lang_en: /
 <section>
     {% include heading-with-icon.html text="Mes derniers billets" icon="📝" %}
 
-    <div class="post-cards-top-container">
-        <div class="disclosure">
-            {% include disclosure.html %}
-        </div>
-        <div class="post-cards-scroll-container">
-            <div class="cards-container post-cards-container">
+    <div class="cards-container post-cards-container">
 
-                
-                {% assign posts = site.posts | where: "lang", page.lang %}
-                {% for post in posts limit:100 %}
-                    <article class="post-card">
-                        <a href="{{ post.url }}">
-                            <img src="{{ post.image }}">
-                            <div class="post-card-content">
-                                <p class="post-card-meta">
-                                    {{ post.date | date_custom: page.lang }} dans<br>
-                                    
+        {% assign posts = site.posts | where: "lang", page.lang %}
+        {% for post in posts limit:3 %}
+            <article class="post-card">
+                <a href="{{ post.url }}">
+                    <img src="{{ post.image }}">
+                    <div class="post-card-content">
+                        <p class="post-card-meta">
+                            {{ post.date | date_custom: page.lang }} dans<br class="desktop-only">
+                            
 
-                                    {%- assign project = site.data.projects | where: "id", post.project_id | first -%}
-                                    <span class="project-name">
-                                    {{ project.name[page.lang] }}
-                                    </span>
+                            {%- assign project = site.data.projects | where: "id", post.project_id | first -%}
+                            <span class="project-name">
+                            {{ project.name[page.lang] }}
+                            </span>
 
-                                </p>
-                                <h3 class="post-card-title">{{ post.title }}</h3>
-                                
-                                <p class="post-card-excerpt mobile-only">{{ post.excerpt | strip_html | truncate: 180 }}</p>
-                                <p class="post-card-excerpt desktop-only">{{ post.excerpt | strip_html | truncate: 420 }}</p>
+                        </p>
+                        <h3 class="post-card-title">{{ post.title }}</h3>
+                        
+                        <p class="post-card-excerpt mobile-only">{{ post.excerpt | strip_html | truncate: 180 }}</p>
+                        <p class="post-card-excerpt desktop-only">{{ post.excerpt | strip_html | truncate: 420 }}</p>
 
-                                <p class="read-more">
-                                    
-                                    {% if page.lang == 'en' %}
-                                        Read
-                                    {% else %}
-                                        Lire
-                                    {% endif %}
-                                    {% include disclosure.html %}
-                                    
-                                </p>
-                            </div>
-                        </a>
-                    </article>
-                {% endfor %}
-            </div>
-        </div>
+                        <p class="read-more">
+                            
+                            {% if page.lang == 'en' %}
+                                Read
+                            {% else %}
+                                Lire
+                            {% endif %}
+                            {% include disclosure.html %}
+                            
+                        </p>
+                    </div>
+                </a>
+            </article>
+        {% endfor %}
     </div>
 
 </section>
