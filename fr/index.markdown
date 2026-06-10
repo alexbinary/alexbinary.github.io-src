@@ -69,7 +69,7 @@ lang_en: /
             subtitle="Logiciel de simulation graphique pour comprendre le fonctionnement de la lumière et des systèmes optiques"
             text="#programmation #swiftui"
             url="/fr/projets/simulateur-optique"
-            image_url="/assets/projects/optics-simulator/screenshot1.png"
+            image_url="/assets/projects/optics-simulator/card-illus.png"
             image_class="image_top_0"
         %}
         

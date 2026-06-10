@@ -25,7 +25,7 @@ lang_fr: /fr
             subtitle="Graphical simulation software to understand light and optical systems"
             text="#programming #swiftui"
             url="/en/projects/optics-simulator"
-            image_url="/assets/projects/optics-simulator/screenshot1.png"
+            image_url="/assets/projects/optics-simulator/card-illus.png"
             image_class="image_top_0"
         %}
 
