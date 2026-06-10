@@ -1001,7 +1001,12 @@ article.project header {
     overflow: hidden;
     position: relative;
     display: flex;
-    box-shadow: 3px 3px rgba(0, 0, 0, 0.166);
+}
+
+@media (min-width: 600px) {
+    article.project header {
+        box-shadow: 3px 3px rgba(0, 0, 0, 0.166);
+    }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -1019,21 +1024,11 @@ article.project h1 {
     font-family: 'Verdana';
     margin-top: 1rem;
     margin-bottom: 0;
-    width: fit-content;
 }
 
 article.project .title {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
     width: fit-content;
     margin: auto;
-}
-
-article.project .parent-project {
-    display: inline;
-    width: fit-content;
-    margin-bottom: 0;
 }
 
 article.project .project-topics {
@@ -1114,7 +1109,8 @@ article.project-post .project-post-title p {
 }
 
 article.project-post .project-post-title h2 {
-    margin-bottom: 0;
+    line-height: 110%;
+    margin-bottom: 1rem;
     font-size: 2.5rem;
 }
 

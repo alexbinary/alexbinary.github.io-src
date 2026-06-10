@@ -48,10 +48,10 @@ layout: default
           {% if page.lang == 'en' %}
             {% if links_count == 1 %}
               <a href="{{ github_links[0] }}">
-                The code for this project is on GitHub
+                The code used in this post is available on GitHub
               </a>
             {% else %}
-              <p>The code for this project is available on GitHub
+              <p>The code used in this post is available on GitHub
                 {% for url in github_links %}
                   {% if forloop.first %}{% else %}{% if forloop.last %} and {% else %}, {% endif %}{% endif %}
                   <a href="{{ url }}">here</a>
@@ -61,10 +61,10 @@ layout: default
           {% else %}
             {% if links_count == 1 %}
               <a href="{{ github_links[0] }}">
-                Le code de ce projet est sur GitHub
+                Le code utilisé dans cet article est disponible sur GitHub
               </a>
             {% else %}
-              <p>Le code de ce projet est disponible sur GitHub
+              <p>Le code utilisé dans cet article est disponible sur GitHub
                 {% for url in github_links %}
                   {% if forloop.first %}{% else %}{% if forloop.last %} et {% else %}, {% endif %}{% endif %}
                   <a href="{{ url }}">ici</a>
