@@ -29,8 +29,7 @@ lang_en: /
                         </p>
                         <h3 class="post-card-title">{{ post.title }}</h3>
                         
-                        <p class="post-card-excerpt mobile-only">{{ post.excerpt | strip_html | truncate: 280 }}</p>
-                        <p class="post-card-excerpt desktop-only">{{ post.excerpt | strip_html | truncate: 420 }}</p>
+                        <p class="post-card-excerpt">{{ post.teaser | strip_html }}</p>
 
                         <p class="read-more">
                             
@@ -38,7 +37,7 @@ lang_en: /
                             {% if page.lang == 'en' %}
                                 Read
                             {% else %}
-                                Lire la suite
+                                Lire
                             {% endif %}
                             </span>
                             {% include disclosure.html %}

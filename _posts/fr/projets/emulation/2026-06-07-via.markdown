@@ -9,6 +9,8 @@ githubs: [
 ]
 lang: fr
 lang_en: 
+teaser:
+    Aujoud'hui nous installons le 6522 dans le circuit.
 ---
 
 Maintenant que je peux écrire dans la mémoire des programmes arbitrairement longs, le but est désormais d'ajouter des LEDs et des boutons pour pouvoir écrire et exécuter des programmes interactifs qui produisent des résultats directement observables sans instruments.
