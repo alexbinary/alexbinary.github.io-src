@@ -1,7 +1,7 @@
 ---
 layout: post_project
 project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
-title: Comment implémenter une bascule D
+title: Comment implémenter une bascule D avec des portes logiques
 topics: [6502, arduino, electronique, programmation]
 image: /assets/projects/emulation/IMG_7416.JPG
 githubs: [
@@ -10,7 +10,7 @@ githubs: [
 lang: fr
 lang_en: 
 teaser_short:
-    Nous voyons comment créer une bascule D de zéro
+    Dans cet article nous voyons comment créer une bascule D de zéro avec des composants élémentaires appelés portes logiques
 teaser:
     Aujourd'hui nous voyons comment créer une bascule D avec des portes logiques. Pour essayer de générer de nouvelles idées je revisionne la vidéo de Ben Eater sur le VIA.
 ---
