@@ -2,25 +2,69 @@
 
 
 :root {
-    --bg-color-0: #fdfdfd;
-    --bg-color-1: rgb(243, 243, 243);
+    --light--bg-color-0: #fdfdfd;
+    --light--bg-color-1: rgb(243, 243, 243);
 
-    --fg-color-0: #111;
-    --fg-color-1: #666;
+    --light--fg-color-0: #111;
+    --light--fg-color-1: #666;
+    --light--fg-color-2: #252525;
 
-    --link-color-0: #2a7ae2;
+    --light--link-color-0: #2a7ae2;
 
-    --table-border-color-0: #d1d1d1;
+    --light--table-border-color-0: #d1d1d1;
 
-    --header-footer-border-color: var(--fg-color-0);
+    --light--header-footer-border-color: var(--fg-color-0);
 
-    --activity-card-bg-color: #fafafa;
-    --activity-card-border-color: #eee;
+    --light--activity-card-bg-color: #fafafa;
+    --light--activity-card-border-color: #eee;
 
-    --link-card-bg-color: var(--bg-color-1);
-    --link-card-border-color: #eee;
+    --light--link-card-bg-color: var(--bg-color-1);
+    --light--link-card-border-color: #eee;
 
-    --project-header-bg-color: #fafafaf0;
+    --light--project-header-bg-color: #fafafaf0;
+}
+
+:root {
+    --dark--bg-color-0: #212121;
+    --dark--bg-color-1: rgb(65, 65, 65);
+
+    --dark--fg-color-0: rgb(213, 213, 213);
+    --dark--fg-color-1: #b1b1b1;
+    --dark--fg-color-2: #b1b1b1;
+
+    --dark--link-color-0: #2f88fd;
+
+    --dark--table-border-color-0: #505050;
+
+    --dark--activity-card-bg-color: var(--bg-color-1);
+    --dark--activity-card-border-color: clear;
+
+    --dark--link-card-border-color: clear;
+
+    --dark--project-header-bg-color: var(--bg-color-1);
+}
+
+:root {
+    --bg-color-0: var(--light--bg-color-0);
+    --bg-color-1: var(--light--bg-color-1);
+
+    --fg-color-0: var(--light--fg-color-0);
+    --fg-color-1: var(--light--fg-color-1);
+    --fg-color-2: var(--light--fg-color-2);
+
+    --link-color-0: var(--light--link-color-0);
+
+    --table-border-color-0: var(--light--table-border-color-0);
+
+    --header-footer-border-color: var(--light--header-footer-border-color);
+
+    --activity-card-bg-color: var(--light--activity-card-bg-color);
+    --activity-card-border-color: var(--light--activity-card-border-color);
+
+    --link-card-bg-color: var(--light--link-card-bg-color);
+    --link-card-border-color: var(--light--link-card-border-color);
+
+    --project-header-bg-color: var(--light--project-header-bg-color);
 }
 
 .color-scheme-dark {
@@ -30,22 +74,23 @@
 @media (prefers-color-scheme: dark) {
 
     :root {
-        --bg-color-0: #212121;
-        --bg-color-1: rgb(65, 65, 65);
+        --bg-color-0: var(--dark--bg-color-0);
+        --bg-color-1: var(--dark--bg-color-1);
 
-        --fg-color-0: rgb(213, 213, 213);
-        --fg-color-1: #b1b1b1;
+        --fg-color-0: var(--dark--fg-color-0);
+        --fg-color-1: var(--dark--fg-color-1);
+        --fg-color-2: var(--dark--fg-color-2);
 
-        --link-color-0: #2f88fd;
+        --link-color-0: var(--dark--link-color-0);
 
-        --table-border-color-0: #505050;
+        --table-border-color-0: var(--dark--table-border-color-0);
 
-        --activity-card-bg-color: var(--bg-color-1);
-        --activity-card-border-color: clear;
+        --activity-card-bg-color: var(--dark--activity-card-bg-color);
+        --activity-card-border-color: var(--dark--activity-card-border-color);
 
-        --link-card-border-color: clear;
+        --link-card-border-color: var(--dark--link-card-border-color);
 
-        --project-header-bg-color: var(--bg-color-1);
+        --project-header-bg-color: var(--dark--project-header-bg-color);
     }
 
     .color-scheme-light {
@@ -521,6 +566,7 @@ ul.list-pointer-style li::before {
 .post-card img {
     position: absolute;
     z-index: -1;
+    top: -5rem;
 }
 
 .post-card {
@@ -530,38 +576,43 @@ ul.list-pointer-style li::before {
     */
 }
 
+.post-card-separator {
+    display: none;
+}
+
 .post-cards-container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 0.7rem;
 }
 
 .post-card {
-    height: 15rem;
+    height: 17.5rem;
+    border-radius: 8px;
 }
 
 .post-card img {
     width: 100%;
     height: 100%;
-    border-radius: 8px;
     /*
     */
 }
 
 .post-card-content {
     background-color: var(--bg-color-1);
-    margin: 4px;
+    margin: 1px;
+    margin-top: 5rem;
     border-radius: 8px;
     padding: 0.7rem;
     padding-bottom: 2rem;
-    height: calc(100% - 0.7rem - 2rem - 4px - 4px);
+    height: calc(100% - 1px - 5rem - 0.7rem - 2rem);
     /*
     */
 }
 
 .post-card p,
 .post-card h3 {
-    color: #252525;
+    color: var(--fg-color-2);
 }
 
 .post-card:hover a {
@@ -588,10 +639,10 @@ ul.list-pointer-style li::before {
 }
 
 .post-card h3 {
-    font-weight: lighter;
     font-size: 1.3rem;
     line-height: 110%;
-    margin-bottom: 0.2rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
     /*
     */
 }
@@ -614,14 +665,10 @@ ul.list-pointer-style li::before {
     width: 100%;
     right: 0;
     text-align: end;
-    background: linear-gradient(to bottom, transparent, var(--bg-color-1) 45%);
-    color: var(--fg-color-1);
-    padding: 0.2rem;
-    padding-bottom: 0.5rem;
-    padding-top: 2rem;
+    background: linear-gradient(to right, transparent, var(--bg-color-1) 65%);
+    color: var(--fg-color-0);
     font-size: 0.9rem;
-    /*
-    */
+    padding: 0.3rem;
 }
 
 .post-card .read-more svg {
@@ -630,14 +677,55 @@ ul.list-pointer-style li::before {
     top: 0.1rem;
 }
 
+.post-card .read-more svg path {
+    fill: var(--fg-color-0);
+}
+
 @media (max-width: 600px) {
 
     .post-cards-container {
         grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .post-card-separator {
+        display: initial;
+        border-bottom: 1px solid rgba(211, 211, 211, 0.643);
+        width: 100%;
+        margin: 1rem auto;
     }
 
     .post-card {
-        height: 11rem;
+        height: 15.7rem;
+    }
+
+    .post-card .read-more {
+        padding: 0;
+        padding-right: 0.3rem;
+        padding-bottom: 0.3rem;
+    }
+
+    .post-card .read-more svg {
+        width: 0.8rem;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+
+    .post-card {
+        background: rgba(213, 213, 213, 0.348);
+        /*
+        */
+    }
+
+    .post-card-content {
+        background-color: #212121ee;
+        background-color: var(--bg-color-0);
+
+    }
+
+    .post-card .read-more {
+        background: linear-gradient(to right, transparent, var(--bg-color-0) 65%);
     }
 }
 

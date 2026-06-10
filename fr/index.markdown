@@ -13,15 +13,14 @@ lang_en: /
     <div class="cards-container post-cards-container">
 
         {% assign posts = site.posts | where: "lang", page.lang %}
-        {% for post in posts limit:3 %}
+        {% for post in posts limit:2 %}
             <article class="post-card">
                 <a href="{{ post.url }}">
                     <img src="{{ post.image }}">
                     <div class="post-card-content">
                         <p class="post-card-meta">
-                            {{ post.date | date_custom: page.lang }} dans<br class="desktop-only">
+                            {{ post.date | date_custom: page.lang }} dans
                             
-
                             {%- assign project = site.data.projects | where: "id", post.project_id | first -%}
                             <span class="project-name">
                             {{ project.name[page.lang] }}
@@ -30,22 +29,25 @@ lang_en: /
                         </p>
                         <h3 class="post-card-title">{{ post.title }}</h3>
                         
-                        <p class="post-card-excerpt mobile-only">{{ post.excerpt | strip_html | truncate: 180 }}</p>
+                        <p class="post-card-excerpt mobile-only">{{ post.excerpt | strip_html | truncate: 280 }}</p>
                         <p class="post-card-excerpt desktop-only">{{ post.excerpt | strip_html | truncate: 420 }}</p>
 
                         <p class="read-more">
                             
+                            <span>
                             {% if page.lang == 'en' %}
                                 Read
                             {% else %}
-                                Lire
+                                Lire la suite
                             {% endif %}
+                            </span>
                             {% include disclosure.html %}
                             
                         </p>
                     </div>
                 </a>
             </article>
+            
         {% endfor %}
     </div>
 
