@@ -613,7 +613,7 @@ ul.list-pointer-style li::before {
 
 .project-card-posts-content h3 {
     flex-shrink: 0;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     /*
     text-overflow: ellipsis;
     overflow: hidden;
@@ -670,14 +670,19 @@ ul.list-pointer-style li::before {
 .post-card {
     overflow: hidden;
     position: relative;
-    box-shadow: 3px 3px var(--shadow-color-1);
     /*
+    box-shadow: 3px 3px var(--shadow-color-1);
     */
 }
 
 @media (prefers-color-scheme: dark) {
     .post-card {
+        border: 1px solid rgb(183, 183, 183);
         box-shadow: 3px 3px rgb(183, 183, 183);
+        /*
+        border-bottom: 5px solid rgb(183, 183, 183);
+        border-right: 3px solid rgb(183, 183, 183);
+        */
     }
 }
 
@@ -797,8 +802,8 @@ ul.list-pointer-style li::before {
 @media (prefers-color-scheme: dark) {
 
     .post-card {
-        background: rgba(213, 213, 213, 0.348);
         /*
+        background: rgba(213, 213, 213, 0.348);
         */
     }
 
