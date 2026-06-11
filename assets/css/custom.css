@@ -14,7 +14,6 @@
         --light--line-color-0: #d3d3d3;
 
         --light--link-color-0: #2a7ae2;
-
         --light--table-border-color-0: #d1d1d1;
 
         --light--header-footer-border-color: var(--fg-color-0);
@@ -38,7 +37,6 @@
         --dark--line-color-0: #ffffff2a;
 
         --dark--link-color-0: #2f88fd;
-
         --dark--table-border-color-0: #505050;
 
         --dark--link-card-bg-color: var(--bg-color-1);
@@ -61,7 +59,6 @@
         --line-color-0: var(--light--line-color-0);
 
         --link-color-0: var(--light--link-color-0);
-
         --table-border-color-0: var(--light--table-border-color-0);
 
         --header-footer-border-color: var(--light--header-footer-border-color);
@@ -89,7 +86,6 @@
         --line-color-0: var(--dark--line-color-0);
 
         --link-color-0: var(--dark--link-color-0);
-
         --table-border-color-0: var(--dark--table-border-color-0);
 
         --link-card-bg-color: var(--dark--link-card-bg-color);
