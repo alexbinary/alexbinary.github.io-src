@@ -60,12 +60,10 @@ lang_en: /
                             <span class="project-name">
                             {{ project.name[page.lang] }}
                             </span>
-
                         </p>
                         <h3 class="post-card-title">{{ post.title }}</h3>
 
                         <p class="read-more">
-                            
                             <span>
                             {% if page.lang == 'en' %}
                                 Read

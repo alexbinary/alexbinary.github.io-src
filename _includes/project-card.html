@@ -21,7 +21,11 @@
     {% if posts != empty %}
         <div class="project-card-posts">
             <p class="project-card-posts-meta">
-                Publications récentes dans ce projet
+                {% if page.lang == 'en' %}
+                    Recent posts in this project
+                {% else %}
+                    Publications récentes dans ce projet
+                {% endif %}
             </p>
             {% for post in posts limit: 3%}
                 <a href="{{ post.url }}">
