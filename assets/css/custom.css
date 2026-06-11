@@ -573,6 +573,11 @@ ul.list-pointer-style li::before {
     }
 }
 
+
+
+/*  Project card - posts */
+
+
 .project-card-posts {
     padding: 0.7rem;
     border-top: 1px solid lightgray;
@@ -592,34 +597,6 @@ ul.list-pointer-style li::before {
     */
 }
 
-.project-card-posts-title-text {
-    display: flex;
-    gap: 1rem;
-    align-items: end;
-}
-
-@media (max-width: 600px) {
-
-    .project-card-posts-title-text {
-        flex-direction: column;
-        align-items: start;
-        gap: 0.5rem;
-    }
-}
-
-@media (min-width: 600px) {
-
-    .project-card-posts-content-inner {
-        gap: 1rem;
-    }
-
-    .project-card-posts-content h3 {
-        /* width: 13rem; */
-        flex-shrink: 0;
-        /* border-right: 1px solid lightgray; */
-    }
-}
-
 .project-card-posts-meta {
     color: var(--light--fg-color-1);
     font-size: 0.9rem;
@@ -631,14 +608,9 @@ ul.list-pointer-style li::before {
     font-weight: 500;
 }
 
-.project-card-posts-text {
-    font-size: 0.9rem;
-}
-
 @media (max-width: 600px) {
 
-    .project-card-posts-content h3,
-    .project-card-posts-text {
+    .project-card-posts-content h3 {
         margin-bottom: 0rem;
     }
 }
@@ -672,14 +644,14 @@ ul.list-pointer-style li::before {
 }
 
 @media (max-width: 600px) {
-    
+
     .post-card {
         padding: 8px;
     }
 }
 
 @media (min-width: 600px) {
-    
+
     .post-card {
         padding: 8px;
     }
