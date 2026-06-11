@@ -15,7 +15,8 @@
     {% assign posts = site.posts
         | where: "lang", page.lang
         | where: "project_id", include.project_id
-        %}
+        | sort: "date"
+    %}
     {% if posts != empty %}
         <div class="project-card-posts">
             <p class="project-card-posts-meta">
@@ -25,14 +26,21 @@
                     Publications récentes dans ce projet
                 {% endif %}
             </p>
-            {% for post in posts limit: 3%}
-                <a href="{{ post.url }}">
-                    <div class="project-card-posts-content">
+            {% assign num = 3 %}
+            {% assign offset = posts.size | minus: num %}
+            <div class="project-card-posts-content">
+            {% for post in posts limit: num offset: offset %}
+                    <a href="{{ post.url }}">
+                        <p>#{{ post.entry }}</p>
+                    </a>
+                    <a href="{{ post.url }}">
                         <h3>{{ post.title }}</h3>
+                    </a>
+                    <a href="{{ post.url }}">
                         {% include disclosure.html %}
-                    </div>
-                </a>
-            {% endfor %}
+                    </a>
+                {% endfor %}
+                </div>
         </div>
     {% endif %}
 

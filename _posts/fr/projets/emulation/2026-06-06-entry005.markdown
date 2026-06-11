@@ -1,15 +1,16 @@
 ---
 layout: post_project
 project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
-title: Programmation de la ROM
+entry: 5
+title: Programmation de l'EEPROM avec Arduino grâce aux registres à décalage
 topics: [6502, arduino, electronique, programmation]
 image: /assets/projects/emulation/IMG_7377.JPG
-githubs: [
-  https://github.com/alexbinary/arduino-6502,
-  https://github.com/alexbinary/arduino-eeprom-programmer,
-]
+githubs:
+- https://github.com/alexbinary/arduino-6502
+- https://github.com/alexbinary/arduino-eeprom-programmer
+permalink: /fr/2026/06/02/emulation-005
 lang: fr
-lang_en: 
+lang_en: /en/2026/06/02/emulation-005
 ---
 
 

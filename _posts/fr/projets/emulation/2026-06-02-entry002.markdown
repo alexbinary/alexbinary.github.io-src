@@ -1,16 +1,19 @@
 ---
 layout: post_project
 project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
-title: Premier programme
-date: 2026-06-02 11:02:15 +0100
+entry: 2
+title: Exécution du premier programme et découverte de l'EEPROM
 topics: [6502, arduino, electronique, programmation]
 image: /assets/projects/emulation/IMG_7377.JPG
 githubs: [
   https://github.com/alexbinary/arduino-6502,
 ]
+permalink: /fr/2026/06/02/emulation-002
 lang: fr
-lang_en: 
+lang_en: /en/2026/06/02/emulation-002
 ---
+
+La dernière fois nous avons découvert le 6502 et validé son fonctionnement. Nous avons câblé en dur une donnée sur le bus, de sorte à envoyer au CPU l'instruction `NOP` (« No Operation ») quelque soit l'adresse qu'il lit.
 
 La prochaine étape est de fournir au CPU des données dynamiques en fonction de l'adresse qu'il demande, de sorte à former un programme qui ait du sens. Classiquement c'est le rôle d'une puce mémoire. Mais dans un premier temps j'expérimente avec Arduino.
 

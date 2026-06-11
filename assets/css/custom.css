@@ -623,25 +623,40 @@ ul.list-pointer-style li::before {
     opacity: 0.9;
 }
 
-.project-card-posts-content {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
-    justify-content: space-between;
-    /*
-    */
-}
-
 .project-card-posts-meta {
     color: var(--fg-color-1);
     font-size: 0.9rem;
     margin-bottom: 0;
 }
 
+.project-card-posts-content {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 0 1rem;
+    align-items: baseline;
+    justify-content: space-between;
+    /*
+    */
+}
+
+@media (max-width: 600px) {
+
+    .project-card-posts-content {
+        gap: 0 0.5rem;
+    }
+}
+
+.project-card-posts-content p {
+    margin-bottom: 0;
+    color: var(--fg-color-1);
+    flex-shrink: 0;
+}
+
 .project-card-posts-content h3 {
     font-size: 1rem;
     font-weight: 500;
     margin-bottom: 0rem;
+    flex-grow: 1;
 }
 
 .project-card-posts svg {

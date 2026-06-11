@@ -1,16 +1,15 @@
 ---
 layout: post_project
 project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
-title: La puce d'entrées-sorties
+entry: 6
+title: Prise en main du 6522 "Versatile Interface Adapter"
 topics: [6502, arduino, electronique, programmation]
 image: /assets/projects/emulation/IMG_7377.JPG
-githubs: [
-  https://github.com/alexbinary/arduino-6502,
-]
+githubs:
+- https://github.com/alexbinary/arduino-6502,
+permalink: /fr/2026/06/02/emulation-006
 lang: fr
-lang_en: 
-teaser:
-    Aujoud'hui nous installons le 6522 dans le circuit.
+lang_en: /en/2026/06/02/emulation-006
 ---
 
 Maintenant que je peux écrire dans la mémoire des programmes arbitrairement longs, le but est désormais d'ajouter des LEDs et des boutons pour pouvoir écrire et exécuter des programmes interactifs qui produisent des résultats directement observables sans instruments.
@@ -262,4 +261,4 @@ Le code Arduino est disponible [sur GitHub](https://github.com/alexbinary/arduin
 
 ## La suite
 
-Je n'arrive pas à faire fonctionner le 6522, mais en revoyant [la vidéo de Ben Eater](https://www.youtube.com/watch?v=yl8vPW5hydQ) j'ai l'idée de construire un latch comme il l'a montré dans [cette vidéo](https://www.youtube.com/watch?v=YW-_GkUguMM), et d'essayer de l'interfacer avec le CPU. C'est un exercice intéressant. Si ça fonctionne ça permettra d'avoir déjà une sortie pilotable par le 6502, et donc d'avoir enfin des résultats observables directement et d'écrire des programmes qui font quelque chose.🚫
+Je n'arrive pas à faire fonctionner le 6522, mais en revoyant [la vidéo de Ben Eater](https://www.youtube.com/watch?v=yl8vPW5hydQ) j'ai l'idée de construire un latch comme il l'a montré dans [cette vidéo](https://www.youtube.com/watch?v=YW-_GkUguMM), et d'essayer de l'interfacer avec le CPU. C'est un exercice intéressant. Si ça fonctionne ça permettra d'avoir déjà une sortie pilotable par le 6502, et donc d'avoir enfin des résultats observables directement et d'écrire des programmes qui font quelque chose.

@@ -1,18 +1,40 @@
 ---
 layout: post_project
 project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
-title: Premiers pas avec le 6502
 entry: 1
-date: 2026-06-01 11:02:16 +0100
+title: Présentation du projet et découverte du 6502
 topics: [arduino, electronique]
 image: /assets/projects/emulation/IMG_7377.JPG
+image_thumbnail: /assets/projects/emulation/IMG_7377 crop1.JPG
 githubs:
 - https://github.com/alexbinary/arduino-6502,
-permalink: /en/2026/06/01/emulation--first-steps-with-the-6502
-lang: en
-lang_fr: /fr/2026/06/01/emulation--premiers-pas-avec-le-6502
+permalink: /fr/2026/06/01/emulation-001
+lang: fr
+lang_en: /en/2026/06/01/emulation-001
 ---
 
+Je joue régulièrement à des jeux vidéo sur émulateur et je comprends dans les grandes lignes le principe de l’émulation mais j'ai envie d'en apprendre plus et de "mettre les mains dedans". J'aimerais bien savoir écrire un émulateur de GameBoy, et c'est probablement faisable avec suffisamment de patience, mais j'aime commencer par la base. Et la base c'est : "Au fond, l'émulation, c'est quoi ?"
+
+Pour répondre à cette question je me suis donné pour projet de construire un système matériel simple que je peux programmer, et d'écrire ensuite un émulateur pour ce système. Je choisi de me baser sur le processeur 6502 et son interface 6522, en suivant [les vidéos de Ben Eater dans lesquelles il crée un ordinateur minimaliste basé sur le 6502](https://www.youtube.com/playlist?list=PLowKtXNTBypFbtuVMUVXNR0z1mu7dp7eH). Dans un premier temps je prévois une IHM minimale avec des boutons et des LEDs, et peut-être un petit écran OLED.
+
+Ce projet est avant tout une exploration. C'est l'occasion pour moi de prendre en main des concepts hardware bas niveau et de pendre de l'expérience dans l'interaction entre matériel et logiciel. Dans ce genre de projets découverte j'aime partir de la base et expérimenter petit à petit avec les composants pour valider le fonctionnement supposé étape par étape, confronter mes prédictions à la réalité, et développer une compréhension solide des choses.
+
+
+## Comprendre l'émulation
+
+Prenons l'exemple de la GameBoy. Un jeu de GameBoy est un programme conçu pour être lu par l'électronique de la GameBoy dans le but de produire des images et du son en fonction des actions de l'utilisateur sur les boutons. Le but d'un "émulateur de GameBoy" est de prendre en entrée ce programme et de recréer l'expérience de jeu sur un PC, c'est-à-dire de générer les mêmes images et sons en fonction des actions de l'utilisateur, mais sur une stack matérielle complètement différente.
+
+Écrire un émulateur demande donc de bien comprendre comment chaque instruction du programme impacte les images et le son produits par le système électronique, dans le but de récréer un résultat le plus proche possible. Il faut bien connaître le hardware d'origine et l'interraction entre le matériel et le logiciel, mais le but n'est pas nécessairement de reproduire fidèlement le fonctionnement interne du matériel. Ce qui compte c'est le résultat *observable*.
+
+
+## Le hardware utilisé dans ce projet
+
+J’ai choisi de construire un système basé sur le microprocesseur [6502](https://www.westerndesigncenter.com/wdc/documentation/w65c02s.pdf). Le 6502 est un microprocesseur relativement simple idéal pour débuter. Il est aussi très célèbre puisque c'est le processeur utilisé par de nombreux appareils grand public des années 1980, notamment l’Apple II, le Commodore 64 et l'Atari 2600. Des versions modernisées sont toujours en production aujourd'hui et il existe une large communauté de passionnés.
+
+En plus du 6502, je choisis une EEPROM [AT28C256](https://ww1.microchip.com/downloads/en/DeviceDoc/doc0006.pdf) pour stocker le programme, une RAM [62256](https://eater.net/datasheets/hm62256b.pdf) pour fournir de la mémoire vive au CPU, et des circuits logiques type 74LSXX pour le décodage d'adresse. Des LEDs et boutons seront connectés au 6502 via l'interface [6522](https://eater.net/datasheets/w65c22.pdf). Un écran OLED de type SSD1306 pourra être connecté en i2c. Je travaille sur breadboard, et j'utilise mon [Arduino Uno R4 Wi-Fi](https://docs.arduino.cc/resources/datasheets/ABX00087-datasheet.pdf) pour programmer la ROM, observer les signaux, expérimenter avec les composants, et aussi comme source d'alimentation.
+
+
+## Premiers pas avec le 6502
 
 Le 6502 est un microprocesseur, et sa fonction principale est donc d'exécuter des instructions. Contrairement à un microcontrôleur, il n'a aucune mémoire interne et aucun périphérique. Il interragit avec le monde extérieur via un bus de données et un bus d'addresse, sur lesquels il peut lire et écrire des données. Les instructions à éxécuter, les données à traiter, et les données produites, tout passe par le bus. En général on connecte sur le bus une mémoire qui contient le programme et les données de travail, et des périphérique comme un afficheur, une carte son, etc.
 

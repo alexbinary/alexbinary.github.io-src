@@ -1,17 +1,18 @@
 ---
 layout: post_project
 project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
-title: Les registres à décalage
+entry: 4
+title: Utilisation de registres à décalage pour programmer toute la ROM
 topics: [6502, arduino, electronique, programmation]
 image: /assets/projects/emulation/IMG_7377.JPG
-githubs: [
-  https://github.com/alexbinary/arduino-6502,
-]
+githubs:
+- https://github.com/alexbinary/arduino-6502
+permalink: /fr/2026/06/02/emulation-004
 lang: fr
-lang_en: 
+lang_en: /en/2026/06/02/emulation-004
 ---
 
-Maintenant que le système est en mesure de lire des programmes arbitrairement longs, il est nécessaire de pouvoir programmer la ROM plus de 16 octets à la fois. Jusque là je n'utilisais que 4 lignes d'adresses car l'Arduino n'a pas assez de broches pour utiliser les 15 lignes en même temps, mais il est possible de produire plus de sortie grâce à un composant qu'on appelle *registre à décalage*.
+La dernière fois nous avons installer la ROM avec le 6502 et connecté toutes les lignes d'adresse. Maintenant que le système est en mesure de lire des programmes arbitrairement longs, il est nécessaire de pouvoir programmer la ROM plus de 16 octets à la fois. Jusque là je n'utilisais que 4 lignes d'adresses car l'Arduino n'a pas assez de broches pour utiliser les 15 lignes en même temps, mais il est possible de produire plus de sortie grâce à un composant qu'on appelle *registre à décalage*.
 
 Un registre à décalage est capable de produire plusieurs sorties à partir d'un seul bit d'entrée. On envoie les valeurs une par une et elles sont distribuées sur les lignes de sorties, dans l'ordre. Chaque nouvelle donnée "pouse" les données déjà présente d'un cran. Il est possible de connecter plusieurs registres les uns à la suite des autres pour produire un nombre arbitraire de sorties. On peut également figer la sortie le temps qu'on pousse toutes les données pour éviter que les appareils connectés ne voient les données se déplacer d'une ligne à l'autre, ce qui pourrait avoir des conséquences indésirables.
 

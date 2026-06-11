@@ -55,16 +55,23 @@ lang_fr: /fr
 
 </section>
 
-<section>
-    {% include heading-with-icon.html text="Recent posts" icon="📝" %}
+{% assign posts = site.posts | where: "lang", page.lang | where: "project_id", empty | limit: 4 %}
+{% if posts != empty %}
 
-    <div class="cards-container post-cards-container">
+    <section>
+        {% include heading-with-icon.html text="Recent posts" icon="📝" %}
 
-        {% include recent-posts.html %}
-        
-    </div>
+        <div class="cards-container post-cards-container">
 
-</section>
+            {% include recent-posts.html
+                posts=posts
+            %}
+            
+        </div>
+
+    </section>
+
+{% endif %}
 
 {% comment %}
 
@@ -83,7 +90,7 @@ lang_fr: /fr
 {% endcomment %}
 
 <section>
-    {% include heading-with-icon.html text="Find me online" icon="🎯" %}
+    {% include heading-with-icon.html text="Find me there" icon="🎯" %}
 
     <div class="cards-container links-cards-container">
 

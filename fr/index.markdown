@@ -42,19 +42,26 @@ lang_en: /
 
 </section>
 
+{% assign posts = site.posts | where: "lang", page.lang | where: "project_id", empty | limit: 4 %}
+{% if posts != empty %}
+
+    <section>
+        {% include heading-with-icon.html text="Billets récents" icon="📝" %}
+
+        <div class="cards-container post-cards-container">
+
+            {% include recent-posts.html
+                posts=posts
+            %}
+            
+        </div>
+
+    </section>
+
+{% endif %}
+
 <section>
-    {% include heading-with-icon.html text="Billets récents" icon="📝" %}
-
-    <div class="cards-container post-cards-container">
-
-        {% include recent-posts.html %}
-        
-    </div>
-
-</section>
-
-<section>
-    {% include heading-with-icon.html text="Autres présences en ligne" icon="🎯" %}
+    {% include heading-with-icon.html text="Présence en ligne" icon="🎯" %}
 
     <div class="cards-container links-cards-container">
 

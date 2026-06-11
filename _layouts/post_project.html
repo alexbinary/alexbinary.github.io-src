@@ -29,10 +29,11 @@ layout: default
       <div class="project-post-title">
         <p>
           {% if page.lang == 'en' %}
-            Entry #{{ page.entry }}
+            Entry
           {% else %}
-            Billet n°{{ page.entry }}
+            Billet 
           {% endif %}
+          #{{ page.entry }}
           <span class="project-post-date">
              - {{ page.date | date_custom: page.lang }}
           </span>
@@ -60,12 +61,11 @@ layout: default
                 The code used in this post is available on GitHub
               </a>
             {% else %}
-              <p>The code used in this post is available on GitHub
-                {% for url in github_links %}
-                  {% if forloop.first %}{% else %}{% if forloop.last %} and {% else %}, {% endif %}{% endif %}
-                  <a href="{{ url }}">here</a>
-                {% endfor %}
-              </p>
+              The code used in this post is available on GitHub
+              {% for url in github_links %}
+                {% if forloop.first %}{% else %}{% if forloop.last %} and {% else %}, {% endif %}{% endif %}
+                <a href="{{ url }}">here</a>
+              {% endfor %}
             {% endif %}
           {% else %}
             {% if links_count == 1 %}
@@ -73,12 +73,11 @@ layout: default
                 Le code utilisé dans cet article est disponible sur GitHub
               </a>
             {% else %}
-              <p>Le code utilisé dans cet article est disponible sur GitHub
-                {% for url in github_links %}
-                  {% if forloop.first %}{% else %}{% if forloop.last %} et {% else %}, {% endif %}{% endif %}
-                  <a href="{{ url }}">ici</a>
-                {% endfor %}
-              </p>
+              Le code utilisé dans cet article est disponible sur GitHub
+              {% for url in github_links %}
+                {% if forloop.first %}{% else %}{% if forloop.last %} et {% else %}, {% endif %}{% endif %}
+                <a href="{{ url }}">ici</a>
+              {% endfor %}
             {% endif %}
           {% endif %}
         </div>
