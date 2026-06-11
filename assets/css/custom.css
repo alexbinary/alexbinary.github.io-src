@@ -42,7 +42,7 @@
         --dark--link-card-bg-color: var(--bg-color-1);
         --dark--link-card-border-color: clear;
 
-        --dark--project-header-bg-color: var(--bg-color-1);
+        --dark--project-header-bg-color: #414141f6;
     }
 }
 
@@ -107,6 +107,10 @@ body {
 a,
 a:visited {
     color: var(--link-color-0);
+}
+
+a:hover {
+    color: var(--fg-color-1);
 }
 
 main.page-content {
@@ -849,6 +853,7 @@ article.project header {
     overflow: hidden;
     position: relative;
     display: flex;
+    text-align: start;
 }
 
 @media (min-width: 600px) {
@@ -871,7 +876,7 @@ article.project .content-type {
 article.project h1 {
     font-family: 'Verdana';
     margin-top: 1rem;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
 }
 
 article.project .title {
@@ -879,10 +884,15 @@ article.project .title {
     margin: auto;
 }
 
+article.project .teaser {
+    text-align: center;
+}
+
 article.project .project-topics {
     margin-top: 1rem;
     text-align: center;
     color: var(--fg-color-1);
+    font-style: italic;
 }
 
 article.project header img {
@@ -897,10 +907,6 @@ article.project .header-content {
     width: 100%;
     margin-top: 15rem;
     z-index: 1;
-}
-
-article.project .project-status {
-    float: right;
 }
 
 article.project .content-type {
@@ -960,6 +966,10 @@ article.project-post .project-post-title h2 {
     line-height: 110%;
     margin-bottom: 1rem;
     font-size: 2.5rem;
+}
+
+article.project-post .project-post-date {
+    color: var(--fg-color-1);
 }
 
 article.project-post .project-topics {

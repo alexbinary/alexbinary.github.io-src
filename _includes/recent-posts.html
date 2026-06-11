@@ -1,5 +1,5 @@
 {% assign posts = site.posts | where: "lang", page.lang %}
-{% for post in posts limit:2 %}
+{% for post in posts limit:20 %}
     <article class="post-card">
         <a href="{{ post.url }}">
             <img src="{{ post.image }}">

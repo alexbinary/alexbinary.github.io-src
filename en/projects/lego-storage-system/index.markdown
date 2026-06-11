@@ -1,5 +1,6 @@
 ---
 layout: project
+project_id: 5cfedf56-5aa3-4518-918a-54e86b3fb24d
 title: LEGO Storage System
 topics: [lego, lasercutting, woodworking, 3dprinting]
 image: /assets/projects/lego-storage-system/illus2.jpg

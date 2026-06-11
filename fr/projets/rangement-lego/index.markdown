@@ -1,6 +1,7 @@
 ---
 layout: project
 title: Rangement LEGO
+project_id: 5cfedf56-5aa3-4518-918a-54e86b3fb24d
 topics: [lego, decoupelaser, menuiserie, impression3d]
 image: /assets/projects/lego-storage-system/illus2.jpg
 project_status: 'en cours 🧑‍💻'

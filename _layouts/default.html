@@ -10,19 +10,33 @@
     <main class="page-content" aria-label="Content">
       <div class="wrapper">
 
-      {% if page.lang == 'fr' %}
-        {% assign avail_lang = 'en' %}
-      {% elsif page.lang == 'en' %}
-        {% assign avail_lang = 'fr' %}
-      {% endif %}
+        {% if page.lang == 'fr' %}
+          {% assign avail_lang = 'en' %}
+        {% elsif page.lang == 'en' %}
+          {% assign avail_lang = 'fr' %}
+        {% endif %}
 
-      {% assign current = site.langs[page.lang] %}
-      {% assign avail = site.langs[avail_lang] %}
-      {% assign key = 'lang_' | append: avail_lang %}
+        {% assign current = site.langs[page.lang] %}
+        {% assign avail = site.langs[avail_lang] %}
+        {% assign key = 'lang_' | append: avail_lang %}
 
-      {% assign message = avail.available_info
-        | replace: '%URL%', page[key]
-        | replace: '%FLAG%', avail.flag %}
+        {% if page.layout == 'post_project' %}
+          {% if avail_lang == 'fr' %}
+            {% assign available_info = "Ce billet est disponible <a href='%URL%'>en français %FLAG%</a>" %}
+          {% else %}
+            {% assign available_info = "This post is available <a href='%URL%'>in English %FLAG%</a>" %}
+          {% endif %}
+        {% else %}
+          {% if avail_lang == 'fr' %}
+            {% assign available_info = "Cette page est disponible <a href='%URL%'>en français %FLAG%</a>" %}
+          {% else %}
+            {% assign available_info = "This page is available <a href='%URL%'>in English %FLAG%</a>" %}
+          {% endif %}
+        {% endif %}
+
+        {% assign message = available_info
+          | replace: '%URL%', page[key]
+          | replace: '%FLAG%', avail.flag %}
 
         <div class="lang-available-banner">
           <div class="lang-available-banner-content">

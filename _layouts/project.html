@@ -20,19 +20,14 @@ layout: default
             Présentation projet
           {% endif %}
         </span>
-        <div class="project-status">
-          <strong>
-            {% if page.lang == 'en' %}
-              Status:
-            {% else %}
-              Statut:
-            {% endif %}
-          </strong> <span>{{ project.status[page.lang] }}</span>
-        </div>
       </div>
       
       <div class="title">
         <h1>{{ project.name[page.lang] }}</h1>
+      </div>
+
+      <div class="teaser">
+        <p>{{ project.teaser[page.lang] }}</p>
       </div>
     
       {% if page.topics %}
