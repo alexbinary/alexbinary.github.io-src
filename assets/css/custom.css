@@ -614,7 +614,7 @@ ul.list-pointer-style li::before {
     }
 
     .project-card-posts-content h3 {
-        width: 13rem;
+        /* width: 13rem; */
         flex-shrink: 0;
         /* border-right: 1px solid lightgray; */
     }
@@ -663,7 +663,6 @@ ul.list-pointer-style li::before {
 
     .post-cards-container {
         grid-template-columns: 1fr;
-        gap: 2rem;
     }
 }
 
@@ -734,7 +733,7 @@ ul.list-pointer-style li::before {
 }
 
 .post-card h3 {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     line-height: 130%;
     margin-top: 0.3rem;
     margin-bottom: 0.3rem;

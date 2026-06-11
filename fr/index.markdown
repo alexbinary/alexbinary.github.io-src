@@ -63,8 +63,6 @@ lang_en: /
 
                         </p>
                         <h3 class="post-card-title">{{ post.title }}</h3>
-                        
-                        <p class="post-card-excerpt">{{ post.teaser | strip_html }}</p>
 
                         <p class="read-more">
                             
