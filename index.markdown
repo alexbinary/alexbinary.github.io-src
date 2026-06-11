@@ -13,11 +13,13 @@ lang_fr: /fr
     <div class="cards-container">
 
         {% include project-card.html
+            project_id="a10edb47-8a09-4f84-9f5d-214ac597b2ad"
             title="Hardware emulator"
             subtitle="Making simple programmable hardware and writing an emulator for it"
             text="#electronics #programming #6502"
             url="/en/projects/emulation"
             image_url="/assets/projects/emulation/IMG_7377.JPG"
+
         %}
         
         {% include project-card.html
@@ -49,6 +51,17 @@ lang_fr: /fr
 
         {% endcomment %}
 
+    </div>
+
+</section>
+
+<section>
+    {% include heading-with-icon.html text="Recent posts" icon="📝" %}
+
+    <div class="cards-container post-cards-container">
+
+        {% include recent-posts.html %}
+        
     </div>
 
 </section>

@@ -1,0 +1,38 @@
+{% assign posts = site.posts | where: "lang", page.lang %}
+{% for post in posts limit:2 %}
+    <article class="post-card">
+        <a href="{{ post.url }}">
+            <img src="{{ post.image }}">
+            <div class="post-card-content">
+                <p class="post-card-meta">
+                    {{ post.date | date_custom: page.lang }}
+                    
+                    {% if page.lang == 'en' %}
+                        in
+                    {% else %}
+                        dans
+                    {% endif %}
+                    
+                    {%- assign project = site.data.projects | where: "id", post.project_id | first -%}
+                    <span class="project-name">
+                    {{ project.name[page.lang] }}
+                    </span>
+                </p>
+                <h3 class="post-card-title">{{ post.title }}</h3>
+
+                <p class="read-more">
+                    <span>
+                    {% if page.lang == 'en' %}
+                        Read
+                    {% else %}
+                        Lire
+                    {% endif %}
+                    </span>
+                    {% include disclosure.html %}
+                    
+                </p>
+            </div>
+        </a>
+    </article>
+    
+{% endfor %}

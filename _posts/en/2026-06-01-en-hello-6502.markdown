@@ -1,0 +1,71 @@
+---
+layout: post_project
+project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
+title: Premiers pas avec le 6502
+date: 2026-06-01 11:02:16 +0100
+topics: [arduino, electronique]
+image: /assets/projects/emulation/IMG_7377.JPG
+githubs: [
+  https://github.com/alexbinary/arduino-6502,
+]
+lang: en
+lang_en: 
+---
+
+
+Le 6502 est un microprocesseur, et sa fonction principale est donc d'exécuter des instructions. Contrairement à un microcontrôleur, il n'a aucune mémoire interne et aucun périphérique. Il interragit avec le monde extérieur via un bus de données et un bus d'addresse, sur lesquels il peut lire et écrire des données. Les instructions à éxécuter, les données à traiter, et les données produites, tout passe par le bus. En général on connecte sur le bus une mémoire qui contient le programme et les données de travail, et des périphérique comme un afficheur, une carte son, etc.
+
+Pour commencer en douceur je suis la [série de vidéos de Ben Eater consacrée à la construction d’un ordinateur basé sur le 6502](https://www.youtube.com/playlist?list=PLowKtXNTBypFbtuVMUVXNR0z1mu7dp7eH). Je commence par installer le 6502 sur une breadboard, je connecte l'alimentation et les signaux de contrôle de base, et j'ajoute un bouton reset. Le signal d’horloge est généré par un module basé sur un circuit 555 que j’ai construit précédemment en suivant les [vidéos de Ben Eater sur le sujet](https://www.youtube.com/watch?v=kRlSFm519Bo). J'utilise mon Arduino Uno R4 Wi-Fi comme source d'alimentation et pour faire des observations par la suite.
+
+Pour vérifier qu'il se passe quelque chose dans le processeur j'ai connecté les 4 bits de poids faible du bus d'adresse sur 4 LEDs, et j'ai constaté une activité. J'ai également connecté les lignes du bus de données directement sur l'alim ou la masse avec des résitances pour faire en sorte qu'à chaque fois que le CPU lit une donnée sur le bus il récupère la valeur `0xEA`, qui correspond à l'instruction `NOP` (« No Operation »). Quand on observe les lignes d'adresse, on constate un comptage, qui correspond au fait que le CPU lit les instructions les unes après les autres dans la mémoire.
+
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-video-item.html
+            url="/assets/projects/emulation/IMG_7380.mp4"
+            legend="Mon 6502 en fonctionnement"
+            width="50%"
+            alt="Une vidéo montrant un montage éléctronique expérimental. On voit une première breadboard avec une LED qui clignote rapidement, et un second module comprenant le 6502 connecté à 4 LEDs qui s'allument successivement dans un motif de comptage."
+        %}
+
+    </div>
+
+</div>
+
+
+J'ai ensuite connecté les lignes d’adresses à l'Arduino ainsi que le signal d'horloge, et écrit un programme simple pour lire et afficher les données à chaque tic d'horloge via une interruption. Ben Eater utilise un Arduino Mega pour observer les 16 lignes d'adresse et les 8 lignes de données, mais mon Arduino Uno n'a pas assez de pins pour me permettre d'observer toutes les lignes, je suis donc resté sur les 4 bits de poids faible de l'adresse uniquement. 
+
+Lorsque le processeur démarre ou est réinitialisé, il va chercher l'adresse de la première instruction à exécuter. Pour cela il va lire une donnée de 16 bits aux adresses `0xFFFC` et `0xFFFD`, puis commence à récupérer les instructions à partir de cette adresse. Comme je n'observe que les 4 derniers bits de l'adresse, je m'attends à voir passer les valeurs `C` et `D`, qui correspondent aux valeurs binaires `1100` et `1101` respectivement. Lorsque j’appuie sur le bouton reset, je vois effectivement passer ces adresses. Comme le bus de données est câblé pour renvoyer `0xEA`, le CPU va commencer à lire les instructions à partir de l'adresse `0xEAEA`. La valeur `A` en binaire s'écrit `1010`, et c'est effectivement la première adresse qu'on voit après `C` et `D`. Très cool !
+
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row mobile-column">
+
+        {% include inline-video-item.html
+            url="/assets/projects/emulation/ADDR.mp4"
+            legend="Lecture du bus d'adresse en temps réel"
+            alt="Une capture vidéo du logiciel Arduino où l'on voit un programme et des données 4 bits qui défilent. Les données montrent un motif de comptage."
+        %}
+
+        {% include inline-image-item.html
+            url="/assets/projects/emulation/FFFC.png"
+            legend="Lecture du bus d'adresse après un reset"
+            alt="Une capture d'écran du logiciel Arduino où l'on voit une capture de données. La donnée 1100 est mise en subrillance, la donnée suivante est 1101, et encore après on lit 1010, puis les valeurs s'incrémentent."
+        %}
+
+    </div>
+
+</div>
+
+
+Le code Arduino est disponible [sur GitHub](https://github.com/alexbinary/arduino-6502).
+
+
+## La suite
+
+La prochaine étape est de fournir au CPU des données dynamiques en fonction de l'adresse qu'il demande, de sorte à former un programme qui ait du sens. Classiquement c'est le rôle d'une puce mémoire. Mais on peut aussi utiliser Arduino.
+
