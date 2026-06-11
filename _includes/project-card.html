@@ -12,21 +12,23 @@
     </a>
 
     {% comment %} | where: "project_id", include.project_id {% endcomment %}
-    {% assign post = site.posts
+    {% assign posts = site.posts
         | where: "lang", page.lang
-        | first %}
-    {% if post %}
+        | where: "project_id", include.project_id
+         %}
+    {% if posts != empty %}
         <div class="project-card-posts">
-            <a href="{{ post.url }}">
-                <p class="project-card-posts-meta">
-                    Dernière publication le
-                    {{ post.date | date_custom: page.lang }}
-                </p>
-                <div class="project-card-posts-content">
-                    <h3>{{ post.title }}</h3>
-                    {% include disclosure.html %}
-                </div>
-            </a>
+            <p class="project-card-posts-meta">
+                Publications récentes
+            </p>
+            {% for post in posts limit: 3%}
+                <a href="{{ post.url }}">
+                    <div class="project-card-posts-content">
+                        <h3>{{ post.title }}</h3>
+                        {% include disclosure.html %}
+                    </div>
+                </a>
+            {% endfor %}
         </div>
     {% endif %}
 </div>
