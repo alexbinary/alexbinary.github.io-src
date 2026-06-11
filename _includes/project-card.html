@@ -1,4 +1,6 @@
 <div class="project-card">
+
+    
     <a href="{{ include.url }}" class="project-card-main">
         <img src="{{ include.image_url }}" alt="Card Image" class="{{ include.image_class }}"/>
         <div class="project-card-content">
@@ -15,11 +17,11 @@
     {% assign posts = site.posts
         | where: "lang", page.lang
         | where: "project_id", include.project_id
-         %}
+        %}
     {% if posts != empty %}
         <div class="project-card-posts">
             <p class="project-card-posts-meta">
-                Publications récentes
+                Publications récentes dans ce projet
             </p>
             {% for post in posts limit: 3%}
                 <a href="{{ post.url }}">
@@ -31,4 +33,5 @@
             {% endfor %}
         </div>
     {% endif %}
+
 </div>
