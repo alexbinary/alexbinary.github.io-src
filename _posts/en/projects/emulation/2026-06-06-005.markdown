@@ -4,7 +4,7 @@ project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "005"
 title: Programming the ROM whith shift registers
 topics: [6502, arduino, electronique, programmation]
-image: /assets/projects/emulation/IMG_7377.JPG
+image: /assets/projects/emulation/IMG_7408.JPG
 githubs:
 - https://github.com/alexbinary/arduino-6502
 - https://github.com/alexbinary/arduino-eeprom-programmer

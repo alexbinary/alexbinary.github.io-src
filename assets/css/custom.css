@@ -1023,6 +1023,14 @@ article.project-post .title h1 {
     font-size: 1.5rem;
 }
 
+article.project-post .title h1 a {
+    color: var(--fg-color-0);
+}
+
+article.project-post .title h1 a:hover {
+    text-decoration: none;
+}
+
 article.project-post .project-post-title p {
     margin-bottom: 0;
 }
@@ -1067,6 +1075,13 @@ article.project-post .project-github {
     margin-bottom: 1rem;
 }
 
+@media (max-width: 600px) {
+
+    .project-post-navigation {
+        margin-top: 2rem;
+    }
+}
+
 .project-post-navigation-item {
     flex: 1;
     background-color: var(--bg-color-1);
@@ -1104,6 +1119,11 @@ article.project-post .project-github {
     .project-post-navigation-item {
         box-shadow: none;
     }
+}
+
+.project-posts h2 {
+    text-align: center;
+    justify-content: center;
 }
 
 

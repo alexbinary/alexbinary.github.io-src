@@ -42,11 +42,15 @@ layout: default
 
   </header>
 
+  {% include project_nav.html %}
+
   <div class="separator"></div>
 
   <div class="post-content">
     {{ content }}
   </div>
+
+  {% include project_nav.html %}
     
   {% include last_updated.html %}
 
