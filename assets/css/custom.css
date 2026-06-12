@@ -296,7 +296,7 @@ table tr:nth-child(2n) {
 
 
 .external-icon {
-    margin-left: 0.5em;
+    /* margin-left: 0.5em; */
 }
 
 .external-icon path {
@@ -998,6 +998,10 @@ article.project {
 
 article.project h3 {
     margin-top: 2rem;
+}
+
+article.project h2 {
+    text-align: start;
 }
 
 

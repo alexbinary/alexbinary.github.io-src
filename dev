@@ -55,9 +55,6 @@ case "$1" in
 		# left: 110, right: 110
 		# top: 75, bottom: 140
 		# original : 1696 × 1976 => 1476:1760:110:75
-
-		
-		
 	photo)
 		magick $2 -strip -interlace Plane -quality 75 $2
 		;;

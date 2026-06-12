@@ -13,25 +13,15 @@ lang: fr
 lang_en: /en/2026/06/01/emulation-001
 ---
 
-Je joue régulièrement à des jeux vidéo sur émulateur et je comprends dans les grandes lignes le principe de l’émulation mais j'ai envie d'en apprendre plus et de "mettre les mains dedans". J'aimerais bien savoir écrire un émulateur de GameBoy, et c'est probablement faisable avec suffisamment de patience, mais j'aime commencer par la base. Et la base c'est : "Au fond, l'émulation, c'est quoi ?"
+## Introduction
 
-Pour répondre à cette question je me suis donné pour projet de construire un système matériel simple que je peux programmer, et d'écrire ensuite un émulateur pour ce système. Je choisi de me baser sur le processeur 6502 et son interface 6522, en suivant [les vidéos de Ben Eater dans lesquelles il crée un ordinateur minimaliste basé sur le 6502](https://www.youtube.com/playlist?list=PLowKtXNTBypFbtuVMUVXNR0z1mu7dp7eH). Dans un premier temps je prévois une IHM minimale avec des boutons et des LEDs, et peut-être un petit écran OLED.
+Je joue régulièrement à des jeux vidéo sur émulateur et je comprends dans les grandes lignes le principe de l’émulation mais j'ai envie d'en apprendre plus et de "mettre les mains dedans". J'aimerais bien savoir écrire un émulateur de GameBoy, et c'est probablement faisable avec suffisamment de patience, mais j'aime comprendre les choses en partant de la base. C'est pour cette raison que je me suis donné pour projet de construire un système électronique simple et d'écrire ensuite l'émulateur correspondant. Ainsi je peux commencer en douceur avec les principes fondamentaux de l'émulation, et complexifier progressivement par la suite selon mes envies.
 
-Ce projet est avant tout une exploration. C'est l'occasion pour moi de prendre en main des concepts hardware bas niveau et de pendre de l'expérience dans l'interaction entre matériel et logiciel. Dans ce genre de projets découverte j'aime partir de la base et expérimenter petit à petit avec les composants pour valider le fonctionnement supposé étape par étape, confronter mes prédictions à la réalité, et développer une compréhension solide des choses.
+J'ai choisi de me baser sur le processeur [6502](https://www.westerndesigncenter.com/wdc/documentation/w65c02s.pdf) et son interface [6522](https://eater.net/datasheets/w65c22.pdf) et la [série de vidéos de Ben Eater](https://www.youtube.com/playlist?list=PLowKtXNTBypFbtuVMUVXNR0z1mu7dp7eH) qui leur est consacrée. Le 6502 était le CPU utilisé par de nombreux appareils grand public des années 1980 notamment l’Apple II, le Commodore 64 et l'Atari 2600. C'est un microprocesseur relativement simple et donc idéal pour débuter. Des versions modernisées sont toujours en production aujourd'hui et il existe une large communauté de passionnés.
 
+L'interface utilisateur de mon système sera minimale au début avec juste des boutons et des LEDs, et peut-être un petit écran OLED. Ce projet est avant tout une exploration. C'est l'occasion pour moi de prendre en main des concepts hardware bas niveau et de pendre de l'expérience dans l'interaction entre matériel et logiciel.
 
-## Comprendre l'émulation
-
-Prenons l'exemple de la GameBoy. Un jeu de GameBoy est un programme conçu pour être lu par l'électronique de la GameBoy dans le but de produire des images et du son en fonction des actions de l'utilisateur sur les boutons. Le but d'un "émulateur de GameBoy" est de prendre en entrée ce programme et de recréer l'expérience de jeu sur un PC, c'est-à-dire de générer les mêmes images et sons en fonction des actions de l'utilisateur, mais sur une stack matérielle complètement différente.
-
-Écrire un émulateur demande donc de bien comprendre comment chaque instruction du programme impacte les images et le son produits par le système électronique, dans le but de récréer un résultat le plus proche possible. Il faut bien connaître le hardware d'origine et l'interraction entre le matériel et le logiciel, mais le but n'est pas nécessairement de reproduire fidèlement le fonctionnement interne du matériel. Ce qui compte c'est le résultat *observable*.
-
-
-## Le hardware utilisé dans ce projet
-
-J’ai choisi de construire un système basé sur le microprocesseur [6502](https://www.westerndesigncenter.com/wdc/documentation/w65c02s.pdf). Le 6502 est un microprocesseur relativement simple idéal pour débuter. Il est aussi très célèbre puisque c'est le processeur utilisé par de nombreux appareils grand public des années 1980, notamment l’Apple II, le Commodore 64 et l'Atari 2600. Des versions modernisées sont toujours en production aujourd'hui et il existe une large communauté de passionnés.
-
-En plus du 6502, je choisis une EEPROM [AT28C256](https://ww1.microchip.com/downloads/en/DeviceDoc/doc0006.pdf) pour stocker le programme, une RAM [62256](https://eater.net/datasheets/hm62256b.pdf) pour fournir de la mémoire vive au CPU, et des circuits logiques type 74LSXX pour le décodage d'adresse. Des LEDs et boutons seront connectés au 6502 via l'interface [6522](https://eater.net/datasheets/w65c22.pdf). Un écran OLED de type SSD1306 pourra être connecté en i2c. Je travaille sur breadboard, et j'utilise mon [Arduino Uno R4 Wi-Fi](https://docs.arduino.cc/resources/datasheets/ABX00087-datasheet.pdf) pour programmer la ROM, observer les signaux, expérimenter avec les composants, et aussi comme source d'alimentation.
+Dans ce genre de projets découverte j'aime partir de la base et expérimenter petit à petit avec les composants pour valider le fonctionnement supposé étape par étape, confronter mes prédictions à la réalité, et développer une compréhension solide des choses. Dans cette première session je commence par prendre en main le 6502 et jouer avec les bus d'adresse et de données et le vecteur reset.
 
 
 ## Premiers pas avec le 6502

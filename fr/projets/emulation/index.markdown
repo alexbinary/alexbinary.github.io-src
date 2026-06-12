@@ -23,15 +23,121 @@ Dans ce genre de projets découverte j'aime partir de la base et expérimenter p
 
 Je rencontre désormais des difficultés avec l'interface 6522, et ça m'a amené à créer de zéro des bascules D que j'ai ensuite interfacé directement avec le 6502, un petit détour imprévu mais passionnant. Je veux maintenant adopter une approche similaire pour connecter au moins un bouton, ce qui me permettra de commencer à écrire des programmes interactifs et de commencer à réfléchir à l'émulation à proprement parler.
 
-J'ai documenté ce projet au fur et à mesure dans des billets qui détaillent chaque session de travail. Cette page présente le déroulé général du projet du début jusqu'à aujourd'hui, elle est mise à jour en continu au fil de l'avancement du projet. Des renvois vers les billets détaillés sont présents dans les sections consacrées. [La liste complète des publications est disponible ici](/fr/projets/emulation/billets).
+J'ai documenté ce projet au fur et à mesure dans des billets qui détaillent chaque session de travail. Cette page présente une synthèse du projet tel qu'il est avancé aujourd'hui et propose une mise en perspective des découvertes. Elle est mise à jour en continu au fil de l'avancement du projet et de mes réflexions. Des renvois vers les billets détaillés sont présents dans les sections consacrées. [La liste complète des publications est disponible ici](/fr/projets/emulation/billets).
+
+
+## Mes réflexions sur l'émulation
+
+Pour écrire un émulateur il faut commencer par bien comprendre comment chaque instruction d'un logiciel écrit pour le système électronique d'origine impacte les éléments à l'interface avec l'utilisateur. Pour ça il est nécessaire de bien connaître le hardware d'origine et l'interraction entre le matériel et le logiciel, mais le but n'est pas nécessairement de reproduire fidèlement le fonctionnement interne de tous les composants électroniques. Ce qui compte ce sont les éléments avec lesquels l'utilisateur interragit.
+
+Prenons l'exemple de la *Game Boy*. Les interfaces avec l'utilisateur sont : les boutons directionnels, les boutons A et B, et les boutons *Start* et *Select* pour les entrées, et l'écran et le haut parleur pour les sorties. Le but d'un émulateur est donc, à partir du code du jeu écrit au départ pour piloter le hardware de la Game Boy, de piloter le hardware du PC d'une manière à recréer les visuels et les sons qui auraient été produits par le hardware de la Game Boy.
+
+Bien sûr, il est toujours possible qu'un programme exploite le matériel d'une manière marginale, ou qu'un utilisateur identifie un bug ou un défaut de conception qui permet d'utiliser le système d'une manière non prévue par les concepteurs ou non documentée. Il appartient aux développeurs de l'émulateur de faire les compromis pertinents pour supporter ou non ces usages, en gardant en tête que toute simulation sera nécessairement imparfaite.
+
+C'est précisément ce genre de choses que je veux explorer dans ce projet. À quel niveau de précision est-il nécessaire de simuler le hardware ? Est-il toujours possible de comprendre l'intention derrière une série d'instructions ? J'imagine le cas où un périphérique est connecté au CPU en I2C et que les programmes utilisent normalement le driver natif, que se passe-t-il si un programme décide de recoder lui-même le protocol I2C en software ? Qu'est-ce que supporter cet usage implique pour le fonctionnement de l'émulateur ?
+
+
+## Matériel utilisé dans ce projet
+
+J'utilise globalement les mêmes composants que Ben Eater dans ses vidéos, ou les références les plus proches que je trouve sur AliExpress. J'ai certains composants dans mon stock. J'utilise mon Arduino pour programmer la ROM, observer les signaux, expérimenter avec les composants, et aussi comme source d'alimentation.
+
+<table>
+    <tr class="desktop-only">
+        <th>Composant</th>
+        <th>Référence</th>
+        <th>Lien</th>
+    </tr>
+    <tr class="mobile-only">
+        <th>Comp.</th>
+        <th>Réf.</th>
+        <th>Lien</th>
+    </tr>
+    <tr>
+        <td>CPU</td>
+        <td><a href="https://www.westerndesigncenter.com/wdc/documentation/w65c02s.pdf">6502</a></td>
+        <td><a href="https://fr.aliexpress.com/item/1005009342322425.html?spm=a2g0o.order_list.order_list_main.71.4d895e5bCl6ekk&gatewayAdapt=glo2fra">
+            Ali<span class="desktop-only">Express</span>
+        </a></td>
+    </tr>
+    <tr>
+        <td>EEPROM</td>
+        <td><a href="https://ww1.microchip.com/downloads/en/DeviceDoc/doc0006.pdf">AT28C256</a></td>
+        <td><a href="https://fr.aliexpress.com/item/4001000243213.html?spm=a2g0o.order_list.order_list_main.77.4d895e5bCl6ekk&gatewayAdapt=glo2fra">Ali<span class="desktop-only">Express</span></a></td>
+    </tr>
+    <tr>
+        <td>RAM</td>
+        <td><a href="https://eater.net/datasheets/hm62256b.pdf">62256</a></td>
+        <td><a href="https://fr.aliexpress.com/item/1005001859824763.html?spm=a2g0o.order_list.order_list_main.5.4d895e5bCl6ekk&gatewayAdapt=glo2fra">Ali<span class="desktop-only">Express</span></a></td>
+    </tr>
+    <tr>
+        <td>Portes logiques</td>
+        <td>
+            <a href="https://www.ti.com/lit/ds/symlink/sn74ls02.pdf">74LS02</a>
+            <br class="mobile-only">
+            <a href="https://www.ti.com/lit/ds/symlink/sn74ls04.pdf">74LS04</a>
+            <br class="mobile-only">
+            <a href="https://www.ti.com/lit/ds/symlink/sn74ls08.pdf">74LS08</a>
+        </td>
+        <td><a href="https://fr.aliexpress.com/item/1005007227095225.html?spm=a2g0o.order_list.order_list_main.125.4d895e5bCl6ekk&gatewayAdapt=glo2fra">Ali<span class="desktop-only">Express</span></a></td>
+    </tr>
+    <tr>
+        <td>Registre&nbsp;à décalage</td>
+        <td><a href="https://www.ti.com/lit/ds/symlink/sn74hc595.pdf">74HC595</a></td>
+        <td><a href="https://fr.aliexpress.com/item/1005004856540723.html?spm=a2g0o.order_list.order_list_main.370.4d895e5bCl6ekk&gatewayAdapt=glo2fra">Ali<span class="desktop-only">Express</span></a></td>
+    </tr>
+    <tr>
+        <td>Interface</td>
+        <td><a href="https://eater.net/datasheets/w65c22.pdf">6522</a></td>
+        <td><a href="https://fr.aliexpress.com/item/1005011978744402.html?spm=a2g0o.order_list.order_list_main.83.4d895e5bCl6ekk&gatewayAdapt=glo2fra">Ali<span class="desktop-only">Express</span></a></td>
+    </tr>
+    <tr>
+        <td>LEDs</td>
+        <td></td>
+        <td>en stock</td>
+    </tr>
+    <tr>
+        <td>Boutons</td>
+        <td></td>
+        <td><a href="https://fr.aliexpress.com/item/1005004198996493.html?spm=a2g0o.order_list.order_list_main.295.4d895e5bCl6ekk&gatewayAdapt=glo2fra">Ali<span class="desktop-only">Express</span></a></td>
+    </tr>
+    <tr>
+        <td>Écran OLED</td>
+        <td>SSD1306</td>
+        <td><a href="https://fr.aliexpress.com/item/1005008918700196.html?spm=a2g0o.order_list.order_list_main.150.4d895e5bCl6ekk&gatewayAdapt=glo2fra">Ali<span class="desktop-only">Express</span></a></td>
+    </tr>
+    <tr>
+        <td>Breadboards</td>
+        <td></td>
+        <td><a href="https://fr.aliexpress.com/item/1005007174397080.html?spm=a2g0o.order_list.order_list_main.245.4d895e5bCl6ekk&gatewayAdapt=glo2fra">Ali<span class="desktop-only">Express</span></a></td>
+    </tr>
+    <tr>
+        <td>Jumper wires</td>
+        <td></td>
+        <td><a href="https://fr.aliexpress.com/item/1005004336218242.html?spm=a2g0o.order_list.order_list_main.230.4d895e5bCl6ekk&gatewayAdapt=glo2fra">Ali<span class="desktop-only">Express</span></a></td>
+    </tr>
+    <tr>
+        <td>Lignes Dupont</td>
+        <td></td>
+        <td><a href="https://fr.aliexpress.com/item/1005007072081464.html?spm=a2g0o.order_list.order_list_main.255.4d895e5bCl6ekk&gatewayAdapt=glo2fra">Ali<span class="desktop-only">Express</span></a></td>
+    </tr>
+    <tr>
+        <td>Résistances</td>
+        <td></td>
+        <td><a href="https://fr.aliexpress.com/item/1005005855324735.html?spm=a2g0o.order_detail.order_detail_item.3.1e252dd0EBGFs9&gatewayAdapt=glo2fra">Ali<span class="desktop-only">Express</span></a></td>
+    </tr>
+    <tr>
+        <td>Arduino</td>
+        <td><a href="https://docs.arduino.cc/resources/datasheets/ABX00087-datasheet.pdf">Uno R4 Wi-Fi</a></td>
+        <td><a href="https://store.arduino.cc/collections/boards-modules/products/uno-r4-wifi?_pos=1&_fid=3febf6e59&_ss=c"><span class="desktop-only">Arduino </span>Shop</a></td>
+    </tr>
+</table>
+
+
 
 
 ## Premiers pas avec le 6502
 
-Pour vérifier qu'il se passe quelque chose dans le processeur j'ai connecté les 4 bits de poids faible du bus d'adresse sur 4 LEDs, et j'ai constaté une activité. J'ai également connecté les lignes du bus de données directement sur l'alim ou la masse avec des résitances pour faire en sorte qu'à chaque fois que le CPU lit une donnée sur le bus il récupère la valeur `0xEA`, qui correspond à l'instruction `NOP` (« No Operation »). Quand on observe les lignes d'adresse, on constate un comptage, qui correspond au fait que le CPU lit les instructions les unes après les autres dans la mémoire.
-
-J'ai ensuite connecté les lignes d’adresses à l'Arduino ainsi que le signal d'horloge, et écrit un programme simple pour lire et afficher les données à chaque tic d'horloge via une interruption. Ben Eater utilise un Arduino Mega pour observer les 16 lignes d'adresse et les 8 lignes de données, mais mon Arduino Uno n'a pas assez de pins pour me permettre d'observer toutes les lignes, je suis donc resté sur les 4 bits de poids faible de l'adresse uniquement. 
-
+J'ai commencé par installer le 6502 sur une breadboard en câblant la valeur `0xEA` sur le bus de données, qui correspond à l'instruction `NOP` (« No Operation »), et j'ai connecté des diodes sur le 4 bits de poids faible du bus d'adresse. Pour générer le signal d’horloge j'utilise un module basé sur un circuit 555 que j’ai construit en suivant les [vidéos de Ben Eater](https://www.youtube.com/watch?v=kRlSFm519Bo) sur le sujet. Les diodes montrent un comptage, signe que le processeur avance dans le programme.
 
 <div class="inline-image-container">
 
@@ -39,8 +145,7 @@ J'ai ensuite connecté les lignes d’adresses à l'Arduino ainsi que le signal 
 
         {% include inline-video-item.html
             url="/assets/projects/emulation/IMG_7380.mp4"
-            legend="Mon 6502 en fonctionnement"
-            alt="Une vidéo montrant un montage éléctronique expérimental. On voit une première breadboard avec une LED qui clignote rapidement, et un second module comprenant le 6502 connecté à 4 LEDs qui s'allument successivement dans un motif de comptage."
+            legend="Premiers tests du 6502"
             width="50%"
         %}
 
@@ -48,9 +153,7 @@ J'ai ensuite connecté les lignes d’adresses à l'Arduino ainsi que le signal 
 
 </div>
 
-
-La prochaine étape est de fournir au CPU des données dynamiques en fonction de l'adresse qu'il demande, de sorte à former un programme qui ait du sens. Classiquement c'est le rôle d'une puce mémoire. Mais dans un premier temps j'expérimente avec Arduino.
-
+J'ai ensuite connecté les lignes d’adresses et de données à l'Arduino ainsi que le signal read/write, et écrit un code capable d'envoyer des données sur le bus en fonction de l'adresse demandée par le CPU. J'ai utilisé ce système rudimentaire pour fournir au CPU un programme minimaliste à 3 instructions, et validé le bon fonctionnement en observant l'activité sur le bus. Dans ce genre d'opération c'est l'Arduino qui génère le signal d'horloge. J'ai fait ça pour être sûr de lire et écrire sur les bus aux bons moments car je ne me suis pas encore penché sur les timings du 6502.
 
 <div class="inline-image-container">
 
@@ -58,7 +161,7 @@ La prochaine étape est de fournir au CPU des données dynamiques en fonction de
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/IMG_7383.JPG"
-            legend="L'Arduino connecté aux 4 LSBs du bus d'adresse et aux 8 lignes du bus de données du 6502"
+            legend="L'Arduino connecté aux bus d'adresse et de données du 6502"
             
         %}
 
@@ -73,37 +176,29 @@ La prochaine étape est de fournir au CPU des données dynamiques en fonction de
 
 
 
-## Découverte de l'EEPROM
+## Prise en main de l'EEPROM
 
-L'Arduino est bien sympatique, mais dans le système final les données sont stockées dans une puce mémoire. J'utilise ici une puce EEPROM [AT28C256](https://ww1.microchip.com/downloads/en/DeviceDoc/doc0006.pdf). C'est une mémoire de 32ko destinée à être utilisée en lecture seule, mais qu'on peut effacer et programmer éléctroniquement.
-
-Je veux commencer par la base, en faisant des lectures et écritures en manipulant directement les signaux de contrôle. Sur une breadboard je connecte huit LEDs au bus de données de la ROM et je force toutes les lignes d'adresse à zéro à l'aide de cavaliers, sauf les quatre bits de poids faible que je connecte avec des fils de connexion repositionnables facilement.
-
-Dans un premier temps le programme parcours séquentiellement les 16 adresses et affiche la données correspondante à chacune. Ça fonctionne bien et je retrouve bien le relevé initial avec la valeur `0xEA` à l'adresse `0`. Je code ensuite l'écriture, en commençant par une fonction qui écrit un seul octet. Il faut reproduire la séquence des signaux de contrôle que j'ai effectuée à la main juste avant. Ensuite j'ajoute la possibilité d'écrire une séquence de valeurs une à une.
-
-
+La manip avec l'Arduino est sympa pour tester, mais dans le système final c'est l'EEPROM qui fournit les données. Conformément à l'esprit du projet j'ai commencé par la base en faisant des lectures et écritures en manipulant directement les signaux de contrôle, avec des LEDs pour visualiser les données. J'ai ensuite écrit un code Arduino pour lire et écrire, d'abord un octet à la fois puis toute une séquence.
 
 <div class="inline-image-container">
 
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7389.JPG"
+            url="/assets/projects/emulation/IMG_7389.JPG?mm"
             legend="Montage de test de la ROM"
-            width="50%"
+        %}
+
+        {% include inline-video-item.html
+            url="/assets/projects/emulation/ROM.mp4"
+            legend="Ecriture des 14 premiers octets puis relecture"
         %}
 
     </div>
 
 </div>
 
-
-L'objectif maintenant est de connecter la ROM au CPU pour que celui-ci lise et exécute le programme. En laissant la ROM sur sa breadboard, je relie désormais les 4 lignes d'adresse et le bus de données sur les broches correspondantes du 6502. Ce faisant je remarque que j'avais du aller un peu vite quand j'ai choisi les quatre lignes d'adresse à manipuler sur la ROM car ce n'était pas du tout les quatre bits de poids faible, bien que c'était mon intention. Il s'agissait en fait des lignes 13, 8, 9 et 11. En réalité ce n'est pas gênant, du moment que je connecte au CPU les mêmes lignes de la même manière, il retrouvera les données aux adresses attendues.
-
-Pour analyser le résulat je choisis de me baser sur les LEDs connectés au bus de données de la ROM. Ce n'est pas forcément le plus pratique, et je pourrais connecter l'Arduino comme précédemment mais je n'ai pas envie d'ajouter encore davantage de fils volants à un montage déjà très chargé. Mais surtout j'aime utiliser toutes les opportunités qui se présentent pour confronter mes prédictions à la réalité. Parfois ça met en valeur des lacunes dans ma compréhension.
-
-
-Je veux maintenant connecter la ROM de façon semi-permanente au 6502 sur la même breadboard et câbler proprement toutes les lignes d’adresse et de données. Mais avant ça il faut revoir la programmation de la ROM car cette fois les lignes d'adresses seront câblées correctement et le CPU ne retrouvera donc pas les données que j'ai programmé précédement en utilisant les mauvaises lignes d'adresse. Il y a aussi le fait qu'au démarrage le CPU va lire le vecteur reset situé aux adresses `0xFFFC` et `0xFFFD` pour savoir à partir de quelle adresse il doit commencer à exécuter les instructions. Avec 4 lignes d'adresse on pouvait placer le vecteur reset aux adresses `0x000C` et `0x000D`, mais avec un adressage complet ça ne fonctionnera pas. 
+Une fois capable de programmer la ROM, je l'ai connecté au 6502, d'abord de manière temporaire puis de manière semie-permanente en essayant de faire quelque chose de propre. 
 
 
 <div class="inline-image-container">
@@ -121,9 +216,9 @@ Je veux maintenant connecter la ROM de façon semi-permanente au 6502 sur la mê
 </div>
 
 
-## Programmation de la ROM
+## Création d'un programmeur avec des registres à décalage
 
-J'utilise le circuit [74HC595](https://www.ti.com/lit/ds/symlink/sn74hc595.pdf) que j'avais en stock. C'est un registre à décalage qui possède 8 lignes de sortie. Pour contrôler 15 lignes d'adresse il en faut donc deux. Comme d'habitude je commence par les bases, avec un montage minimal pour me familiariser avec le fonctionnement. Je place un registre à décalage et 8 LEDs avec leur résistances. 
+Mon Arduino ne disposant pas de suffisamment de broches pour connecter les 8 lignes de données et les 15 lignes d'adresses + les signaux de contrôles de l'EEPROM, je programmais jusque là sur seulement 4 bits d'adresse. Par la suite j'ai utilisé des registres à décalage que j'avais en stock pour pouvoir programmer l'entiereté de la mémoire. Comme d'habitude j'ai commencé par les bases, avec un montage minimal pour me familiariser avec le fonctionnement des registres à décalage et j'ai écrit un code Arduino pour pousser des données dans le registres et observer les résultats sur des LEDs.
 
 
 <div class="inline-image-container">
@@ -132,7 +227,7 @@ J'utilise le circuit [74HC595](https://www.ti.com/lit/ds/symlink/sn74hc595.pdf) 
 
         {% include inline-video-item.html
             url="/assets/projects/emulation/IMG_7405.mp4"
-            legend="Injection de 0xEA"
+            legend="Injection de 0xEA dans un registre à décalage"
             width="50%"
         %}
 
@@ -141,9 +236,7 @@ J'utilise le circuit [74HC595](https://www.ti.com/lit/ds/symlink/sn74hc595.pdf) 
 </div>
 
 
-Maintenant que la lecture et l'écriture fonctionnent (au délai près), je remet un peu d'ordre dans le code. Je réécris une fonction `print()` qui affiche des lignes de 16 octets plutôt qu'une seule adresse à la fois, et je fais en sorte de pouvoir lui passer une adresse arbitraire même si elle n'est pas un multiple de 16.
-
-J'ajoute aussi une fonction pour écrire une valeur sur deux octets. Grâce à ces changements je peux désormais écrire ce genre de choses :
+Ensuite j'ai réalisé un montage semi-permanent sur breadboard associé à un code Arduino capable de programmer la ROM sur l'intégralité de la plage mémoire. J'ai implémenter une fonction de lecture de la mémoire capable d'afficher une plage arbitraire par bloc de 16 octets, et des fonctions d'écriture capables d'écrire une valeur sur ou deux octets à une adresse donnée, ou toute une séquence. 
 
 <div class="inline-image-container">
 
@@ -160,14 +253,9 @@ J'ajoute aussi une fonction pour écrire une valeur sur deux octets. Grâce à c
 </div>
 
 
-Pour l'instant le code laisse un délai fixe entre chaque écriture, mais la ROM fournit un moyen de détecter la fin de l'opération d'écriture. Ça permettrai d'envoyer la donnée suivante dès que la mémoire est prête à la recevoir. Implémenter cette fonction serait un bon exercice technique, mais dans mon cas ça n'améliorerait pas la vitesse d'écriture puisque pour l'instant c'est le délai dans les registres à décalage qui limite la vitesse globale, et de très loin. Une idée à garder en tête si je trouve une solution pour ça.
+## Ajout du 6522 "Versatile Interface Adapter"
 
-Le code Arduino est disponible [sur GitHub](https://github.com/alexbinary/arduino-eeprom-programmer).
-
-
-## La puce d'entrées-sorties / Chip Select
-
-Le [6522](https://eater.net/datasheets/w65c22.pdf) est une puce d'interfaçage conçue pour fonctionner avec le 6502. Son nom en anglais est *Versatile Interface Adatper*, je l'appelle donc "VIA" pour faire court. Le VIA propose plusieurs fonctions complémentaires, notamment des timers, mais ce qui nous intéresse ici ce sont les deux ports parallèles d'entrée-sortie. Il s'agit de 16 lignes qui peuvent être configurées individuellement en entrée ou en sortie, et qu'on va pouvoir lire ou écrire depuis le CPU.
+Je l'appelle "VIA" pour faire court. La première chose à faire était de mettre au clair les plages mémoire allouées à la ROM et au VIA, et d'implémenter les signaux *Chip Select*. Je suis allé au plus simple en choisissant une solution qui utilise le moins de connexions et de composants supplémentaires, ce qui donne ça :
 
 <table>
     <thead>
@@ -180,20 +268,16 @@ Le [6522](https://eater.net/datasheets/w65c22.pdf) est une puce d'interfaçage c
         <tr>
             <td><code>0000 0000 0000 0000</code></td>
             <td><code>0x0000</code></td>
-            <td></td>
+            <td rowspan=2>Non allouée</td>
+        </tr>
+        <tr>
+            <td><code>0011 1111 1111 1111</code></td>
+            <td><code>0x3FFF</code></td>
         </tr>
         <tr>
             <td><code>0100 0000 0000 0000</code></td>
             <td><code>0x4000</code></td>
-            <td rowspan=4>VIA</td>
-        </tr>
-        <tr>
-            <td><code>0110 0000 0000 0000</code></td>
-            <td><code>0x6000</code></td>
-        </tr>
-        <tr>
-            <td><code>0111 0000 0000 0000</code></td>
-            <td><code>0x7000</code></td>
+            <td rowspan=2>VIA</td>
         </tr>
         <tr>
             <td><code>0111 1111 1111 1111</code></td>
@@ -211,12 +295,7 @@ Le [6522](https://eater.net/datasheets/w65c22.pdf) est une puce d'interfaçage c
     </tbody>
 </table>
 
-Je choisis de rester simple pour l'instant et de m'arrêter à `A14`. Ça permet de connecter `CS1` et `/CS2` diretement sans introduire de logique supplémentaire, et le compromis en terme d'allocation de l'espace d'adresse est ok pour l'instant.
-
-
-Je lance, fait un reset, mais ça ne fonctionne pas, les diodes restent éteintes. Ça me laisse perplexe. Je teste d'abord les LEDs en amenant directement le 5V dessus et elles s'allument bien. J'observe ensuite les valeurs en sortie du VIA avec Arduino, et elles restent toutes à 0. De la même manière je vérifie les signaux `CS1`, `/CS2`, la clock, et `/RW`, et tout semble correcte. `/RW` est à `1` la plupart du temps pour indiquer une lecture, et passe à `0` de temps en temps pendant exactement un cycle. Idem pour `CS1` et `/CS2` qui prennent bien les valeurs attendues.
-
-J'entreprends alors d'essayer de piloter le VIA directement avec l'Arduino pour vérifier que j'arrive à le faire fonctionner en envoyant manuellement des commandes et confirmer que le programme de test envoie bien les bonnes commandes. Sur la breadboard je force `/CS1` à `1`, `/CS2` à `0`, et `/RW` à `0`. Avec le code je fais un reset en mettant à `/RES` à `0` et en faisant quelques cycles d'horloge, puis j'envoie les octets pour configurer le port A, mais toujours rien de visible. J'essaie avec le port B et toujours rien. À ce moment je commence à soupçonner mon VIA d'être défectueux.
+J'ai réécrit un programme simple pour tester le VIA, connecté des LEDs en sorties du Port A, mais impossible d'avoir un quelconque résultat. J'ai bien vérifié les câblages, vérifié la documentation, observé les signaux avec Arduino, et même tenté de piloter directement le VIA avec l'Arduino, mais rien n'y fait. Il y a visiblement quelque chose qui m'échappe, à moins que mon VIA soit défectueux...
 
 
 <div class="inline-image-container">
@@ -234,11 +313,9 @@ J'entreprends alors d'essayer de piloter le VIA directement avec l'Arduino pour 
 </div>
 
 
-## La bascule D
+## Implémentation d'une bascule D
 
-
-Je revisionne la [vidéo sur la bascule D](https://www.youtube.com/watch?v=peCh_859q7Q) et implémente le circuit sur une nouvelle petite breadboard. J'utilise un [74LS02](https://www.ti.com/lit/ds/symlink/sn74ls02.pdf) et un [74LS08](https://www.ti.com/lit/ds/symlink/sn74ls08.pdf) qui contiennent respectivement 4 portes NOR et 4 portes AND. Il y a pas mal de connexions à faire et il faut être vigilent car les pins ne sont pas disposées de la même manière sur les deux puces. Pour éviter de me tromper je dessine le schéma au brouillon et notes les pins à connecter. J'ajoute deux LEDs pour visualiser l'état de la sortie (une pour la sortie normale et une pour la sortie inversée).
-
+Pour avancer malgré les problèmes avec le 6522, j'ai tenté d'implémenter une bascule D à partir de portes logiques en suivant la [vidéo de Ben Eater](https://www.youtube.com/watch?v=peCh_859q7Q). C'était un peu technique il y avait pas mal de connexions à faire. J'ai ajouté deux LEDs pour visualiser l'état de la sortie (une pour la sortie normale et une pour la sortie inversée).
 
 <div class="inline-image-container">
 
@@ -246,7 +323,7 @@ Je revisionne la [vidéo sur la bascule D](https://www.youtube.com/watch?v=peCh_
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/d-flip-flop.JPG"
-            legend="Mon brouillon utilisé pour la réalisation du circuit"
+            legend="Mon brouillon utilisé pour le câblage de la bascule"
             width="50%"
         %}
 
@@ -254,12 +331,7 @@ Je revisionne la [vidéo sur la bascule D](https://www.youtube.com/watch?v=peCh_
 
 </div>
 
-
-
-La bascule fonctionne donc bien mais pour l'instant elle capture tout ce qui passe sur le bus, ce qui n'est pas très utile. Il faut donc ajouter un peu de logique pour qu'elle ne capture que les données qui lui sont destinées. Pour pouvoir réutiliser le programme existant, je décide d'utiliser `A15` et `A14` pour pouvoir sélectionner l'adresse `0x4000`. Je prends aussi en compte le `/RW` pour ne répondre qu'aux commandes d'écriture. Dans notre cas ce n'est pas forcément nécessaire vu que la bascule ne peut que recevoir des données, pas en envoyer. L'idée est d'ajouter des portes logiques ET avec les signaux d'entrée de la bascule pour que le signal reçu par celle-ci ne passe que lorsque les bonnes conditions sont réunies. Ma première idée est de mettre le ET sur la donnée, mais je me rends vite compte que c'est une erreur. C'est le signal d'horloge qu'il faut bloquer, car c'est lui qui capture la donnée. L'idée c'est que la donnée en entrée va varier au gré de ce qui passe sur le bus, mais la bascule ne va capturer cette donnée que lorsque les signaux d'activation sont présents. Le reste du temps aucun signal de capture ne parvient à la bascule.
-
-Comme tout à l'heure il faut se concentrer pour suivre le déroulement du programme, mais on voit que ça fonctionne !
-
+J'ai ensuite connecté la bascule sur le premier bit du bus de données à la place du VIA, et ajouté une logique pour ne capturer les données que quand la bonne adresse est utilisée, et en analysant attentivement le programme présent dans la ROM j'ai été en mesure de confirmer que la donnée affichée par la bascule correspond bien aux attentes.
 
 <div class="inline-image-container">
 
@@ -267,7 +339,7 @@ Comme tout à l'heure il faut se concentrer pour suivre le déroulement du progr
 
         {% include inline-video-item.html
             url="/assets/projects/emulation/IMG_7420.mp4"
-            legend="La bascule capture uniquement les données qui lui sont adressées"
+            legend="La bascule D remplace le VIA"
             width="50%"
         %}
 
@@ -280,6 +352,6 @@ Interfacer une bascule D au 6502 n'était pas prévu initialement mais ça s'est
 
 
 
-## Bilan et conclusion
+## Bilan et perspectives
 
-Le 6502 peut désormais piloter une LED et changer son état selon la logique définie par le programme. Ça reste bien sûr limité mais c'est déjà un bon système simple à émuler. Mais avant, je voudrais rendre les choses encore un petit peu plus intéressantes en ajoutant la possibilité pour un utilisateur d'injecter des données dans le système via un bouton. L'idée est donc de créer cette fois un périphérique d'entrée, c'est-à-dire capable d'envoyer une donnée sur le bus lorsque le CPU le demande. Après ça je pourrai enfin créer des programmes interractifs et attaquer l'émulation à proprement parler.
+J'ai aujourd'hui un système basé sur le 6502 que je peux programmer pour piloter une LED selon une logique arbitraire. Ça reste bien sûr limité mais c'est un système qui commence à être intéressant à émuler. Avant de passer à l'émulation cependant, je voudrais connecter un bouton pour permettre de créer des programmes interractifs. L'idée est d'utiliser une approche similaire à la bascule D, mais pour cette fois créer un périphérique capable d'envoyer des données sur le bus. J'ai déjà quelques idées.
