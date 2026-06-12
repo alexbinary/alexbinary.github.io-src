@@ -8,7 +8,7 @@
     fr: /fr/projets/emulation
   teaser:
     en: Learning about hardware emulation by making custom hardware and writing an emulator for it
-    fr: Découvrir l'émulation matérielle en créant un système matériel simple et l'émulateur correspondant
+    fr: Découvrir l'émulation en créant un système matériel simple et l'émulateur correspondant
   
 - id: ec2e67a6-246f-484e-abc7-6387aa07874a
   name:

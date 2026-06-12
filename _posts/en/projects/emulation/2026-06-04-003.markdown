@@ -1,8 +1,8 @@
 ---
-layout: post_project
+layout: project_post
 project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
-entry: 3
-title: Installation permanente de l'EEPROM et connexion au 6502
+entry: "003"
+title: EEPROM setup and connection to the 6502
 topics: [6502, arduino, electronique, programmation]
 image: /assets/projects/emulation/IMG_7377.JPG
 githubs:

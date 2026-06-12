@@ -15,9 +15,9 @@ layout: default
       <div>
         <span class="content-type">
           {% if page.lang == 'en' %}
-            Project overview
+            Project
           {% else %}
-            Présentation projet
+            Projet
           {% endif %}
         </span>
       </div>
@@ -26,25 +26,9 @@ layout: default
         <h1>{{ project.name[page.lang] }}</h1>
       </div>
 
-      <div class="teaser">
-        <p>{{ project.teaser[page.lang] }}</p>
-      </div>
-    
-      {% if page.topics %}
-        <div class="project-topics">
-          {% for topic in page.topics %}
-            #{{ topic | escape}}
-          {% endfor %}
-        </div>
-      {% endif %}
-
     </div>
 
   </header>
-
-  <div class="separator"></div>
-
-  {% include last_updated.html %}
 
   <div class="post-content">
     {{ content }}

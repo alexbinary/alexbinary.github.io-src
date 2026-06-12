@@ -1,7 +1,7 @@
 ---
-layout: post_project
+layout: project_post
 project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
-entry: 1
+entry: "001"
 title: Project presentation and first steps with the 6502
 topics: [arduino, electronique]
 image: /assets/projects/emulation/IMG_7377.JPG

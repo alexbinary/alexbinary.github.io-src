@@ -20,7 +20,7 @@
         {% assign avail = site.langs[avail_lang] %}
         {% assign key = 'lang_' | append: avail_lang %}
 
-        {% if page.layout == 'post_project' %}
+        {% if page.layout == 'project_post' %}
           {% if avail_lang == 'fr' %}
             {% assign available_info = "Ce billet est disponible <a href='%URL%'>en français %FLAG%</a>" %}
           {% else %}

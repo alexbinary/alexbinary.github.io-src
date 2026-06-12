@@ -1,14 +1,14 @@
 ---
-layout: post_project
+layout: project_post
 project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
-entry: 1
+entry: "001"
 title: Présentation du projet et découverte du 6502
 topics: [arduino, electronique]
 image: /assets/projects/emulation/IMG_7377.JPG
 image_thumbnail: /assets/projects/emulation/IMG_7377 crop1.JPG
 githubs:
 - https://github.com/alexbinary/arduino-6502,
-permalink: /fr/2026/06/01/emulation-001
+permalink: /fr/projets/emulation/billets/001
 lang: fr
 lang_en: /en/2026/06/01/emulation-001
 ---

@@ -626,7 +626,7 @@ ul.list-pointer-style li::before {
 .project-card-posts-meta {
     color: var(--fg-color-1);
     font-size: 0.9rem;
-    margin-bottom: 0;
+    margin-bottom: 0.3rem;
 }
 
 .project-card-posts-content {
@@ -794,6 +794,44 @@ ul.list-pointer-style li::before {
     fill: var(--fg-color-0);
     /*
     */
+}
+
+
+
+/* ---- Posts list */
+
+
+.posts-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    text-align: start;
+}
+
+@media (max-width: 600px) {
+
+    .posts-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+.posts-list-date {
+    color: var(--fg-color-1);
+}
+
+.posts-list-meta {
+    margin-bottom: 0.3rem;
+}
+
+article.project .posts-list h3 {
+    margin-top: 0;
+}
+
+@media (max-width: 600px) {
+
+    .posts-list .post-card img {
+        height: 3rem;
+    }
 }
 
 

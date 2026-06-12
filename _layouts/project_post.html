@@ -2,7 +2,7 @@
 layout: default
 ---
 
-{%- assign project = site.data.projects | where: "id", page.project_id | first -%}
+{% assign project = site.data.projects | where: "id", page.project_id | first %}
 
 <article class="post project project-post">
 
