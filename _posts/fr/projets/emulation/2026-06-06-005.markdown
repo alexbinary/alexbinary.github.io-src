@@ -3,18 +3,16 @@ layout: project_post
 project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "005"
 title: Programmation de l'EEPROM avec Arduino grâce aux registres à décalage
-topics: [6502, arduino, electronique, programmation]
-image: /assets/projects/emulation/IMG_7377.JPG
+topics: [arduino, electronique, programmation]
+image: /assets/projects/emulation/IMG_7408.JPG
 githubs:
-- https://github.com/alexbinary/arduino-6502
 - https://github.com/alexbinary/arduino-eeprom-programmer
 permalink: /fr/2026/06/02/emulation-005
 lang: fr
 lang_en: /en/2026/06/02/emulation-005
 ---
 
-
-Tout est désormais prêt pour pouvoir programmer la ROM. Je place celle-ci sur la breadboard à la place des LEDs. Je connecte l'alimentation et je force `/CE` à `0`. Je connecte ensuite les 15 lignes d'adresse aux sorties des registres, dans l'ordre en commençant par les poids faibles. Sur la dernière ligne du dernier registre, je connecte `/OE`. Ce qui donne ceci :
+Les registres à décalage sont en place est prêts à produire les 16 lignes d'adresse nécessaire à la programmation de l'EEPROM. Je place celle-ci sur la breadboard à la place des LEDs. Je connecte l'alimentation et je force `/CE` à `0`. Je connecte ensuite les 15 lignes d'adresse aux sorties des registres, dans l'ordre en commençant par les poids faibles. Sur la dernière ligne du dernier registre, je connecte `/OE`. Ce qui donne ceci :
 
 |Registre|Sortie|Entrée ROM|
 |-|-|-|
@@ -65,7 +63,7 @@ Voici ce que j'ai écrit initialement :
 
 </div>
 
-### Lecture
+## Lecture
 
 J'essaie de lire les données depuis la ROM mais ça ne fonctionne pas, je ne retrouve pas les données programmées précédemment. Tout est faux. Je soupçonne immédiatement une erreur dans le code précédent vu que c'est la parte la plus complexe mais rien ne me saute aux yeux. J'extrais donc la logique dans une fonction de test et affiche le résultat dans la console en forçant les valeurs d'entrée. Je constate qu'effectivement ça fait n'importe quoi 🤦‍♂️. D'abord il y a une faute de frappe dans la deuxième ligne, il faut un seul `&` et pas deux car on veut faire un `ET` binaire et non pas un `ET` logique. Ensuite pour que le bit `/OE` soit en position 8, en partant de la position 1, il faut le décaler de 7 bits et non de 8. Au final j'ai fait comme Ben Eater et j'ai utilisé directement la valeur `0x80`. Ça rend le code un peu plus lisible.
 
@@ -86,7 +84,8 @@ Voici la version corrigée qui fonctionne :
 
 Le code Arduino est disponible [sur GitHub](https://github.com/alexbinary/arduino-eeprom-programmer).
 
-### Écriture
+
+## Écriture
 
 Je teste maintenant l'écriture, et ça ne fonctionne pas bien. Je teste d'écrire un octets, plusieurs, je teste plusieurs fois chaque code, ça semble fonctionner parfois, et parfois non. Je relis attentivement le code et tout me semble correct. Perplexe, je fais appel à ChatGPT. Je lui copie colle mon code sans rien dire d'autre pour ne pas l'influencer et voir ce qu'il dit spontanément.
 
@@ -150,7 +149,7 @@ Je n'ai pas d'explications sur le fait que ça fonctionnait chez Ben Eater et pa
 Au passage je note également que le signal passe à `0` quand je reset ou programme l'Arduino, et je me demande si ça peut déclencher des écritures non désirées, vu que la ROM reste active pendant ce temps là. Si on part du principe que toutes les pins passent à `0`, alors ça inclue `/OE`, et aucune écriture n'est possible s'il est à `0`, donc ça devrait être bon. Peut-être que pour être sûr on pourrait connecter le signal `/CE` à l'Arduino via un inverseur au lieu de le forcer physiquement à `0` sur la board, ce qui permettrait de n'activer la ROM que lorsque l'Arduino est prêt. Ça fonctionne bien comme ça donc je ne touche à rien pour l'instant, mais c'est le genre de choses qui peut venir causer des problèmes à un moment où n'y pense pas.
 
 
-### Optimisation
+## Optimisation
 
 Maintenant que tout fonctionne correctement, je peux essayer d'accélérer les opérations. Jusque là j'avais mis des `delay(100)` pour être sûr que ça fonctionne et avoir le temps de voir ce qui se passe, mais si on veut lire ou écrire des quantités de données non triviales ça prend beaucoup trop de temps pour rien.
 
@@ -193,7 +192,7 @@ Je me dis que c'est peut-être un problème du à la breadboard, mais pourtant c
 Et puis en y réfléchissant, le délai est entre le moment où on pousse les données dans les registres à décalage et le moment où on demande de mettre à jour la sortie des registres avec les données poussées. Il n'y a aucune transmission longue distance en jeu, tout se passe dans les registres, donc la breadboard ne devrait pas avoir d'impact. Je n'ai pas d'explication.
 
 
-### Nettoyage et améliorations
+## Nettoyage et améliorations
 
 Maintenant que la lecture et l'écriture fonctionnent (au délai près), je remet un peu d'ordre dans le code. Je réécris une fonction `print()` qui affiche des lignes de 16 octets plutôt qu'une seule adresse à la fois, et je fais en sorte de pouvoir lui passer une adresse arbitraire même si elle n'est pas un multiple de 16.
 
@@ -230,8 +229,6 @@ J'ajoute aussi une fonction pour écrire une valeur sur deux octets. Grâce à c
 Pour l'instant le code laisse un délai fixe entre chaque écriture, mais la ROM fournit un moyen de détecter la fin de l'opération d'écriture. Ça permettrai d'envoyer la donnée suivante dès que la mémoire est prête à la recevoir. Implémenter cette fonction serait un bon exercice technique, mais dans mon cas ça n'améliorerait pas la vitesse d'écriture puisque pour l'instant c'est le délai dans les registres à décalage qui limite la vitesse globale, et de très loin. Une idée à garder en tête si je trouve une solution pour ça.
 
 Le code Arduino est disponible [sur GitHub](https://github.com/alexbinary/arduino-eeprom-programmer).
-
-
 
 
 ## La suite

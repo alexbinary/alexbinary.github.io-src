@@ -4,7 +4,8 @@ project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "007"
 title: Implémentation d'une bascule D avec des portes logiques et connexion au 6502
 topics: [6502, arduino, electronique, programmation]
-image: /assets/projects/emulation/IMG_7416.JPG
+image: /assets/projects/emulation/IMG_7416 crop1.JPG
+image_thumbnail: /assets/projects/emulation/IMG_7416.JPG
 githubs:
 - https://github.com/alexbinary/arduino-6502,
 permalink: /fr/2026/06/02/emulation-007
@@ -12,7 +13,7 @@ lang: fr
 lang_en: /en/2026/06/02/emulation-007
 ---
 
-Pour essayer de générer de nouvelles idées je revisionne [la vidéo de Ben Eater sur le VIA](https://www.youtube.com/watch?v=yl8vPW5hydQ). Comme nous l'avons vu, la raison pour laquelle le 6502 ne peut pas piloter directement des périphériques est que les données envoyées sur le bus ne sont présentes que pendant un cycle d'horloge. Il faut donc quelque chose qui capture la donnée et la garde en mémoire. Dans des vidéos précédentes Ben Eater a expliqué comment construire des bascules de type RS ou D. Ce sont des circuits très simples qu'on peut réaliser avec quelques portes logiques et capables de mémoriser une donnée et la mettre à jour en fonction de différents signaux. La bascule RS prend en entrée un signal *set* qui active la sortie et un signal *reset* qui la désactive. La bascule D elle possède un signal de donnée et un signal d'horloge, et la donnée est capturée à chaque front montant de l'horloge. C'est exactement ce qu'il nous faut ici.
+Je suis bloqué avec le 6522 que je ne parviens pas à faire fonctionner. Pour essayer de générer de nouvelles idées je revisionne [la vidéo de Ben Eater sur le VIA](https://www.youtube.com/watch?v=yl8vPW5hydQ). Comme nous l'avons vu, la raison pour laquelle le 6502 ne peut pas piloter directement des périphériques est que les données envoyées sur le bus ne sont présentes que pendant un cycle d'horloge. Il faut donc quelque chose qui capture la donnée et la garde en mémoire. Dans des vidéos précédentes Ben Eater a expliqué comment construire des bascules de type RS ou D. Ce sont des circuits très simples qu'on peut réaliser avec quelques portes logiques et capables de mémoriser une donnée et la mettre à jour en fonction de différents signaux. La bascule RS prend en entrée un signal *set* qui active la sortie et un signal *reset* qui la désactive. La bascule D elle possède un signal de donnée et un signal d'horloge, et la donnée est capturée à chaque front montant de l'horloge. C'est exactement ce qu'il nous faut ici.
 
 Je revisionne la [vidéo sur la bascule D](https://www.youtube.com/watch?v=peCh_859q7Q) et implémente le circuit sur une nouvelle petite breadboard. J'utilise un [74LS02](https://www.ti.com/lit/ds/symlink/sn74ls02.pdf) et un [74LS08](https://www.ti.com/lit/ds/symlink/sn74ls08.pdf) qui contiennent respectivement 4 portes NOR et 4 portes AND. Il y a pas mal de connexions à faire et il faut être vigilent car les pins ne sont pas disposées de la même manière sur les deux puces. Pour éviter de me tromper je dessine le schéma au brouillon et notes les pins à connecter. J'ajoute deux LEDs pour visualiser l'état de la sortie (une pour la sortie normale et une pour la sortie inversée).
 

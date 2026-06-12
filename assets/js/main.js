@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", function () {
             link.classList.add("external-link");
             link.setAttribute("target", "_blank");
             link.setAttribute("rel", "noopener noreferrer");
-            link.style.whiteSpace = "nowrap";
         });
 
     document.querySelectorAll('.external-link,.external-link-icon')

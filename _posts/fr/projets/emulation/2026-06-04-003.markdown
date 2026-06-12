@@ -4,7 +4,8 @@ project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "003"
 title: Installation permanente de l'EEPROM et connexion au 6502
 topics: [6502, arduino, electronique, programmation]
-image: /assets/projects/emulation/IMG_7377.JPG
+image: /assets/projects/emulation/IMG_7399 crop1.JPG
+image_thumbnail: /assets/projects/emulation/IMG_7399 crop1.JPG
 githubs:
 - https://github.com/alexbinary/arduino-6502
 permalink: /fr/2026/06/02/emulation-003
@@ -12,7 +13,7 @@ lang: fr
 lang_en: /en/2026/06/02/emulation-003
 ---
 
-La dernière fois nous avons commencé à programmer la ROM et validé le fonctionnement. Je veux maintenant connecter la ROM de façon semi-permanente au 6502 sur la même breadboard et câbler proprement toutes les lignes d’adresse et de données. Mais avant ça il faut revoir la programmation de la ROM car cette fois les lignes d'adresses seront câblées correctement et le CPU ne retrouvera donc pas les données que j'ai programmé précédement en utilisant les mauvaises lignes d'adresse. Il y a aussi le fait qu'au démarrage le CPU va lire le vecteur reset situé aux adresses `0xFFFC` et `0xFFFD` pour savoir à partir de quelle adresse il doit commencer à exécuter les instructions. Avec 4 lignes d'adresse on pouvait placer le vecteur reset aux adresses `0x000C` et `0x000D`, mais avec un adressage complet ça ne fonctionnera pas. 
+L'EEPROM est programmée et son fonctionnement avec le 6502 est validé. L'objectif d'aujourd'hui est de la connecter de façon semi-permanente au 6502 sur la même breadboard et de câbler proprement toutes les lignes d’adresse et de données. Mais avant ça il faut revoir la programmation car cette fois les lignes d'adresses seront câblées correctement et le CPU ne retrouvera donc pas les données que j'ai programmé précédement en utilisant les mauvaises lignes d'adresse. Il y a aussi le fait qu'au démarrage le CPU va lire le vecteur reset situé aux adresses `0xFFFC` et `0xFFFD` pour savoir à partir de quelle adresse il doit commencer à exécuter les instructions. Avec 4 lignes d'adresse on pouvait placer le vecteur reset aux adresses `0x000C` et `0x000D`, mais avec un adressage complet ça ne fonctionnera pas. 
 
 La ROM utilise 15 lignes d'adresse (32k adressable) alors que le CPU en utilise 16 (64k adressable). Pour l'instant je connecte les 15 premières lignes et je laisse la 16e du CPU non connectée. Ainsi quand le CPU demande l'adresse `0xFFFC`, ça correspondra à l'adresse `0x7FFC` dans la ROM. C'est donc là qu'il faut placer le vecteur reset. On peut ensuite placer le programme où on veut dans la mémoire, tant qu'on renseigne l'adresse correspondante dans le vecteur reset.
 
@@ -84,4 +85,4 @@ Tout fonctionne comme prévu 🎉
 
 ## La suite
 
-Le système est désormais capable de lire des programmes abritrairement longs. Encore faut-il être capable de programmer la ROM sur plus que 16 octets. J'ai quelques idées pour ça. L'objectif ensuite est d'utiliser une puce d'entrées-sorties qui permettra de connecter des périphériques et d'avoir enfin des résultats observables.
+Le système est désormais capable de lire des programmes abritrairement longs. Encore faut-il être capable de programmer la ROM sur plus que 16 octets. J'ai quelques idées pour ça. L'objectif ensuite sera d'utiliser une puce d'entrées-sorties pour pouvoir connecter des périphériques et d'avoir enfin des résultats observables.

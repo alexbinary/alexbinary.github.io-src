@@ -39,6 +39,8 @@
         --dark--link-color-0: #2f88fd;
         --dark--table-border-color-0: #505050;
 
+        --dark--header-footer-border-color: var(--fg-color-0);
+
         --dark--link-card-bg-color: var(--bg-color-1);
         --dark--link-card-border-color: clear;
 
@@ -87,6 +89,8 @@
 
         --link-color-0: var(--dark--link-color-0);
         --table-border-color-0: var(--dark--table-border-color-0);
+
+        --header-footer-border-color: var(--dark--header-footer-border-color);
 
         --link-card-bg-color: var(--dark--link-card-bg-color);
         --link-card-border-color: var(--dark--link-card-border-color);

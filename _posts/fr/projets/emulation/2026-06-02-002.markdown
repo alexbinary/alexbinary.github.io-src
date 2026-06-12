@@ -4,7 +4,8 @@ project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "002"
 title: Exécution du premier programme et découverte de l'EEPROM
 topics: [6502, arduino, electronique, programmation]
-image: /assets/projects/emulation/IMG_7377.JPG
+image: /assets/projects/emulation/IMG_7383 crop1.JPG
+image_thumbnail: /assets/projects/emulation/IMG_7383 crop1.JPG
 githubs:
 - https://github.com/alexbinary/arduino-6502
 permalink: /fr/2026/06/02/emulation-002
@@ -12,9 +13,10 @@ lang: fr
 lang_en: /en/2026/06/02/emulation-002
 ---
 
-La dernière fois nous avons découvert le 6502 et validé son fonctionnement. Nous avons câblé en dur une donnée sur le bus, de sorte à envoyer au CPU l'instruction `NOP` (« No Operation ») quelque soit l'adresse qu'il lit.
+Le 6502 est installé sur une breadboard et j'ai validé son bon fonctionnement. Pour l'instant la valeur `0xEA` est câblée en dure le bus. L'objectif d'aujourd'hui et de fournir au CPU des données dynamiques en fonction de l'adresse qu'il demande, de sorte à former un programme qui ait du sens. Classiquement c'est le rôle d'une puce mémoire. Mais dans un premier temps j'expérimente avec Arduino.
 
-La prochaine étape est de fournir au CPU des données dynamiques en fonction de l'adresse qu'il demande, de sorte à former un programme qui ait du sens. Classiquement c'est le rôle d'une puce mémoire. Mais dans un premier temps j'expérimente avec Arduino.
+
+## Données dynamiques
 
 En plus des 4 lignes d'adresses utilisées jusque là, j'ajoute les 8 lignes du bus de données. Je connecte également le signal read/write pour détecter quand le CPU cherche à lire sur le bus.
 
@@ -42,7 +44,7 @@ Ces modifications en place, j'écris un code qui envoie `0xEA` sur le bus lorsqu
 
 </div>
 
-Maintenant qu'on est capable d'envoyer des données dynamiques au CPU, on peut essayer de lui faire exécuter une petit programme. Très petit en l'occurrence puisque comme je travaille avec seulement 4 bits d'adresse on ne peut fournir que 16 octets au total, dans lesquels il faut compter les deux bits d'adresse du vecteur reset situés aux adresses `0xC` et `0xD`. Techniquement j'aurais pu ajouter un fil ou deux ce qui pourrait respectivement doubler ou quadrupler l'espace disponible, mais je trouvais que c'était un bon challenge.
+Maintenant que je suis capable d'envoyer des données dynamiques au CPU, je peux essayer de lui faire exécuter une petit programme. Très petit en l'occurrence puisque comme je travaille avec seulement 4 bits d'adresse on ne peut fournir que 16 octets au total, dans lesquels il faut compter les deux bits d'adresse du vecteur reset situés aux adresses `0xC` et `0xD`. Techniquement j'aurais pu ajouter un fil ou deux ce qui pourrait respectivement doubler ou quadrupler l'espace disponible, mais je trouvais que c'était un bon challenge.
 
 Pour que ce soit intéressant, je choisi des instructions qui provoquent des accès à la mémoire en lecture et en écriture. L'instruction `LDA` (Load Accumulator) charge dans l'accumulateur la valeur stockée à l'adresse indiquée. `ADC` (Add with Carry) additionne à l'accumulateur la valeur lue à l'adresse spécifiée. `STA` (Store Accumulator) écrit le contenu de l'accumulateur en mémoire. Chacun de ces trois instructions prennent en paramètre l'adresse mémoire à utiliser sur deux octets, les poids faibles en premier. Avec 3 instructions on a déjà rempli 9 octets. Immédiatement après je place les deux octets de données qui seront additionnés par le CPU. Il reste juste un octet libre avant le vecteur de reset.
 

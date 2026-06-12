@@ -4,7 +4,7 @@ project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "006"
 title: Prise en main du 6522 "Versatile Interface Adapter"
 topics: [6502, arduino, electronique, programmation]
-image: /assets/projects/emulation/IMG_7377.JPG
+image: /assets/projects/emulation/IMG_7415 crop1.JPG
 githubs:
 - https://github.com/alexbinary/arduino-6502,
 permalink: /fr/2026/06/02/emulation-006
@@ -12,9 +12,12 @@ lang: fr
 lang_en: /en/2026/06/02/emulation-006
 ---
 
-Maintenant que je peux écrire dans la mémoire des programmes arbitrairement longs, le but est désormais d'ajouter des LEDs et des boutons pour pouvoir écrire et exécuter des programmes interactifs qui produisent des résultats directement observables sans instruments.
+J'ai un système basé sur le 6502 que je peux programmer librement. L'objectif maintenant est d'ajouter des LEDs et des boutons pour pouvoir écrire des programmes interactifs.
 
-Le CPU seul n'est pas en mesure de piloter directement des LEDs et des boutons, car les seules choses qu'il peut faire directement c'est lire et écrire sur les bus d'adresse et de données. Pour piloter une LED ou lire un bouton il faut un système intermédiaire qui s'interface avec la LED ou le bouton d'un côté, et communique avec le CPU via le bus de l'autre côté.
+
+## Le rôle du 6522
+
+Le 6502 seul n'est pas en mesure de piloter directement des LEDs et des boutons, car les seules choses qu'il peut faire directement c'est lire et écrire sur les bus d'adresse et de données. Pour piloter une LED ou lire un bouton il faut un système intermédiaire qui s'interface avec la LED ou le bouton d'un côté, et communique avec le CPU via le bus de l'autre côté.
 
 Le [6522](https://eater.net/datasheets/w65c22.pdf) est une puce d'interfaçage conçue pour fonctionner avec le 6502. Son nom en anglais est *Versatile Interface Adatper*, je l'appelle donc "VIA" pour faire court. Le VIA propose plusieurs fonctions complémentaires, notamment des timers, mais ce qui nous intéresse ici ce sont les deux ports parallèles d'entrée-sortie. Il s'agit de 16 lignes qui peuvent être configurées individuellement en entrée ou en sortie, et qu'on va pouvoir lire ou écrire depuis le CPU.
 
@@ -35,7 +38,7 @@ Le VIA possède 16 registres de contrôle dans lesquel le CPU va lire ou écrire
 </div>
 
 
-### Chip Select et espace d'adressage
+## Chip Select et espace d'adressage
 
 Jusqu'à maintenant on avait qu'un seul composant connecté aux bus d'adresse et de données : l'EEPROM. On va maintenant ajouter le VIA, et il faut donc s'assurer que le CPU puisse communiquer avec chaque composant sans perturber les autres ou être perturbé par leur présence sur le bus. Pour ça on utilise le *Chip Select* (aussi appelé *Chip Enabled*). C'est un signal qui permet d'activer le composant avec lequel le CPU cherche à communiquer à un instant donné. Chaque composant possède une ou plusieurs entrée pour ce signal, et ne prennent le contrôle du bus que lorsque le signal les y autorise. Le reste du temps les pins connectées au bus sont électroniquement déconnectées du bus (dans ce qu'on appelle un *état de haute impédance*).
 
@@ -77,7 +80,7 @@ Résumé des connexions à faire :
 | `A14` | `CS1` du VIA 
 
 
-### Montage de la ROM
+## Montage de la ROM avec *Chip Select* et test du programme
 
 Je veux installer le VIA et la logique du *Chip Select* de manière semi permantente sur une grande breadboard que j'assemble avec celle du 6502, mais je n'ai plus de grande breadboard. J'en ai commandé des nouvelles, mais en attendant de les recevoir je fais un montage temporaire sur une petite breadboard, en faisant les connexion avec des lignes Dupont. Ça ne me laissera pas assez de Duponts pour monitorer les bus avec l'Arduino, mais tant pis.
 
@@ -217,7 +220,7 @@ Avant d'installer le VIA je vérifie que le *Chip Select* fonctionne comme prév
 Tout est conforme.
 
 
-### Montage du VIA
+## Montage du VIA
 
 Je peux maintenant enfin installer le VIA. Je place le 6522 sur une petite breadboard, et je connecte tout de suite VDD et VSS. J'ajoute 3 LEDs à côtés avec leur résistance et je connecte les LEDs aux 3 premières sorties du port A. Je passe en revue le reste des pins. Il faut connecter :
 - les 8 lignes de données (`D0` à `D7`)
