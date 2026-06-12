@@ -14,6 +14,9 @@
   name:
     en: Optics simulator
     fr: Simulateur optique
+  teaser:
+    en: Developing a graphical simulation software to understand light and optical systems
+    fr: Développement d'un logiciel de simulation graphique pour comprendre le fonctionnement de la lumière et des systèmes optiques
   
 - id: 5cfedf56-5aa3-4518-918a-54e86b3fb24d
   name:
@@ -22,3 +25,11 @@
   teaser:
     en: Building custom furniture to store and organize my collection of parts
     fr: Création d'une solution sur mesure pour stocker et organiser ma collection de pièces
+
+- id: 13e81415-87f9-4500-9021-e1a646c46b8f
+  name:
+    en: LASER cut boxes
+    fr: Boites en découpe LASER
+  teaser:
+    en: Designing and making boxes with a LASER cutter
+    fr: Conception et fabrication de boîtes avec une découpeuse LASER

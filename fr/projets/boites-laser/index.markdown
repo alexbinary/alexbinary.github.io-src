@@ -1,9 +1,9 @@
 ---
 layout: project
+project_id: 13e81415-87f9-4500-9021-e1a646c46b8f
 title: Boites en découpe LASER
 topics: [decoupelaser]
 image: /assets/projects/lego-storage-system/boites1.jpg
-project_status: 'terminé ✅'
 last_updated: 2026-05-28
 lang: fr
 lang_en: /en/projects/laser-boxes

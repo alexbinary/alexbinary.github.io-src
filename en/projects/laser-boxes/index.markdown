@@ -1,9 +1,9 @@
 ---
 layout: project
+project_id: 13e81415-87f9-4500-9021-e1a646c46b8f
 title: LASER cut boxes
 topics: [lasercutting]
 image: /assets/projects/lego-storage-system/boites1.jpg
-project_status: 'done ✅'
 last_updated: 2026-05-28
 lang: en
 lang_fr: /fr/projets/boites-laser

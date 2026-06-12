@@ -10,7 +10,7 @@ githubs:
 - https://github.com/alexbinary/arduino-eeprom-programmer
 permalink: /en/2026/06/02/emulation-005
 lang: en
-lang_en: /fr/2026/06/02/emulation-005
+lang_fr: /fr/2026/06/02/emulation-005
 ---
 
 Everything is now ready to program the ROM. I place it on the breadboard, replacing the LEDs. I connect the power supply and force `/CE` to `0`. I then connect the 15 address lines to the outputs of the shift registers, in order starting with the least significant bits. On the last output of the last register, I connect `/OE`. This gives the following mapping:

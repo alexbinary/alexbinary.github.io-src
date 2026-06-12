@@ -22,6 +22,7 @@ lang_en: /
         %}
 
         {% include project-card.html
+            project_id="ec2e67a6-246f-484e-abc7-6387aa07874a"
             title="Simulateur optique"
             subtitle="Logiciel de simulation graphique pour comprendre le fonctionnement de la lumière et des systèmes optiques"
             text="#programmation #swiftui"
@@ -31,6 +32,7 @@ lang_en: /
         %}
         
         {% include project-card.html
+            project_id="5cfedf56-5aa3-4518-918a-54e86b3fb24d"
             title="Solution de rangement LEGO"
             subtitle="Solution sur mesure pour stocker et organiser ma collection de pièces"
             text="#menuiserie #decoupelaser #impression3d"

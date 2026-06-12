@@ -23,6 +23,7 @@ lang_fr: /fr
         %}
         
         {% include project-card.html
+            project_id="ec2e67a6-246f-484e-abc7-6387aa07874a"
             title="Optic simulator"
             subtitle="Graphical simulation software to understand light and optical systems"
             text="#programming #swiftui"
@@ -32,6 +33,7 @@ lang_fr: /fr
         %}
 
         {% include project-card.html
+            project_id="5cfedf56-5aa3-4518-918a-54e86b3fb24d"
             title="LEGO Storage System"
             subtitle="Custom built furniture to store and organize my collection of parts"
             text="#woodworking #lasercutting #3dprinting"

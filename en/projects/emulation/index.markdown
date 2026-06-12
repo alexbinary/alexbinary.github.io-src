@@ -1,6 +1,7 @@
 ---
 layout: project
 project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
+title: Hardware emulation
 topics: [6502, arduino, electronics, programming]
 image: /assets/projects/emulation/IMG_7377.JPG
 githubs: [

@@ -5,12 +5,11 @@ entry: 3
 title: Installation permanente de l'EEPROM et connexion au 6502
 topics: [6502, arduino, electronique, programmation]
 image: /assets/projects/emulation/IMG_7377.JPG
-githubs: [
-  https://github.com/alexbinary/arduino-6502,
-]
+githubs:
+- https://github.com/alexbinary/arduino-6502
 permalink: /en/2026/06/02/emulation-003
 lang: en
-lang_en: /fr/2026/06/02/emulation-003
+lang_fr: /fr/2026/06/02/emulation-003
 ---
 
 Last time we programmes the EEPROM and validated that it is working. Now I want to connect the ROM in a semi-permanent way to the 6502 on the same breadboard and wire all the address and data lines correctly. But before that I need to revise the ROM programming, because this time the address lines will be correctly wired and the CPU will therefore not find the data I previously programmed using the wrong address lines. There is also the fact that at startup, the CPU reads the reset vector at addresses `0xFFFC` and `0xFFFD` to know where it should start executing instructions from. With 4 address lines it was possible to place the reset vector at addresses `0x000C` and `0x000D`, but this will no longer work with full addressing.
