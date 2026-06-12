@@ -1,0 +1,24 @@
+{% assign prev_entry = page.entry | minus: 1 %}
+{% assign next_entry = page.entry | plus: 1 %}
+
+{% assign posts = site.posts
+  | where: "lang", page.lang
+  | where: "project_id", page.project_id
+%}
+{% assign prev = posts
+  | where: "entry", prev_entry
+  | first
+%}
+{% assign next = posts
+  | where: "entry", next_entry
+  | first
+%}
+
+<div class="project-post-navigation">
+  <p class="project-post-navigation-item" {% if prev %}{% else %} style="visibility: hidden;" {% endif %}>
+    <a href="{{ page.url | replace: page.entry, prev.entry }}">← Billet précédent</a>
+  </p>
+  <p class="project-post-navigation-item" {% if next %}{% else %} style="visibility: hidden;" {% endif %}>
+    <a href="{{ page.url | replace: page.entry, next.entry }}">Billet suivant →</a>
+  </p>
+</div>

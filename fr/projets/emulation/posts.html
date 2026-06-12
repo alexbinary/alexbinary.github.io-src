@@ -2,69 +2,9 @@
 layout: project_posts
 project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 title: Émulation matérielle
-topics: [6502, arduino, electronique, programmation, emulation]
 image: /assets/projects/emulation/IMG_7377.JPG
 permalink: /fr/projets/emulation/billets/
 lang: fr
+lang_en: /en/projects/emulation/posts/
 last_updated: 2026-06-09
 ---
-
-{% assign posts = site.posts
-    | where: "lang", page.lang
-    | where: "project_id", page.project_id
-    | sort: "date"
-%}
-
-{% if page.lang == 'en' %}
-    {% assign title = "posts in this project" %}
-{% else %}
-    {% assign title = "billets dans ce projet" %}
-{% endif %}
-{% assign title = posts.size | append: " " | append: title %}
-
-{% include heading-with-icon.html text=title icon="" %}
-
-<div class="posts-list">
-    {% for post in posts limit: num offset: offset %}
-
-        <article class="post-card">
-            <a href="{{ post.url }}">
-                <img src="{{ post.image_thumbnail | default: post.image }}">
-                <div class="post-card-content">
-                    <p class="posts-list-meta">
-                        #{{ post.entry }}
-                        <span class="posts-list-date">
-                            -
-                            {{ post.date | date_custom: page.lang }}
-                        </span>
-                    </p>
-                    <h3 class="post-card-title">{{ post.title }}</h3>
-
-                    <p class="read-more">
-                        <span>
-                        {% if page.lang == 'en' %}
-                            Read
-                        {% else %}
-                            Lire
-                        {% endif %}
-                        </span>
-                        {% include disclosure.html %}
-                        
-                    </p>
-                </div>
-            </a>
-        </article>
-
-        {% comment %} <a href="{{ post.url }}">    
-            <div class="posts-list-meta">
-                #{{ post.entry }}
-                <span class="posts-list-date">
-                     -
-                    {{ post.date | date_custom: page.lang }}
-                </span>
-            </div>
-            <h3>{{ post.title }}</h3>
-        </a>
-        <div class="separator separator-small"></div> {% endcomment %}
-    {% endfor %}
-</div>

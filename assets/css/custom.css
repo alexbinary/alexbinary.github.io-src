@@ -955,6 +955,10 @@ article.project .project-topics {
 article.project header img {
     position: absolute;
     z-index: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    aspect-ratio: initial;
 }
 
 article.project .header-content {
@@ -1052,6 +1056,53 @@ article.project-post .project-github {
 
     article.project-post .project-post-title h2 {
         font-size: 1.8rem;
+    }
+}
+
+.project-post-navigation {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    justify-content: stretch;
+    margin-bottom: 1rem;
+}
+
+.project-post-navigation-item {
+    flex: 1;
+    background-color: var(--bg-color-1);
+    border-radius: 8px;
+    text-align: center;
+}
+
+.project-post-navigation a:hover {
+    text-decoration: none;
+}
+
+@media (max-width: 600px) {
+
+    .project-post-navigation-item {
+        padding: 0.3rem 1rem;
+    }
+}
+
+@media (min-width: 600px) {
+
+    .project-post-navigation-item {
+        padding: 0.6rem 1rem;
+    }
+}
+
+@media (prefers-color-scheme: light) and (min-width: 600px) {
+
+    .project-post-navigation-item {
+        box-shadow: 3px 3px rgba(0, 0, 0, 0.166);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+
+    .project-post-navigation-item {
+        box-shadow: none;
     }
 }
 
