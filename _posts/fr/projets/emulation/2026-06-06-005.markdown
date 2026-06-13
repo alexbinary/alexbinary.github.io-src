@@ -7,9 +7,9 @@ topics: [arduino, electronique, programmation]
 image: /assets/projects/emulation/IMG_7408.JPG
 githubs:
 - https://github.com/alexbinary/arduino-eeprom-programmer
-permalink: /fr/2026/06/02/emulation-005
+permalink: /fr/projets/emulation/billets/005
 lang: fr
-lang_en: /en/2026/06/02/emulation-005
+lang_en: /en/projects/emulation/posts/005
 ---
 
 Les registres à décalage sont en place est prêts à produire les 16 lignes d'adresse nécessaire à la programmation de l'EEPROM. Je place celle-ci sur la breadboard à la place des LEDs. Je connecte l'alimentation et je force `/CE` à `0`. Je connecte ensuite les 15 lignes d'adresse aux sorties des registres, dans l'ordre en commençant par les poids faibles. Sur la dernière ligne du dernier registre, je connecte `/OE`. Ce qui donne ceci :

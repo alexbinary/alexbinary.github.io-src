@@ -7,9 +7,9 @@ topics: [6502, arduino, electronique, programmation]
 image: /assets/projects/emulation/IMG_7408.JPG
 githubs:
 - https://github.com/alexbinary/arduino-eeprom-programmer
-permalink: /fr/2026/06/02/emulation-004
+permalink: /fr/projets/emulation/billets/004
 lang: fr
-lang_en: /en/2026/06/02/emulation-004
+lang_en: /en/projects/emulation/posts/004
 ---
 
 Le 6502 est installé sur une breadboard et le câblage est en place pour l'EEPROM. Le système est désormais en mesure de lire des programmes arbitrairement longs, j'ai donc besoin de pouvoir programmer la ROM plus de 16 octets à la fois. Jusque là je n'utilisais que 4 lignes d'adresses car l'Arduino n'a pas assez de broches pour utiliser les 15 lignes en même temps, mais il est possible de produire plus de sortie grâce à un composant qu'on appelle *registre à décalage*.

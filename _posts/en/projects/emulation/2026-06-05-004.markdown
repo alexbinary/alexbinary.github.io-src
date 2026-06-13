@@ -7,9 +7,9 @@ topics: [6502, arduino, electronique, programmation]
 image: /assets/projects/emulation/IMG_7408.JPG
 githubs:
 - https://github.com/alexbinary/arduino-6502
-permalink: /en/2026/06/02/emulation-004
+permalink: /en/projects/emulation/posts/004
 lang: en
-lang_fr: /fr/2026/06/02/emulation-004
+lang_fr: /fr/projets/emulation/billets/004
 ---
 
 Last time we setup the ROM to the 6502 and connected all address lines. Now that the system is able to read arbitrarily long programs, I need to be able to program more than 16 bytes of ROM at a time. Until now I was using only 4 address lines because the Arduino does not have enough pins to drive all 15 address lines simultaneously. It is possible to generate more outputs using a component called a *shift register*.

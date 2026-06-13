@@ -8,9 +8,9 @@ image: /assets/projects/emulation/IMG_7377.JPG
 image_thumbnail: /assets/projects/emulation/IMG_7377 crop1.JPG
 githubs:
 - https://github.com/alexbinary/arduino-6502,
-permalink: /en/2026/06/01/emulation-001
+permalink: /en/projects/emulation/posts/001
 lang: en
-lang_fr: /fr/2026/06/01/emulation-001
+lang_fr: /fr/projets/emulation/billets/001
 ---
 
 I play video games on emulators and I understand the basic principles of emulation, but I want to learn more and get my hands dirty. I'd like to know how to write a Game Boy emulator, and it's probably doable with enough patience, but I like to start with the basics. And the basics are: "What exactly is emulation?"

@@ -10,7 +10,7 @@ githubs:
 - https://github.com/alexbinary/arduino-6502,
 permalink: /fr/projets/emulation/billets/001
 lang: fr
-lang_en: /en/2026/06/01/emulation-001
+lang_en: /en/projects/emulation/posts/001
 ---
 
 Je joue régulièrement à des jeux vidéo sur émulateur et je comprends dans les grandes lignes le principe de l’émulation mais j'ai envie d'en apprendre plus et de "mettre les mains dedans". J'aimerais bien savoir écrire un émulateur de GameBoy, et c'est probablement faisable avec suffisamment de patience, mais j'aime comprendre les choses en partant de la base. C'est pour cette raison que je me suis donné pour projet de construire un système électronique simple et d'écrire ensuite l'émulateur correspondant. Ainsi je peux commencer en douceur avec les principes fondamentaux de l'émulation, et complexifier progressivement par la suite selon mes envies.

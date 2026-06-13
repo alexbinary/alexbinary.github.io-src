@@ -7,9 +7,9 @@ topics: [6502, arduino, electronique, programmation]
 image: /assets/projects/emulation/IMG_7415 crop1.JPG
 githubs:
 - https://github.com/alexbinary/arduino-6502,
-permalink: /en/2026/06/02/emulation-006
+permalink: /en/projects/emulation/posts/006
 lang: en
-lang_fr: /fr/2026/06/02/emulation-006
+lang_fr: /fr/projets/emulation/billets/006
 ---
 
 Now that I can write arbitrarily long programs into the ROM, the next goal is to add LEDs and buttons so that I can write and run interactive programs that produce directly observable results without requiring any instruments.

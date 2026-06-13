@@ -7,9 +7,9 @@ topics: [6502, arduino, electronique, programmation]
 image: /assets/projects/emulation/IMG_7415 crop1.JPG
 githubs:
 - https://github.com/alexbinary/arduino-6502,
-permalink: /fr/2026/06/02/emulation-006
+permalink: /fr/projets/emulation/billets/006
 lang: fr
-lang_en: /en/2026/06/02/emulation-006
+lang_en: /en/projects/emulation/posts/006
 ---
 
 J'ai un système basé sur le 6502 que je peux programmer librement. L'objectif maintenant est d'ajouter des LEDs et des boutons pour pouvoir écrire des programmes interactifs.

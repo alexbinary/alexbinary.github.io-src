@@ -802,6 +802,127 @@ ul.list-pointer-style li::before {
 
 
 
+/* ---- Post links */
+
+
+.project-post-link {
+    padding: 8px;
+    border-radius: 8px;
+    background-color: var(--bg-color-1);
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+@media (min-width: 600px) {
+    .project-post-link {
+        box-shadow: 3px 3px var(--shadow-color-0);
+    }
+}
+
+.project-post-link a {
+    color: var(--fg-color-0);
+    /*
+    */
+}
+
+.project-post-link:hover a {
+    text-decoration: none;
+    /*
+    */
+}
+
+.project-post-link-content {
+    padding: 4px;
+    padding-left: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.project-post-link-title-text {
+    display: flex;
+    align-items: baseline;
+}
+
+@media (min-width: 600px) {
+
+    .project-post-link-title-text {
+        flex-direction: row;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .project-post-link-title-text {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+.project-post-link .project-post-link-meta {
+    color: var(--fg-color-1);
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+.project-post-link h3.project-post-link-title {
+    font-size: 1.1rem;
+    line-height: 130%;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    text-align: start;
+    /*
+    */
+}
+
+.project-post-link .read-more {
+    font-size: 0.9rem;
+    color: var(--fg-color-0);
+    margin: 0;
+    flex-shrink: 0;
+    /*
+    */
+}
+
+@media (max-width: 600px) {
+
+    .project-post-link .read-more {
+        text-align: end;
+        margin-top: 0.4rem;
+    }
+
+    .project-post-link .read-more span {
+        display: none;
+    }
+}
+
+.project-post-link .read-more svg {
+    width: 0.5rem;
+    position: relative;
+    top: 0.1rem;
+    /*
+    */
+}
+
+@media (max-width: 600px) {
+
+    .project-post-link .read-more svg {
+        width: 0.8rem;
+        /*
+        */
+    }
+}
+
+.project-post-link .read-more svg path {
+    fill: var(--fg-color-0);
+    /*
+    */
+}
+
+
+
 /* ---- Posts list */
 
 
@@ -1027,7 +1148,15 @@ article.project-post .title h1 a {
     color: var(--fg-color-0);
 }
 
+article.project-posts .title h1 a {
+    color: var(--fg-color-0);
+}
+
 article.project-post .title h1 a:hover {
+    text-decoration: none;
+}
+
+article.project-posts .title h1 a:hover {
     text-decoration: none;
 }
 

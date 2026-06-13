@@ -8,9 +8,9 @@ image: /assets/projects/emulation/IMG_7383 crop1.JPG
 image_thumbnail: /assets/projects/emulation/IMG_7383 crop1.JPG
 githubs:
 - https://github.com/alexbinary/arduino-6502
-permalink: /en/2026/06/02/emulation-002
+permalink: /en/projects/emulation/posts/002
 lang: en
-lang_fr: /fr/2026/06/02/emulation-002
+lang_fr: /fr/projets/emulation/billets/002
 ---
 
 Last time we introduced the 6502 and showed that it can run a program, but we have hard wired the data `0xEA` on the data bus, making it execute a `NOP` (« No Operation ») instruction forever.

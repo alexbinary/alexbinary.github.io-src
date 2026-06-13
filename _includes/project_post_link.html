@@ -1,0 +1,38 @@
+{% assign posts = site.posts
+  | where: "lang", page.lang
+  | where: "project_id", page.project_id
+%}
+{% for test_post in posts %}
+    {% if test_post.entry == include.target_entry %}
+        {% assign post = test_post %}
+    {% endif %}
+{% endfor %}
+
+<article class="project-post-link">
+    <a href="{{ post.url }}">
+        <div class="project-post-link-content">
+            <div class="project-post-link-title-text">
+                <p class="project-post-link-meta">
+                    {% if page.lang == 'en' %}
+                        Post
+                    {% else %}
+                        Billet
+                    {% endif %}
+                    #{{ post.entry }}
+                </p>
+                <h3 class="project-post-link-title">{{ post.title }}</h3>
+            </div>
+
+            <p class="read-more">
+                <span>
+                    {% if page.lang == 'en' %}
+                        Read
+                    {% else %}
+                        Lire
+                    {% endif %}
+                </span>
+                {% include disclosure.html %}
+            </p>
+        </div>
+    </a>
+</article>

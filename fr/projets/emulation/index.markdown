@@ -153,6 +153,10 @@ J'ai commencé par installer le 6502 sur une breadboard en câblant la valeur `0
 
 </div>
 
+{% include project_post_link.html
+    target_entry="001"
+%}
+
 J'ai ensuite connecté les lignes d’adresses et de données à l'Arduino ainsi que le signal read/write, et écrit un code capable d'envoyer des données sur le bus en fonction de l'adresse demandée par le CPU. J'ai utilisé ce système rudimentaire pour fournir au CPU un programme minimaliste à 3 instructions, et validé le bon fonctionnement en observant l'activité sur le bus. Dans ce genre d'opération c'est l'Arduino qui génère le signal d'horloge. J'ai fait ça pour être sûr de lire et écrire sur les bus aux bons moments car je ne me suis pas encore penché sur les timings du 6502.
 
 <div class="inline-image-container">
@@ -174,6 +178,9 @@ J'ai ensuite connecté les lignes d’adresses et de données à l'Arduino ainsi
 
 </div>
 
+{% include project_post_link.html
+    target_entry="002"
+%}
 
 
 ## Prise en main de l'EEPROM
@@ -215,6 +222,10 @@ Une fois capable de programmer la ROM, je l'ai connecté au 6502, d'abord de man
 
 </div>
 
+{% include project_post_link.html
+    target_entry="003"
+%}
+
 
 ## Création d'un programmeur avec des registres à décalage
 
@@ -235,6 +246,10 @@ Mon Arduino ne disposant pas de suffisamment de broches pour connecter les 8 lig
 
 </div>
 
+{% include project_post_link.html
+    target_entry="004"
+%}
+
 
 Ensuite j'ai réalisé un montage semi-permanent sur breadboard associé à un code Arduino capable de programmer la ROM sur l'intégralité de la plage mémoire. J'ai implémenter une fonction de lecture de la mémoire capable d'afficher une plage arbitraire par bloc de 16 octets, et des fonctions d'écriture capables d'écrire une valeur sur ou deux octets à une adresse donnée, ou toute une séquence. 
 
@@ -251,6 +266,10 @@ Ensuite j'ai réalisé un montage semi-permanent sur breadboard associé à un c
     </div>
 
 </div>
+
+{% include project_post_link.html
+    target_entry="005"
+%}
 
 
 ## Ajout du 6522 "Versatile Interface Adapter"
@@ -312,6 +331,10 @@ J'ai réécrit un programme simple pour tester le VIA, connecté des LEDs en sor
 
 </div>
 
+{% include project_post_link.html
+    target_entry="006"
+%}
+
 
 ## Implémentation d'une bascule D
 
@@ -349,6 +372,10 @@ J'ai ensuite connecté la bascule sur le premier bit du bus de données à la pl
 
 
 Interfacer une bascule D au 6502 n'était pas prévu initialement mais ça s'est révélé très intéressant et ça m'a aidé à comprendre ce qui peut se jouer dans les puces qui communiquent sur un bus de données, comme la ROM ou le VIA. Je suis très content d'avoir fait ce petit détour.
+
+{% include project_post_link.html
+    target_entry="007"
+%}
 
 
 

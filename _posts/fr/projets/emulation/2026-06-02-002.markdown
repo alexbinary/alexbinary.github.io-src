@@ -8,9 +8,9 @@ image: /assets/projects/emulation/IMG_7383 crop1.JPG
 image_thumbnail: /assets/projects/emulation/IMG_7383 crop1.JPG
 githubs:
 - https://github.com/alexbinary/arduino-6502
-permalink: /fr/2026/06/02/emulation-002
+permalink: /fr/projets/emulation/billets/002
 lang: fr
-lang_en: /en/2026/06/02/emulation-002
+lang_en: /en/projects/emulation/posts/002
 ---
 
 Le 6502 est installé sur une breadboard et j'ai validé son bon fonctionnement. Pour l'instant la valeur `0xEA` est câblée en dure le bus. L'objectif d'aujourd'hui et de fournir au CPU des données dynamiques en fonction de l'adresse qu'il demande, de sorte à former un programme qui ait du sens. Classiquement c'est le rôle d'une puce mémoire. Mais dans un premier temps j'expérimente avec Arduino.

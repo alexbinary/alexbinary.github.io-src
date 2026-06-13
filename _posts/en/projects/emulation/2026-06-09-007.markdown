@@ -8,9 +8,9 @@ image: /assets/projects/emulation/IMG_7416 crop1.JPG
 image_thumbnail: /assets/projects/emulation/IMG_7416.JPG
 githubs:
 - https://github.com/alexbinary/arduino-6502,
-permalink: /en/2026/06/02/emulation-007
+permalink: /en/projects/emulation/posts/007
 lang: en
-lang_fr: /fr/2026/06/02/emulation-007
+lang_fr: /fr/projets/emulation/billets/007
 ---
 
 To generate new ideas, I rewatch [Ben Eater's video about the VIA](https://www.youtube.com/watch?v=yl8vPW5hydQ). As we saw earlier, the reason the 6502 cannot directly drive peripherals is that the data placed on the bus is only present for a single clock cycle. We therefore need something that can capture the data. In previous videos, Ben Eater explained how to build RS and D flip-flops. These are very simple circuits that can be built with just a few logic gates and are capable of storing a value and updating it based on various signals. An RS flip-flop has a *set* input that activates the output and a *reset* input that deactivates it. A D flip-flop, on the other hand, has a data input and a clock input, and it captures the data on every rising edge of the clock. That's exactly what we need here.
