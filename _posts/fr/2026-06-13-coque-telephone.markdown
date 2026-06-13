@@ -14,7 +14,7 @@ En 2026, mon [iPhone X](https://fr.wikipedia.org/wiki/IPhone_X) commence à fair
 
 J'ai trouvé un modèle en ligne que j'ai légèrement adapté puis personnalisé, et j'en suis content. J'ai un peu l'impression de retrouver un nouveau téléphone. J'ai aussi testé différentes couleurs et j'apprécie de pouvoir changer de style.
 
-Dernièrement le port Lightning de mon iPhone X a rendu l'âme. Heureusement, ce modèle est équipé de la charge par induction, et c'est désormais la seule option pour charger la batterie. Je le chargeais déjà régulièrement de cette manière à la maison, mais j'utilisais le port Lightning en déplacement ou dans la voiture. Je ne peux plus faire ça aujourd'hui.
+Dernièrement le port Lightning de mon iPhone X a rendu l'âme. Heureusement, ce modèle d'iPhone est équipé de la charge par induction (c'est d'ailleurs le premier modèle où c'est le cas), et c'est désormais la seule option pour charger la batterie. Je le chargeais déjà régulièrement de cette manière à la maison, mais j'utilisais le port Lightning en déplacement ou dans la voiture. Je ne peux plus faire ça aujourd'hui.
 
 L'iPhone X date d'avant MagSafe, c'est-à-dire qu'il n'est pas équipé des aimants permettant de le lier à la station de charge. Ce n'est pas gênant pour charger à la maison, mais c'est plus embêtant en déplacement ou quand je veux l'utiliser en charge. Pour remédier à ça j'ai acheté un chargeur MagSafe et une coque qui intègre les fameux aimants, et ça fonctionne très bien, mais j'ai voulu essayer d'intégrer les aimants dans les coques que je fabrique moi-même.
 
@@ -38,11 +38,9 @@ J'ai trouvé des [aimants compatibles](https://fr.aliexpress.com/item/1005005115
 
 ## Modélisation
 
-Je commence par prendre les mesures exacts de l'anneau pour modifier mon modèle 3D. Je veux d'abord vérifier l'épaisseur pour voir si je peux l'intégrer dans l'épaisseur de la coque.
+Je commence par prendre les mesures exacts de l'anneau pour modifier mon modèle 3D. Je veux d'abord vérifier l'épaisseur pour voir si je peux l'intégrer dans l'épaisseur de la coque. Au pied à coulisse je mesure entre 0,4 et 0,5mm. En tenant compte de la couche adhésive on va dire que l'aimant fait 0,4mm. Je mesure l'épaisseur de ma coque: 1,4mm. Il y a donc largement assez de matière pour intégrer l'anneau.
 
-Au pied à coulisse je mesure entre 0,4 et 0,5 mm. En tenant compte de la couche adhésive on va dire que l'aimant fait 0,4 mm. Je mesure l'épaisseur de ma coque: 1,4 mm. Il y a donc largement assez de matière pour intégrer l'anneau.
-
-Mon objectif est de minimiser l'épaisseur de plastique entre l'anneau et le chargeur afin de maximiser la force d'attraction. Je décide donc de ne conserver que 0,4 mm de plastique côté extérieur, soit deux couches d'impression avec mes réglages habituels. Ça me semble être le minimum pour que la surface tienne le coup.
+Mon objectif est de minimiser l'épaisseur de plastique entre l'anneau et le chargeur afin de maximiser la force d'attraction. Je décide donc de ne conserver que 0,4mm de plastique côté extérieur, soit deux couches d'impression avec les réglages habituels. Ça me semble être le minimum pour que la surface tienne le coup.
 
 J'ai envisagé d'enfermer complètement l'anneau dans la pièce en reprenant l'impression après son insertion. Je n'ai encore jamais fait ce genre de choses et ce serait l'occasion d'essayer. Mais pour un premier prototype je préfère rester simple.
 
@@ -78,7 +76,7 @@ J'avais déjà déterminé la position du centre de la bobine de charge grâce �
 
 </div>
 
-Je mesure l'anneau et j'ajoute 1mm de marge sur toutes les dimensions pour faciliter l'insertion. Pour reproduire correctement les arrondis, je prends une photo de l'anneau et je l'importe dans Fusion pour servir de référence.
+Je mesure l'anneau et j'ajoute 1mm de marge sur toutes les dimensions pour faciliter l'insertion. Pour reproduire correctement les arrondis entre le cercle et la queue, je prends une photo de l'anneau et je l'importe dans Fusion pour servir de référence.
 
 <div class="inline-image-container">
 
@@ -113,7 +111,7 @@ Avant toute chose je vérifie dans le slicer que l'épaisseur résiduelle est bi
 
 </div>
 
-Pour ce genre de projets j'aime utiliser un filament transparent. Ici ça permet de vérifier la position et la bonne tenue de l'anneau quand la coque est en place.
+Pour ce genre de projets j'aime utiliser un filament transparent. Ici ça permet de vérifier la position et la bonne tenue de l'anneau quand la coque est en place. Je cherche le filament et je lance l'impression.
 
 L'impression dure 38 minutes ⏳
 

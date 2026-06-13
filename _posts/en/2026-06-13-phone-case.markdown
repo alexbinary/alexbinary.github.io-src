@@ -1,99 +1,159 @@
 ---
-layout: project_post
-title: Coque iPhone avec MagSafe intégré
+layout: post
+title: Adding MagSafe magnets to an iPhone X with a 3D-printed case
 topics: [3dprint]
-image: /assets/projects/emulation/IMG_7377.JPG
+image: /assets/projects/phone-case/IMG_7436.JPG
 permalink: /en/posts/2026/06/13/001
 lang: en
 lang_fr: /fr/billets/2026/06/13/001
 ---
 
-iPhoneX, charge par induction mais pas d'aimants
-utilisé sans coque depuis toujours
-dos fissuré récemment > coques en impression 3D
+## Introduction
 
-port Lightning HS depuis peu, obligé de charger par induction
-mais sans aimants pas facile de bien le positionner, et impossible de l'utiliser en charge
+In 2026, my [iPhone X](https://fr.wikipedia.org/wiki/IPhone_X) is starting to show its age. I've never used cases on my phones, and the iPhones I've owned in the past have always survived the occasional drop despite my best efforts to be careful. The most recent drop cracked the back glass of my iPhone X, and I'm no longer quite as comfortable leaving it unprotected. Since I own a 3D printer, I became interested in making my own cases.
 
-j'ai acheté une coque avec l'aimant intégré en attendant,
-mais je veux intégrer les aimants dans les coques que je fais
+I found a model online, made a few modifications, and customized it to my liking. I'm quite happy with the result. It almost feels like having a new phone. I've also experimented with different colors and I like being able to change styles.
 
-L'objectif est d'intégrer un anneau MagSage dans mon modèle de coque pour mon téléphone
+Recently, the Lightning port on my iPhone X stopped working. Fortunately, this iPhone model supports wireless charging (in fact, it is the first model to support it), which is now the only way I can recharge the battery. I was already charging it wirelessly at home most of the time, but I still relied on the Lightning port when traveling or in the car. That's no longer possible.
 
-https://fr.aliexpress.com/item/1005005115150292.html?spm=a2g0o.order_list.order_list_main.50.cb535e5brNk5u3&gatewayAdapt=glo2fra
+The iPhone X predates MagSafe, meaning it doesn't include the magnets used to align and attach the phone to the charger. This isn't a problem at home, but it's more inconvenient when traveling or when I want to use the phone while it's charging. To solve this, I bought a MagSafe charger and a case that includes the famous magnetic ring, and it works very well. However, I wanted to try integrating the ring into the cases I make myself.
 
-je viens des les recevoir, donc go
-les anneaux sont juste des pièces en fer, pas des aimants comme dans ma coque
+I found some [compatible rings](https://fr.aliexpress.com/item/1005005115150292.html?spm=a2g0o.order_list.order_list_main.50.cb535e5brNk5u3&gatewayAdapt=glo2fra) on AliExpress and ordered a few. In reality, they aren't magnets at all but simply metal rings. The AliExpress description mentions a "magnetic metal plate" and a "self-adhesive iron sheet," so I probably should have expected that. I tested one on my charger, and it sticks reasonably well 👍.
 
-je commence par mesurer au pied au coulisse l'épaisseur de l'anneau
-et de la coque
+<div class="inline-image-container">
 
-anneau : entre 0,4 et 0,5mm
-si on compte la couche adhésive on peut retenir 0.4mm
+        <div class="inline-image-container-row">
 
-coque : 1,4mm
-on a donc assez d'épaisseur pour mettre l'anneau, large
+            {% include inline-image-item.html
+                url="/assets/projects/phone-case/magnet.png"
+                legend="The MagSafe rings ordered from AliExpress"
+                width="50%"
+        %}
 
-je voudrais minimiser l'épaisseur de plastique entre l'anneau et le chargeur
-pour maximiser la force d'attraction
+    </div>
 
-je prévois donc de laisser 0,4mm, soit deux couches d'impression 3D avec les réglages standards que j'utilise
-
-j'ai pensé à enfermer l'anneau en repassant une couche d'impression par dessus,
-mais pour l'instant je teste déjà comme ça
-et je ne suis pas sûr que ça apporte vraiment quelque chose
-à part tester (je n'ai jamais enfermé des pièces dans une impression 3D)
-
-j'ouvre Fusion, je confirme sur mon esquisse que le fonde la coque fait 1.4mm
-
-je dessine la forme générale, puis je mesure l'anneau
-je prends un peu plus large pour laisser la place
-j'ajoute 1 mm à chaque dimension
-
-j'avais déjà repris la position du centre de la bobine avec une image x-ray
-
-pour reprendre les arrondis, je prends une photos que j'importe dans Fusion
-
-je vérifie dans le slicer que j'ai bien deux épaisseurs comme prévu, c'est bon
-
-j'imprime avec un filament transparent pour pouvoir voir comment l'anneau est en place une fois monté sur le téléphone
-
-38min d'impression
-
-vue que c'est fin, je préfère attendre que ça réfroidisse complètement plutôt que de le décoller du plateau comme d'habitude
-
-avantage du filament transparent : on voit où il est décollé
-
---
-
-je vérifie que l'anneau passe bien dans la zone, c'est ok
-
-je teste avec le chargeur, c'est moins puissant que ma coque, et ça ne se centre pas vraiment tout seul, un peu décevant
-
-rappel, les anneaux sont juste des pièces en fer, pas des aimants comme dans ma coque
-
-je colle l'anneau dans la coque, je sens bien qu'il reste une épaisseur
-on devrait pouvoir enfermer l'anneau sans problème
-
-j'enfile la coque, je la casse un peu en la mettant :(
-pas grave en soit, mais ça fait un petit bout qui dépasse
-> je colle
-
-mais sinon ça fonctionne bien
-le chargeur ne se center pas forcément bien, il faut vérifier
-mais sinon ça tient bien, aucun soucis pour utiliser le téléphone en charge
-
-le chargeur ne se center pas forcément bien > besoin de voir l'anneau pour vérifier le centrage
-avec mon petit chargeur MagSafe ça va, avec d'autres accessoires ça peut être gênant
-et ça rend impossible des coques opaques qui ne laissent pas voir l'anneau
-
-en fait il y a quand meme un puit de potentiel, donc on peut le bouger et sentir quand il est en place
-autre technique : survoler sans toucher et ça "claque" quand c'est en face
+</div>
 
 
+## Updating the 3D model
+
+I started by taking precise measurements of the ring. The first thing I wanted to check was its thickness to determine whether it could fit inside the case. Using calipers, I measured between 0.4 and 0.5mm. Taking the adhesive layer into account, let's say the ring itself is 0.4mm thick. I then measured my case, which is 1.4mm thick. That leaves plenty of material to integrate the ring.
+
+My goal was to minimize the amount of plastic between the ring and the charger in order to maximize the magnetic attraction. I therefore decided to leave only 0.4mm of plastic on the outside, or two print layers with the usual settings. That seemed like the minimum thickness that would still provide sufficient strength.
+
+I considered fully enclosing the ring inside the part by pausing the print and resuming it after inserting the ring. I've never tried this kind of technique before, and it would be a good opportunity to experiment. However, for a first prototype, I preferred to keep things simple.
+
+I opened Fusion and confirmed that the back of the case is indeed 1.4mm thick.
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/phone-case/profile.png"
+            legend="The profile used to create the case"
+        %}
+
+    </div>
+
+</div>
+
+I had already determined the position of the charging coil using an X-ray image of the iPhone X. All that remained was to design the ring recess.
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/phone-case/xray.jpg"
+            legend="X-ray image of the iPhone X"
+            width="50%"
+        %}
+        
+    </div>
+
+</div>
+
+I measured the ring and added 1 mm of clearance to all dimensions to make insertion easier. To accurately reproduce the rounded shape connecting the circle and the tip, I took a photo of the ring and imported it into Fusion as a reference.
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/phone-case/ring2.png"
+            legend="Using a photo as a reference for modeling"
+            width="50%"
+        %}
+
+    </div>
+
+</div>
 
 
+## Printing
+
+Before printing, I checked the slicer to make sure the remaining thickness beneath the ring recess was indeed two layers.
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/phone-case/slicer.png"
+            legend="The slicer confirms that the bottom of the ring recess is only two layers thick"
+            width="50%"
+        %}
+
+    </div>
+
+</div>
+
+For projects like this, I like to use transparent filament. In this case, it allows me to verify the ring's position and ensure it remains securely in place once the case is installed. So I loaded the filament and started the print.
+
+The print took 38 minutes ⏳
+
+Since the part is quite thin, I waited until it had cooled completely before removing it from the build plate. That's less risky than peeling it off immediately after printing by flexing the plate, which is what I often do. Another advantage of transparent filament is that it's easy to see which areas have already detached from the plate and which have not.
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/phone-case/IMG_7433.JPG"
+            legend="The transparent 3D-printed case with the ring recess"
+            width="50%"
+        %}
+
+    </div>
+
+</div>
 
 
+## Assembly
 
+I first checked that the ring fit properly into its recess, and it did perfectly. I also confifrmed that there was still enough material left to fully enclose the ring in a future version.
 
+Before permanently attaching the ring, I tested it with the MagSafe charger. The attraction is noticeably weaker than with my commercial case, which contains actual magnets. Still it holds reasonably well, but the main issue is that the charger does not always self-align correctly. That was a little disappointing.
+
+I continued anyway, removing the protective backing from the adhesive, and stuck the ring into its recess.
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/phone-case/IMG_7436.JPG"
+            legend="The case attached to the charger using the metal ring"
+            width="50%"
+        %}
+
+    </div>
+
+</div>
+
+## Conclusion
+
+The charger does not snap into the exact position as reliably as it does with a genuine MagSafe case, so I still need to pay attention to the alignment. That's one advantage of the transparent case: the ring remains visible. In practice, there is still a sort of magnetic "potential well" that allows you to feel when the charger reaches the correct position. You can also hover the phone over the charger and wait for it to "click" into place on its own. When it does, the alignment is generally correct.
+
+Other than that, the holding force is quite good. The charger stays firmly attached, and I can comfortably use the phone while it charges. I'm satisfied with this first prototype. Mission accomplished.
