@@ -2,17 +2,17 @@
 layout: project_post
 project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "004"
-title: Using shift registers to program the entire ROM
-topics: [6502, arduino, electronique, programmation]
+title: Introducing shift registers
+topics: [6502, arduino, electronics, programming]
 image: /assets/projects/emulation/IMG_7408.JPG
 githubs:
-- https://github.com/alexbinary/arduino-6502
+- https://github.com/alexbinary/arduino-eeprom-programmer
 permalink: /en/projects/emulation/posts/004
 lang: en
 lang_fr: /fr/projets/emulation/billets/004
 ---
 
-Last time we setup the ROM to the 6502 and connected all address lines. Now that the system is able to read arbitrarily long programs, I need to be able to program more than 16 bytes of ROM at a time. Until now I was using only 4 address lines because the Arduino does not have enough pins to drive all 15 address lines simultaneously. It is possible to generate more outputs using a component called a *shift register*.
+The 6502 is setup on a breadboard and wiring for the EEPROM is ready. The system is now able to read arbitrarily long programs, so I need to be able to program more than 16 bytes of ROM at a time. Until now I was using only 4 address lines because the Arduino does not have enough pins to drive all 15 address lines simultaneously. It is possible to generate more outputs using a component called a *shift register*.
 
 A shift register produces multiple outputs from a single input bit. Values are sent one at a time and distributed across the output lines in sequence. Each new bit "pushes" the existing data one position further along. Multiple shift registers can be chained together to produce an arbitrary number of outputs. It is also possible to freeze the outputs while shifting in new data to prevent connected devices from seeing the data move from one line to another, which could have undesirable consequences.
 

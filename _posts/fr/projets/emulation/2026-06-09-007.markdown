@@ -7,7 +7,7 @@ topics: [6502, arduino, electronique, programmation]
 image: /assets/projects/emulation/IMG_7416 crop1.JPG
 image_thumbnail: /assets/projects/emulation/IMG_7416.JPG
 githubs:
-- https://github.com/alexbinary/arduino-6502,
+- https://github.com/alexbinary/arduino-6502
 permalink: /fr/projets/emulation/billets/007
 lang: fr
 lang_en: /en/projects/emulation/posts/007
@@ -21,34 +21,38 @@ Comme d'habitude je teste en contrôlant manuellement les signaux d'entrée. Au 
 
 <div class="inline-image-container">
 
-    <div class="inline-image-container-row">
+    <div class="inline-image-container-row width-50">
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/d-flip-flop.JPG"
             legend="Mon brouillon utilisé pour la réalisation du circuit"
+            
         %}
 
     </div>
     
-    <div class="inline-image-container-row">
+    <div class="inline-image-container-row width-50">
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/sn74ls02.png"
             legend="Identification des pins du 74LS02"
+            
         %}
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/sn74ls08.png"
             legend="Identification des pins du 74LS08"
+            
         %}
 
     </div>
 
-    <div class="inline-image-container-row">
+    <div class="inline-image-container-row width-50">
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/IMG_7416.JPG"
             legend="Bascule D réalisée sur breadboard"
+            
         %}
 
     </div>

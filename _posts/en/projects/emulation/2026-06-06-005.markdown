@@ -2,18 +2,17 @@
 layout: project_post
 project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "005"
-title: Programming the ROM whith shift registers
-topics: [6502, arduino, electronique, programmation]
+title: Programming the EEPROM whith Arduino and shift registers
+topics: [arduino, electronics, programming]
 image: /assets/projects/emulation/IMG_7408.JPG
 githubs:
-- https://github.com/alexbinary/arduino-6502
 - https://github.com/alexbinary/arduino-eeprom-programmer
 permalink: /en/projects/emulation/posts/005
 lang: en
 lang_fr: /fr/projets/emulation/billets/005
 ---
 
-Everything is now ready to program the ROM. I place it on the breadboard, replacing the LEDs. I connect the power supply and force `/CE` to `0`. I then connect the 15 address lines to the outputs of the shift registers, in order starting with the least significant bits. On the last output of the last register, I connect `/OE`. This gives the following mapping:
+The shift registers are ready to output the 16 address lines needed to program the EEPROM. I set it up on the breadboard, replacing the LEDs. I connect the power supply and force `/CE` to `0`. I then connect the 15 address lines to the outputs of the shift registers, in order starting with the least significant bits. On the last output of the last register, I connect `/OE`. This gives the following mapping:
 
 | Register | Output | ROM Input |
 | -------- | ------ | --------- |

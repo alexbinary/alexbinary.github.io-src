@@ -345,7 +345,11 @@ ul.list-pointer-style li::before {
 .inline-image-container-row {
     display: flex;
     gap: 1rem;
-    /* justify-content: center; */
+}
+
+.inline-image-container-row.width-50 {
+    margin: auto;
+    width: 50%;
 }
 
 .inline-image-item {

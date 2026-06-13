@@ -2,19 +2,22 @@
 layout: project_post
 project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "006"
-title: Introducing the 6522 versatile interface adapter
-topics: [6502, arduino, electronique, programmation]
+title: Introducing the 6522 "Versatile Interface Adapter"
+topics: [6502, arduino, electronics, programming]
 image: /assets/projects/emulation/IMG_7415 crop1.JPG
 githubs:
-- https://github.com/alexbinary/arduino-6502,
+- https://github.com/alexbinary/arduino-6502
 permalink: /en/projects/emulation/posts/006
 lang: en
 lang_fr: /fr/projets/emulation/billets/006
 ---
 
-Now that I can write arbitrarily long programs into the ROM, the next goal is to add LEDs and buttons so that I can write and run interactive programs that produce directly observable results without requiring any instruments.
+I now have a 6502-based system that I can program. The goal now is to add LEDs and buttons so that I can write and run interactive programs.
 
-The CPU alone cannot directly drive LEDs or read buttons, because the only things it can do directly is read and write on the address and data buses. To drive an LED or read a button we need an intermediate system that interfaces with the LED or button on one side, and communicates with the CPU through the buses on the other side.
+
+## The 6522's role
+
+The 6502 alone cannot directly drive LEDs or read buttons, because the only things it can do directly is read and write on the address and data buses. To drive an LED or read a button we need an intermediate system that interfaces with the LED or button on one side, and communicates with the CPU through the buses on the other side.
 
 The [6522](https://eater.net/datasheets/w65c22.pdf) is an interface chip designed to work with the 6502. Its full name is *Versatile Interface Adapter*, so I'll simply refer to it as "the VIA". The VIA provides several complementary functions, including timers, but our main interest here is its two parallel I/O ports. These are 16 lines that can each be configured individually as either inputs or outputs, and that we can read or write from the CPU.
 
@@ -26,7 +29,7 @@ The VIA has 16 control registers that the CPU reads from or writes to through th
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/w65c22 regs.png"
-            legend="List of 6522 registers (excerpt from the datasheet)"
+            legend="List of 6522 registers (from the datasheet)"
             width="70%"
         %}
 
@@ -35,7 +38,7 @@ The VIA has 16 control registers that the CPU reads from or writes to through th
 </div>
 
 
-### Chip Select and the address space
+## Chip Select and the address space
 
 Up to now there was only one component connected to the address and data buses: the EEPROM. We are now adding the VIA, so we must ensure that the CPU can communicate with each component without disturbing the others or being disturbed by their presence on the bus. This is accomplished using the *Chip Select* (also known as *Chip Enable*) signal. The *Chip Select* signal allows the CPU to activate only the component it wants to communicate with at a given moment. Each component has one or more inputs for this signal and only takes control of the bus when the signal permits it. The rest of the time, the bus-connected pins are electrically disconnected from the bus, in what is known as an high-impedance state.
 
@@ -77,7 +80,7 @@ Summary of the required connections:
 | `A14`        | VIA `CS1`                    |
 
 
-### ROM Setup
+## Setting up the EEPROM with *Chip Select* and testing the program
 
 I want to install the VIA and the *Chip Select* decoding logic semi-permanently on a large breadboard connected to the 6502 breadboard, but I've run out of large breadboards. I've ordered more, but while waiting for them to arrive I'm building a temporary setup on a small breadboard using Dupont jumper wires. This won't leave enough jumpers to monitor the buses with the Arduino, but that's fine.
 
@@ -218,7 +221,7 @@ Before installing the VIA, I verify that the *Chip Select* logic works correctly
 The results are exactly as expected.
 
 
-### Installing the VIA
+## Installing the VIA
 
 Finally here we are. I place the 6522 on a small breadboard and immediately connect VDD and VSS. I add three LEDs with their resistors and connect them to the first three outputs of Port A. I then go through the remaining pins. We need to connect:
 
@@ -260,4 +263,4 @@ Arduino code is available [on GitHub](https://github.com/alexbinary/arduino-6502
 
 ## What's Next
 
-I haven't managed to get the 6522 working, but after rewatching [Ben Eater's video](https://www.youtube.com/watch?v=yl8vPW5hydQ), I got the idea of building a latch like the one he demonstrated in [this video](https://www.youtube.com/watch?v=YW-_GkUguMM) and trying to interface it with the CPU. It's an interesting exercise. If it works, it will provide a first CPU-controlled output device, which means I can finally observe results directly and start writing programs that actually do something.
+I haven't managed to get the 6522 working, but after rewatching [Ben Eater's video](https://www.youtube.com/watch?v=yl8vPW5hydQ) where he uses it, I got the idea of building a latch like the one he demonstrated in [this video](https://www.youtube.com/watch?v=YW-_GkUguMM) and trying to interface it with the CPU. It's an interesting exercise. If it works, it will provide a first CPU-controlled output device, which means I can finally observe results directly and start writing programs that actually do something.

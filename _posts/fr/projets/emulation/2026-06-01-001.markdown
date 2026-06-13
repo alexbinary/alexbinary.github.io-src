@@ -7,7 +7,7 @@ topics: [6502, arduino, electronique]
 image: /assets/projects/emulation/IMG_7377.JPG
 image_thumbnail: /assets/projects/emulation/IMG_7377 crop1.JPG
 githubs:
-- https://github.com/alexbinary/arduino-6502,
+- https://github.com/alexbinary/arduino-6502
 permalink: /fr/projets/emulation/billets/001
 lang: fr
 lang_en: /en/projects/emulation/posts/001
@@ -19,7 +19,7 @@ J'ai choisi de me baser sur le processeur [6502](https://www.westerndesigncenter
 
 Le 6502 est un microprocesseur, et sa fonction principale est donc d'exécuter des instructions. Contrairement à un microcontrôleur, il n'a aucune mémoire interne et aucun périphérique. Il interragit avec le monde extérieur via un bus de données et un bus d'addresse, sur lesquels il peut lire et écrire des données. Les instructions à éxécuter, les données à traiter, et les données produites, tout passe par le bus. En général on connecte sur le bus une mémoire qui contient le programme et les données de travail, et des périphérique comme un afficheur, une carte son, etc.
 
-Je commence par installer le 6502 sur une breadboard, je connecte l'alimentation et les signaux de contrôle de base, et j'ajoute un bouton reset. Le signal d’horloge est généré par un module basé sur un circuit 555 que j’ai construit précédemment en suivant les [vidéos de Ben Eater](https://www.youtube.com/watch?v=kRlSFm519Bo) sur le sujet. J'utilise mon Arduino Uno R4 Wi-Fi comme source d'alimentation et pour faire des observations par la suite.
+Je commence par installer le 6502 sur une breadboard, je connecte l'alimentation et les signaux de contrôle de base, et j'ajoute un bouton reset. Le signal d’horloge est généré par un module basé sur un circuit 555 que j’ai construit précédemment en suivant les [vidéos de Ben Eater](https://www.youtube.com/watch?v=kRlSFm519Bo) sur le sujet. J'utilise mon Arduino comme source d'alimentation et pour faire des observations par la suite.
 
 Pour vérifier qu'il se passe quelque chose dans le processeur j'ai connecté les 4 bits de poids faible du bus d'adresse sur 4 LEDs, et j'ai constaté une activité. J'ai également connecté les lignes du bus de données directement sur l'alim ou la masse avec des résitances pour faire en sorte qu'à chaque fois que le CPU lit une donnée sur le bus il récupère la valeur `0xEA`, qui correspond à l'instruction `NOP` (« No Operation »). Quand on observe les lignes d'adresse, on constate un comptage, qui correspond au fait que le CPU lit les instructions les unes après les autres dans la mémoire.
 

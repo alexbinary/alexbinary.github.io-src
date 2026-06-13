@@ -3,7 +3,7 @@ layout: project_post
 project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "002"
 title: Running our first program and introducing the EEPROM
-topics: [6502, arduino, electronique, programmation]
+topics: [6502, arduino, electronics, programming]
 image: /assets/projects/emulation/IMG_7383 crop1.JPG
 image_thumbnail: /assets/projects/emulation/IMG_7383 crop1.JPG
 githubs:
@@ -13,9 +13,10 @@ lang: en
 lang_fr: /fr/projets/emulation/billets/002
 ---
 
-Last time we introduced the 6502 and showed that it can run a program, but we have hard wired the data `0xEA` on the data bus, making it execute a `NOP` (« No Operation ») instruction forever.
+The 6502 is setup on a breadboard and I have confirmed that it is working as expected. For now the data `0xEA` is hard wired on the data bus. The goat today is to provide the CPU with dynamic data based on the address it requests, so that it can execute a meaningful program. Traditionally, this is the role of a memory chip. For now, however, I am experimenting with Arduino.
 
-The next step is to provide the CPU with dynamic data based on the address it requests, so that it can execute a meaningful program. Traditionally, this is the role of a memory chip. For now, however, I am experimenting with an Arduino.
+
+## Dynamic data
 
 In addition to the 4 address lines used so far, I add the 8 data bus lines. I also connect the read/write signal to detect when the CPU is attempting to read from the bus.
 
@@ -29,7 +30,7 @@ I now write code that places `0xEA` on the bus whenever the CPU is performing a 
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/IMG_7383.JPG"
-            legend="The Arduino connected to the 4 LSBs of the address bus and the 8 data bus lines of the 6502"
+            legend="The Arduino connected to the address bus and the data bus of the 6502"
         %}
 
         {% include inline-video-item.html
@@ -350,6 +351,4 @@ My first observations left me puzzled. The results did not seem to match my expe
 
 ## What's Next
 
-The next step is to connect the ROM to the 6502 in a more permanent way on the same breadboard, wiring up all address and data lines as well as the chip-enable logic. To do that, it will be useful to be able to program the entire memory space, and I have a few ideas about how to achieve this.
-
-After that, I can start installing the I/O chip that will make it possible to produce more directly observable results, and maybe drive some peripherals?
+The next goal is to connect the ROM to the 6502 in a more permanent way on the same breadboard, wiring up all address and data lines as well as the chip-enable logic. To do that, it will be useful to be able to program the entire memory space, and I have a few ideas about how to achieve this. After that, I can start installing the I/O chip that will make it possible to produce more directly observable results, and maybe drive some peripherals?

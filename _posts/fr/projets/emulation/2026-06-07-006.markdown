@@ -6,7 +6,7 @@ title: Prise en main du 6522 "Versatile Interface Adapter"
 topics: [6502, arduino, electronique, programmation]
 image: /assets/projects/emulation/IMG_7415 crop1.JPG
 githubs:
-- https://github.com/alexbinary/arduino-6502,
+- https://github.com/alexbinary/arduino-6502
 permalink: /fr/projets/emulation/billets/006
 lang: fr
 lang_en: /en/projects/emulation/posts/006
@@ -38,7 +38,7 @@ Le VIA possède 16 registres de contrôle dans lesquel le CPU va lire ou écrire
 </div>
 
 
-## Chip Select et espace d'adressage
+## *Chip Select* et espace d'adressage
 
 Jusqu'à maintenant on avait qu'un seul composant connecté aux bus d'adresse et de données : l'EEPROM. On va maintenant ajouter le VIA, et il faut donc s'assurer que le CPU puisse communiquer avec chaque composant sans perturber les autres ou être perturbé par leur présence sur le bus. Pour ça on utilise le *Chip Select* (aussi appelé *Chip Enabled*). C'est un signal qui permet d'activer le composant avec lequel le CPU cherche à communiquer à un instant donné. Chaque composant possède une ou plusieurs entrée pour ce signal, et ne prennent le contrôle du bus que lorsque le signal les y autorise. Le reste du temps les pins connectées au bus sont électroniquement déconnectées du bus (dans ce qu'on appelle un *état de haute impédance*).
 
@@ -80,7 +80,7 @@ Résumé des connexions à faire :
 | `A14` | `CS1` du VIA 
 
 
-## Montage de la ROM avec *Chip Select* et test du programme
+## Montage de l'EEPROM avec *Chip Select* et test du programme
 
 Je veux installer le VIA et la logique du *Chip Select* de manière semi permantente sur une grande breadboard que j'assemble avec celle du 6502, mais je n'ai plus de grande breadboard. J'en ai commandé des nouvelles, mais en attendant de les recevoir je fais un montage temporaire sur une petite breadboard, en faisant les connexion avec des lignes Dupont. Ça ne me laissera pas assez de Duponts pour monitorer les bus avec l'Arduino, mais tant pis.
 
@@ -264,4 +264,4 @@ Le code Arduino est disponible [sur GitHub](https://github.com/alexbinary/arduin
 
 ## La suite
 
-Je n'arrive pas à faire fonctionner le 6522, mais en revoyant [la vidéo de Ben Eater](https://www.youtube.com/watch?v=yl8vPW5hydQ) j'ai l'idée de construire un latch comme il l'a montré dans [cette vidéo](https://www.youtube.com/watch?v=YW-_GkUguMM), et d'essayer de l'interfacer avec le CPU. C'est un exercice intéressant. Si ça fonctionne ça permettra d'avoir déjà une sortie pilotable par le 6502, et donc d'avoir enfin des résultats observables directement et d'écrire des programmes qui font quelque chose.
+Je n'arrive pas à faire fonctionner le 6522, mais en revoyant [la vidéo de Ben Eater](https://www.youtube.com/watch?v=yl8vPW5hydQ) consacrée à son installation j'ai l'idée de construire un latch comme il l'a montré dans [cette vidéo](https://www.youtube.com/watch?v=YW-_GkUguMM), et d'essayer de l'interfacer avec le CPU. C'est un exercice intéressant. Si ça fonctionne ça permettra d'avoir déjà une sortie pilotable par le 6502, et donc d'avoir enfin des résultats observables directement et d'écrire des programmes qui font quelque chose.

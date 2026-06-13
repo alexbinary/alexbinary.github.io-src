@@ -30,7 +30,7 @@ Ces modifications en place, j'écris un code qui envoie `0xEA` sur le bus lorsqu
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/IMG_7383.JPG"
-            legend="L'Arduino connecté aux 4 LSBs du bus d'adresse et aux 8 lignes du bus de données du 6502"
+            legend="L'Arduino connecté au bus d'adresse et au bus de données du 6502"
             
         %}
 

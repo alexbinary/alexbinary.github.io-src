@@ -3,7 +3,7 @@ layout: project_post
 project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "003"
 title: EEPROM setup and connection to the 6502
-topics: [6502, arduino, electronique, programmation]
+topics: [6502, arduino, electronics, programming]
 image: /assets/projects/emulation/IMG_7399 crop1.JPG
 image_thumbnail: /assets/projects/emulation/IMG_7399 crop1.JPG
 githubs:
@@ -13,7 +13,7 @@ lang: en
 lang_fr: /fr/projets/emulation/billets/003
 ---
 
-Last time we programmes the EEPROM and validated that it is working. Now I want to connect the ROM in a semi-permanent way to the 6502 on the same breadboard and wire all the address and data lines correctly. But before that I need to revise the ROM programming, because this time the address lines will be correctly wired and the CPU will therefore not find the data I previously programmed using the wrong address lines. There is also the fact that at startup, the CPU reads the reset vector at addresses `0xFFFC` and `0xFFFD` to know where it should start executing instructions from. With 4 address lines it was possible to place the reset vector at addresses `0x000C` and `0x000D`, but this will no longer work with full addressing.
+The EEPROM is written and I have confirmed that it is working with the 6502 as expected. The goal today is to connect the ROM in a semi-permanent way to the 6502 on the same breadboard and wire all the address and data lines correctly. But before that I need to revise the ROM programming, because this time the address lines will be correctly wired and the CPU will therefore not find the data I previously programmed using the wrong address lines. There is also the fact that at startup, the CPU reads the reset vector at addresses `0xFFFC` and `0xFFFD` to know where it should start executing instructions from. With 4 address lines it was possible to place the reset vector at addresses `0x000C` and `0x000D`, but this will no longer work with full addressing.
 
 The ROM uses 15 address lines (32KB addressable), while the CPU uses 16 (64KB addressable). For now I connect the first 15 lines and leave the CPU’s 16th line unconnected. Thus, when the CPU requests address `0xFFFC`, it will correspond to address `0x7FFC` in the ROM. That is therefore where the reset vector must go. We can then place the program anywhere in memory, as long as we specify the corresponding address in the reset vector.
 
@@ -84,4 +84,4 @@ Everything works as expected 🎉
 
 ## Next
 
-The system is now capable of reading arbitrary long programs, which is nice, but we still need to be able to program more than 16 bytes at a time. I have a few ideas for that. The next goal is to use an input/output chip that will allow peripherals to be connected and finally produce observable results.
+The system is now capable of reading arbitrary long programs, which is nice, but we still need to be able to program more than 16 bytes at a time. I have a few ideas for that. The next goal will be to use an input/output chip that will allow peripherals to be connected and finally produce observable results.
