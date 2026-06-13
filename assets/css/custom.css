@@ -1220,24 +1220,11 @@ article.project-post .project-github {
     background-color: var(--bg-color-1);
     border-radius: 8px;
     text-align: center;
+    padding: 0.6rem 1rem;
 }
 
 .project-post-navigation a:hover {
     text-decoration: none;
-}
-
-@media (max-width: 600px) {
-
-    .project-post-navigation-item {
-        padding: 0.3rem 1rem;
-    }
-}
-
-@media (min-width: 600px) {
-
-    .project-post-navigation-item {
-        padding: 0.6rem 1rem;
-    }
 }
 
 @media (prefers-color-scheme: light) and (min-width: 600px) {

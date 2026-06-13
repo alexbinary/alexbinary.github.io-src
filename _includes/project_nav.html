@@ -1,22 +1,25 @@
-<div class="project-post-navigation">
-  <div class="project-post-navigation-item">
-    {% assign posts = site.posts
-      | where: "lang", page.lang
-      | where: "project_id", page.project_id
-    %}
-    {% if page.lang == 'en' %}
-      {% assign url_suffix = "posts" %}
-    {% else %}
-      {% assign url_suffix = "billets" %}
-    {% endif %}
-    <a href="{{ page.url | append: url_suffix }}">
-      {{ posts | size }}
+
+{% assign posts = site.posts
+  | where: "lang", page.lang
+  | where: "project_id", page.project_id
+%}
+{% if posts.size > 0 %}  
+  <div class="project-post-navigation">
+    <div class="project-post-navigation-item">
       {% if page.lang == 'en' %}
-        posts in this project
+        {% assign url_suffix = "posts" %}
       {% else %}
-        billets dans ce projet
+        {% assign url_suffix = "billets" %}
       {% endif %}
-      →
-    </a>
+      <a href="{{ page.url | append: url_suffix }}">
+        {{ posts | size }}
+        {% if page.lang == 'en' %}
+          posts in this project
+        {% else %}
+          billets dans ce projet
+        {% endif %}
+        →
+      </a>
+    </div>
   </div>
-</div>
+{% endif %}

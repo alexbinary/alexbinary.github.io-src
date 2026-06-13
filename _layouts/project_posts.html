@@ -42,6 +42,8 @@ layout: default
 
   </header>
 
+  <div class="separator"></div>
+
   <div class="post-content">
     
     {% assign posts = site.posts
@@ -49,15 +51,6 @@ layout: default
         | where: "project_id", page.project_id
         | sort: "date"
     %}
-
-    {% if page.lang == 'en' %}
-        {% assign title = "posts in this project" %}
-    {% else %}
-        {% assign title = "billets dans ce projet" %}
-    {% endif %}
-    {% assign title = posts.size | append: " " | append: title %}
-
-    {% include heading-with-icon.html text=title icon="" %}
 
     <div class="posts-list">
         {% for post in posts limit: num offset: offset %}
