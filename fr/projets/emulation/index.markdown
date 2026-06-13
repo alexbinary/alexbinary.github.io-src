@@ -111,7 +111,7 @@ J'utilise globalement les mêmes composants que Ben Eater dans ses vidéos, ou l
         <td><a href="https://fr.aliexpress.com/item/1005007174397080.html?spm=a2g0o.order_list.order_list_main.245.4d895e5bCl6ekk&gatewayAdapt=glo2fra">Ali<span class="desktop-only">Express</span></a></td>
     </tr>
     <tr>
-        <td>Jumper wires</td>
+        <td>Jumper wire</td>
         <td></td>
         <td><a href="https://fr.aliexpress.com/item/1005004336218242.html?spm=a2g0o.order_list.order_list_main.230.4d895e5bCl6ekk&gatewayAdapt=glo2fra">Ali<span class="desktop-only">Express</span></a></td>
     </tr>
@@ -131,8 +131,6 @@ J'utilise globalement les mêmes composants que Ben Eater dans ses vidéos, ou l
         <td><a href="https://store.arduino.cc/collections/boards-modules/products/uno-r4-wifi?_pos=1&_fid=3febf6e59&_ss=c"><span class="desktop-only">Arduino </span>Shop</a></td>
     </tr>
 </table>
-
-
 
 
 ## Premiers pas avec le 6502
