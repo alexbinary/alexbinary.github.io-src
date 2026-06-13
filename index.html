@@ -63,7 +63,8 @@ lang_fr: /fr
     | limit: 2 %}
 {% if posts != empty %}
     <section>
-        {% include heading-with-icon.html text="Recent posts" icon="📝" %}
+        {% comment %} {% include heading-with-icon.html text="Recent posts" icon="📝" %} {% endcomment %}
+        {% include heading-with-icon.html text="Latest post" icon="📝" %}
 
         <div class="cards-container post-cards-container">
 
