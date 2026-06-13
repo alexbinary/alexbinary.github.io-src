@@ -13,11 +13,11 @@ lang: en
 lang_fr: /fr/projets/emulation
 ---
 
-I play video games on emulators and I understand the basic principles of emulation, but I want to learn more and get my hands dirty. I'd like to know how to write a Game Boy emulator, and it's probably doable with enough patience, but I like to start from the basics. That is why I set out to build a simple, programmable hardware system and write an emulator for it. This will allow me to start slow and discover the fundamental principles of emulation, adding complexity at my onw pace later on.
+I play video games on emulators and I understand the basic principles of emulation, but I want to learn more and get first hand experience. Sure it would be cool to learn how to write a Game Boy emulator, and it's probably doable with enough patience, but I like to start from the basics. That is why I set out to build a custom hardware system and write an emulator for it. This will allow me to start slow and discover the fundamental principles of emulation, adding complexity at my onw pace.
 
 I chose to use the [6502](https://www.westerndesigncenter.com/wdc/documentation/w65c02s.pdf) processor and its [6522](https://eater.net/datasheets/w65c22.pdf) interface, taking reference from [Ben Eater's excellent video series](https://www.youtube.com/playlist?list=PLowKtXNTBypFbtuVMUVXNR0z1mu7dp7eH) dedicated to those components. The 6502 was the CPU of many consumer devices in the 1980s, notably the Apple II, Commodore 64 and Atari 2600. It is a relatively simple microprocessor, ideal for beginners.  Modernized versions are still in production today, and there's a large community of enthusiasts.
 
-The user interface of my system will initially be minimal, consisting only of buttons and LEDs, and perhaps a small OLED display. This project is primarily an exploration. It gives me an opportunity to learn low-level hardware concepts and gain experience with the interaction between hardware and software.
+The user interface of my system will initially be minimal, consisting only of buttons and LEDs, and perhaps a small OLED display. This project is primarily an exploration. It is an opportunity to learn low-level hardware concepts and gain experience with the interaction between hardware and software.
 
 In this kind of exploratory project, I like to start from the basics and experiment incrementally with the components, validating expected behavior step by step, comparing my predictions with reality, and building a solid understanding of how things work. I therefore began by familiarizing myself with the 6502, experimenting with the address and data buses, the reset vector, and so on. I then moved on to an EEPROM, which I initially programmed manually on a breadboard by directly manipulating the control signals, before eventually designing an Arduino-driven automatic programming circuit.
 
@@ -28,18 +28,18 @@ I have documented this project as it progressed through a series of posts detail
 
 ## My thoughts on emulation
 
-To write an emulator, you first need to understand how each instruction of a program written for the original electronic system affects the components that interact with the user. This requires a good understanding of the original hardware and the interaction between hardware and software, but it does not necessarily mean faithfully reproducing the internal behavior of every electronic component. What really matters are the elements the user interacts with.
+Writing an emulator first demands to understand how each instruction of a program written for the original electronic system affects the components that interact with the user. This requires a good understanding of the original hardware and the interaction between hardware and software, but it does not necessarily mean faithfully reproducing the internal behavior of every electronic component. What really matters are the elements the user interacts with.
 
 Take the Game Boy as an example. Its user-facing interfaces are the directional pad, the A and B buttons, and the Start and Select buttons for input, along with the screen and speaker for output. The goal of an emulator is therefore to take a game's code—originally written to drive the Game Boy's hardware—and use the PC's hardware to recreate the visuals and sounds that the Game Boy would have produced.
 
-Of course, a program may exploit the hardware in unusual ways, or a user may discover a bug or design flaw that allows the system to be used in an unintended or undocumented manner. Emulator developers must decide which of these behaviors are worth supporting, keeping in mind that any simulation is necessarily imperfect.
+A program may use the hardware in unusual ways, or a user may discover a bug or design flaw that allows the system to be used in an unintended or undocumented manner. Emulator developers must decide which of these behaviors are worth supporting, keeping in mind that any simulation is necessarily imperfect.
 
-This is precisely the kind of question I want to explore through this project. At what level of accuracy does hardware need to be simulated? Is it always possible to infer the intention behind a sequence of instructions? Consider a device connected to the CPU via I²C, where programs normally use the provided driver. What happens if a program decides to implement the I²C protocol entirely in software instead? What would supporting that use case imply for the emulator's design and behavior?
+This last point is precisely what I want to explore in this project. At what level of accuracy does hardware need to be simulated? Is it always possible to infer the intention behind a sequence of instructions? Consider a device connected to the CPU via I²C, where programs normally use the provided driver. What happens if a program decides to implement the I²C protocol entirely in software instead? What would supporting that use case imply for the emulator's design?
 
 
 ## Hardware used in this project
 
-For the most part, I use the same components as Ben Eater in his videos, or the closest equivalents I can find on AliExpress. Some components already came from my own stock. I use my Arduino to program the ROM, observe signals, experiment with components, and also as a power supply.
+For the most part, I use the same components as Ben Eater in his videos, or the closest equivalents I can find on AliExpress. Some components came from my own stock. I use my Arduino to program the ROM, observe signals, experiment with components, and also as a power supply.
 
 <table>
     <tr>
@@ -88,7 +88,7 @@ For the most part, I use the same components as Ben Eater in his videos, or the 
     <tr>
         <td>LEDs</td>
         <td></td>
-        <td>en stock</td>
+        <td>(stock)</td>
     </tr>
     <tr>
         <td>Buttons</td>
@@ -122,8 +122,8 @@ For the most part, I use the same components as Ben Eater in his videos, or the 
     </tr>
     <tr>
         <td>Arduino</td>
-        <td><a href="https://docs.arduino.cc/resources/datasheets/ABX00087-datasheet.pdf">Uno R4 Wi-Fi</a></td>
-        <td><a href="https://store.arduino.cc/collections/boards-modules/products/uno-r4-wifi?_pos=1&_fid=3febf6e59&_ss=c"><span class="desktop-only">Arduino </span>Shop</a></td>
+        <td><a href="https://docs.arduino.cc/resources/datasheets/ABX00087-datasheet.pdf" class="no-wrap">Uno R4 Wi-Fi</a></td>
+        <td><a href="https://store.arduino.cc/collections/boards-modules/products/uno-r4-wifi?_pos=1&_fid=3febf6e59&_ss=c" class="no-wrap"><span class="desktop-only">Arduino </span>Shop</a></td>
     </tr>
 </table>
 
@@ -152,7 +152,7 @@ I started by installing the 6502 on a breadboard, wiring the value `0xEA` onto t
 
 I then connected the address and data buses, as well as the read/write signal, to an Arduino and wrote code capable of supplying data on the bus according to the address requested by the CPU. I used this rudimentary setup to provide the CPU with a minimal three-instruction program and verified correct operation by observing bus activity.
 
-For this kind of experiment, the Arduino generates the clock signal. I chose this approach to ensure that I was reading from and writing to the buses at the correct times, since I had not yet studied the 6502's timing characteristics in detail.
+For this kind of experiment, the Arduino generates the clock signal. I chose this approach to ensure that I was reading from and writing to the buses at the correct times, since I have not yet studied the 6502's timing characteristics in detail.
 
 <div class="inline-image-container">
 
@@ -233,7 +233,7 @@ As usual, I started with the basics, building a minimal setup to familiarize mys
 
         {% include inline-video-item.html
             url="/assets/projects/emulation/IMG_7405.mp4"
-            legend="Injecting 0xEA in a shift register"
+            legend="Pushing 0xEA in a shift register"
             width="50%"
         %}
 
@@ -245,7 +245,7 @@ As usual, I started with the basics, building a minimal setup to familiarize mys
     target_entry="004"
 %}
 
-Afterward, I created a semi-permanent breadboard setup together with Arduino software capable of programming the ROM across its entire address range. I implemented memory-dump functions capable of displaying arbitrary ranges in blocks of sixteen bytes, as well as write functions capable of writing values to one or two bytes at a given address, or writing entire sequences.
+Afterward, I created a semi-permanent breadboard setup together with Arduino software capable of programming the ROM across its entire address range. I implemented memory-dump functions capable of displaying arbitrary ranges in blocks of sixteen bytes, as well as write functions capable of writing values to one or two bytes at a given address, or entire sequences.
 
 <div class="inline-image-container">
 
@@ -270,44 +270,6 @@ Afterward, I created a semi-permanent breadboard setup together with Arduino sof
 
 I call it the VIA for short. The first task was to define the memory ranges allocated to the ROM and the VIA, and implement the chip-select signals. I opted for the simplest possible solution, minimizing both the number of connections and the amount of additional hardware required.
 
-<table>
-    <thead>
-        <tr>
-            <th>Binaire</th>
-            <th>Hexadécimal</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><code>0000 0000 0000 0000</code></td>
-            <td><code>0x0000</code></td>
-            <td rowspan=2>Non allouée</td>
-        </tr>
-        <tr>
-            <td><code>0011 1111 1111 1111</code></td>
-            <td><code>0x3FFF</code></td>
-        </tr>
-        <tr>
-            <td><code>0100 0000 0000 0000</code></td>
-            <td><code>0x4000</code></td>
-            <td rowspan=2>VIA</td>
-        </tr>
-        <tr>
-            <td><code>0111 1111 1111 1111</code></td>
-            <td><code>0x7FFF</code></td>
-        </tr>
-        <tr>
-            <td><code>1000 0000 0000 0000</code></td>
-            <td><code>0x8000</code></td>
-            <td rowspan=2>ROM</td>
-        </tr>
-        <tr>
-            <td><code>1111 1111 1111 1111</code></td>
-            <td><code>0xFFFF</code></td>
-        </tr>
-    </tbody>
-</table>
-
 I then rewrote a simple test program for the VIA and connected LEDs to Port A outputs, but I was unable to get any meaningful result. I carefully checked the wiring, reviewed the documentation, observed the signals with the Arduino, and even attempted to control the VIA directly from the Arduino, but nothing worked. There is clearly something I am missing—or perhaps the VIA itself is defective.
 
 <div class="inline-image-container">
@@ -331,7 +293,7 @@ I then rewrote a simple test program for the VIA and connected LEDs to Port A ou
 
 ## Making a D Flip-Flop
 
-To continue making progress despite the issues with the 6522, I decided to implement a D flip-flop from logic gates by following one of Ben Eater's videos. It was a fairly technical build involving a large number of connections. I added two LEDs to visualize the output state—one for the normal output and one for the inverted output.
+To continue making progress despite the issues with the 6522, I decided to implement a D flip-flop from logic gates by following the didcated [Ben Eater's video](https://www.youtube.com/watch?v=peCh_859q7Q). It was a bit technical as it involved a fair number of connections. I added two LEDs to visualize the output state—one for the normal output and one for the inverted output.
 
 <div class="inline-image-container">
 
@@ -339,7 +301,7 @@ To continue making progress despite the issues with the 6522, I decided to imple
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/d-flip-flop.JPG"
-            legend="Mon brouillon utilisé pour le câblage de la bascule"
+            legend="The draft I used when connecting everything"
             width="50%"
         %}
 
@@ -347,7 +309,7 @@ To continue making progress despite the issues with the 6522, I decided to imple
 
 </div>
 
-I then connected the flip-flop to the first bit of the data bus in place of the VIA and added logic so that it would only capture data when the correct address was used. By carefully analyzing the program stored in the ROM, I was able to confirm that the state displayed by the flip-flop matched expectations.
+I then connected the flip-flop to the first bit of the data bus in place of the VIA and added logic so that it would only capture data when the correct address was used. I confirmed that the state displayed by the flip-flop matched expectations.
 
 <div class="inline-image-container">
 
@@ -363,7 +325,7 @@ I then connected the flip-flop to the first bit of the data bus in place of the 
 
 </div>
 
-Interfacing a D flip-flop with the 6502 was not part of the original plan, but it turned out to be extremely interesting and helped me better understand what may be happening inside chips that communicate over a data bus, such as the ROM or the VIA. I am very glad I took this detour.
+Interfacing a D flip-flop with the 6502 was not part of the original plan, but it turned out to be very rewarding and helped me better understand what may be happening inside chips that communicate over a data bus, such as the ROM or the VIA. I am very glad I took this detour.
 
 {% include project_post_link.html
     target_entry="007"

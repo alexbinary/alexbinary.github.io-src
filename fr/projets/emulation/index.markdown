@@ -32,9 +32,9 @@ Pour écrire un émulateur il faut commencer par bien comprendre comment chaque 
 
 Prenons l'exemple de la *Game Boy*. Les interfaces avec l'utilisateur sont : les boutons directionnels, les boutons A et B, et les boutons *Start* et *Select* pour les entrées, et l'écran et le haut parleur pour les sorties. Le but d'un émulateur est donc, à partir du code du jeu écrit au départ pour piloter le hardware de la Game Boy, de piloter le hardware du PC d'une manière à recréer les visuels et les sons qui auraient été produits par le hardware de la Game Boy.
 
-Bien sûr, il est toujours possible qu'un programme exploite le matériel d'une manière marginale, ou qu'un utilisateur identifie un bug ou un défaut de conception qui permet d'utiliser le système d'une manière non prévue par les concepteurs ou non documentée. Il appartient aux développeurs de l'émulateur de faire les compromis pertinents pour supporter ou non ces usages, en gardant en tête que toute simulation sera nécessairement imparfaite.
+Il est possible qu'un programme exploite le matériel d'une manière marginale, ou qu'un utilisateur identifie un bug ou un défaut de conception qui permet d'utiliser le système d'une manière non prévue par les concepteurs ou non documentée. Il appartient aux développeurs de l'émulateur de faire les compromis pertinents pour supporter ou non ces usages, en gardant en tête que toute simulation sera nécessairement imparfaite.
 
-C'est précisément ce genre de choses que je veux explorer dans ce projet. À quel niveau de précision est-il nécessaire de simuler le hardware ? Est-il toujours possible de comprendre l'intention derrière une série d'instructions ? J'imagine le cas où un périphérique est connecté au CPU en I2C et que les programmes utilisent normalement le driver natif, que se passe-t-il si un programme décide de recoder lui-même le protocol I2C en software ? Qu'est-ce que supporter cet usage implique pour le fonctionnement de l'émulateur ?
+Ce dernier point est précisément ce que je veux explorer dans ce projet. À quel niveau de précision est-il nécessaire de simuler le hardware ? Est-il toujours possible de comprendre l'intention derrière une série d'instructions ? J'imagine le cas où un périphérique est connecté au CPU en I²C et que les programmes utilisent normalement le driver natif, que se passe-t-il si un programme décide de recoder lui-même le protocol I²C en software ? Qu'est-ce que supporter cet usage implique pour le fonctionnement de l'émulateur ?
 
 
 ## Matériel utilisé dans ce projet
@@ -272,45 +272,7 @@ Ensuite j'ai réalisé un montage semi-permanent sur breadboard associé à un c
 
 ## Ajout du 6522 "Versatile Interface Adapter"
 
-Je l'appelle "VIA" pour faire court. La première chose à faire était de mettre au clair les plages mémoire allouées à la ROM et au VIA, et d'implémenter les signaux *Chip Select*. Je suis allé au plus simple en choisissant une solution qui utilise le moins de connexions et de composants supplémentaires, ce qui donne ça :
-
-<table>
-    <thead>
-        <tr>
-            <th>Binaire</th>
-            <th>Hexadécimal</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td><code>0000 0000 0000 0000</code></td>
-            <td><code>0x0000</code></td>
-            <td rowspan=2>Non allouée</td>
-        </tr>
-        <tr>
-            <td><code>0011 1111 1111 1111</code></td>
-            <td><code>0x3FFF</code></td>
-        </tr>
-        <tr>
-            <td><code>0100 0000 0000 0000</code></td>
-            <td><code>0x4000</code></td>
-            <td rowspan=2>VIA</td>
-        </tr>
-        <tr>
-            <td><code>0111 1111 1111 1111</code></td>
-            <td><code>0x7FFF</code></td>
-        </tr>
-        <tr>
-            <td><code>1000 0000 0000 0000</code></td>
-            <td><code>0x8000</code></td>
-            <td rowspan=2>ROM</td>
-        </tr>
-        <tr>
-            <td><code>1111 1111 1111 1111</code></td>
-            <td><code>0xFFFF</code></td>
-        </tr>
-    </tbody>
-</table>
+Je l'appelle "VIA" pour faire court. La première chose à faire était de mettre au clair les plages mémoire allouées à la ROM et au VIA, et d'implémenter les signaux *Chip Select*. Je suis allé au plus simple en choisissant une solution qui utilise le moins de connexions et de composants supplémentaires.
 
 J'ai réécrit un programme simple pour tester le VIA, connecté des LEDs en sorties du Port A, mais impossible d'avoir un quelconque résultat. J'ai bien vérifié les câblages, vérifié la documentation, observé les signaux avec Arduino, et même tenté de piloter directement le VIA avec l'Arduino, mais rien n'y fait. Il y a visiblement quelque chose qui m'échappe, à moins que mon VIA soit défectueux...
 
