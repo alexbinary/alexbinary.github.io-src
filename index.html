@@ -1,54 +1,69 @@
 ---
 layout: page
 last_updated: 2026-06-01
-lang: fr
-lang_en: /
+lang: en
+lang_fr: /fr
 ---
 
-{% include intro_fr.html %}
+{% include intro.html %}
 
 <section>
-    {% include heading-with-icon.html text="Mes projets du moment" icon="🧑‍🔬" %}
+    {% include heading-with-icon.html text="My current projects" icon="🧑‍🔬" %}
 
     <div class="cards-container">
 
         {% include project-card.html
             project_id="a10edb47-8a09-4f84-9f5d-214ac597b2ad"
-            title="Emulateur matériel"
-            subtitle="Création d'un système programmable simple et de l'émulateur correspondant"
-            text="#electronique #programmation #6502"
-            url="/fr/projets/emulation"
+            title="Hardware emulator"
+            subtitle="Making simple programmable hardware and writing an emulator for it"
+            text="#electronics #programming #6502"
+            url="/en/projects/emulation"
             image_url="/assets/projects/emulation/IMG_7377.JPG"
-        %}
 
-        {% include project-card.html
-            project_id="ec2e67a6-246f-484e-abc7-6387aa07874a"
-            title="Simulateur optique"
-            subtitle="Logiciel de simulation graphique pour comprendre le fonctionnement de la lumière et des systèmes optiques"
-            text="#programmation #swiftui"
-            url="/fr/projets/simulateur-optique"
-            image_url="/assets/projects/optics-simulator/card-illus.png"
-            image_class="image_top_0"
         %}
         
         {% include project-card.html
+            project_id="ec2e67a6-246f-484e-abc7-6387aa07874a"
+            title="Optic simulator"
+            subtitle="Graphical simulation software to understand light and optical systems"
+            text="#programming #swiftui"
+            url="/en/projects/optics-simulator"
+            image_url="/assets/projects/optics-simulator/card-illus.png"
+            image_class="image_top_0"
+        %}
+
+        {% include project-card.html
             project_id="5cfedf56-5aa3-4518-918a-54e86b3fb24d"
-            title="Solution de rangement LEGO"
-            subtitle="Solution sur mesure pour stocker et organiser ma collection de pièces"
-            text="#menuiserie #decoupelaser #impression3d"
-            url="/fr/projets/rangement-lego"
+            title="LEGO Storage System"
+            subtitle="Custom built furniture to store and organize my collection of parts"
+            text="#woodworking #lasercutting #3dprinting"
+            url="/en/projects/lego-storage-system"
             image_url="/assets/projects/lego-storage-system/illus1.jpg"
         %}
+
+        {% comment %}
+
+        {% include project-card.html
+            title="Media remote"
+            subtitle="DIY remote for watching movies on my computer"
+            text="ESP32 Bluetooth HID controller with 3D printed case and custom PCB #electronics #arduino #3dprinting #kicad"
+            url="/en/projects/lego-storage-system"
+            image_url="/assets/projects/lego-storage-system/4.jpg"
+        %}
+
+        {% endcomment %}
 
     </div>
 
 </section>
 
-{% assign posts = site.posts | where: "lang", page.lang | where: "project_id", empty | limit: 4 %}
+{% assign posts = site.posts
+    | where: "lang", page.lang
+    | where: "project_id", empty
+    | limit: 2 %}
 {% if posts != empty %}
-
     <section>
-        {% include heading-with-icon.html text="Billets récents" icon="📝" %}
+        {% include heading-with-icon.html text="Recent posts" icon="📝" %}
 
         <div class="cards-container post-cards-container">
 
@@ -62,44 +77,60 @@ lang_en: /
 
 {% endif %}
 
+{% comment %}
+
 <section>
-    {% include heading-with-icon.html text="Présence en ligne" icon="🎯" %}
+    {% include heading-with-icon.html text="Other activities" icon="🧩" %}
+
+    <div class="cards-container">
+
+        Watching handmade Hero
+        Building along Ben Eater 8bit computer
+
+    </div>
+
+</section>
+
+{% endcomment %}
+
+<section>
+    {% include heading-with-icon.html text="Find me there" icon="🎯" %}
 
     <div class="cards-container links-cards-container">
 
         {% include link-card.html
-            text="Mes projets code sont sur <span class='link-card-title external-link-icon no-wrap'>Github</span>"
+            text="I host my coding projects on <span class='link-card-title external-link-icon no-wrap'>Github</span>"
             url="https://github.com/alexbinary"
             image_url_light="/assets/github_light.png"
             image_url_dark="/assets/github_dark.png"
         %}
 
         {% include link-card.html
-            text="Je poste des photos sur <span class='link-card-title external-link-icon no-wrap'>Flickr</span>"
+            text="I post street photography on <span class='link-card-title external-link-icon no-wrap'>Flickr</span>"
             url="https://www.flickr.com/photos/189385048@N05/"
             image_url="https://live.staticflickr.com/65535/50148054053_c78e0b402f.jpg"
         %}
         
         {% include link-card.html
-            text="Mes plus belles photos sont sur <span class='link-card-title external-link-icon no-wrap'>Instagram</span>"
+            text="I post my best photographs on <span class='link-card-title external-link-icon no-wrap'>Instagram</span>"
             url="https://www.instagram.com/al.exandre1859"
             image_url="/assets/2025-04-04-photos/203902881_1941499075999282_4032388649777417923_n.jpg"
         %}
 
         {% include link-card.html
-            text="Je poste aussi des photos de LEGO sur <span class='link-card-title external-link-icon no-wrap'>Flickr</span>"
+            text="I also post LEGO photography on <span class='link-card-title external-link-icon no-wrap'>Flickr</span>"
             url="https://www.flickr.com/photos/163799831@N07/"
             image_url="https://live.staticflickr.com/7867/buddyicons/163799831@N07_r.jpg?1555350484#163799831@N07"
         %}
 
         {% include link-card.html
-            text="Je partage mes créations en LEGO (MOCs) sur <span class='link-card-title external-link-icon no-wrap'>Rebrickable</span>"
+            text="I post custom LEGO creations (MOCs) on <span class='link-card-title external-link-icon no-wrap'>Rebrickable</span>"
             url="https://rebrickable.com/users/alexbinary/"
             image_url="https://cdn.rebrickable.com/media/thumbs/mocs/moc-82694/242475.jpg/1000x800.jpg?1752647141.64937"
         %}
 
         {% include link-card.html
-            text="Je remonte des épisodes de Stargate sur <span class='link-card-title external-link-icon no-wrap'>YouTube</span>"
+            text="I edit Stargate episodes on <span class='link-card-title external-link-icon no-wrap'>YouTube</span>"
             url="https://www.youtube.com/playlist?list=PL2ml2VtSiJHGieeRn3JBA-ejggvwbAtdZ"
             image_url="https://i.ytimg.com/vi/cNh_yNhvXGM/hqdefault.jpg?sqp=-oaymwEXCNACELwBSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLBQztCBxezmk4QQ7z8v0suh9SOFnQ"
         %}
@@ -109,48 +140,63 @@ lang_en: /
 
 {% comment %}
 
-- Télécommande multimédia
-- [Application BrickLink](/projects/bricklink-app)
-- Application de comptabilité
+- Media remote
+- [BrickLink App](/projects/bricklink-app)
+- Compta App
 
 {% endcomment %}
 
 {% comment %}
 
 <section>
-    {% include heading-with-icon.html text="Choses qui m'inspirent" icon="🌱" %}
+    {% include heading-with-icon.html text="Things that inspire me" icon="🌱" %}
 
     <div class="cards-container">
 
         {% include inspiration-card.html
-            title="Série <i>Coding Adventure</i> de Sebastian Lague"
+        title="Sebastian Lague's <i>Coding Adventure</i> series"
             picto="📺"
-            subtitle="Vidéos sur la programmation de simulations physique"
+            subtitle="Videos about coding physics simulation"
             url="https://www.youtube.com/watch?v=Qz0KTGYJtUk&list=PLFt_AvWsXl0ehjAfLFsp1PGaatzAwo0uK&index=11"
             image_url="https://yt3.googleusercontent.com/ytc/AIdro_knyJw3jL_6AGomJmGe3VvfIYxWzZC9Y8z90Liru4G0UHM=s160-c-k-c0x00ffffff-no-rj"
-            text="Exploration avec narration et visuels captivants 🎯 (en&nbsp;anglais)"
+            text="Humble exploration with great narrative and visuals 🎯"
         %}
 
         {% include inspiration-card.html
-            title="Take on Me : Reprise par Ashley Johnson"
+            title="Take on Me: Cover by Ashley Johnson"
             picto="🎶"
-            subtitle="Musique de The Last of Us Part II"
+            subtitle="Music from The Last of Us Part II"
             url="https://www.youtube.com/watch?v=axsIHXxQox4"
             image_url="https://i.ytimg.com/vi/axsIHXxQox4/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLAG1Qtwd6vo0TzZAKxpwB6BJ21p1w"
-            text="Une reprise à la guitare très simple mais pleine d'émotion 🫠"
+            text="Deceptively simple guitar cover carrying so much emotion 🫠"
         %}
+
+        {% comment %}
+
+        Ben eater: The SID: Classic 8-bit sound
+        https://www.youtube.com/watch?v=LSMQ3U1Thzw
+
+        Deep Blue vs Gaskaroff
+        https://www.youtube.com/watch?v=Yo5vRHJ5y0Y
+
+        Emergence, infinity, the universe
+        https://www.youtube.com/watch?v=0HqUYpGQIfs
+
+        {% endcomment %}
 
     </div>
 </section>
 
+{% endcomment %}
+{% comment %}
 
 <section>
-    {% include heading-with-icon.html text="Réflexions du moment" icon="💭" %}
+    {% include heading-with-icon.html text="Ideas in my head" icon="💭" %}
 
     <div class="cards-container">
 
         {% include reflexion-card.html
-            title="Vouloir changer les gens est vain. La meilleure chose qu'on peut faire est de se concentrer sur soi-même et d'exprimer ce qu'on ressent avec honnêteté. Les gens changent quand ils y sont prêts."
+            title="We cannot change people. The best thing we can do is focus on ourselves and express how we feel with honesty. People change when they are ready."
         %}
 
     </div>
@@ -162,16 +208,16 @@ lang_en: /
 {% comment %}
 
 {: style="margin-top: 3rem" }
-{% include heading-with-icon.html text="Sujets d'intérêt actuels" icon="👀" %}
+{% include heading-with-icon.html text="Current topics of interests" icon="👀" %}
 
-- Programmation
-- Films & séries
-- Musique
-- Exploration spatiale & New Space
+- Coding
+- Movies & TV shows
+- Music
+- Space exploration & New Space
 
 
 {: style="margin-top: 3rem" }
-{% include heading-with-icon.html text="Derniers films ou séries que j'ai aimés" icon="🎞️" %}
+{% include heading-with-icon.html text="Latest movies or shows I liked" icon="🎞️" %}
 
 <div class="cards-container">
 
@@ -179,7 +225,7 @@ lang_en: /
         title="Weapons"
         url="https://www.imdb.com/fr/title/tt26581740/"
         subtitle="2025 · Zach Cregger"
-        text="La disparition soudaine de dix-sept élèves de troisième, dévoilant des secrets sombres dans une petite ville."
+        text="The sudden disappearance of seventeen third-graders, unraveling dark secrets in a small town."
         image_url="https://m.media-amazon.com/images/M/MV5BMGJkYzFkNWUtYTBmNC00ZDNiLTlmYTgtN2EwMDY2NDQxN2E3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
     %}
 
@@ -187,7 +233,7 @@ lang_en: /
         title="Alien Earth"
         url="https://www.imdb.com/fr/title/tt13623632/"
         subtitle="2025 · Disney+"
-        text="Un vaisseau spatial mystérieux s'écrase, une jeune femme et des soldats affrontent la plus grande menace de la Terre."
+        text="A mysterious spaceship crashes, a young woman and soldiers face Earth’s greatest threat."
         image_url="https://m.media-amazon.com/images/M/MV5BOGIyNGRiNzgtOWQxZC00YzJmLThlZTYtYTMyMDk0YWZjMTk5XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
     %}
 
@@ -195,7 +241,7 @@ lang_en: /
 
 
 {: style="margin-top: 3rem" }
-{% include heading-with-icon.html text="Derniers livres que j'ai appréciés" icon="📚" %}
+{% include heading-with-icon.html text="Latest books I liked" icon="📚" %}
 
 <div class="cards-container">
 
@@ -203,7 +249,7 @@ lang_en: /
         title="Robotic Exploration of the Solar System: Part 1: The Golden Age 1957-1982"
         url="https://www.amazon.fr/Robotic-Exploration-Solar-System-1957-1982/dp/0387493263/"
         subtitle=""
-        text="Une chronique détaillée de l'ère pionnière de l'exploration robotique du système solaire."
+        text="A detailed chronicle of the pioneering era of robotic space exploration."
         image_url="https://m.media-amazon.com/images/I/612FXRjH+BL._SY385_.jpg"
     %}
 
@@ -211,7 +257,7 @@ lang_en: /
         title="Nous rêvions juste de liberté"
         url="https://www.babelio.com/livres/Loevenbruck-Nous-revions-juste-de-liberte/695248"
         subtitle="Henri Lœvenbruck"
-        text="Un récit puissant sur la jeunesse, la rébellion et le désir de liberté."
+        text="A powerful tale of youth, rebellion, and the longing for freedom."
         image_url="https://www.babelio.com/couv/CVT_Nous-revions-juste-de-liberte_7184.jpg"
     %}
 
@@ -219,7 +265,7 @@ lang_en: /
         title="Pour ne rien regretter"
         url="https://www.babelio.com/livres/Loevenbruck-Pour-ne-rien-regretter/1701851"
         subtitle="Henri Lœvenbruck"
-        text="Un voyage émotionnel sur les choix, les regrets et les chemins non empruntés."
+        text="An emotional journey about choices, regrets, and the paths not taken in life."
         image_url="https://m.media-amazon.com/images/I/41F7LLUEpAL._SX195_.jpg"
     %}
 
@@ -227,7 +273,7 @@ lang_en: /
         title="Central Park"
         url="https://www.babelio.com/livres/Musso-Central-Park/572676"
         subtitle="Guillaume Musso"
-        text="Un thriller psychologique haletant qui commence par un réveil mystérieux à Central Park."
+        text="A gripping psychological thriller beginning with a mysterious awakening in Central Park."
         image_url="https://www.babelio.com/couv/CVT_CVT_Central-Park_5496.jpg"
     %}
 
@@ -235,7 +281,7 @@ lang_en: /
         title="L'instant présent"
         url="https://www.babelio.com/livres/Musso-Linstant-present/689939"
         subtitle="Guillaume Musso"
-        text="Un récit romantique et plein de suspense explorant le temps, la mémoire et les secondes chances."
+        text="A suspenseful and romantic tale exploring time, memory, and second chances."
         image_url="https://www.babelio.com/couv/CVT_Linstant-present_1566.jpg"
     %}
 
@@ -243,7 +289,7 @@ lang_en: /
         title="Bios"
         url="https://www.babelio.com/livres/Wilson-Bios/51027"
         subtitle="Robert Charles Wilson"
-        text="Un thriller de science-fiction situé sur un monde alien mortel où la survie humaine est mise à l'épreuve."
+        text="A sci-fi thriller set on a deadly alien world where human survival is pushed to its limits."
         image_url="https://www.babelio.com/couv/CVT_cvt_Bios_8931.jpg"
     %}
 
@@ -251,7 +297,7 @@ lang_en: /
         title="Darwinia"
         url="https://www.babelio.com/livres/Wilson-Darwinia/25807"
         subtitle="Robert Charles Wilson"
-        text="Une histoire déroutante d'histoire alternative où l'Europe est remplacée par un continent mystérieux et étranger."
+        text="A mind-bending alternate history where Europe is replaced by a mysterious, alien continent."
         image_url="https://www.babelio.com/couv/CVT_cvt_Darwinia_8342.jpg"
     %}
 
@@ -259,7 +305,7 @@ lang_en: /
         title="À travers temps"
         url="https://www.babelio.com/livres/Wilson--travers-temps/174247"
         subtitle="Robert Charles Wilson"
-        text="Une épopée sur les voyages dans le temps, la mémoire et les liens fragiles entre les êtres humains."
+        text="An epic story of time travel, memory, and the fragile threads of human connection."
         image_url="https://www.babelio.com/couv/CVT_11478_658119.jpg"
     %}
 
@@ -267,7 +313,7 @@ lang_en: /
 
 
 {: style="margin-top: 3rem" }
-{% include heading-with-icon.html text="Chaînes YouTube que j'aime" icon="📺" %}
+{% include heading-with-icon.html text="YouTube channels I like" icon="📺" %}
 
 <div class="cards-container yt-cards-container">
 
@@ -275,28 +321,28 @@ lang_en: /
         title="Tantacrul"
         url="https://www.youtube.com/@Tantacrul"
         image_url="https://yt3.googleusercontent.com/ytc/AIdro_kfBfBABvGzPoazpxLm35feN55rYWbc9dxVyvCUCzstZwU=s160-c-k-c0x00ffffff-no-rj"
-        text="essais vidéo et analyses matérielles"
+        text="video essays & hardware analysis"
     %}
 
     {% include card.html
         title="DIY Perks"
         url="https://www.youtube.com/@DIYPerks"
         image_url="https://yt3.googleusercontent.com/ytc/AIdro_m8aksXNScLOKv-RBjATnijOQ9SyYcq5X0k14hSWvpENx4=s160-c-k-c0x00ffffff-no-rj"
-        text="constructions matérielles ingénieuses et tutoriels"
+        text="clever hardware builds & tutorials"
     %}
 
     {% include card.html
         title="Ben Eater"
         url="https://www.youtube.com/@BenEater"
         image_url="https://yt3.googleusercontent.com/ytc/AIdro_kzQ9Fabth3QHyk1YLRHA62goVPgxJdd68G0CPIs0tU3A=s160-c-k-c0x00ffffff-no-rj"
-        text="architecture informatique et électronique"
+        text="computer architecture & electronics"
     %}
 
     {% include card.html
         title="Sebastian Lague"
         url="https://www.youtube.com/@SebastianLague"
         image_url="https://yt3.googleusercontent.com/ytc/AIdro_knyJw3jL_6AGomJmGe3VvfIYxWzZC9Y8z90Liru4G0UHM=s160-c-k-c0x00ffffff-no-rj"
-        text="algorithmes, simulations et développement de jeux"
+        text="algorithms, simulations & game dev"
     %}
 
 </div>

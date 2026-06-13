@@ -1,35 +1,90 @@
 ---
 layout: default
 ---
-<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
-    <p class="post-meta">
-      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
-        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-        {{ page.date | date: date_format }}
-      </time>
-      {%- if page.author -%}
-        • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
-      {%- endif -%}</p>
+<article class="post project project-post">
+
+  <header>
+    <div class="image-container">
+      <img src="{{ page.image }}">
+    </div>
+
+    <div class="header-content">
+      <div>
+        <span class="content-type">
+          {% if page.lang == 'en' %}
+            Post
+          {% else %}
+            Billet
+          {% endif %}
+        </span>
+      </div>
+
+      <br>
       
+      <div class="project-post-title">
+        <p>
+          <span class="project-post-date">
+            {{ page.date | date_custom: page.lang }}
+          </span>
+        </p>
+        <h2>{{ page.title }}</h2>
+      </div>
+
       {% if page.topics %}
-        <div class="post-topics">
+        <div class="project-topics">
           {% for topic in page.topics %}
-            <a href="/{{ topic }}"><i>#{{ topic | escape}}</i></a>
+            #{{ topic | escape}}
           {% endfor %}
         </div>
       {% endif %}
+        
+      {% if page.githubs %}
+        <div class="project-github">
+
+          {% assign github_links = page.githubs %}
+          {% assign links_count = github_links | size %}
+
+          {% if page.lang == 'en' %}
+            {% if links_count == 1 %}
+              <a href="{{ github_links[0] }}">
+                The code used in this post is available on GitHub
+              </a>
+            {% else %}
+              The code used in this post is available on GitHub
+              {% for url in github_links %}
+                {% if forloop.first %}{% else %}{% if forloop.last %} and {% else %}, {% endif %}{% endif %}
+                <a href="{{ url }}">here</a>
+              {% endfor %}
+            {% endif %}
+          {% else %}
+            {% if links_count == 1 %}
+              <a href="{{ github_links[0] }}">
+                Le code utilisé dans cet article est disponible sur GitHub
+              </a>
+            {% else %}
+              Le code utilisé dans cet article est disponible sur GitHub
+              {% for url in github_links %}
+                {% if forloop.first %}{% else %}{% if forloop.last %} et {% else %}, {% endif %}{% endif %}
+                <a href="{{ url }}">ici</a>
+              {% endfor %}
+            {% endif %}
+          {% endif %}
+        </div>
+      {% endif %}
+
+    </div>
+
   </header>
 
-  <div class="post-content e-content" itemprop="articleBody">
+  <div class="separator"></div>
+
+  <div class="post-content">
     {{ content }}
   </div>
 
-  {%- if site.disqus.shortname -%}
-    {%- include disqus_comments.html -%}
-  {%- endif -%}
+  <div class="separator separator-small"></div>
 
-  <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
+  {% include ai_disclaimer.html %}
+
 </article>

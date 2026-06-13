@@ -7,7 +7,7 @@
 <figure class="inline-image-item" id="{{ include.id }}">
     <p class="image-p">
         <a href="{{ include.url }}" title="{{ title }}">
-            <img src="{{ include.url }}" alt="{{ include.alt | escape }}"
+            <img src="{{ include.url }}{% if jekyll.environment == "development" %}?v={{ site.time | date: '%Y%m%d%H%M%S' }}{% endif %}" alt="{{ include.alt | escape }}"
             width="{{ include.width }}" height="{{ include.height }}"
             style="width:{{ include.width }}" />
         </a>
