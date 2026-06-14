@@ -242,11 +242,32 @@ Je reconnecte donc la bascule et confirme que ça fonctionne toujours bien comme
 
 Je reprends le programme précédent, et j'enlève tout pour ne garder qu'une boucle qui lit l'état du bouton et l'applique sur la LED en continu. Comme on l'a vu, la bascule et le bouton sont à la même adresse. Une lecture active le bouton, une écriture active la bascule. Voici le programme :
 
-| Adresse (CPU) | Donnée | Instruction |
-|--------|--------|-------------|
-| `0x8000` | `AD 00 40` | `LDA $4000` |
-| `0x8003` | `8D 00 40` | `STA $4000` |
-| `0x8006` | `4C 00 80` | `JMP $8000` |
+<table>
+  <thead>
+    <tr>
+      <th>Adresse (CPU)</th>
+      <th>Donnée</th>
+      <th>Instruction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>0x8000</code></td>
+      <td class="no-wrap"><code>AD 00 40</code></td>
+      <td><code>LDA $4000</code></td>
+    </tr>
+    <tr>
+      <td><code>0x8003</code></td>
+      <td class="no-wrap"><code>8D 00 40</code></td>
+      <td><code>STA $4000</code></td>
+    </tr>
+    <tr>
+      <td><code>0x8006</code></td>
+      <td class="no-wrap"><code>4C 00 80</code></td>
+      <td><code>JMP $8000</code></td>
+    </tr>
+  </tbody>
+</table>
 
 Je réutilise le montage et le code Arduino mis au point précédemment pour effacer le programme précédent et écrire le nouveau programme à la place. Je vérifie que tout est bon et je passe au test. 
 

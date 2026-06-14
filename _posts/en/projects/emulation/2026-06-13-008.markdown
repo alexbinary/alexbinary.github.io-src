@@ -245,11 +245,32 @@ I reused the previous program and stripped it down to a loop that continuously r
 
 The program is:
 
-| Address (CPU) | Data       | Instruction |
-| ------------- | ---------- | ----------- |
-| `0x8000`      | `AD 00 40` | `LDA $4000` |
-| `0x8003`      | `8D 00 40` | `STA $4000` |
-| `0x8006`      | `4C 00 80` | `JMP $8000` |
+<table>
+  <thead>
+    <tr>
+      <th>Address (CPU)</th>
+      <th>Data</th>
+      <th>Instruction</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>0x8000</code></td>
+      <td class="no-wrap"><code>AD 00 40</code></td>
+      <td><code>LDA $4000</code></td>
+    </tr>
+    <tr>
+      <td><code>0x8003</code></td>
+      <td class="no-wrap"><code>8D 00 40</code></td>
+      <td><code>STA $4000</code></td>
+    </tr>
+    <tr>
+      <td><code>0x8006</code></td>
+      <td class="no-wrap"><code>4C 00 80</code></td>
+      <td><code>JMP $8000</code></td>
+    </tr>
+  </tbody>
+</table>
 
 I reused the Arduino setup and code developed previously to erase the old program and write the new one in its place. After checking everything, I moved on to testing.
 
