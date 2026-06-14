@@ -4,8 +4,8 @@ project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "002"
 title: Running our first program and introducing the EEPROM
 topics: [6502, arduino, electronics, programming]
-image: /assets/projects/emulation/IMG_7383 crop1.JPG
-image_thumbnail: /assets/projects/emulation/IMG_7383 crop1.JPG
+image: /assets/projects/emulation/002/IMG_7383 crop1.JPG
+image_thumbnail: /assets/projects/emulation/002/IMG_7383 crop1.JPG
 githubs:
 - https://github.com/alexbinary/arduino-6502
 permalink: /en/projects/emulation/posts/002
@@ -29,12 +29,12 @@ I now write code that places `0xEA` on the bus whenever the CPU is performing a 
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7383.JPG"
+            url="/assets/projects/emulation/002/IMG_7383.JPG"
             legend="The Arduino connected to the address bus and the data bus of the 6502"
         %}
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/EA.mp4"
+            url="/assets/projects/emulation/002/EA.mp4"
             legend="The Arduino writes 0xEA to the bus whenever it detects that the 6502 is reading"
         %}
 
@@ -172,7 +172,7 @@ The result matches exactly what was expected:
     <div class="inline-image-container-row">
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/pgm.mp4"
+            url="/assets/projects/emulation/002/pgm.mp4"
             legend="Execution of the first program"
         %}
 
@@ -204,7 +204,7 @@ On the breadboard, I tie `/CE` to `0` to enable the chip and manually control `/
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7389.JPG"
+            url="/assets/projects/emulation/002/IMG_7389.JPG"
             legend="ROM test setup"
         %}
 
@@ -250,7 +250,7 @@ Initially, the program sequentially scans the 16 addresses and displays the corr
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/writeByte.png"
+            url="/assets/projects/emulation/002/writeByte.png"
             legend="Function for writing a single byte to the ROM"
         %}
 
@@ -263,7 +263,7 @@ Initially, the program sequentially scans the 16 addresses and displays the corr
     <div class="inline-image-container-row">
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/ROM.mp4"
+            url="/assets/projects/emulation/002/ROM.mp4"
             legend="Writing the first 14 bytes and then reading them back"
         %}
 
@@ -336,7 +336,7 @@ My first observations left me puzzled. The results did not seem to match my expe
     <div class="inline-image-container-row">
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/IMG_7393.mp4"
+            url="/assets/projects/emulation/002/IMG_7393.mp4"
             legend="Observing data going through the bus"
         %}
 

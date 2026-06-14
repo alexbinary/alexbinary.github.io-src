@@ -4,8 +4,8 @@ project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "001"
 title: Premiers pas avec le 6502
 topics: [6502, arduino, electronique]
-image: /assets/projects/emulation/IMG_7377.JPG
-image_thumbnail: /assets/projects/emulation/IMG_7377 crop1.JPG
+image: /assets/projects/emulation/001/IMG_7377.JPG
+image_thumbnail: /assets/projects/emulation/001/IMG_7377 crop1.JPG
 githubs:
 - https://github.com/alexbinary/arduino-6502
 permalink: /fr/projets/emulation/billets/001
@@ -29,7 +29,7 @@ Pour vérifier qu'il se passe quelque chose dans le processeur j'ai connecté le
     <div class="inline-image-container-row">
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/IMG_7380.mp4"
+            url="/assets/projects/emulation/001/IMG_7380.mp4"
             legend="Mon 6502 en fonctionnement"
             alt="Une vidéo montrant un montage éléctronique expérimental. On voit une première breadboard avec une LED qui clignote rapidement, et un second module comprenant le 6502 connecté à 4 LEDs qui s'allument successivement dans un motif de comptage."
         %}
@@ -49,13 +49,13 @@ Lorsque le processeur démarre ou est réinitialisé, il va chercher l'adresse d
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/ADDR.mp4"
+            url="/assets/projects/emulation/001/ADDR.mp4"
             legend="Lecture du bus d'adresse en temps réel"
             alt="Une capture vidéo du logiciel Arduino où l'on voit un programme et des données 4 bits qui défilent. Les données montrent un motif de comptage."
         %}
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/FFFC.png"
+            url="/assets/projects/emulation/001/FFFC.png"
             legend="Lecture du bus d'adresse après un reset"
             alt="Une capture d'écran du logiciel Arduino où l'on voit une capture de données. La donnée 1100 est mise en subrillance, la donnée suivante est 1101, et encore après on lit 1010, puis les valeurs s'incrémentent."
         %}

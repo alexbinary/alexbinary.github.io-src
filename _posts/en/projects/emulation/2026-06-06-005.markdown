@@ -4,7 +4,7 @@ project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "005"
 title: Programming the EEPROM whith Arduino and shift registers
 topics: [arduino, electronics, programming]
-image: /assets/projects/emulation/IMG_7408.JPG
+image: /assets/projects/emulation/005/IMG_7408.JPG
 githubs:
 - https://github.com/alexbinary/arduino-eeprom-programmer
 permalink: /en/projects/emulation/posts/005
@@ -56,7 +56,7 @@ Here is what I initially wrote:
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/shift1.png"
+            url="/assets/projects/emulation/005/shift1.png"
             legend=""
         %}
 
@@ -76,7 +76,7 @@ Here is the corrected version that works:
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/shift2.png"
+            url="/assets/projects/emulation/005/shift2.png"
             legend=""
         %}
 
@@ -102,7 +102,7 @@ I run more tests and confirm there is a net improvement. However, one issue rema
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/pinMode1.png"
+            url="/assets/projects/emulation/005/pinMode1.png"
             legend="According to Ben Eater's video, this should leave WEB high"
         %}
 
@@ -117,7 +117,7 @@ In my case, however, since it is always the first write that fails, I strongly s
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/pinMode2.png"
+            url="/assets/projects/emulation/005/pinMode2.png"
             legend="In my case, I need to call digitalWrite() after pinMode() to leave the pin high"
         %}
 
@@ -134,7 +134,7 @@ To validate my observations, I quickly connect `/WE` to an LED and confirm that 
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/pinMode3.mp4"
+            url="/assets/projects/emulation/005/pinMode3.mp4"
             legend="Calling digitalWrite() before pinMode() leaves the pin low"
         %}
 
@@ -158,7 +158,7 @@ In an attempt to do things properly, I go through the datasheets of the various 
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/delay.png"
+            url="/assets/projects/emulation/005/delay.png"
         %}
 
     </div>
@@ -174,7 +174,7 @@ I ask ChatGPT, it isn't particularly useful but it does help me determine that t
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/delay2.png"
+            url="/assets/projects/emulation/005/delay2.png"
         %}
 
     </div>
@@ -197,7 +197,7 @@ Now that I can read and write (mostly) fine, I clean up the code a bit. I rewrit
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/readROM.png"
+            url="/assets/projects/emulation/005/readROM.png"
             legend="The read function displaying 16-byte rows"
         %}
 
@@ -212,7 +212,7 @@ I also add a function to write two bytes at once at a given address. Thanks to t
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/asm.png"
+            url="/assets/projects/emulation/005/asm.png"
             legend="The beginnings of an assembler!"
         %}
 

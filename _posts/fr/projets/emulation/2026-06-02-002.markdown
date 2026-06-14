@@ -4,8 +4,8 @@ project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "002"
 title: Exécution du premier programme et découverte de l'EEPROM
 topics: [6502, arduino, electronique, programmation]
-image: /assets/projects/emulation/IMG_7383 crop1.JPG
-image_thumbnail: /assets/projects/emulation/IMG_7383 crop1.JPG
+image: /assets/projects/emulation/002/IMG_7383 crop1.JPG
+image_thumbnail: /assets/projects/emulation/002/IMG_7383 crop1.JPG
 githubs:
 - https://github.com/alexbinary/arduino-6502
 permalink: /fr/projets/emulation/billets/002
@@ -29,13 +29,13 @@ Ces modifications en place, j'écris un code qui envoie `0xEA` sur le bus lorsqu
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7383.JPG"
+            url="/assets/projects/emulation/002/IMG_7383.JPG"
             legend="L'Arduino connecté au bus d'adresse et au bus de données du 6502"
             
         %}
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/EA.mp4"
+            url="/assets/projects/emulation/002/EA.mp4"
             legend="L'Arduino écrit 0xEA sur le bus quand il détecte que le 6502 est en lecture"
             
         %}
@@ -174,7 +174,7 @@ Le résultat correspond bien à ce qui est attendu :
     <div class="inline-image-container-row">
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/pgm.mp4"
+            url="/assets/projects/emulation/002/pgm.mp4"
             legend="Exécution du premier programme"
         %}
 
@@ -206,7 +206,7 @@ Sur la breadboard je connecte CE à 0, et je gère manuellement OE et WE.
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7389.JPG"
+            url="/assets/projects/emulation/002/IMG_7389.JPG"
             legend="Montage de test de la ROM"
         %}
 
@@ -253,7 +253,7 @@ Dans un premier temps le programme parcours séquentiellement les 16 adresses et
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/writeByte.png"
+            url="/assets/projects/emulation/002/writeByte.png"
             legend="Fonction d'écriture d'un octet dans la ROM"
         %}
 
@@ -266,7 +266,7 @@ Dans un premier temps le programme parcours séquentiellement les 16 adresses et
     <div class="inline-image-container-row">
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/ROM.mp4"
+            url="/assets/projects/emulation/002/ROM.mp4"
             legend="Ecriture des 14 premiers octets puis relecture"
         %}
 
@@ -340,7 +340,7 @@ Les premières observations m'ont laissé perplexe. Les résultats n'avaient pas
     <div class="inline-image-container-row">
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/IMG_7393.mp4"
+            url="/assets/projects/emulation/002/IMG_7393.mp4"
             legend="Observation des données qui transitent sur le bus"
         %}
 

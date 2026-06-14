@@ -4,8 +4,8 @@ project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "007"
 title: Implémentation d'une bascule D avec des portes logiques et connexion au 6502
 topics: [6502, arduino, electronique, programmation]
-image: /assets/projects/emulation/IMG_7416 crop1.JPG
-image_thumbnail: /assets/projects/emulation/IMG_7416.JPG
+image: /assets/projects/emulation/007/IMG_7416 crop1.JPG
+image_thumbnail: /assets/projects/emulation/007/IMG_7416.JPG
 githubs:
 - https://github.com/alexbinary/arduino-6502
 permalink: /fr/projets/emulation/billets/007
@@ -24,7 +24,7 @@ Comme d'habitude je teste en contrôlant manuellement les signaux d'entrée. Au 
     <div class="inline-image-container-row width-50">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/d-flip-flop.JPG"
+            url="/assets/projects/emulation/007/d-flip-flop.JPG"
             legend="Mon brouillon utilisé pour la réalisation du circuit"
             
         %}
@@ -34,13 +34,13 @@ Comme d'habitude je teste en contrôlant manuellement les signaux d'entrée. Au 
     <div class="inline-image-container-row width-50">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/sn74ls02.png"
+            url="/assets/projects/emulation/007/sn74ls02.png"
             legend="Identification des pins du 74LS02"
             
         %}
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/sn74ls08.png"
+            url="/assets/projects/emulation/007/sn74ls08.png"
             legend="Identification des pins du 74LS08"
             
         %}
@@ -50,7 +50,7 @@ Comme d'habitude je teste en contrôlant manuellement les signaux d'entrée. Au 
     <div class="inline-image-container-row width-50">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7416.JPG"
+            url="/assets/projects/emulation/007/IMG_7416.JPG"
             legend="Bascule D réalisée sur breadboard"
             
         %}
@@ -66,7 +66,7 @@ Le fonctionnement dans notre circuit sera le suivant : L'entrée de la bascule e
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/w65c02s timing.png"
+            url="/assets/projects/emulation/007/w65c02s timing.png"
             legend="Schéma des timing du 6502 (extrait de la datasheet)"
         %}
 
@@ -100,7 +100,7 @@ J'alimente le circuits, et je vois tout de suite que la bascule s'anime, c'est b
     <div class="inline-image-container-row">
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/IMG_7419.mp4"
+            url="/assets/projects/emulation/007/IMG_7419.mp4"
             legend="La bascule capture tout ce qui passe sur le bus"
         %}
 
@@ -179,7 +179,7 @@ Comme tout à l'heure il faut se concentrer pour suivre le déroulement du progr
     <div class="inline-image-container-row">
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/IMG_7420.mp4"
+            url="/assets/projects/emulation/007/IMG_7420.mp4"
             legend="La bascule capture uniquement les données qui lui sont adressées"
         %}
 

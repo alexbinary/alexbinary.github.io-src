@@ -3,7 +3,7 @@ layout: project
 project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 title: Émulation matérielle
 topics: [6502, arduino, electronique, programmation]
-image: /assets/projects/emulation/IMG_7377.JPG
+image: /assets/projects/emulation/001/IMG_7377.JPG
 githubs: [
   https://github.com/alexbinary/arduino-6502,
   https://github.com/alexbinary/arduino-eeprom-programmer,
@@ -142,7 +142,7 @@ J'ai commencé par installer le 6502 sur une breadboard en câblant la valeur `0
     <div class="inline-image-container-row">
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/IMG_7380.mp4"
+            url="/assets/projects/emulation/001/IMG_7380.mp4"
             legend="Premiers tests du 6502"
         %}
 
@@ -161,12 +161,12 @@ J'ai ensuite connecté les lignes d’adresses et de données à l'Arduino ainsi
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7383.JPG"
+            url="/assets/projects/emulation/002/IMG_7383.JPG"
             legend="L'Arduino connecté aux bus d'adresse et de données du 6502"
         %}
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/pgm.mp4"
+            url="/assets/projects/emulation/002/pgm.mp4"
             legend="Exécution du premier programme"
         %}
 
@@ -188,12 +188,12 @@ La manip avec l'Arduino est sympa pour tester, mais dans le système final c'est
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7389.JPG?mm"
+            url="/assets/projects/emulation/002/IMG_7389.JPG"
             legend="Montage de test de la ROM"
         %}
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/ROM.mp4"
+            url="/assets/projects/emulation/002/ROM.mp4"
             legend="Ecriture des 14 premiers octets puis relecture"
         %}
 
@@ -209,7 +209,7 @@ Une fois capable de programmer la ROM, je l'ai connecté au 6502, d'abord de man
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7399.JPG"
+            url="/assets/projects/emulation/003/IMG_7399.JPG"
             legend="L'EEPROM connectée au 6502"
         %}
 
@@ -232,7 +232,7 @@ Mon Arduino ne disposant pas de suffisamment de broches pour connecter les 8 lig
     <div class="inline-image-container-row">
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/IMG_7405.mp4"
+            url="/assets/projects/emulation/004/IMG_7405.mp4"
             legend="Injection de 0xEA dans un registre à décalage"
         %}
 
@@ -252,7 +252,7 @@ Ensuite j'ai réalisé un montage semi-permanent sur breadboard associé à un c
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/asm.png"
+            url="/assets/projects/emulation/005/asm.png"
             legend="Prémisce d'un assembleur !"
         %}
 
@@ -277,7 +277,7 @@ J'ai réécrit un programme simple pour tester le VIA, connecté des LEDs en sor
     <div class="inline-image-container-row free-width mobile-column">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7415.JPG"
+            url="/assets/projects/emulation/006/IMG_7415.JPG"
             legend="Connection du VIA directement à l'Arduino"
         %}
 
@@ -299,7 +299,7 @@ Pour avancer malgré les problèmes avec le 6522, j'ai tenté d'implémenter une
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/d-flip-flop.JPG"
+            url="/assets/projects/emulation/007/d-flip-flop.JPG"
             legend="Mon brouillon utilisé pour le câblage de la bascule"
         %}
 
@@ -314,7 +314,7 @@ J'ai ensuite connecté la bascule sur le premier bit du bus de données à la pl
     <div class="inline-image-container-row">
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/IMG_7420.mp4"
+            url="/assets/projects/emulation/007/IMG_7420.mp4"
             legend="La bascule D remplace le VIA"
         %}
 

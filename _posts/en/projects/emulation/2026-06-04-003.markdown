@@ -4,8 +4,8 @@ project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "003"
 title: EEPROM setup and connection to the 6502
 topics: [6502, arduino, electronics, programming]
-image: /assets/projects/emulation/IMG_7399 crop1.JPG
-image_thumbnail: /assets/projects/emulation/IMG_7399 crop1.JPG
+image: /assets/projects/emulation/003/IMG_7399 crop1.JPG
+image_thumbnail: /assets/projects/emulation/003/IMG_7399 crop1.JPG
 githubs:
 - https://github.com/alexbinary/arduino-6502
 permalink: /en/projects/emulation/posts/003
@@ -49,7 +49,7 @@ The ROM now ready, I install it on the breadboard next to the 6502. I force `/CE
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7399.JPG"
+            url="/assets/projects/emulation/003/IMG_7399.JPG"
             legend="The EEPROM connected to the 6502"
         %}
 

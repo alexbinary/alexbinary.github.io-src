@@ -4,7 +4,7 @@ project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "006"
 title: Introducing the 6522 "Versatile Interface Adapter"
 topics: [6502, arduino, electronics, programming]
-image: /assets/projects/emulation/IMG_7415 crop1.JPG
+image: /assets/projects/emulation/006/IMG_7415 crop1.JPG
 githubs:
 - https://github.com/alexbinary/arduino-6502
 permalink: /en/projects/emulation/posts/006
@@ -28,7 +28,7 @@ The VIA has 16 control registers that the CPU reads from or writes to through th
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/w65c22 regs.png"
+            url="/assets/projects/emulation/006/w65c22 regs.png"
             legend="List of 6522 registers (from the datasheet)"
         %}
 
@@ -90,7 +90,7 @@ To keep things simple, I use a [74LS04](https://www.ti.com/lit/ds/symlink/sn74ls
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7422.JPG"
+            url="/assets/projects/emulation/006/IMG_7422.JPG"
             legend="The inverter used to generate the ROM Chip Select signal"
         %}
 
@@ -114,7 +114,7 @@ So our program essentially looks like this:
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/w65c22 regs 2.png"
+            url="/assets/projects/emulation/006/w65c22 regs 2.png"
             legend="Port A and Port B control registers of the 6522 (excerpt from the datasheet)"
         %}
 
@@ -163,7 +163,7 @@ We can see that the `LDA #$02` instruction ends up at address `0x8005`, so that 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/via.png"
+            url="/assets/projects/emulation/006/via.png"
             legend="The VIA test program written into the ROM"
         %}
 
@@ -241,12 +241,12 @@ I then attempt to read inputs from the ports. I modify the code to support both 
     <div class="inline-image-container-row free-width mobile-column">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7415.JPG"
+            url="/assets/projects/emulation/006/IMG_7415.JPG"
             legend="The VIA connected directly to the Arduino"
         %}
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/code_via_test.png"
+            url="/assets/projects/emulation/006/code_via_test.png"
             legend="Part of the VIA test code"
         %}
 

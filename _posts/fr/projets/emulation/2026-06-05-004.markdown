@@ -4,7 +4,7 @@ project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "004"
 title: Découverte des registres à décalage
 topics: [6502, arduino, electronique, programmation]
-image: /assets/projects/emulation/IMG_7408.JPG
+image: /assets/projects/emulation/004/IMG_7408.JPG
 githubs:
 - https://github.com/alexbinary/arduino-eeprom-programmer
 permalink: /fr/projets/emulation/billets/004
@@ -36,7 +36,7 @@ Je connecte l'alimentation et la masse, et je mets `/SRCLR` à `1` car je ne pr�
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7402.JPG"
+            url="/assets/projects/emulation/004/IMG_7402.JPG"
             legend="Premier montage du registre à décalage avec Arduino"
         %}
 
@@ -53,12 +53,12 @@ Je connecte les signaux de contrôle sur l'Arduino et code un programme de test.
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/IMG_7403.mp4"
+            url="/assets/projects/emulation/004/IMG_7403.mp4"
             legend="Injection de 1, 0, 1, 0, etc"
         %}
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/IMG_7405.mp4"
+            url="/assets/projects/emulation/004/IMG_7405.mp4"
             legend="Injection de 0xEA"
         %}
 
@@ -71,7 +71,7 @@ Je connecte les signaux de contrôle sur l'Arduino et code un programme de test.
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/push.png"
+            url="/assets/projects/emulation/004/push.png"
             legend="Code pour pousser les données dans le registre à décalage"
         %}
 
@@ -88,7 +88,7 @@ Arduino fournit une fonction `shiftOut()` qui permet de pousser 8 bits de donné
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/shift.png"
+            url="/assets/projects/emulation/004/shift.png"
             legend="La fonction shiftOut() permet de pousser 8 bits"
         %}
 
@@ -105,12 +105,12 @@ Je teste maintenant d'ajouter un registre. Je le place sur la breadboard à côt
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7408.JPG"
+            url="/assets/projects/emulation/004/IMG_7408.JPG"
             legend="Montage avec deux registres"
         %}
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/IMG_7410.mp4"
+            url="/assets/projects/emulation/004/IMG_7410.mp4"
             legend="Déplacement d'un bit au travers de deux registres"
         %}
 

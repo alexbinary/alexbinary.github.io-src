@@ -4,8 +4,8 @@ project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "007"
 title: Making a D-flip-flop from logic gates and connecting it to the 6502
 topics: [6502, arduino, electronics, programming]
-image: /assets/projects/emulation/IMG_7416 crop1.JPG
-image_thumbnail: /assets/projects/emulation/IMG_7416.JPG
+image: /assets/projects/emulation/007/IMG_7416 crop1.JPG
+image_thumbnail: /assets/projects/emulation/007/IMG_7416.JPG
 githubs:
 - https://github.com/alexbinary/arduino-6502
 permalink: /en/projects/emulation/posts/007
@@ -24,7 +24,7 @@ As usual, I test the circuit by manually controlling the input signals. At first
     <div class="inline-image-container-row width-50">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/d-flip-flop.JPG"
+            url="/assets/projects/emulation/007/d-flip-flop.JPG"
             legend="The schematic I used to do the circuit"
         %}
 
@@ -33,12 +33,12 @@ As usual, I test the circuit by manually controlling the input signals. At first
     <div class="inline-image-container-row width-50">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/sn74ls02.png"
+            url="/assets/projects/emulation/007/sn74ls02.png"
             legend="74LS02 pinout"
         %}
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/sn74ls08.png"
+            url="/assets/projects/emulation/007/sn74ls08.png"
             legend="74LS08 pinout"
         %}
 
@@ -47,7 +47,7 @@ As usual, I test the circuit by manually controlling the input signals. At first
     <div class="inline-image-container-row width-50">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7416.JPG"
+            url="/assets/projects/emulation/007/IMG_7416.JPG"
             legend="A D-flip-flop on a breadboard"
         %}
 
@@ -62,7 +62,7 @@ The circuit will operate as follows: the input of the flip-flop is connected to 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/w65c02s timing.png"
+            url="/assets/projects/emulation/007/w65c02s timing.png"
             legend="Timing diagram for the 6502 (from the datasheet)"
         %}
 
@@ -94,7 +94,7 @@ I power up the circuit, and I can immediately see the flip-flop changing state, 
     <div class="inline-image-container-row">
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/IMG_7419.mp4"
+            url="/assets/projects/emulation/007/IMG_7419.mp4"
             legend="The flip-flop is capturing every data that goes through the bus"
         %}
 
@@ -174,7 +174,7 @@ Just as before, it takes some concentration to follow the execution of the progr
     <div class="inline-image-container-row">
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/IMG_7420.mp4"
+            url="/assets/projects/emulation/007/IMG_7420.mp4"
             legend="The flip-flop is only capturing the data that are meant for it"
         %}
 

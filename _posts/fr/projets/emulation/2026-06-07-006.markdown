@@ -4,7 +4,7 @@ project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "006"
 title: Prise en main du 6522 "Versatile Interface Adapter"
 topics: [6502, arduino, electronique, programmation]
-image: /assets/projects/emulation/IMG_7415 crop1.JPG
+image: /assets/projects/emulation/006/IMG_7415 crop1.JPG
 githubs:
 - https://github.com/alexbinary/arduino-6502
 permalink: /fr/projets/emulation/billets/006
@@ -28,7 +28,7 @@ Le VIA possède 16 registres de contrôle dans lesquel le CPU va lire ou écrire
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/w65c22 regs.png"
+            url="/assets/projects/emulation/006/w65c22 regs.png"
             legend="Liste des registres du 6522 (extrait de la datasheet)"
         %}
 
@@ -90,7 +90,7 @@ Pour faire simple j'utilise une puce [74LS04](https://www.ti.com/lit/ds/symlink/
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7422.JPG"
+            url="/assets/projects/emulation/006/IMG_7422.JPG"
             legend="L'inverseur qui permet de générer le Chip Select pour la ROM"
         %}
 
@@ -114,7 +114,7 @@ Basiquement notre programme ressemble donc à ça :
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/w65c22 regs 2.png"
+            url="/assets/projects/emulation/006/w65c22 regs 2.png"
             legend="Registres de contrôle des ports A et B du 6522 (extrait de la datasheet)"
         %}
 
@@ -162,7 +162,7 @@ On voit que l'instruction `LDA #$02` si retrouve à l'adresse `0x8005`, c'est do
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/via.png"
+            url="/assets/projects/emulation/006/via.png"
             legend="Le programme de test du VIA écrit sur la ROM"
         %}
 
@@ -240,12 +240,12 @@ Je tente de lire les entrées sur les ports. J'ajoute `/RW` dans le code pour po
     <div class="inline-image-container-row free-width mobile-column">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7415.JPG"
+            url="/assets/projects/emulation/006/IMG_7415.JPG"
             legend="Connection du VIA directement à l'Arduino"
         %}
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/code_via_test.png"
+            url="/assets/projects/emulation/006/code_via_test.png"
             legend="Extrait du code de test du VIA"
         %}
 

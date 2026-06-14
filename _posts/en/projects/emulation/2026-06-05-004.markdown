@@ -4,7 +4,7 @@ project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "004"
 title: Introducing shift registers
 topics: [6502, arduino, electronics, programming]
-image: /assets/projects/emulation/IMG_7408.JPG
+image: /assets/projects/emulation/004/IMG_7408.JPG
 githubs:
 - https://github.com/alexbinary/arduino-eeprom-programmer
 permalink: /en/projects/emulation/posts/004
@@ -36,7 +36,7 @@ I connect power and ground, and tie `/SRCLR` high since I do not plan to use it.
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7402.JPG"
+            url="/assets/projects/emulation/004/IMG_7402.JPG"
             legend="First experimental shift register setup with Arduino"
         %}
 
@@ -52,12 +52,12 @@ I connect the control signals to the Arduino and write a test program. I start b
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/IMG_7403.mp4"
+            url="/assets/projects/emulation/004/IMG_7403.mp4"
             legend="Injecting 1, 0, 1, 0, etc."
         %}
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/IMG_7405.mp4"
+            url="/assets/projects/emulation/004/IMG_7405.mp4"
             legend="Injecting 0xEA"
         %}
 
@@ -70,7 +70,7 @@ I connect the control signals to the Arduino and write a test program. I start b
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/push.png"
+            url="/assets/projects/emulation/004/push.png"
             legend="Code for shifting data into the shift register"
         %}
 
@@ -85,7 +85,7 @@ Arduino provides a `shiftOut()` function that can shift out 8 bits of data. I te
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/shift.png"
+            url="/assets/projects/emulation/004/shift.png"
             legend="The shiftOut() function can shift out 8 bits"
         %}
 
@@ -102,12 +102,12 @@ At first, nothing worked. The reason was I had forgotten to connect the `SER`, `
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7408.JPG"
+            url="/assets/projects/emulation/004/IMG_7408.JPG"
             legend="Setup with two shift registers"
         %}
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/IMG_7410.mp4"
+            url="/assets/projects/emulation/004/IMG_7410.mp4"
             legend="A bit moving through two chained shift registers"
         %}
 

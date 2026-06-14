@@ -3,7 +3,7 @@ layout: project
 project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 title: Hardware emulation
 topics: [6502, arduino, electronics, programming]
-image: /assets/projects/emulation/IMG_7377.JPG
+image: /assets/projects/emulation/001/IMG_7377.JPG
 githubs: [
     https://github.com/alexbinary/arduino-6502,
     https://github.com/alexbinary/arduino-eeprom-programmer,
@@ -137,7 +137,7 @@ I started by installing the 6502 on a breadboard, wiring the value `0xEA` onto t
     <div class="inline-image-container-row">
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/IMG_7380.mp4"
+            url="/assets/projects/emulation/001/IMG_7380.mp4"
             legend="First tests of the 6502"
         %}
 
@@ -158,13 +158,13 @@ For this kind of experiment, the Arduino generates the clock signal. I chose thi
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7383.JPG"
+            url="/assets/projects/emulation/002/IMG_7383.JPG"
             legend="The Arduino is connected to the address and data bus of the 6502"
             
         %}
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/pgm.mp4"
+            url="/assets/projects/emulation/002/pgm.mp4"
             legend="Running the first program"
         %}
 
@@ -186,12 +186,12 @@ The Arduino setup was useful for testing, but in the final system the EEPROM wil
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7389.JPG?mm"
+            url="/assets/projects/emulation/002/IMG_7389.JPG"
             legend="First EEPROM test setup"
         %}
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/ROM.mp4"
+            url="/assets/projects/emulation/002/ROM.mp4"
             legend="Writing the first 14 bytes then reading them"
         %}
 
@@ -206,7 +206,7 @@ Once I was able to program the ROM, I connected it to the 6502, initially as a t
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7399.JPG"
+            url="/assets/projects/emulation/003/IMG_7399.JPG"
             legend="The EEPROM connected to the 6502"
         %}
 
@@ -230,7 +230,7 @@ As usual, I started with the basics, building a minimal setup to familiarize mys
     <div class="inline-image-container-row">
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/IMG_7405.mp4"
+            url="/assets/projects/emulation/004/IMG_7405.mp4"
             legend="Pushing 0xEA in a shift register"
         %}
 
@@ -249,7 +249,7 @@ Afterward, I created a semi-permanent breadboard setup together with Arduino sof
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/asm.png"
+            url="/assets/projects/emulation/005/asm.png"
             legend="The beginnings of an assembler!"
         %}
 
@@ -273,7 +273,7 @@ I then rewrote a simple test program for the VIA and connected LEDs to Port A ou
     <div class="inline-image-container-row free-width mobile-column">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/IMG_7415.JPG"
+            url="/assets/projects/emulation/006/IMG_7415.JPG"
             legend="Connecting the VIA to the Arduino"
         %}
 
@@ -295,7 +295,7 @@ To continue making progress despite the issues with the 6522, I decided to imple
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/d-flip-flop.JPG"
+            url="/assets/projects/emulation/007/d-flip-flop.JPG"
             legend="The draft I used when connecting everything"
         %}
 
@@ -310,7 +310,7 @@ I then connected the flip-flop to the first bit of the data bus in place of the 
     <div class="inline-image-container-row">
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/IMG_7420.mp4"
+            url="/assets/projects/emulation/007/IMG_7420.mp4"
             legend="La bascule D remplace le VIA"
         %}
 

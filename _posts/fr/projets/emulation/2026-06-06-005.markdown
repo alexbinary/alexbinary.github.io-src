@@ -4,7 +4,7 @@ project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
 entry: "005"
 title: Programmation de l'EEPROM avec Arduino grâce aux registres à décalage
 topics: [arduino, electronique, programmation]
-image: /assets/projects/emulation/IMG_7408.JPG
+image: /assets/projects/emulation/005/IMG_7408.JPG
 githubs:
 - https://github.com/alexbinary/arduino-eeprom-programmer
 permalink: /fr/projets/emulation/billets/005
@@ -55,7 +55,7 @@ Voici ce que j'ai écrit initialement :
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/shift1.png"
+            url="/assets/projects/emulation/005/shift1.png"
             legend=""
         %}
 
@@ -74,7 +74,7 @@ Voici la version corrigée qui fonctionne :
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/shift2.png"
+            url="/assets/projects/emulation/005/shift2.png"
             legend=""
         %}
 
@@ -100,7 +100,7 @@ Je relance des tests et ça fonctionne effectivement mieux. Cependant un problè
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/pinMode1.png"
+            url="/assets/projects/emulation/005/pinMode1.png"
             legend="D'après la vidéo de Ben Eater, ce code devrait laisser WEB à 1"
         %}
 
@@ -115,7 +115,7 @@ Comme dans mon cas vu que c'est systématiquement la première écriture qui ne 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/pinMode2.png"
+            url="/assets/projects/emulation/005/pinMode2.png"
             legend="Dans mon cas il est nécessaire de rappeler digitalWrite() après pinMode() pour laisser WEB à 1"
         %}
 
@@ -132,7 +132,7 @@ Pour bien valider mes observations, je branche rapidement le signal `/WE` sur un
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-video-item.html
-            url="/assets/projects/emulation/pinMode3.mp4"
+            url="/assets/projects/emulation/005/pinMode3.mp4"
             legend="digitalWrite() avant pinMode() laisse la pin à 0"
         %}
 
@@ -157,7 +157,7 @@ Pour essayer de faire les choses correctement, je parcours les datasheet des dif
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/delay.png"
+            url="/assets/projects/emulation/005/delay.png"
         %}
 
     </div>
@@ -173,7 +173,7 @@ J'interroge ChatGPT qui n'est pas d'une grande aide, mais me permet quand même 
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/delay2.png"
+            url="/assets/projects/emulation/005/delay2.png"
         %}
 
     </div>
@@ -196,7 +196,7 @@ Maintenant que la lecture et l'écriture fonctionnent (au délai près), je reme
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/readROM.png"
+            url="/assets/projects/emulation/005/readROM.png"
             legend="La fonction de lecture qui affiche des lignes de 16 octets"
         %}
 
@@ -211,7 +211,7 @@ J'ajoute aussi une fonction pour écrire une valeur sur deux octets. Grâce à c
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/emulation/asm.png"
+            url="/assets/projects/emulation/005/asm.png"
             legend="Prémisce d'un assembleur !"
         %}
 

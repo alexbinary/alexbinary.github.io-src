@@ -2,7 +2,7 @@
 layout: post
 title: Ajout des aimants MagSafe à un iPhone X avec une coque imprimée en 3D
 topics: [3dprint]
-image: /assets/projects/phone-case/IMG_7436.JPG
+image: /assets/posts/2026-06-13-001-phone-case/IMG_7436.JPG
 permalink: /fr/billets/2026/06/13/001
 lang: fr
 lang_en: /en/posts/2026/06/13/001
@@ -26,7 +26,7 @@ J'ai trouvé des [aimants compatibles](https://fr.aliexpress.com/item/1005005115
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/phone-case/magnet.png"
+            url="/assets/posts/2026-06-13-001-phone-case/magnet.png"
             legend="Les aimants MagSafe commandés sur AliExpress"
         %}
 
@@ -50,7 +50,7 @@ J'ouvre Fusion et je confirme que le fond de la coque fait bien 1,4 mm d'épaiss
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/phone-case/profile.png"
+            url="/assets/posts/2026-06-13-001-phone-case/profile.png"
             legend="Le profil utilisé pour tracer la coque"
         %}
 
@@ -65,7 +65,7 @@ J'avais déjà déterminé la position du centre de la bobine de charge grâce �
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/phone-case/xray.jpg"
+            url="/assets/posts/2026-06-13-001-phone-case/xray.jpg"
             legend="Image en rayons X de l'iPhone X"
         %}
 
@@ -80,7 +80,7 @@ Je mesure l'anneau et j'ajoute 1mm de marge sur toutes les dimensions pour facil
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/phone-case/ring2.png"
+            url="/assets/posts/2026-06-13-001-phone-case/ring2.png"
             legend="J'utilise un photo comme référence pour la modélisation"
         %}
 
@@ -98,7 +98,7 @@ Avant toute chose je vérifie dans le slicer que l'épaisseur résiduelle est bi
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/phone-case/slicer.png"
+            url="/assets/posts/2026-06-13-001-phone-case/slicer.png"
             legend="Le slicer montre qu'il n'y a pas plus de deux couches dans le fond du logement de l'anneau"
         %}
 
@@ -117,7 +117,7 @@ Comme la pièce est assez fine, je préfère attendre qu'elle refroidisse compl�
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/phone-case/IMG_7433.JPG"
+            url="/assets/posts/2026-06-13-001-phone-case/IMG_7433.JPG"
             legend="La coque imprimée en filament transparent avec le logement pour l'anneau"
         %}
 
@@ -139,7 +139,7 @@ Je poursuis malgré tout et j'enlève la protection adhésive de l'anneau et le 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/projects/phone-case/IMG_7436.JPG"
+            url="/assets/posts/2026-06-13-001-phone-case/IMG_7436.JPG"
             legend="La coque liée au chargeur grâce à l'anneau métallique"
         %}
 
