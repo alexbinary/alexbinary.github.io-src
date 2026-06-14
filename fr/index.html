@@ -51,7 +51,7 @@ lang_en: /
 {% if posts != empty %}
     <section>
         {% comment %} {% include heading-with-icon.html text="Billets récents" icon="📝" %} {% endcomment %}
-        {% include heading-with-icon.html text="Dernier billet" icon="📝" %}
+        {% include heading-with-icon.html text="Mon dernier billet" icon="📝" %}
 
         <div class="cards-container post-cards-container">
 
@@ -66,15 +66,15 @@ lang_en: /
 {% endif %}
 
 <section>
-    {% include heading-with-icon.html text="Présence en ligne" icon="🎯" %}
+    {% include heading-with-icon.html text="Où me retrouver" icon="🎯" %}
 
     <div class="cards-container links-cards-container">
 
         {% include link-card.html
             text="Mes projets code sont sur <span class='link-card-title external-link-icon no-wrap'>Github</span>"
             url="https://github.com/alexbinary"
-            image_url_light="/assets/github_light.png"
-            image_url_dark="/assets/github_dark.png"
+            image_url_light="/assets/home/github_light.png"
+            image_url_dark="/assets/home/github_dark.png"
         %}
 
         {% include link-card.html
