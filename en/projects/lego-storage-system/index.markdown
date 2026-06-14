@@ -16,7 +16,8 @@ At first, I used a commercial solution, which helped me get started but eventual
 
 This is the story of that project.
 
-### The pros and cons of *Papi Max StackX Drawers*
+
+## The pros and cons of *Papi Max StackX Drawers*
 
 *Papi Max StackX Drawers* is a product specifically designed for LEGO enthusiasts, promising high storage density.
 The system consists of individual modules composed of an external case in which a drawer slides.
@@ -24,40 +25,40 @@ The cases are available in white or black and can be stacked and assembled toget
 The drawers are transparent and equipped with a handle at the front.
 Up to four dividers can be added in width and two in length to form up to 15 compartments.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/papimax3.jpg"
-            width="100%"
             legend="Individual elements can be stacked and assembled freely"
             alt="A photo showing 20 modules assembled in 4 stacks of 3 and 2 stacks of 4"
         %}
 
     </div>
+
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/papimax1.jpg"
-            width="100%"
             legend='A pressure free design allows drawers to slide in their case even when stacked'
             alt="A photo showing several open Papimax drawers"
         %}
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/papimax4.jpg"
-            width="100%"
             legend="Dividers create compartments"
             alt="Close-up of an open Papimax drawer showing the dividers"
         %}
 
     </div>
+
 </div>
 
 [A detailed review of the product is available on the Brick Architect website](https://brickarchitect.com/2019/review-papi-max-stackx-drawers/)
 
-#### The pros 👍
+
+### The pros 👍
 
 <ul class="list-pointer-style">
 <li>Sold as individual elements, allowing to form an overall structure of any size and shape</li>
@@ -66,7 +67,8 @@ Up to four dividers can be added in width and two in length to form up to 15 com
 <li>Drawers can come out almost completely allowing easy access to the entire surface</li>
 </ul>
 
-#### The cons 👎
+
+### The cons 👎
 
 <ul class="list-pointer-style">
 <li>Impossible to extract an individual compartment to bring it to the work area or empty its contents (this makes moving pieces from one compartment to another very tedious)</li>
@@ -80,12 +82,14 @@ Up to four dividers can be added in width and two in length to form up to 15 com
 At the end, the removable divider system was appealing on paper but impractical in use.
 Furthermore the low build quality and high price were prohibitive to continue with this solution.
 
-### LASER cutting and modular boxes
+
+## LASER cutting and modular boxes
 
 In 2021, I had the opportunity to learn LASER cutting in a makerspace near my home.
 After a training session, I started experimenting with this machine, and I quickly grasped its potential for making boxes that could serve as the basis for a custom storage solution, where you can carry, move, and arrange compartments in drawers at will.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
+
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
@@ -105,6 +109,7 @@ After a training session, I started experimenting with this machine, and I quick
         %}
 
     </div>
+
 </div>
 
 After exploring different box assembly and construction techniques (which you can read all about [here](/en/projects/laser-boxes)), I settled on a <b>tight notch</b> assembly.
@@ -112,15 +117,16 @@ By adjusting the relative size of the notches well, it's possible to assemble th
 A simple solution as I like them.
 
 <div class="inline-image-container">
+
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_5.png"
-            width="60%"
             legend="Notch assembly technique"
             alt="A drawing showing two pieces with complementary notches cut out allowing assembly"
         %}
     </div>
+
 </div>
 
 The idea then was to make a system of modular boxes that can be arranged freely in large drawers. This system allows easy carrying, moving, and emptying of compartments.
@@ -135,7 +141,7 @@ I find this to be the perfect ratio.
 
 From there, assuming my base box is 2x2 units wide and 2 plates high, I experimented with all kinds of variants in 1x1, 1x2, 2x3, 2x4, 3x3, etc. in versions of 1, 2, 3, or 4 plates high.
 
-<div class="inline-image-container mobile-column">
+<div class="inline-image-container mobile-column force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
 
@@ -184,11 +190,12 @@ I made bigger ones, which I still commonly use today.
 
 Detailed read: [LASER cut boxes](/en/projects/laser-boxes)
 
-### Drawers to store the boxes
+
+## Drawers to store the boxes
 
 The boxes were a good start, but now I needed a place to store them. I started experimenting with a module system similar to *Papi Max*, using the same LASER cutting manufacturing technique as for the boxes. It wasn't perfect but it was very encouraging and motivated me to continue.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
 
@@ -208,6 +215,7 @@ The boxes were a good start, but now I needed a place to store them. I started e
         %}
         
     </div>
+
 </div>
 
 For the real drawers, I wanted a quality feel when opening and closing the drawers.
@@ -221,16 +229,17 @@ I also wanted the drawers to be able to open to full depth to allow access even 
 After some research, I found a model of full extension slides on Amazon, available in several lengths, that seemed to meet my quality requirements.
 
 <div class="inline-image-container">
+
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
             url="https://m.media-amazon.com/images/I/61StOmAlP4L._AC_SX425_.jpg"
             legend='Full extension slides found on <a href="https://www.amazon.fr/dp/B08596LKYP">Amazon</a>'
             alt="A photo showing a pair of metal slides"
-            width="40%"
         %}
 
     </div>
+
 </div>
 
 After some experimentation with the slides, I built a first furniture prototype with 10mm poplar plywood.
@@ -243,7 +252,8 @@ After completing the necessary training,
 I undertook a second prototype, this time using the table saw.
 The result was significantly better.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
+
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
@@ -259,9 +269,11 @@ The result was significantly better.
         %}
 
     </div>
+
 </div>
 
-### Real large cabinets
+
+## Real large cabinets
 
 I had a prototype that I really liked and I was now very eager to continue by making larger furniture.
 I started by making a piece twice as wide based on the same model as the prototype.
@@ -271,7 +283,8 @@ For the next piece of furniture, I went big right away: 15 drawers + 1 double he
 Except for the fronts, everything was made from reclaimed materials.
 Compared to the previous model, I added a partition that cuts the drawer in two to support the bottom.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
+
     <div class="inline-image-container-row mobile-column">
         
         {% include inline-image-item.html
@@ -287,13 +300,14 @@ Compared to the previous model, I added a partition that cuts the drawer in two 
         %}
 
     </div>
+
 </div>
 
 After that I continued experimenting with new techniques and designs.
 I ended up with a total of 5 pieces of furniture of different capacities and each one with its own identity.
 The modular box system allows carrying, moving, and arranging compartments in drawers at will. Drawer opening is smooth, effortless, and gives a quality feel that I really like. I was very happy.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
 
@@ -312,9 +326,11 @@ The modular box system allows carrying, moving, and arranging compartments in dr
         %}
 
     </div>
+    
 </div>
 
-### Exploring IKEA and 3D printing
+
+## Exploring IKEA and 3D printing
 
 I wanted to continue expanding the storage capacity, and I took some time to think about the next thing I wanted to do. For a while I wanted to take the latest design and make a big integrated unit that would basically be an equivalent of the whole set of what I had so far, and maybe add more general compartments and shelves. I even started design work on that idea.
 
@@ -322,7 +338,7 @@ I was envisionning an ever expanding setup that could end up being very large, b
 
 I got inspired by the [Gridfinity](https://www.youtube.com/watch?v=ra_9zU-mnl8) system, which covers the bottom of the drawers with a grid that holds the boxes perfectly aligned even if some are missing. I took the idea but designed my own version of the grid and boxes from scratch. I added vertical tabs to help pick up the boxes in the drawers, which had always been a pain point with the wooden box. To find the size of the boxes I measured the length and width of the ALEX drawers and found that the largest common divider of both was 30mm. So that was the base unit of my modular box system.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
         
@@ -348,7 +364,7 @@ I printed a lot of boxes and grids. The system worked well, but there was a few 
 
 However the 3D printed boxes and grids idea stuck and I started using it in my previously built cabinets. I improved on the design, raising the bottom to have a flat surface, adding rounded edges and experimenting with smaller tab designs (or not tab at all) to fit in the smaller space available. I printed boxes with every color of filament I had on hand, and for a time it was a multicolor mess. But then I found one I felt comfortable scaling and stuck with it: BambuLab Matte Apple Green (11502).
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
         
@@ -370,7 +386,8 @@ However the 3D printed boxes and grids idea stuck and I started using it in my p
 
 </div>
 
-### What about KALLAX ?
+
+## What about KALLAX ?
 
 Some time passed, and when I started thinking about extending my storage again, I turned to another IKEA classic: KALLAX, a series that offers modular shelving. The main feature is that all compartments are identical, and a wide variety of accessories are available to be inserted into the compartments to add doors, drawers, additional shelves, etc. The units themselves come in various configurations like 2x2, 4x4, 2x4, 5x5, etc, and can be combined however you like.
 
@@ -382,7 +399,7 @@ Again I needed to decide the size of the boxes. I had been completly free to cho
 
 I made a one-compartment module to validate the design, and then went on with a two-compartment module.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
         

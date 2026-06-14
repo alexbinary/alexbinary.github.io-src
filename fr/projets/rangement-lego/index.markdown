@@ -16,7 +16,8 @@ Au début j'utilisais une solution du commerce. Elle m'a permis de démarrer mai
 
 Je reviens ici sur l'histoire de ce projet.
 
-### Avantages et inconvénients de *Papi Max StackX Drawers*
+
+## Avantages et inconvénients de *Papi Max StackX Drawers*
 
 *Papi Max StackX Drawers* est un produit qui s'adresse spécifiquement aux amateurs de LEGO, et qui promet notamment une forte densité de stockage.
 Le système se présente sous la forme de modules individuels composés d'un boitier externe  dans lequel glisse un tiroir.
@@ -24,13 +25,12 @@ Les boitiers sont disponibles en blanc ou noir et peuvent s'empiler et s'assembl
 Les tiroirs sont transparents et équipés d'une poignée à l'avant.
 Jusqu'à quatre cloisons peuvent être ajoutées dans la largeur et deux dans la longueur pour former jusqu'à 15 compartiments.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/papimax3.jpg"
-            width="100%"
             legend="Les éléments individuels peuvent être empilés et assemblés entre eux librement"
             alt="Une photo montrant 20 modules assemblés en 4 piles de 3 et 2 piles de 4"
         %}
@@ -41,14 +41,12 @@ Jusqu'à quatre cloisons peuvent être ajoutées dans la largeur et deux dans la
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/papimax1.jpg"
-            width="100%"
             legend='Un conception "pressure free" permet aux tiroirs de coulisser dans leur boîtier même empilés'
             alt="Photo montrant plusieurs tiroirs Papimax ouverts"
         %}
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/papimax4.jpg"
-            width="100%"
             legend="Les séparateurs créent des compartiments"
             alt="Gros plan d'un tiroir Papimax ouvert montrant les séparateurs"
         %}
@@ -59,7 +57,8 @@ Jusqu'à quatre cloisons peuvent être ajoutées dans la largeur et deux dans la
 
 [Un test détaillée du produit est disponible sur le site Brick Architect (en anglais)](https://brickarchitect.com/2019/review-papi-max-stackx-drawers/)
 
-#### Les 👍
+
+### Les 👍
 
 <ul class="list-pointer-style">
 <li>Vendu par éléments individuels, permettant de former une stucture globale de la taille et forme de son choix</li>
@@ -68,7 +67,8 @@ Jusqu'à quatre cloisons peuvent être ajoutées dans la largeur et deux dans la
 <li>Les tiroirs peuvent sortir quasiment jusqu'au bout permettant un accès facile à toute la surface</li>
 </ul>
 
-#### Les 👎
+
+### Les 👎
 
 <ul class="list-pointer-style">
 <li>Impossible d'extraire un compartiment individuel pour l'amener sur la zone de travail ou vider son contenu (ça rend notamment très pénible le déplacement des pièces d'un compartiment à un autre)</li>
@@ -83,12 +83,12 @@ Finalement, le système de cloisons amoviles était séduisant sur le papier mai
 Ajouté à ça, la basse qualité de construction et le prix élevé étaient prohibitifs pour continuer avec cette solution.
 
 
-### Découpe LASER et boites modulaires
+## Découpe LASER et boites modulaires
 
 Courant 2021 j'ai eu l'occasion de me former à la découpe LASER dans un atelier partagé près de chez moi.
 Après une séance de formation, j'ai commencé à expérimenter avec cette machine, et j'en ai vite saisi le potentiel pour fabriquer des boites qui pourraient servir de base à une solution de rangement sur mesure, où l'on peut emporter, déplacer et agencer à loisir des compartiments dans des tiroirs. 
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
 
@@ -122,7 +122,6 @@ Une solution simple comme j'aime.
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_5.png"
-            width="60%"
             legend="Technique d'assemblage par créneaux"
             alt="Un dessin illustrant deux pièces dans lequelles sont découpées des encoches complémentaires permettant un assemblage"
         %}
@@ -142,7 +141,7 @@ Je trouve que c'est le ratio parfait.
 
 Partant de là, en partant du principe que ma boite de base fait 2x2 unités de large et 2 plaques de haut, j'ai expérimenté avec tout un tas de variantes en 1x1, 1x2, 2x3, 2x4, 3x3, etc en version 1, 2, 3 ou 4 plaques de hauteur. 
 
-<div class="inline-image-container mobile-column">
+<div class="inline-image-container mobile-column force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
 
@@ -191,11 +190,12 @@ J'en ai fait des plus grands, que j'utilise encore couramment aujourd'hui.
 
 Article détaillé: [Boites en découpe LASER](/fr/projets/boites-laser)
 
-### Des tiroirs pour ranger les boites
+
+## Des tiroirs pour ranger les boites
 
 Les boites constituaient un bon début, mais j'avais désormais besoin d'un endroit où les ranger. J'ai commencé par expérimenter avec un système de modules semblables au *Papi Max*, avec la même technique de fabrication en découpe LASER que pour les boites. Ce n'était pas parfait mais c'était très encourageant et ça m'a motivé à continuer.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
 
@@ -229,16 +229,17 @@ Je voulais aussi que les tiroirs puissent s'ouvrir sur la totalité de la profon
 Après quelques recherches j'ai trouvé un modèle de glissières à sortie totale sur Amazon, disponible en plusieurs longueurs, et qui semblait répondre à mes exigences de qualité.
 
 <div class="inline-image-container">
+
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
             url="https://m.media-amazon.com/images/I/61StOmAlP4L._AC_SX425_.jpg"
             legend='Glissières à sortie totale trouvées sur <a href="https://www.amazon.fr/dp/B08596LKYP">Amazon</a>'
             alt="Une photo montrant une paire de glissières métalliques"
-            width="40%"
         %}
 
     </div>
+
 </div>
 
 Après quelques expérimentations avec les glissières, j'ai fabriqué un premier prototype de meuble avec du contreplaqué de peuplier de 10mm.
@@ -251,7 +252,8 @@ Après avoir fait les formations nécessaires,
 j'ai entrepris un second prototype, en utilisant cette fois la scie circulaire sur table.
 Le résultat était nettement meilleur.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
+
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
@@ -267,9 +269,11 @@ Le résultat était nettement meilleur.
         %}
 
     </div>
+
 </div>
 
-### Des vrais grands meubles
+
+## Des vrais grands meubles
 
 J'avais un prototype qui me plaisait beaucoup et j'avais maintenant très envie de continuer en faisant des meubles plus grands.
 J'ai commencé par faire un meuble deux fois plus large sur le même modèle que le prototype.
@@ -279,7 +283,8 @@ Pour le meuble suivant j'ai vu grand tout de suite: 15 tiroirs + 1 tiroir double
 Mis à part les façades, tout a été réalisée en matériaux de récupération.
 Par rapport au modèle précédent j'ai ajouté une cloison qui coupe le tiroir en deux pour maintenir le fond.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
+
     <div class="inline-image-container-row mobile-column">
         
         {% include inline-image-item.html
@@ -295,13 +300,14 @@ Par rapport au modèle précédent j'ai ajouté une cloison qui coupe le tiroir 
         %}
 
     </div>
+
 </div>
 
 J'ai ensuite continué à expérimenter avec de nouvelles techniques et nouveaux designs. Je suis arrivé à un total de 5 meubles de différentes capacité avec chacun une identité propre. Le système des boites modulaires permet d'emporter, déplacer et agencer à loisir les compartiments dans les tiroirs. L'ouverture des tiroirs est fluide, sans effort et donne une impression de qualité que j'aime beaucoup.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row">
+    <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/phase1/1.jpg"
@@ -318,10 +324,11 @@ J'ai ensuite continué à expérimenter avec de nouvelles techniques et nouveaux
         %}
 
     </div>
+
 </div>
 
 
-### IKEA et impression 3D
+## IKEA et impression 3D
 
 Je voulais continuer à augmenter la capacité de stockage, et j’ai pris le temps de réfléchir à la prochaine étape. Depuis un moment, je voulais reprendre le dernier design et créer une grande unité intégrée qui serait en quelque sorte l’équivalent de l’ensemble de ce que j’avais jusque-là, avec peut-être davantage de compartiments et d’étagères polyvalents. J’ai même commencé un travail de conception sur cette idée.
 
@@ -329,7 +336,7 @@ J’ai imaginé un setup qui pourrait évoluer et devenir très grand, mais fabr
 
 Je me suis inspiré du système [Gridfinity](https://www.youtube.com/watch?v=ra_9zU-mnl8) qui recouvre le fond des tiroirs d’une grille permettant de maintenir les boîtes parfaitement alignées. J’ai repris l’idée, mais j’ai conçu ma propre version de la grille et des boîtes entièrement à partir de zéro. J’ai ajouté des languettes verticales pour faciliter la prise en main des boîtes dans les tiroirs, ce qui avait toujours été un point faible avec les boîtes en bois. Pour déterminer la taille des boîtes, j’ai mesuré la longueur et la largeur des tiroirs ALEX et constaté que leur plus grand diviseur commun était 30 mm. Cela est donc devenu l’unité de base de mon système modulaire de boîtes.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
         
@@ -355,7 +362,7 @@ J’ai imprimé beaucoup de boîtes et de grilles. Le système fonctionnait bien
 
 Cependant, l’idée des boîtes et des grilles imprimées en 3D m’a bien plu et j’ai commencé à l’utiliser dans les meubles que j’avais construits auparavant. J’ai amélioré le design en surélevant le fond pour obtenir une surface plane, en ajoutant des bords arrondis et en expérimentant avec des languettes plus petites ou même sans languette afin de s’adapter à l’espace réduit disponible. J’ai imprimé des boîtes avec toutes les couleurs de filament que j’avais sous la main, et pendant un temps c’était un véritable patchwork multicolore. Puis j’ai trouvé une couleur avec laquelle je me sentais prêt à passer à l’échelle et je m’y suis tenu : BambuLab Matte Apple Green (11502).
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
         
@@ -377,7 +384,8 @@ Cependant, l’idée des boîtes et des grilles imprimées en 3D m’a bien plu 
 
 </div>
 
-### La suite en KALLAX
+
+## La suite en KALLAX
 
 Un certain temps s’est écoulé, et lorsque j’ai recommencé à réfléchir à une extension de mon système de stockage, je me suis tourné vers un autre classique d’IKEA : KALLAX, une gamme proposant des étagères modulaires. Sa principale caractéristique est que tous les compartiments sont identiques, et qu’il existe une grande variété d’accessoires permettant d'ajouter des portes, des tiroirs, des étagères supplémentaires, etc. Les unités elles-mêmes sont disponibles dans différentes configurations comme 2x2, 4x4, 2x4, 5x5, etc., et peuvent être combinées comme on le souhaite.
 
@@ -387,7 +395,7 @@ Pour les premier meubles en bois j’avais été totalement libre de choisir les
 
 J’ai fabriqué un module à un compartiment pour valider le concept, puis je suis passé à un module à deux compartiments.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
         

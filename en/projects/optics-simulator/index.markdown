@@ -15,7 +15,7 @@ For some time now, I’ve been interested in augmented reality, and more specifi
 
 To better understand the challenges as well as the solutions that are currently being developed, I am building a geometric optics simulation software in Swift. The goal is to help develop intuition for the behavior of light, the operation of optical systems, and the formation of images.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row">
 

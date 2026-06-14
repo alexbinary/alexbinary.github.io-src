@@ -15,7 +15,7 @@ Depuis quelque temps je m'intéresse à la réalité augmentée, et plus particu
 
 Pour mieux comprendre les enjeux et les solutions alternatives en cours de développement je développe un logiciel de simulation d'optique géométrique en Swift. L'objectif est de développer une compréhension intuitive du comportement de la lumière, du fonctionnement des systèmes optiques et de la formation des images.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row">
 

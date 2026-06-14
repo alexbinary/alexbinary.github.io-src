@@ -34,8 +34,6 @@ To bend wood, my first idea was to cut a groove deep enough to leave only a thin
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_1.png"
             legend="Groove technique for bending wood"
-            alt=""
-            width="60%"
         %}
 
     </div>
@@ -51,8 +49,6 @@ A more common technique consists of making alternating parallel cuts. This incre
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_2.png"
             legend="Alternating cut technique, also known as 'spring bending'"
-            alt=""
-            width="60%"
         %}
 
     </div>
@@ -67,14 +63,13 @@ The technique seemed promising, and I started imagining box designs making use o
 
 The first idea used a base with rounded corners around which a strip of wood would wrap, softened at the corners using the alternating cut technique.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_7.png"
             legend="Wrapped design"
-            alt=""
         %}
 
     </div>
@@ -94,8 +89,6 @@ The perimeter joint, meanwhile, had to resist the natural tendency of the corner
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_3.png"
             legend="Overlap technique"
-            width="60%"
-            alt=""
         %}
 
     </div>
@@ -105,8 +98,6 @@ The perimeter joint, meanwhile, had to resist the natural tendency of the corner
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_4.png"
             legend="Cross-overlap technique"
-            width="60%"
-            alt=""
         %}
 
     </div>
@@ -117,14 +108,13 @@ The perimeter joint, meanwhile, had to resist the natural tendency of the corner
 
 The second bending-based idea was to create a kind of basket, with a U-shaped bent piece and two side panels.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_6.png"
             legend="Basket design"
-            alt=""
         %}
 
     </div>
@@ -135,14 +125,13 @@ This design requires six corner joints. As an alternative to glue, I considered 
 
 A variation of the basket design is the star-shaped version, where all four sides fold up from the base. This solution reduces the risk of failure at the junction between the base and the walls.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_8.png"
             legend="Star-shaped design"
-            alt=""
         %}
 
     </div>
@@ -151,7 +140,7 @@ A variation of the basket design is the star-shaped version, where all four side
 
 The star-shaped design introduces an interesting geometric problem regarding the shape of the lower corner pieces. To determine their shape, I modeled the assembly in Blender. I started by creating two quarter cylinders positioned at a 90° angle, then adjusted the end points so the surfaces would touch without intersecting. After that, I duplicated the pieces and "unfolded" them by rotating each edge in order to obtain a flat pattern.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
 
@@ -159,14 +148,12 @@ The star-shaped design introduces an interesting geometric problem regarding the
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_10.png"
             legend="3D view of the corner with unfolded parts"
             height="250"
-            alt=""
         %}
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_11.png"
             legend="Top view"
             height="250"
-            alt=""
         %}
 
     </div>
@@ -177,25 +164,26 @@ The star-shaped design introduces an interesting geometric problem regarding the
 
 Eventually, I tested the classic finger-joint technique, where matching notches are cut into the two pieces to be assembled, then glued together.
 
-<div class="inline-image-container mobile-column">
+<div class="inline-image-container">
 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_5.png"
             legend="Finger-joint assembly technique"
-            width="60%"
-            alt=""
         %}
 
     </div>
+
+</div>
+
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_9.png"
             legend="Classic design"
-            alt=""
         %}
 
     </div>

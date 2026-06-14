@@ -52,7 +52,6 @@ La ROM étant prête, je l'installe sur la breadboard à côté du 6502. Pour l'
         {% include inline-image-item.html
             url="/assets/projects/emulation/IMG_7399.JPG"
             legend="L'EEPROM connectée au 6502"
-            width="50%"
         %}
 
     </div>

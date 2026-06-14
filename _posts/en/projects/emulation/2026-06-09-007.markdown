@@ -96,7 +96,6 @@ I power up the circuit, and I can immediately see the flip-flop changing state, 
         {% include inline-video-item.html
             url="/assets/projects/emulation/IMG_7419.mp4"
             legend="The flip-flop is capturing every data that goes through the bus"
-            width="50%"
         %}
 
     </div>
@@ -177,7 +176,6 @@ Just as before, it takes some concentration to follow the execution of the progr
         {% include inline-video-item.html
             url="/assets/projects/emulation/IMG_7420.mp4"
             legend="The flip-flop is only capturing the data that are meant for it"
-            width="50%"
         %}
 
     </div>

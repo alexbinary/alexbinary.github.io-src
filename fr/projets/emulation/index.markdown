@@ -144,7 +144,6 @@ J'ai commencé par installer le 6502 sur une breadboard en câblant la valeur `0
         {% include inline-video-item.html
             url="/assets/projects/emulation/IMG_7380.mp4"
             legend="Premiers tests du 6502"
-            width="50%"
         %}
 
     </div>
@@ -157,14 +156,13 @@ J'ai commencé par installer le 6502 sur une breadboard en câblant la valeur `0
 
 J'ai ensuite connecté les lignes d’adresses et de données à l'Arduino ainsi que le signal read/write, et écrit un code capable d'envoyer des données sur le bus en fonction de l'adresse demandée par le CPU. J'ai utilisé ce système rudimentaire pour fournir au CPU un programme minimaliste à 3 instructions, et validé le bon fonctionnement en observant l'activité sur le bus. Dans ce genre d'opération c'est l'Arduino qui génère le signal d'horloge. J'ai fait ça pour être sûr de lire et écrire sur les bus aux bons moments car je ne me suis pas encore penché sur les timings du 6502.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/IMG_7383.JPG"
             legend="L'Arduino connecté aux bus d'adresse et de données du 6502"
-            
         %}
 
         {% include inline-video-item.html
@@ -185,7 +183,7 @@ J'ai ensuite connecté les lignes d’adresses et de données à l'Arduino ainsi
 
 La manip avec l'Arduino est sympa pour tester, mais dans le système final c'est l'EEPROM qui fournit les données. Conformément à l'esprit du projet j'ai commencé par la base en faisant des lectures et écritures en manipulant directement les signaux de contrôle, avec des LEDs pour visualiser les données. J'ai ensuite écrit un code Arduino pour lire et écrire, d'abord un octet à la fois puis toute une séquence.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
 
@@ -213,7 +211,6 @@ Une fois capable de programmer la ROM, je l'ai connecté au 6502, d'abord de man
         {% include inline-image-item.html
             url="/assets/projects/emulation/IMG_7399.JPG"
             legend="L'EEPROM connectée au 6502"
-            width="50%"
         %}
 
     </div>
@@ -237,7 +234,6 @@ Mon Arduino ne disposant pas de suffisamment de broches pour connecter les 8 lig
         {% include inline-video-item.html
             url="/assets/projects/emulation/IMG_7405.mp4"
             legend="Injection de 0xEA dans un registre à décalage"
-            width="50%"
         %}
 
     </div>
@@ -258,7 +254,6 @@ Ensuite j'ai réalisé un montage semi-permanent sur breadboard associé à un c
         {% include inline-image-item.html
             url="/assets/projects/emulation/asm.png"
             legend="Prémisce d'un assembleur !"
-            width="50%"
         %}
 
     </div>
@@ -284,7 +279,6 @@ J'ai réécrit un programme simple pour tester le VIA, connecté des LEDs en sor
         {% include inline-image-item.html
             url="/assets/projects/emulation/IMG_7415.JPG"
             legend="Connection du VIA directement à l'Arduino"
-            width="50%"
         %}
 
     </div>
@@ -307,7 +301,6 @@ Pour avancer malgré les problèmes avec le 6522, j'ai tenté d'implémenter une
         {% include inline-image-item.html
             url="/assets/projects/emulation/d-flip-flop.JPG"
             legend="Mon brouillon utilisé pour le câblage de la bascule"
-            width="50%"
         %}
 
     </div>
@@ -323,7 +316,6 @@ J'ai ensuite connecté la bascule sur le premier bit du bus de données à la pl
         {% include inline-video-item.html
             url="/assets/projects/emulation/IMG_7420.mp4"
             legend="La bascule D remplace le VIA"
-            width="50%"
         %}
 
     </div>
@@ -336,7 +328,6 @@ Interfacer une bascule D au 6502 n'était pas prévu initialement mais ça s'est
 {% include project_post_link.html
     target_entry="007"
 %}
-
 
 
 ## Bilan et perspectives

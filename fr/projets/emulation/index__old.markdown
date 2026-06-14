@@ -52,7 +52,6 @@ Pour vérifier qu'il se passe quelque chose dans le processeur j'ai connecté le
         {% include inline-video-item.html
             url="/assets/projects/emulation/IMG_7380.mp4"
             legend="Mon 6502 en fonctionnement"
-            width="50%"
             alt="Une vidéo montrant un montage éléctronique expérimental. On voit une première breadboard avec une LED qui clignote rapidement, et un second module comprenant le 6502 connecté à 4 LEDs qui s'allument successivement dans un motif de comptage."
         %}
 
@@ -107,13 +106,11 @@ Ces modifications en place, j'écris un code qui envoie `0xEA` sur le bus lorsqu
         {% include inline-image-item.html
             url="/assets/projects/emulation/IMG_7383.JPG"
             legend="L'Arduino connecté aux 4 LSBs du bus d'adresse et aux 8 lignes du bus de données du 6502"
-            
         %}
 
         {% include inline-video-item.html
             url="/assets/projects/emulation/EA.mp4"
             legend="L'Arduino écrit 0xEA sur le bus quand il détecte que le 6502 est en lecture"
-            
         %}
 
     </div>
@@ -252,7 +249,6 @@ Le résultat correspond bien à ce qui est attendu :
         {% include inline-video-item.html
             url="/assets/projects/emulation/pgm.mp4"
             legend="Exécution du premier programme"
-            width="70%"
         %}
 
     </div>
@@ -285,7 +281,6 @@ Sur la breadboard je connecte CE à 0, et je gère manuellement OE et WE.
         {% include inline-image-item.html
             url="/assets/projects/emulation/IMG_7389.JPG"
             legend="Montage de test de la ROM"
-            width="50%"
         %}
 
     </div>
@@ -333,7 +328,6 @@ Dans un premier temps le programme parcours séquentiellement les 16 adresses et
         {% include inline-image-item.html
             url="/assets/projects/emulation/writeByte.png"
             legend="Fonction d'écriture d'un octet dans la ROM"
-            width="50%"
         %}
 
     </div>
@@ -347,7 +341,6 @@ Dans un premier temps le programme parcours séquentiellement les 16 adresses et
         {% include inline-video-item.html
             url="/assets/projects/emulation/ROM.mp4"
             legend="Ecriture des 14 premiers octets puis relecture"
-            width="50%"
         %}
 
     </div>
@@ -468,7 +461,6 @@ La ROM étant prête, je l'installe sur la breadboard à côté du 6502. Pour l'
         {% include inline-image-item.html
             url="/assets/projects/emulation/IMG_7399.JPG"
             legend="L'EEPROM connectée au 6502"
-            width="50%"
         %}
 
     </div>
@@ -527,7 +519,6 @@ Je connecte l'alimentation et la masse, et je mets `/SRCLR` à `1` car je ne pr�
         {% include inline-image-item.html
             url="/assets/projects/emulation/IMG_7402.JPG"
             legend="Premier montage du registre à décalage avec Arduino"
-            width="50%"
         %}
 
     </div>
@@ -559,7 +550,6 @@ Je connecte les signaux de contrôle sur l'Arduino et code un programme de test.
         {% include inline-image-item.html
             url="/assets/projects/emulation/push.png"
             legend="Code pour pousser les données dans le registre à décalage"
-            width="50%"
         %}
 
     </div>
@@ -577,7 +567,6 @@ Arduino fournit une fonction `shiftOut()` qui permet de pousser 8 bits de donné
         {% include inline-image-item.html
             url="/assets/projects/emulation/shift.png"
             legend="La fonction shiftOut() permet de pousser 8 bits"
-            width="50%"
         %}
 
     </div>
@@ -700,7 +689,6 @@ Je relance des tests et ça fonctionne effectivement mieux. Cependant un problè
         {% include inline-image-item.html
             url="/assets/projects/emulation/pinMode1.png"
             legend="D'après la vidéo de Ben Eater, ce code devrait laisser WEB à 1"
-            width="50%"
         %}
 
     </div>
@@ -716,7 +704,6 @@ Comme dans mon cas vu que c'est systématiquement la première écriture qui ne 
         {% include inline-image-item.html
             url="/assets/projects/emulation/pinMode2.png"
             legend="Dans mon cas il est nécessaire de rappeler digitalWrite() après pinMode() pour laisser WEB à 1"
-            width="50%"
         %}
 
     </div>
@@ -734,7 +721,6 @@ Pour bien valider mes observations, je branche rapidement le signal `/WE` sur un
         {% include inline-video-item.html
             url="/assets/projects/emulation/pinMode3.mp4"
             legend="digitalWrite() avant pinMode() laisse la pin à 0"
-            width="50%"
         %}
 
     </div>
@@ -759,7 +745,6 @@ Pour essayer de faire les choses correctement, je parcours les datasheet des dif
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/delay.png"
-            width="70%"
         %}
 
     </div>
@@ -776,7 +761,6 @@ J'interroge ChatGPT qui n'est pas d'une grande aide, mais me permet quand même 
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/delay2.png"
-            width="70%"
         %}
 
     </div>
@@ -816,7 +800,6 @@ J'ajoute aussi une fonction pour écrire une valeur sur deux octets. Grâce à c
         {% include inline-image-item.html
             url="/assets/projects/emulation/asm.png"
             legend="Prémisce d'un assembleur !"
-            width="50%"
         %}
 
     </div>
@@ -846,7 +829,6 @@ Le VIA possède 16 registres de contrôle dans lesquel le CPU va lire ou écrire
         {% include inline-image-item.html
             url="/assets/projects/emulation/w65c22 regs.png"
             legend="Liste des registres du 6522 (extrait de la datasheet)"
-            width="70%"
         %}
 
     </div>
@@ -909,7 +891,6 @@ Pour faire simple j'utilise une puce [74LS04](https://www.ti.com/lit/ds/symlink/
         {% include inline-image-item.html
             url="/assets/projects/emulation/IMG_7422.JPG"
             legend="L'inverseur qui permet de générer le Chip Select pour la ROM"
-            width="50%"
         %}
 
     </div>
@@ -934,7 +915,6 @@ Basiquement notre programme ressemble donc à ça :
         {% include inline-image-item.html
             url="/assets/projects/emulation/w65c22 regs 2.png"
             legend="Registres de contrôle des ports A et B du 6522 (extrait de la datasheet)"
-            width="70%"
         %}
 
     </div>
@@ -983,7 +963,6 @@ On voit que l'instruction `LDA #$02` si retrouve à l'adresse `0x8005`, c'est do
         {% include inline-image-item.html
             url="/assets/projects/emulation/via.png"
             legend="Le programme de test du VIA écrit sur la ROM"
-            width="70%"
         %}
 
     </div>
@@ -1163,7 +1142,6 @@ J'alimente le circuits, et je vois tout de suite que la bascule s'anime, c'est b
         {% include inline-video-item.html
             url="/assets/projects/emulation/IMG_7419.mp4"
             legend="La bascule capture tout ce qui passe sur le bus"
-            width="50%"
         %}
 
     </div>
@@ -1243,7 +1221,6 @@ Comme tout à l'heure il faut se concentrer pour suivre le déroulement du progr
         {% include inline-video-item.html
             url="/assets/projects/emulation/IMG_7420.mp4"
             legend="La bascule capture uniquement les données qui lui sont adressées"
-            width="50%"
         %}
 
     </div>
@@ -1252,7 +1229,6 @@ Comme tout à l'heure il faut se concentrer pour suivre le déroulement du progr
 
 
 Interfacer une bascule D au 6502 n'était pas prévu initialement mais ça s'est révélé très intéressant et ça m'a aidé à comprendre ce qui peut se jouer dans les puces qui communiquent sur un bus de données, comme la ROM ou le VIA. Je suis très content d'avoir fait ce petit détour.
-
 
 
 ## La suite

@@ -139,7 +139,6 @@ I started by installing the 6502 on a breadboard, wiring the value `0xEA` onto t
         {% include inline-video-item.html
             url="/assets/projects/emulation/IMG_7380.mp4"
             legend="First tests of the 6502"
-            width="50%"
         %}
 
     </div>
@@ -154,7 +153,7 @@ I then connected the address and data buses, as well as the read/write signal, t
 
 For this kind of experiment, the Arduino generates the clock signal. I chose this approach to ensure that I was reading from and writing to the buses at the correct times, since I have not yet studied the 6502's timing characteristics in detail.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
 
@@ -182,7 +181,7 @@ For this kind of experiment, the Arduino generates the clock signal. I chose thi
 
 The Arduino setup was useful for testing, but in the final system the EEPROM will provide the data. Staying true to the spirit of the project, I started from the basics by performing reads and writes through direct manipulation of the control signals, using LEDs to visualize the data. I then wrote Arduino code capable of reading and writing, first one byte at a time and eventually entire sequences.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
 
@@ -209,7 +208,6 @@ Once I was able to program the ROM, I connected it to the 6502, initially as a t
         {% include inline-image-item.html
             url="/assets/projects/emulation/IMG_7399.JPG"
             legend="The EEPROM connected to the 6502"
-            width="50%"
         %}
 
     </div>
@@ -234,7 +232,6 @@ As usual, I started with the basics, building a minimal setup to familiarize mys
         {% include inline-video-item.html
             url="/assets/projects/emulation/IMG_7405.mp4"
             legend="Pushing 0xEA in a shift register"
-            width="50%"
         %}
 
     </div>
@@ -254,7 +251,6 @@ Afterward, I created a semi-permanent breadboard setup together with Arduino sof
         {% include inline-image-item.html
             url="/assets/projects/emulation/asm.png"
             legend="The beginnings of an assembler!"
-            width="50%"
         %}
 
     </div>
@@ -279,7 +275,6 @@ I then rewrote a simple test program for the VIA and connected LEDs to Port A ou
         {% include inline-image-item.html
             url="/assets/projects/emulation/IMG_7415.JPG"
             legend="Connecting the VIA to the Arduino"
-            width="50%"
         %}
 
     </div>
@@ -302,7 +297,6 @@ To continue making progress despite the issues with the 6522, I decided to imple
         {% include inline-image-item.html
             url="/assets/projects/emulation/d-flip-flop.JPG"
             legend="The draft I used when connecting everything"
-            width="50%"
         %}
 
     </div>
@@ -318,7 +312,6 @@ I then connected the flip-flop to the first bit of the data bus in place of the 
         {% include inline-video-item.html
             url="/assets/projects/emulation/IMG_7420.mp4"
             legend="La bascule D remplace le VIA"
-            width="50%"
         %}
 
     </div>

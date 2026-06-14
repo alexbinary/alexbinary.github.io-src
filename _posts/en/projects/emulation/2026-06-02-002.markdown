@@ -24,7 +24,7 @@ Before going any further, I rework the program to display the new data, and I al
 
 I now write code that places `0xEA` on the bus whenever the CPU is performing a read operation.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
 
@@ -174,7 +174,6 @@ The result matches exactly what was expected:
         {% include inline-video-item.html
             url="/assets/projects/emulation/pgm.mp4"
             legend="Execution of the first program"
-            width="70%"
         %}
 
     </div>
@@ -207,7 +206,6 @@ On the breadboard, I tie `/CE` to `0` to enable the chip and manually control `/
         {% include inline-image-item.html
             url="/assets/projects/emulation/IMG_7389.JPG"
             legend="ROM test setup"
-            width="50%"
         %}
 
     </div>
@@ -254,7 +252,6 @@ Initially, the program sequentially scans the 16 addresses and displays the corr
         {% include inline-image-item.html
             url="/assets/projects/emulation/writeByte.png"
             legend="Function for writing a single byte to the ROM"
-            width="50%"
         %}
 
     </div>
@@ -268,7 +265,6 @@ Initially, the program sequentially scans the 16 addresses and displays the corr
         {% include inline-video-item.html
             url="/assets/projects/emulation/ROM.mp4"
             legend="Writing the first 14 bytes and then reading them back"
-            width="50%"
         %}
 
     </div>
@@ -335,7 +331,7 @@ If everything works correctly, we should observe the following data on the bus:
 
 My first observations left me puzzled. The results did not seem to match my expectations, and I started wondering what was wrong. The `02` byte (`0000 0010`) made me suspect that the data was showing backwards, but that did not make much sense to me, until I realized that I was reading the LEDs backwards. I expected to see the same bit pattern as the numbers displayed on my screen, but the LEDs had the least significant bits on the left rather than on the right. I turned the board around and it seemed to match pretty well. I recorded the sequence to analyze it afterward, and confirmed everything matches perfectly.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row">
 

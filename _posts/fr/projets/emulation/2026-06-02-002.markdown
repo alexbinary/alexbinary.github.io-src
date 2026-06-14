@@ -24,7 +24,7 @@ Avant d'aller plus loin je retravaille le programme pour afficher les nouvelles 
 
 Ces modifications en place, j'écris un code qui envoie `0xEA` sur le bus lorsque le CPU est en lecture.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
 
@@ -176,7 +176,6 @@ Le résultat correspond bien à ce qui est attendu :
         {% include inline-video-item.html
             url="/assets/projects/emulation/pgm.mp4"
             legend="Exécution du premier programme"
-            width="70%"
         %}
 
     </div>
@@ -184,8 +183,6 @@ Le résultat correspond bien à ce qui est attendu :
 </div>
 
 Le code Arduino est disponible [sur GitHub](https://github.com/alexbinary/arduino-6502).
-
-
 
 
 ## Découverte de l'EEPROM
@@ -211,7 +208,6 @@ Sur la breadboard je connecte CE à 0, et je gère manuellement OE et WE.
         {% include inline-image-item.html
             url="/assets/projects/emulation/IMG_7389.JPG"
             legend="Montage de test de la ROM"
-            width="50%"
         %}
 
     </div>
@@ -259,7 +255,6 @@ Dans un premier temps le programme parcours séquentiellement les 16 adresses et
         {% include inline-image-item.html
             url="/assets/projects/emulation/writeByte.png"
             legend="Fonction d'écriture d'un octet dans la ROM"
-            width="50%"
         %}
 
     </div>
@@ -273,7 +268,6 @@ Dans un premier temps le programme parcours séquentiellement les 16 adresses et
         {% include inline-video-item.html
             url="/assets/projects/emulation/ROM.mp4"
             legend="Ecriture des 14 premiers octets puis relecture"
-            width="50%"
         %}
 
     </div>
@@ -341,7 +335,7 @@ Si tout se passe bien on est sensé observer les données suivantes sur le bus :
 Les premières observations m'ont laissé perplexe. Les résultats n'avaient pas l'air de correspondre à ce qui est attendu, et j'ai commencé à me demander ce qui n'allait pas. J'avais l'impression de reconnaitre le `02` (`0000 0010`) mais à l'envers, mais je ne voyais pas comment les données auraient pu être inversées. Et puis j'ai réalisé que je lisais les LEDs dans le mauvais sens ! Je m'attendais à voir la même chose que ce que j'avais affiché à l'écran pour référence, mais sur les LEDs les bits de poids faible étaient à gauche et non à droite. J'ai retourné la plaque et là tout semblait correspondre. J'ai filmé la séquence pour analyser les résultat plus rigourseuement, et je confirme que tout correspond parfaitement.
 
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row">
 

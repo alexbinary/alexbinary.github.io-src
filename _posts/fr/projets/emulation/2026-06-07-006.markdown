@@ -30,7 +30,6 @@ Le VIA possède 16 registres de contrôle dans lesquel le CPU va lire ou écrire
         {% include inline-image-item.html
             url="/assets/projects/emulation/w65c22 regs.png"
             legend="Liste des registres du 6522 (extrait de la datasheet)"
-            width="70%"
         %}
 
     </div>
@@ -93,7 +92,6 @@ Pour faire simple j'utilise une puce [74LS04](https://www.ti.com/lit/ds/symlink/
         {% include inline-image-item.html
             url="/assets/projects/emulation/IMG_7422.JPG"
             legend="L'inverseur qui permet de générer le Chip Select pour la ROM"
-            width="50%"
         %}
 
     </div>
@@ -111,14 +109,13 @@ Basiquement notre programme ressemble donc à ça :
 3. écrire `0000 0101` (`0x05`) à l'adresse `0x4001`
 4. recommencer à 2.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/w65c22 regs 2.png"
             legend="Registres de contrôle des ports A et B du 6522 (extrait de la datasheet)"
-            width="70%"
         %}
 
     </div>
@@ -167,7 +164,6 @@ On voit que l'instruction `LDA #$02` si retrouve à l'adresse `0x8005`, c'est do
         {% include inline-image-item.html
             url="/assets/projects/emulation/via.png"
             legend="Le programme de test du VIA écrit sur la ROM"
-            width="70%"
         %}
 
     </div>
@@ -239,7 +235,7 @@ J'entreprends alors d'essayer de piloter le VIA directement avec l'Arduino pour 
 Je tente de lire les entrées sur les ports. J'ajoute `/RW` dans le code pour pouvoir lire/écrire, et je connecte directement le 5V sur une des pins d'entrées. Là je réalise que les LEDs sont toujours connectées au port A alors que je teste le port B. Je corrige ça et relance le test précédent mais toujours rien. Je fais le teste de lecture et je lis `0`. Ça me laisse vraiment perplexe.
 
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row free-width mobile-column">
 
@@ -258,8 +254,6 @@ Je tente de lire les entrées sur les ports. J'ajoute `/RW` dans le code pour po
 </div>
 
 Le code Arduino est disponible [sur GitHub](https://github.com/alexbinary/arduino-6502).
-
-
 
 
 ## La suite

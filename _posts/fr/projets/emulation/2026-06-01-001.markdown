@@ -31,7 +31,6 @@ Pour vérifier qu'il se passe quelque chose dans le processeur j'ai connecté le
         {% include inline-video-item.html
             url="/assets/projects/emulation/IMG_7380.mp4"
             legend="Mon 6502 en fonctionnement"
-            width="50%"
             alt="Une vidéo montrant un montage éléctronique expérimental. On voit une première breadboard avec une LED qui clignote rapidement, et un second module comprenant le 6502 connecté à 4 LEDs qui s'allument successivement dans un motif de comptage."
         %}
 
@@ -45,7 +44,7 @@ Je connecte les lignes d’adresses à l'Arduino ainsi que le signal d'horloge, 
 Lorsque le processeur démarre ou est réinitialisé, il va chercher l'adresse de la première instruction à exécuter. Pour cela il va lire une donnée de 16 bits aux adresses `0xFFFC` et `0xFFFD`, puis commence à récupérer les instructions à partir de cette adresse. Comme je n'observe que les 4 derniers bits de l'adresse, je m'attends à voir passer les valeurs `C` et `D`, qui correspondent aux valeurs binaires `1100` et `1101` respectivement. Lorsque j’appuie sur le bouton reset, je vois effectivement passer ces adresses. Comme le bus de données est câblé pour renvoyer `0xEA`, le CPU va commencer à lire les instructions à partir de l'adresse `0xEAEA`. La valeur `A` en binaire s'écrit `1010`, et c'est effectivement la première adresse qu'on voit après `C` et `D`. Très cool !
 
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
 

@@ -35,8 +35,6 @@ Pour plier du bois j'ai d'abord pensé à faire une rainure de sorte à laisser 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_1.png"
             legend="Technique de la rainure pour plier du bois"
-            alt=""
-            width="60%"
         %}
 
     </div>
@@ -52,8 +50,6 @@ Une technique commune consister à réaliser des découpes parallèles alternée
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_2.png"
             legend="Technique des découpes alternées, aussi appelé 'pliage spring'"
-            alt=""
-            width="60%"
         %}
 
     </div>
@@ -69,14 +65,13 @@ La technique me semblait prometteuse et j'ai commencé à imaginer des designs d
 
 La première idée utilisait un fond avec coins arrondis autour duquel vient s'enrouler une bande de bois judicieusement assouplie avec les découpes alternées dans les coins.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_7.png"
             legend="Design enroulé"
-            alt=""
         %}
 
     </div>
@@ -96,8 +91,6 @@ L'assemblage du tour quant à lui devait lutter contre la tendance des coins à 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_3.png"
             legend="Technique du recouvrement"
-            width="60%"
-            alt=""
         %}
 
     </div>
@@ -107,8 +100,6 @@ L'assemblage du tour quant à lui devait lutter contre la tendance des coins à 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_4.png"
             legend="Technique du recouvrement croisé"
-            width="60%"
-            alt=""
         %}
 
     </div>
@@ -120,14 +111,13 @@ L'assemblage du tour quant à lui devait lutter contre la tendance des coins à 
 
 La deuxième idée exploitant le pliage était de former une sorte de panier, avec une pièce pliée en U et deux pièces latérales.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row">
     
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_6.png"
             legend="Design en panier"
-            alt=""
         %}
 
     </div>
@@ -138,14 +128,13 @@ Ce design nécessite six assemblages en angle. En alternative à la colle j'ai e
 
 Une variante du panier consiste à faire une étoile, où les quatre côtés se plient à partir du fond. Cette solution réduit le risque de rupture au niveau entre le fond et les côtés.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row">
     
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_8.png"
             legend="Design en étoile"
-            alt=""
         %}
 
     </div>
@@ -154,7 +143,7 @@ Une variante du panier consiste à faire une étoile, où les quatre côtés se 
 
 La conception en étoile pose un problème géométrique intéressant sur la forme à donner aux pièces dans les coins du bas. Pour déterminer la forme j'ai modélisé l'assemblage dans Blender. J'ai commencé par créer deux quarts de cylindre que j'ai disposé en angle à 90°, puis j'ai ajusté les points des extrémités pour que les formes se touchent sans se croiser. Ensuite j'ai dupliqué les pièces et je les ai "déplié" en appliquant une rotation à chaque arrête pour obtenir une forme plate.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
     
     <div class="inline-image-container-row mobile-column">
 
@@ -162,14 +151,12 @@ La conception en étoile pose un problème géométrique intéressant sur la for
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_10.png"
             legend="Vue 3D de l'angle avec les pièces dépliées"
             height="250"
-            alt=""
         %}
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_11.png"
             legend="Vue du dessus"
             height="250"
-            alt=""
         %}
 
     </div>
@@ -181,25 +168,26 @@ La conception en étoile pose un problème géométrique intéressant sur la for
 
 Finalement, j'ai testé la technique classique des créneaux, où l'on fait plusieurs encoches complémentaires dans les deux pièces à assembler, et on colle.
 
-<div class="inline-image-container mobile-column">
+<div class="inline-image-container">
 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_5.png"
             legend="Technique d'assemblage par créneaux"
-            width="60%"
-            alt=""
         %}
 
     </div>
+
+</div>
+
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_9.png"
             legend="Design classique"
-            alt=""
         %}
 
     </div>

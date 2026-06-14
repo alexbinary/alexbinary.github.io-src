@@ -38,7 +38,6 @@ I connect power and ground, and tie `/SRCLR` high since I do not plan to use it.
         {% include inline-image-item.html
             url="/assets/projects/emulation/IMG_7402.JPG"
             legend="First experimental shift register setup with Arduino"
-            width="50%"
         %}
 
     </div>
@@ -48,7 +47,7 @@ I connect power and ground, and tie `/SRCLR` high since I do not plan to use it.
 I connect the control signals to the Arduino and write a test program. I start by shifting in one bit at a time, which appears to work correctly. I then write a test function that alternately shifts in a `1` and a `0` with a delay between each operation. It behaves exactly as expected. Next, I test a function capable of shifting in a full byte. Everything works properly. Initially, I had inserted delays, but they turned out to be unnecessary. I also connected an additional LED to display the value of the last bit in the register. Unlike the others, this output always reflects the internal state of the register regardless of whether the outputs are latched, since it is intended to be connected to the next register when chaining multiple registers together.
 
 
-<div class="inline-image-container mobile-column">
+<div class="inline-image-container mobile-column force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
 
@@ -64,12 +63,15 @@ I connect the control signals to the Arduino and write a test program. I start b
 
     </div>
 
+</div>
+
+<div class="inline-image-container mobile-column">
+
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/push.png"
             legend="Code for shifting data into the shift register"
-            width="50%"
         %}
 
     </div>
@@ -85,7 +87,6 @@ Arduino provides a `shiftOut()` function that can shift out 8 bits of data. I te
         {% include inline-image-item.html
             url="/assets/projects/emulation/shift.png"
             legend="The shiftOut() function can shift out 8 bits"
-            width="50%"
         %}
 
     </div>
@@ -96,7 +97,7 @@ I then tested adding a second register. I place it on the breadboard next to the
 
 At first, nothing worked. The reason was I had forgotten to connect the `SER`, `RCLK`, and `SRCLK` signals from the first register to the second. Once those connections were made, everything worked properly. I tested the setup by shifting in a single `1` followed by a stream of `0`s in order to watch the bit move through the registers. As expected, it traveled across the first four LEDs and then, after some time, reappeared on the last four.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
 

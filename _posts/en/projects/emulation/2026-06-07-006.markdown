@@ -30,7 +30,6 @@ The VIA has 16 control registers that the CPU reads from or writes to through th
         {% include inline-image-item.html
             url="/assets/projects/emulation/w65c22 regs.png"
             legend="List of 6522 registers (from the datasheet)"
-            width="70%"
         %}
 
     </div>
@@ -93,7 +92,6 @@ To keep things simple, I use a [74LS04](https://www.ti.com/lit/ds/symlink/sn74ls
         {% include inline-image-item.html
             url="/assets/projects/emulation/IMG_7422.JPG"
             legend="The inverter used to generate the ROM Chip Select signal"
-            width="50%"
         %}
 
     </div>
@@ -111,14 +109,13 @@ So our program essentially looks like this:
 3. Write `0000 0101` (`0x05`) to address `0x4001`
 4. Repeat from step 2
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/w65c22 regs 2.png"
             legend="Port A and Port B control registers of the 6522 (excerpt from the datasheet)"
-            width="70%"
         %}
 
     </div>
@@ -168,7 +165,6 @@ We can see that the `LDA #$02` instruction ends up at address `0x8005`, so that 
         {% include inline-image-item.html
             url="/assets/projects/emulation/via.png"
             legend="The VIA test program written into the ROM"
-            width="70%"
         %}
 
     </div>
@@ -240,7 +236,7 @@ I decide to try driving the VIA directly from the Arduino, both to verify that I
 
 I then attempt to read inputs from the ports. I modify the code to support both reading and writing through `/RW` that I connect to the Arduino, and connect 5V directly to one of the input pins. That's when I realize the LEDs are still connected to Port A while I've moved to Port B. I fix that and repeat the previous tests, but still nothing. I perform the input read test and get `0`. At this point I'm genuinely perplexed.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row free-width mobile-column">
 

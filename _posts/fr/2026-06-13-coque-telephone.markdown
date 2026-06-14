@@ -21,14 +21,13 @@ L'iPhone X date d'avant MagSafe, c'est-à-dire qu'il n'est pas équipé des aima
 J'ai trouvé des [aimants compatibles](https://fr.aliexpress.com/item/1005005115150292.html?spm=a2g0o.order_list.order_list_main.50.cb535e5brNk5u3&gatewayAdapt=glo2fra
 ) sur AliExpress et en ai commandé quelques uns. En réalité ce ne sont pas des aimants mais de simples pièces métalliques. La description AliExpress indique "plaque métallique magnétique" et "feuille de fer autocollante", donc disons que j'aurais pu m'en douter. Je teste de les mettre sur mon chargeur et ça colle plutôt bien 👍.
 
-<div class="inline-image-container">
+<div class="inline-image-container prevent-mobile-full-width">
 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/phone-case/magnet.png"
             legend="Les aimants MagSafe commandés sur AliExpress"
-            width="50%"
         %}
 
     </div>
@@ -46,14 +45,13 @@ J'ai envisagé d'enfermer complètement l'anneau dans la pièce en reprenant l'i
 
 J'ouvre Fusion et je confirme que le fond de la coque fait bien 1,4 mm d'épaisseur.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/phone-case/profile.png"
             legend="Le profil utilisé pour tracer la coque"
-            
         %}
 
     </div>
@@ -62,14 +60,13 @@ J'ouvre Fusion et je confirme que le fond de la coque fait bien 1,4 mm d'épaiss
 
 J'avais déjà déterminé la position du centre de la bobine de charge grâce à une image radio de l'iPhone X. Il ne reste donc qu'à dessiner le logement de l'anneau.
 
-<div class="inline-image-container">
+<div class="inline-image-container prevent-mobile-full-width">
 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/phone-case/xray.jpg"
             legend="Image en rayons X de l'iPhone X"
-            width="50%"
         %}
 
     </div>
@@ -85,7 +82,6 @@ Je mesure l'anneau et j'ajoute 1mm de marge sur toutes les dimensions pour facil
         {% include inline-image-item.html
             url="/assets/projects/phone-case/ring2.png"
             legend="J'utilise un photo comme référence pour la modélisation"
-            width="50%"
         %}
 
     </div>
@@ -104,7 +100,6 @@ Avant toute chose je vérifie dans le slicer que l'épaisseur résiduelle est bi
         {% include inline-image-item.html
             url="/assets/projects/phone-case/slicer.png"
             legend="Le slicer montre qu'il n'y a pas plus de deux couches dans le fond du logement de l'anneau"
-            width="50%"
         %}
 
     </div>
@@ -124,7 +119,6 @@ Comme la pièce est assez fine, je préfère attendre qu'elle refroidisse compl�
         {% include inline-image-item.html
             url="/assets/projects/phone-case/IMG_7433.JPG"
             legend="La coque imprimée en filament transparent avec le logement pour l'anneau"
-            width="50%"
         %}
 
     </div>
@@ -147,7 +141,6 @@ Je poursuis malgré tout et j'enlève la protection adhésive de l'anneau et le 
         {% include inline-image-item.html
             url="/assets/projects/phone-case/IMG_7436.JPG"
             legend="La coque liée au chargeur grâce à l'anneau métallique"
-            width="50%"
         %}
 
     </div>

@@ -50,7 +50,7 @@ Si on pousse 16 bits, le premier bit qu'on pousse va se retrouver sur la derniè
 
 Voici ce que j'ai écrit initialement :
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row">
 
@@ -69,7 +69,7 @@ J'essaie de lire les données depuis la ROM mais ça ne fonctionne pas, je ne re
 
 Voici la version corrigée qui fonctionne :
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row">
 
@@ -102,7 +102,6 @@ Je relance des tests et ça fonctionne effectivement mieux. Cependant un problè
         {% include inline-image-item.html
             url="/assets/projects/emulation/pinMode1.png"
             legend="D'après la vidéo de Ben Eater, ce code devrait laisser WEB à 1"
-            width="50%"
         %}
 
     </div>
@@ -118,7 +117,6 @@ Comme dans mon cas vu que c'est systématiquement la première écriture qui ne 
         {% include inline-image-item.html
             url="/assets/projects/emulation/pinMode2.png"
             legend="Dans mon cas il est nécessaire de rappeler digitalWrite() après pinMode() pour laisser WEB à 1"
-            width="50%"
         %}
 
     </div>
@@ -136,7 +134,6 @@ Pour bien valider mes observations, je branche rapidement le signal `/WE` sur un
         {% include inline-video-item.html
             url="/assets/projects/emulation/pinMode3.mp4"
             legend="digitalWrite() avant pinMode() laisse la pin à 0"
-            width="50%"
         %}
 
     </div>
@@ -161,7 +158,6 @@ Pour essayer de faire les choses correctement, je parcours les datasheet des dif
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/delay.png"
-            width="70%"
         %}
 
     </div>
@@ -178,7 +174,6 @@ J'interroge ChatGPT qui n'est pas d'une grande aide, mais me permet quand même 
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/delay2.png"
-            width="70%"
         %}
 
     </div>
@@ -218,7 +213,6 @@ J'ajoute aussi une fonction pour écrire une valeur sur deux octets. Grâce à c
         {% include inline-image-item.html
             url="/assets/projects/emulation/asm.png"
             legend="Prémisce d'un assembleur !"
-            width="50%"
         %}
 
     </div>

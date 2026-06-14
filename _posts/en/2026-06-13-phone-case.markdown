@@ -20,14 +20,14 @@ The iPhone X predates MagSafe, meaning it doesn't include the magnets used to al
 
 I found some [compatible rings](https://fr.aliexpress.com/item/1005005115150292.html?spm=a2g0o.order_list.order_list_main.50.cb535e5brNk5u3&gatewayAdapt=glo2fra) on AliExpress and ordered a few. In reality, they aren't magnets at all but simply metal rings. The AliExpress description mentions a "magnetic metal plate" and a "self-adhesive iron sheet," so I probably should have expected that. I tested one on my charger, and it sticks reasonably well 👍.
 
-<div class="inline-image-container">
 
-        <div class="inline-image-container-row">
+<div class="inline-image-container prevent-mobile-full-width">
 
-            {% include inline-image-item.html
-                url="/assets/projects/phone-case/magnet.png"
-                legend="The MagSafe rings ordered from AliExpress"
-                width="50%"
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/phone-case/magnet.png"
+            legend="The MagSafe rings ordered from AliExpress"
         %}
 
     </div>
@@ -45,7 +45,8 @@ I considered fully enclosing the ring inside the part by pausing the print and r
 
 I opened Fusion and confirmed that the back of the case is indeed 1.4mm thick.
 
-<div class="inline-image-container">
+
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row">
 
@@ -60,14 +61,13 @@ I opened Fusion and confirmed that the back of the case is indeed 1.4mm thick.
 
 I had already determined the position of the charging coil using an X-ray image of the iPhone X. All that remained was to design the ring recess.
 
-<div class="inline-image-container">
+<div class="inline-image-container prevent-mobile-full-width">
 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/phone-case/xray.jpg"
             legend="X-ray image of the iPhone X"
-            width="50%"
         %}
         
     </div>
@@ -83,7 +83,6 @@ I measured the ring and added 1 mm of clearance to all dimensions to make insert
         {% include inline-image-item.html
             url="/assets/projects/phone-case/ring2.png"
             legend="Using a photo as a reference for modeling"
-            width="50%"
         %}
 
     </div>
@@ -102,7 +101,6 @@ Before printing, I checked the slicer to make sure the remaining thickness benea
         {% include inline-image-item.html
             url="/assets/projects/phone-case/slicer.png"
             legend="The slicer confirms that the bottom of the ring recess is only two layers thick"
-            width="50%"
         %}
 
     </div>
@@ -122,7 +120,6 @@ Since the part is quite thin, I waited until it had cooled completely before rem
         {% include inline-image-item.html
             url="/assets/projects/phone-case/IMG_7433.JPG"
             legend="The transparent 3D-printed case with the ring recess"
-            width="50%"
         %}
 
     </div>
@@ -145,12 +142,12 @@ I continued anyway, removing the protective backing from the adhesive, and stuck
         {% include inline-image-item.html
             url="/assets/projects/phone-case/IMG_7436.JPG"
             legend="The case attached to the charger using the metal ring"
-            width="50%"
         %}
 
     </div>
 
 </div>
+
 
 ## Conclusion
 

@@ -30,7 +30,6 @@ To verify that something is happening in the processor, I connect the four least
         {% include inline-video-item.html
             url="/assets/projects/emulation/IMG_7380.mp4"
             legend="My 6502 in operation"
-            width="50%"
             alt="A video showing an experimental electronic circuit. It shows a breadboard with a rapidly blinking LED, and a second module containing the 6502 connected to four LEDs that light up sequentially in a counting pattern."
         %}
 
@@ -43,7 +42,7 @@ I then connected the address lines to the Arduino along with the clock signal an
 When the processor starts or is reset, it looks for the address of the first instruction to execute. To do this, it reads a 16 bit address from addresses `0xFFFC` and `0xFFFD`, then starts fetching instructions from that address. Since I'm only observing the last 4 bits of the address, I expect to see the values ​​`C` and `D`, which correspond to the binary values `​​1100` and `1101` respectively. When I press the reset button, I do indeed see these addresses. Since the data bus is wired to return `0xEA`, the CPU will start reading instructions from address `0xEAEA`. The binary value `A` is `1010`, and it's indeed the first address we see after `C` and `D`. Very cool!
 
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
 

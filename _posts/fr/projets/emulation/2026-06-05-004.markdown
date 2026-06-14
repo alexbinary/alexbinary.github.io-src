@@ -38,7 +38,6 @@ Je connecte l'alimentation et la masse, et je mets `/SRCLR` à `1` car je ne pr�
         {% include inline-image-item.html
             url="/assets/projects/emulation/IMG_7402.JPG"
             legend="Premier montage du registre à décalage avec Arduino"
-            width="50%"
         %}
 
     </div>
@@ -49,7 +48,7 @@ Je connecte l'alimentation et la masse, et je mets `/SRCLR` à `1` car je ne pr�
 Je connecte les signaux de contrôle sur l'Arduino et code un programme de test. Je commence par essayer de pousser un bit à la fois. Ça a l'air de bien fonctionner. J'écris une fonction de test qui pousse alternativement un `1` et un `0` avec un délai entre chaque. Ça fonctionne comme attendu. Je teste ensuite une fonction capable de pousser un octet. Tout fonctionne bien. Au début j'avais mis des temporisations mais en fait elles ne sont pas nécessaire. J'ai connecté une LED supplémentaire pour afficher la valeur du dernier bit de donnée dans le registre. Contrairement aux autres cette donnée est toujours à jour avec l'état interne même si on fige la sortie, car elle est destinée à être connectée au registre suivant quand on chaine plusieurs.
 
 
-<div class="inline-image-container mobile-column">
+<div class="inline-image-container mobile-column force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
 
@@ -65,12 +64,15 @@ Je connecte les signaux de contrôle sur l'Arduino et code un programme de test.
 
     </div>
 
+</div>
+
+<div class="inline-image-container mobile-column">
+
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/push.png"
             legend="Code pour pousser les données dans le registre à décalage"
-            width="50%"
         %}
 
     </div>
@@ -88,7 +90,6 @@ Arduino fournit une fonction `shiftOut()` qui permet de pousser 8 bits de donné
         {% include inline-image-item.html
             url="/assets/projects/emulation/shift.png"
             legend="La fonction shiftOut() permet de pousser 8 bits"
-            width="50%"
         %}
 
     </div>
@@ -99,7 +100,7 @@ Arduino fournit une fonction `shiftOut()` qui permet de pousser 8 bits de donné
 Je teste maintenant d'ajouter un registre. Je le place sur la breadboard à côté du premier, je connecte l'alimentation, `/OE` et `/SRCLR`. Je ne peux pas ajouter d'autres LEDs donc je laisse les 4 premières connectées au 4 premières sorties du premier registre, et je connecte les 4 dernières au 4 dernières sorties du second registre. Et au début, rien ne fonctionne. C'est parce que j'avais oublié de connecter les signaux `SER`, `RCLK` et `SRCLK` du premier registre sur le second. Une fois fait ça fonctionne bien. Je teste en poussant un `1` puis que des `0` pour voir avancer le `1`. Comme attendu il traverse les 4 premières LEDs, puis après un temps réapparait sur les 4 suivantes.
 
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row mobile-column">
 

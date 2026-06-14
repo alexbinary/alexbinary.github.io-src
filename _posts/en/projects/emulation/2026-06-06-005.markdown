@@ -51,7 +51,7 @@ When shifting out 16 bits, the first bit shifted will end up on the last output 
 
 Here is what I initially wrote:
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row">
 
@@ -71,7 +71,7 @@ I try reading data from the ROM, but it doesn't work. I can't retrieve the data 
 
 Here is the corrected version that works:
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
 
     <div class="inline-image-container-row">
 
@@ -104,7 +104,6 @@ I run more tests and confirm there is a net improvement. However, one issue rema
         {% include inline-image-item.html
             url="/assets/projects/emulation/pinMode1.png"
             legend="According to Ben Eater's video, this should leave WEB high"
-            width="50%"
         %}
 
     </div>  
@@ -120,7 +119,6 @@ In my case, however, since it is always the first write that fails, I strongly s
         {% include inline-image-item.html
             url="/assets/projects/emulation/pinMode2.png"
             legend="In my case, I need to call digitalWrite() after pinMode() to leave the pin high"
-            width="50%"
         %}
 
     </div>
@@ -138,7 +136,6 @@ To validate my observations, I quickly connect `/WE` to an LED and confirm that 
         {% include inline-video-item.html
             url="/assets/projects/emulation/pinMode3.mp4"
             legend="Calling digitalWrite() before pinMode() leaves the pin low"
-            width="50%"
         %}
 
     </div>
@@ -162,7 +159,6 @@ In an attempt to do things properly, I go through the datasheets of the various 
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/delay.png"
-            width="70%"
         %}
 
     </div>
@@ -179,7 +175,6 @@ I ask ChatGPT, it isn't particularly useful but it does help me determine that t
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/delay2.png"
-            width="70%"
         %}
 
     </div>
@@ -219,7 +214,6 @@ I also add a function to write two bytes at once at a given address. Thanks to t
         {% include inline-image-item.html
             url="/assets/projects/emulation/asm.png"
             legend="The beginnings of an assembler!"
-            width="50%"
         %}
 
     </div>

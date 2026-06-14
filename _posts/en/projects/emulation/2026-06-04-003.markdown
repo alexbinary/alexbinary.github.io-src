@@ -51,7 +51,6 @@ The ROM now ready, I install it on the breadboard next to the 6502. I force `/CE
         {% include inline-image-item.html
             url="/assets/projects/emulation/IMG_7399.JPG"
             legend="The EEPROM connected to the 6502"
-            width="50%"
         %}
 
     </div>
