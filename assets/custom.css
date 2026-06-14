@@ -738,7 +738,7 @@ ul.list-pointer-style li::before {
 
 .post-card .post-card-meta {
     color: var(--fg-color-1);
-    font-size: 0.8rem;
+    /* font-size: 0.8rem; */
     margin-bottom: 0;
 }
 
@@ -963,7 +963,8 @@ ul.list-pointer-style li::before {
 }
 
 .posts-list-meta {
-    margin-bottom: 0.3rem;
+    margin-bottom: 0rem;
+    color: var(--fg-color-1);
 }
 
 article.project .posts-list h3 {

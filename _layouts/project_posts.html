@@ -60,11 +60,12 @@ layout: default
                     <img src="{{ post.image_thumbnail | default: post.image }}">
                     <div class="post-card-content">
                         <p class="posts-list-meta">
+                            {% if page.lang == 'en' %}
+                                Post
+                            {% else %}
+                                Billet
+                            {% endif %}
                             #{{ post.entry }}
-                            <span class="posts-list-date">
-                                -
-                                {{ post.date | date_custom: page.lang }}
-                            </span>
                         </p>
                         <h3 class="post-card-title">{{ post.title }}</h3>
 
