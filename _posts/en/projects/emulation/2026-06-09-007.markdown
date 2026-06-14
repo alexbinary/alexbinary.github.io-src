@@ -21,7 +21,7 @@ As usual, I test the circuit by manually controlling the input signals. At first
 
 <div class="inline-image-container">
 
-    <div class="inline-image-container-row width-50">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/007/d-flip-flop.JPG"
@@ -30,7 +30,7 @@ As usual, I test the circuit by manually controlling the input signals. At first
 
     </div>
     
-    <div class="inline-image-container-row width-50">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/007/sn74ls02.png"
@@ -44,7 +44,7 @@ As usual, I test the circuit by manually controlling the input signals. At first
 
     </div>
 
-    <div class="inline-image-container-row width-50">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/007/IMG_7416.JPG"

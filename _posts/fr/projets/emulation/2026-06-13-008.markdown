@@ -1,0 +1,362 @@
+---
+layout: project_post
+project_id: a10edb47-8a09-4f84-9f5d-214ac597b2ad
+entry: "008"
+title: Création d'un périphérique adressable en lecture par le 6502
+topics: [6502, arduino, electronics, programming]
+image: /assets/projects/emulation/008/IMG_7440.JPG
+image_thumbnail: /assets/projects/emulation/008/IMG_7440.JPG
+githubs:
+- https://github.com/alexbinary/arduino-6502
+permalink: /fr/projets/emulation/billets/008
+lang: fr
+lang_en: /en/projects/emulation/posts/008
+---
+
+
+Maintenant que le 6502 est en mesure de piloter une LED via une bascule D, l'objectif est de lui faire lire une entrée externe, c'est-à-dire créer un périphérique auprès duquel le CPU va pouvoir lire une donnée. L'objectif est de connecter un bouton et permettre au processeur de venir lire son état en produisant une instruction de lecture à l'adresse mémoire attribuée au bouton.
+
+
+## Connexion au bus en écriture et état de haute impédance
+
+La première idée qui me vient est de connecter directement le bouton sur une ligne du bus de données, mais ça poserait problème quand le CPU ou d'autres périphériques veulent écrire eux-aussi sur le bus. Pour que la présence du bouton ne perturbe pas les autres communications, le bouton doit être capable de se connecter au bus uniquement quand il est activé en lecture par le CPU. On n'avait pas se problème avec la bascule car elle ne fait que lire le bus, alors que le bouton doit être en mesure d'imposer l'état du bus.
+
+J'ai rapidement l'idée d'utiliser deux transistors en série de sorte à pouvoir connecter le point milieu soit au +5V soit au 0V. Et si aucun des transistors n'est passant, la sortie est déconnectée. J'ai du voir passer ce genre de circuits plusieurs fois au cours de ma vie et j'ai l'impression de réinventer un étage de sortie de composant électronique. C'est passionnant. L'état déconnecté est appelé *état de haute impédance*, et les sorties capables de se placer dans cet état sont qualifiées de *sorties à 3 états* (*tri state* en anglais).
+
+Les transistors sont pilotés directement par la donnée ou par son inverse, selon le cas. A cela il faut ajouter un signal de contrôle qui permet d'activer ou pas la sortie. La base de chaque transistor est donc connectée à la sortie d'une porte logique qui combine la donnée et le signal de contrôle. Ce signal correspond au *Output Enable* qu'on retrouve typiquement sur les puces.
+
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/emulation/008/IMG_7446.JPG"
+            legend="Schéma de principe d'une sortie tri-state"
+        %}
+
+    </div>
+    
+</div>
+
+
+## La question de l'horloge
+
+Comme pour la bascule, il faut allouer une plage mémoire au bouton. Ma première idée était d'utiliser la plage `0x0000-0x3FFF` restée libre jusque là, mais ce n'est pas judicieux car je prévois d'ajouter la RAM par la suite et celle-ci devra couvrir les adresses `0x0100-0x01FF` pour la pile.
+
+Je décide donc d'allouer la même plage mémoire que pour la bascule. La distinction entre les deux périphérioques se fera avec le signal de lecture : la bascule répond uniquement en écriture, le bouton répondra uniquement en lecture.
+
+On veut donc un signal d'activation qui répond aux conditions suivantes :
+
+* `A15 = 0`
+* `A14 = 1`
+* `RW = 1`
+* `CLK` ?
+
+La question de l'horloge m'interpelle. Pour la bascule on utilisait l'horloge pour déclencher la capture de la donnée, mais ici vue que c'est le CPU qui lit la donnée, est-ce que le périphérique à besoin de faire quelque chose de particulier ? Est-ce que placer la donnée sur le bus tant que l'adresse et le RW sont bons suffit ? Comment être sûr que le bus est libre ?
+
+Curieux, j'interroge ChatGPT, qui me dit qu'il faut se connecter au bus seulement sur la période haute de l'horloge (quand le signal est à `1`), cette phase correspondant au moment où les signaux sont stables, la phase où l'horloge est à `0` étant celle où les choses se mettent en place. Il explique que le CPU lit les données vers la fin de la phase où l'horloge est à `1`.
+
+ChatGPT explique que les périphériques adressable en écriture devrait également lire les données vers la fin de la phase où l'horloge est à `1`. Ça m'interpelle parce que sur la bascule D que j'ai implémentée j'ai capturé la donnée sur le front montant de l'horloge, donc au tout début de la phase de signaux stables, et ça avait l'air de fonctionner. ChatGPT indique : "On a real 6502, the data is typically already valid by then, but you're leaving yourself less timing margin."
+
+Tout ça me pousse à m'intéresser de près aux question de timing.
+
+
+## Étude des timings
+
+À ce moment je sais qu'à chaque cycle d'horloge le CPU place une adresse sur le bus d'adresse et échange une donnée, mais j'ignore les détails et la séquence précise des événements. Je décide de revisionner la [vidéo de Ben Eater](https://www.youtube.com/watch?v=i_wrxBdXTgM&list=PLowKtXNTBypFbtuVMUVXNR0z1mu7dp7eH&index=6&t=56s) dans laquelle il explique les problématiques de timing à l'occasion de la connexion d'une puce de RAM. Ça m'aide bien à comprendre ce qui se joue dans un cycle d'horloge et à comprendre les diagrammes de timing.
+
+Dans la documentation du 6522, je constate qu'en effet la présence de la donnée est attendue autour du front descendant de l'horloge, et la l'opération de lecture semble se produire à ce moment là.
+
+
+<div class="inline-image-container force-desktop-full-width">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/emulation/008/w65c22 timing write.png"
+            legend="Schéma des timing du 6522 (extrait de la datasheet)"
+        %}
+
+    </div>
+
+</div>
+
+
+Je consulte ensuite la documentation du 6502. J'avais déjà survolé le diagramme des timings mais c'est le moment de s'y intéresser de plus près. Je comprends que pour que le CPU puisse lire une donnée de manière fiable celle-ci doit être stable pendant un certain temps avant et après le front descendant de l'horloge.
+
+Le diagramme montre que le CPU maintient l'adresse valide pendant une courte durée après le front descendant de l'horloge, et en regardant les valeurs je constate que cette durée est toujours égale à la durée de maintient attendue pour la donnée. Je me dis donc que si je laisse la donnée sur le bus aussi longtemps que l'adresse est valide ça fonctionnera, et que si au contraire je restreint à la plage où l'horloge est à `1` comme l'avait suggéré ChatGPT, alors la donnée ne sera pas maintenue assez longtemps. Mais est-on sûr que le bus est libre quand l'adresse est bonne ?
+
+ChatGPT me dit qu'au vu des délais de propagation, restreindre la donnée à la plage où l'horloge est à `1` fonctionne généralement sans problème, et c'est même la manière standard de faire.
+
+
+<div class="inline-image-container force-desktop-full-width">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/emulation/008/w65c02s timing.png"
+            legend="Schéma des timing du 6502 (extrait de la datasheet)"
+        %}
+
+    </div>
+
+</div>
+
+
+Je reviendrai sur les timings plus tard, pour l'instant je peux continuer avec l'implémentation.
+
+
+## Implémentation du circuit
+
+Finalement le signal d'activation répond à l'équation :
+
+`CS = OE = /A15 AND A14 AND RW AND CLK`
+{: style="text-align: center;"}
+
+Qu'on peut réécrire :
+
+`CS = OE = /A15 AND /(A14 NAND RW) AND CLK`
+{: style="text-align: center;"}
+
+Puis en utilsant le fait que `/a ET /b` est équivalent à `a NOR b` :
+
+`CS = OE = (A15 NOR (A14 NAND RW)) AND CLK`
+{: style="text-align: center;"}
+
+Et enfin on peut utiliser une `NAND` à la place du `AND` pour n'avoir que deux types de portes, ce qui inverse le signal de sortie :
+
+`/CS = /OE = (A15 NOR (A14 NAND RW)) NAND CLK`
+{: style="text-align: center;"}
+
+
+Le transistor du haut doit être actif quand la donnée est à `1`, et celui du bas quand la donnée est à `0`. il nous faut donc au minimum une inversion du signal de donnée. Par ailleurs, les transistor ne sont actifs que lorsque `CS` ou `OE` sont à `1`, on a donc :
+
+`Th = D AND CS`
+{: style="text-align: center;"}
+`Tl = /D AND CS`
+{: style="text-align: center;"}
+
+En utilisant à nouveau l'équivalent `AND`/`NOR` on peut obtenir :
+
+`Th = /D NOR /CS`
+{: style="text-align: center;"}
+`Tl = D NOR /CS`
+{: style="text-align: center;"}
+
+
+On a donc au total 2 `NAND` et 3 `NOR`. Les puces ont 4 portes de chaque donc c'est bon.
+
+
+Je commence par implémenter la logique, j'ajouterai les transistors ensuite. Avant de me lancer dans le câblage je dessine le schéma, je choisis quelles portes de quelles puces seront utilisées, et j'affiche sur mon écran la numérotation des pattes des puces. Tout se passe bien, mais au moment de connecter l'entrée je réalise que j'avais oublié de prévoir l'inversion nécessaire pour le transistor du haut. J'utilise pour cela une des `NAND` à disposition.
+
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/emulation/008/IMG_7448.JPG"
+            legend="Schéma des connexions logiques pour le Chip Select"    
+        %}
+
+    </div>
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/emulation/008/IMG_7447.JPG"
+            legend="Schéma des connexions logiques pour le contrôle des transistors"    
+        %}
+
+    </div>
+    
+</div>
+
+
+Comme toujours je commence par tester à la main. Je connecte tous les signaux de sorte à activer le *Chip Select* et je place la donnée à `1`. Quand j'alimente, le signal du transistor haut s'allume. C'est bon signe. Je joue avec les signaux et confirme que tout fonctionne comme prévu. Quand la donnée est à `1` le transistor haut est actif, quand la donnée est à `0` le transistor bas est actif, et quand toutes les conditions d'activation ne sont pas réunies aucun transistor n'est actif.
+
+Pour les transistors j'utilise des [P2N2222A](https://www.onsemi.com/pdf/datasheet/p2n2222a-d.pdf). Je me pose la question de savoir si je dois mettre une résistance sur la base. Ça dépend si les sorties des puces ont une résistance de limitation de courant ou pas. Vu que je mets une résistances quand je connecte des LEDs, et qu'elle brille normalement, j'en déduis qu'il n'y en a pas. ChatGPT me le confirme. Par la suite j'ai vérifié sur la documentation et on voit effectivement une résistance. D'ailleurs on retrouve le montage avec deux transistors et la sortie au point milieu, comme ce qu'on est en train de faire. Je procède au montage, et je connecte une LEDs à la sortie du montage avec une résistance. Je teste et ça fonctionne bien.
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/emulation/008/sn74ls02 elec.png"
+            legend='Schéma électrique des sorties du 74LS02<br>(extrait de la <a href="https://www.ti.com/lit/ds/symlink/sn74ls02.pdf">datasheet</a>)'
+        %}
+
+    </div>
+    
+</div>
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/emulation/008/IMG_7440.JPG"
+            legend="Montage quasi complet du périphérique d'entrée"
+        %}
+
+    </div>
+
+</div>
+
+
+Je voudrais confirmer expérimentalement la connexion/déconnexion au bus avec le multimètre, mais je ne suis pas sûr ce que je dois observer. Je connecte le multimètre sur la sortie et j'observe :
+
+| État | Tension |
+|------|---------|
+| Donnée à `1` | 3.3 V |
+| Donnée à `0` | 0 V   |
+| Désactivé    | 0 V   |
+
+À l'état `1` la sortie affiche 3.3 V. C'est probablement du principalement à la résitance située avant les transistor. Je n'avais pas vérifié sur le moment mais la doc indique que les tensions seuil garanties sont 1,5 V pour un `0` et 3.5 V pour un `1`. On est donc un peu en dessous des limites garanties mais de peu, et ça a bien fonctionné.
+
+Quand le périphérique est sensé être déconnecté du bus je lis 0 V au voltmètre. Celui-ci affiche également cette valeur lorsque la sonde n'est connectée à rien, donc je suis pas certain de pouvoir conclure. Je demande à ChatGPT comment vérifier que la sortie est bien en état de haute impédance, et il me suggère de connecter une résistance entre VDD/Gnd et la sortie. Si celle-ci est bel et bien en état de haute impédance alors on devrait retrouver la tension VDD quand on est connecté à VDD et 0V quand on est connecté au Gnd. J'essaye et je confirme que c'est bien le cas. Un test plus fiable consisterait à mesurer le courant qui circule, mais je considère que c'est bon comme ça.
+
+
+<div class="inline-image-container force-desktop-full-width">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/emulation/008/w65c02s dc.png"
+            legend='Caractéristiques DC du 6502 (extrait de la <a href="https://www.ti.com/lit/ds/symlink/sn74ls02.pdf">datasheet</a>)'
+        %}
+
+    </div>
+    
+</div>
+
+
+## Connexion au 6502 et programme de test
+
+Je recâble les transistors de manière semie-permanente pour dégager un peu le circuit et libérer deux fils. L'idée est maintenant de tester le système complet avec le 6502, la bascule D, et le bouton. J'en profiterai au passage pour corriger la bascule avec ce que j'ai appris sur les timings. L'idée est de vérifier que la présence du bouton sur le bus n'affecte pas le fonctionnement du reste du système. Après ça j'écrirais un programme qui lit le bouton et actionne la diode en fonction de son état.
+
+Depuis la dernière fois j'avais déconnecté la bascule pour ranger. Pour la reconnecter je dois ressortir mes schémas et les diagrammes de pin des puces, et retrouver les correspondances sur le circuit. Ça demande pas mal d'effort et de concentration, surtout que j'ai peur de me tromper et de causer des dommages. Je garde dans un coin de ma tête de réfléchir à des techniques pour faciliter ce genre d'opérations à l'avenir.
+
+Je reconnecte donc la bascule et confirme que ça fonctionne toujours bien comme la dernière fois. Ensuite je fais passer le signal d'horloge dans un inverseur pour capturer la donnée sur le front descendant et non pas montant. Ça a l'air de bien fonctionner, pas de différence notable avec le test précédent. Je connecte enfin mon bouton, en connectant la première ligne de données `D0`. Comme le programme ne fait pas encore de lecture sur le bouton, la sortie est toujours en état de haute impédance, et la diode reflète donc les données qui passent sur le bus. Tout fonctionne comme attendu jusque là. Je passe maintenant à la programmation.
+
+Je reprends le programme précédent, et j'enlève tout pour ne garder qu'une boucle qui lit l'état du bouton et l'applique sur la LED en continu. Comme on l'a vu, la bascule et le bouton sont à la même adresse. Une lecture active le bouton, une écriture active la bascule. Voici le programme :
+
+| Adresse (CPU) | Donnée | Instruction |
+|--------|--------|-------------|
+| `0x8000` | `AD 00 40` | `LDA $4000` |
+| `0x8003` | `8D 00 40` | `STA $4000` |
+| `0x8006` | `4C 00 80` | `JMP $8000` |
+
+Je réutilise le montage et le code Arduino mis au point précédemment pour effacer le programme précédent et écrire le nouveau programme à la place. Je vérifie que tout est bon et je passe au test. 
+
+Je démarre le système après avoir connecter le bus de données à l'Arduino pour suivre l'exécution du programme. Les premiers résultats me laissent perplexes. Soudain je réalise que j'ai oublié d'alimenter le CPU ! Je corrige ça, mais ce n'est pas franchement mieux. Je réalise ensuite que j'ai oublié de remettre la ROM en place, elle est restée dans le programmeur ! Mes montages sont encore très expérimentaux et demandent de penser à de nombreux détails à chaque fois. Pas facile de garder tout en tête.
+
+Après ces corrections, les résultats sont nettement mieux, je vois bien une répétition commet attendu à cause de la boucle, mais les données ne sont pas tout à fait les bonnes. Je vois des valeurs proches mais différentes. J'inspecte le bus de données et je détecte deux fils inversés. Connecter une nappe de 8 fils sur une breadboard déjà très chargée n'est pas simple, et cette erreur ne me surprend absolument pas.
+
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/emulation/008/IMG_7441.JPG"
+            legend="J'ai inversé par erreur deux fils sur bus de données"
+        %}
+
+    </div>
+
+</div>
+
+
+Tout fonctionne globalement bien, j'identifie cependant deux problèmes.
+
+D'abord, la valeur lue par le CPU lorsqu'il interroge le bouton prend parfois la valeur `0x40` ou `0x41` au lieu de `0x00` et `0x01` comme ce à quoi je m'attendais. Ça s'explique en fait par le fait que seul `D0` est connecté au bouton, les autres lignes restent donc dans l'état de haute impédance, et les données lues par le CPU sont indéterminées, et en l'occurrence elles ont tendance à garder la dernière valeur présente sur le bus.
+
+Ensuite, et c'était innatendu, je constate que quand le CPU envoie un `1` à la bascule alors qu'elle est déjà à `1`, celle-ci passe à `0` pendant un cycle d'horloge avant de repasser à `1`. C'est très étrange. Sur le coup je ne voyais vraiment pas ce qui pouvais clocher. J'ai passé un certain temps à observer l'exécution du programme avec les données affichées par Arduino pour essayer de cerner le problème mais ça restait bien nébuleux.
+
+
+## Débogage de la bascule
+
+La première idée que j'ai eu, c'est que la bascule capture la donnée sur le front descendant de l'horloge mais du cycle d'avant. C'est la seule explication qui me paraissant plausible, bien que je ne vois pas comment ça aurait été possible. Le diagramme des timings du 6502 indique bien que le signal `RW` est maintenu à sa valeur valide un peu après le front descendant de l'horloge. Au moment du front descendant de l'horloge du cycle précédent il a donc encore la valeur "lecture", ce qui empêche normalement la bascule de s'activer.
+
+
+<div class="inline-image-container force-desktop-full-width">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/emulation/008/w65c02s timing 2.png"
+            legend="Schéma des timing du 6502 (extrait de la datasheet)"
+        %}
+
+    </div>
+
+</div>
+
+
+Je me dis alors que le problème vient peut-être de la manière dont j'ai implémenté la détection du front montant ou descendant de l'horloge dans la bascule. J'ai en effet connecté tous les signaux (adresse, `RW`, horloge) dans le circuit logique, et le résultat est ensuite injecté dans le détecteur de front. Or, avec cette architecture, on peut tout à fait générer une impulsion en dehors des fronts d'horloge. On aura en fait une impulsion à chaque fois que les signaux prennent tous les valeurs attendues. En l'occurrence, le signal `RW` se met en place dans la phase où l'horloge est à `0`. Comme j'ai inversé le signal reçu par la bascule, on lit donc un `1` à ce moment là, et le circuit génère donc une impulsion au moment où `RW` prend la bonne valeur, et ce n'est pas du tout ce qu'on veut.
+
+Je suis assez fier d'avoir compris ça, et j'entreprends donc de modifier le circuit pour positionner le détecteur de front en amont des portes logiques, de sorte à toujours conditionner le déclenchement de la bascule à un front d'horloge. Je connecte la sortie qui allait dans le détecteur directement à sa destination, puis je dévie l'entrée de l'horloge pour la faire passer dans le détecteur, et reconnecte la sortie du détecteur là où entrait l'horloge.
+
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/projects/emulation/008/IMG_7443.JPG"
+            legend="Schéma de principe de la modification à faire.<br>Le circuit RC sert à détecter les fronts du signal."
+        %}
+
+    </div>
+
+</div>
+
+
+Sur le moment j'ai l'impression que ça fonctionne car la LED ne s'éteint plus, mais en fait elle reste désormais allumée tout le temps, même si on écrit un 0. J'aurais peut-être du débrancher et valider mon diagnostic avant de faire la modif directement. J'étais sûr de moi, mais maintenant que je vois que la correction ne fonctionne pas comme attendu, je doute. Je me dis sans grand conviction que c'est peut-être un problème de timings, ou de temps de propagation dans les portes logiques.
+
+Je force le signal d'activation de la bascule et je constate qu'elle recopie le bus comme attendu (on dit qu'elle est dans un état *transparent*). Je branche ensuite le signal d'horloge directement sans inversion et sans passer par le détecteur de front. Ça fonctionne bien, mais ça ne me semble pas correcte sur le principe. Je voudrais capturer la donnée sur le front descendant de l'horloge. C'est ce qui me parait logique au vu de l'étude des timings vu plus haut.
+
+J'envisage alors que la durée de l'impulsion produite par mon détecteur de front est trop courte. En y repensant ça n'avait pas vraiment de sens. J'ai malgré tout essayé d'augmenter la valeur de la résistance, passant d'une centaine d'ohms à un mégaohm, et ça a reproduit le problème initial. Je me dis ensuite qu'au vu des timings du 6502 l'impulsion ne peut pas être "trop courte". Une impulsion arbitrairement courte devrait fonctionner. En revanche il est possible que ça pose problème avec les temps de propagation dans les portes logiques.
+
+
+## Le circuit final
+
+Je me sens un peu perdu alors j'interroge ChatGPT, mais à ce stade c'est surtout pour permettre à mon esprit de laisser décanter les événements. Je repense au fonctionnement des écritures en RAM/ROM, expliqué dans la vidéo de Ben Eater sur les timings. En fait la RAM/ROM écrit continuellement les données dès lors que la puce est activée et le signal d'écriture est actif, et elle fige simplement sa lecture au moment où un des signaux disparait. L'astuce est alors d'activer la puce uniquement sur la plage où le signal d'horloge est à `1`, puisque sur cette période le 6502 garantit que tous les signaux de contrôle sont valides et stables. Si on ne fait pas ça on court le risque de voir les signaux se déstabiliser dans un ordre imprévisible, ce qui peut amener dans le cas d'une mémoire à des écritures non désirées.
+
+Le 6502 ne garantie pas que la donnée qu'il envoie en écriture est valide et stable pendant toute la période où l'horloge est à `1`, seulement pendant une période autour du front descendant. Si la mémoire s'active dès lors que l'horloge est à `1`, alors elle capture potentiellement des données invalides. Mais comme elle capture en continu jusqu'à la fin du cycle, on est assuré que la dernière donnée capturée est valide. Dans le cas d'une mémoire, ou de ma bascule, ça ne pose pas de problème, mais je suis curieux de savoir s'il y a des cas où c'est gênant, et comment y remédier le cas échéant.
+
+J'imagine alors une seconde bascule qui capturerait la donnée de la première, mais cette fois réellement sur le front descendant de l'horloge. On aurait ainsi une première bascule qui capture en continue pendant le cycle d'écriture, et une seconde qui capture uniquement la valeur finale. On ne devrait pas avoir de problèmes de timing puisque la seconde capture se joue uniquement entre les deux bascules et que la première garde la donnée indéfiniment. ChatGPT confirme que c'est effectivement une solution commune, c'est satisfaisant.
+
+La solution pour ma bascule est donc d'activer la capture en continue tant que le signal d'horloge est à `1`, ce qui revient à connecter directement l'horloge sans inverseur et sans détecteur de front. J'avais testé cette configuration lors de mes explorations et ça fonctionnait effectivement bien. Je teste en accélérant l'horloge jusqu'à environ 1kHz, et la LED suit l'état du bouton avec un petit délai.
+
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-video-item.html
+            url="/assets/projects/emulation/008/IMG_7445.mp4"
+            legend="La diode suit l'état du bouton"
+        %}
+
+    </div>
+    
+</div>
+
+
+## Bilan et conclusion
+
+Finalement cette session aura été surtout l'occasion de se pencher en profondeur sur les questions de timing et d'interopérabilité des différents circuits. Avant ça je n'avais qu'une idée très floue de ce qui se passe dans un cycle d'horloge, j'en ai aujourd'hui une vision très précise, et j'en suis très content. Je n'aurais pas vu tout ça si je m'étais contenté d'utiliser le VIA comme prévu initialement.
+
+Quand j'ai installé la ROM je me souviens m'être demandé s'il était possible que le CPU écrive dedans, et j'avais conclu que non car la ROM attend que les signaux de contrôle soient orchestrés d'une manière précise et le CPU n'est pas équipé pour faire ça avec juste les bus de données et d'adresse. Je comprends désormais que ce serait en fait possible. Il suffit d'inclure le signal d'horloge dans le *Chip Select*.
+
+
+## La suite
+
+Tout est désormais prêt pour commencer à écrire des programmes interractifs, même si les possibilités sont encore limitées. J'envisage de remplacer la bascule par des registres type [74LS173](https://www.ti.com/lit/ds/symlink/sn54173.pdf) afin d'obtenir facilement autant de sorties qu'on veut. On peut même imaginer faire une sorte d'écran avec une matrice de LEDs. De la même manière, pour les entrées, je peux utiliser des circuits type [74LS244](https://www.ti.com/lit/ds/symlink/sn74ls244.pdf) pour connecter simplement plusieurs boutons. Je voudrais aussi encore ajouter la RAM (commandée, en attente de livraison), ce qui permettra aux programmes d'utiliser la pile.
+
+Il n'est pas nécessaire d'attendre que le système soit trop complexe pour commencer à explorer l'émulation, et c'est peut-être même mieux de commencer avec un système très simple. En revanche il est important que jai envie de jouer avec et que je prenne plaisir en le faisant, et le plus important pour moi pour ça désormais c'est de rendre le montage global plus propre et plus pérenne. Dans l'état actuel ce n'est vraiment pas pratique et les connexions n'inspirent pas confiance. Sans compter le fait que ça immobilise pas mal de matériel.
+
+J'ai réfléchi à plusieurs pistes pour rendre le montage plus propre. D'abbord les perfboards, mais ça ne m'inspire pas vraiment, je ne trouve pas ça très pratique. Faire des PCB pourrait être intéressant (j'ai eu l'occasion de faire mon premier PCB récemment et j'ai beaucoup aimé) mais il faut en commander au moins 5 voire 10 et ça me parait disproportionné étant donné que ça reste quand même un montage qui a vocation à évoluer. La meilleure solution est peut-être les PCB faits maison sur base imprimée en 3D. J'ai découvert ça récemment et ça pourrait être un bon cas d'usage. Les feuilles de cuivre nécessaires sont déjà dans mon panier sur AliExpress ;)

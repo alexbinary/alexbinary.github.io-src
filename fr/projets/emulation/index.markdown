@@ -72,6 +72,8 @@ J'utilise globalement les mêmes composants que Ben Eater dans ses vidéos, ou l
     <tr>
         <td>Portes logiques</td>
         <td>
+            <a href="https://www.ti.com/lit/ds/symlink/sn74ls00.pdf">74LS00</a>
+            <br class="mobile-only">
             <a href="https://www.ti.com/lit/ds/symlink/sn74ls02.pdf">74LS02</a>
             <br class="mobile-only">
             <a href="https://www.ti.com/lit/ds/symlink/sn74ls04.pdf">74LS04</a>
@@ -124,6 +126,11 @@ J'utilise globalement les mêmes composants que Ben Eater dans ses vidéos, ou l
         <td>Résistances</td>
         <td></td>
         <td><a href="https://fr.aliexpress.com/item/1005005855324735.html?spm=a2g0o.order_detail.order_detail_item.3.1e252dd0EBGFs9&gatewayAdapt=glo2fra">Ali<span class="desktop-only">Express</span></a></td>
+    </tr>
+    <tr>
+        <td>Transistors</td>
+        <td><a href="https://www.onsemi.com/pdf/datasheet/p2n2222a-d.pdf">P2N2222A</a></td>
+        <td><a href="https://fr.aliexpress.com/item/1005008742661048.html?spm=a2g0o.order_list.order_list_main.135.54745e5b3NOwNX&gatewayAdapt=glo2fra">Ali<span class="desktop-only">Express</span></a></td>
     </tr>
     <tr>
         <td>Arduino</td>
