@@ -49,7 +49,7 @@ I connect the control signals to the Arduino and write a test program. I start b
 
 <div class="inline-image-container mobile-column force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-video-item.html
             url="/assets/projects/emulation/004/IMG_7403.mp4"
@@ -99,7 +99,7 @@ At first, nothing worked. The reason was I had forgotten to connect the `SER`, `
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/004/IMG_7408.JPG"

@@ -30,7 +30,7 @@ Comme d'habitude je teste en contrôlant manuellement les signaux d'entrée. Au 
 
     </div>
     
-    <div class="inline-image-container-row">
+    <div class="inline-image-container-row force-mobile-row">
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/007/sn74ls02.png"

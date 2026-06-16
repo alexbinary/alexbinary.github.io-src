@@ -142,7 +142,7 @@ The star-shaped design introduces an interesting geometric problem regarding the
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites_v1/boites_v1_10.png"

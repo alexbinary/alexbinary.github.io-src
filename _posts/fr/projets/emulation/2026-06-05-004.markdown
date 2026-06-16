@@ -50,7 +50,7 @@ Je connecte les signaux de contrôle sur l'Arduino et code un programme de test.
 
 <div class="inline-image-container mobile-column force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-video-item.html
             url="/assets/projects/emulation/004/IMG_7403.mp4"
@@ -102,7 +102,7 @@ Je teste maintenant d'ajouter un registre. Je le place sur la breadboard à côt
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/004/IMG_7408.JPG"

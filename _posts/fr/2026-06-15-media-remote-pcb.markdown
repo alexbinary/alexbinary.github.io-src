@@ -124,7 +124,7 @@ Pour souder l'ESP32 j'ai prévu sur le PCB des trous alignés avec ceux de la bo
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7488.JPG"

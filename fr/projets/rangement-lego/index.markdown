@@ -37,7 +37,7 @@ Jusqu'à quatre cloisons peuvent être ajoutées dans la largeur et deux dans la
 
     </div>
 
-    <div class="inline-image-container-row">
+    <div class="inline-image-container-row force-mobile-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/papimax1.jpg"
@@ -90,7 +90,7 @@ Après une séance de formation, j'ai commencé à expérimenter avec cette mach
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/laser1.jpg"
@@ -143,7 +143,7 @@ Partant de là, en partant du principe que ma boite de base fait 2x2 unités de 
 
 <div class="inline-image-container mobile-column force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites2.jpg"
@@ -163,7 +163,7 @@ Partant de là, en partant du principe que ma boite de base fait 2x2 unités de 
 
     </div>
     
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/phase1/7.jpg"
@@ -197,7 +197,7 @@ Les boites constituaient un bon début, mais j'avais désormais besoin d'un endr
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/casier1_3.jpg"
@@ -230,7 +230,7 @@ Après quelques recherches j'ai trouvé un modèle de glissières à sortie tota
 
 <div class="inline-image-container">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="https://m.media-amazon.com/images/I/61StOmAlP4L._AC_SX425_.jpg"
@@ -254,7 +254,7 @@ Le résultat était nettement meilleur.
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/phase1/15.jpg"
@@ -285,7 +285,7 @@ Par rapport au modèle précédent j'ai ajouté une cloison qui coupe le tiroir 
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
         
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/menuiserie2.jpg"
@@ -307,7 +307,7 @@ J'ai ensuite continué à expérimenter avec de nouvelles techniques et nouveaux
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/phase1/1.jpg"
@@ -338,7 +338,7 @@ Je me suis inspiré du système [Gridfinity](https://www.youtube.com/watch?v=ra_
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
         
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/alex 3.jpg"
@@ -364,7 +364,7 @@ Cependant, l’idée des boîtes et des grilles imprimées en 3D m’a bien plu 
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
         
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boxes 1.jpg?"
@@ -397,7 +397,7 @@ J’ai fabriqué un module à un compartiment pour valider le concept, puis je s
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
         
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/leka 2.jpg"

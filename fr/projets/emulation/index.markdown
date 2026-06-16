@@ -165,7 +165,7 @@ J'ai ensuite connecté les lignes d’adresses et de données à l'Arduino ainsi
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/002/IMG_7383.JPG"
@@ -192,7 +192,7 @@ La manip avec l'Arduino est sympa pour tester, mais dans le système final c'est
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/002/IMG_7389.JPG"

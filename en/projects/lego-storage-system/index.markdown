@@ -37,7 +37,7 @@ Up to four dividers can be added in width and two in length to form up to 15 com
 
     </div>
 
-    <div class="inline-image-container-row">
+    <div class="inline-image-container-row force-mobile-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/papimax1.jpg"
@@ -90,7 +90,7 @@ After a training session, I started experimenting with this machine, and I quick
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/laser1.jpg"
@@ -143,7 +143,7 @@ From there, assuming my base box is 2x2 units wide and 2 plates high, I experime
 
 <div class="inline-image-container mobile-column force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boites2.jpg"
@@ -163,7 +163,7 @@ From there, assuming my base box is 2x2 units wide and 2 plates high, I experime
 
     </div>
     
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/phase1/7.jpg"
@@ -197,7 +197,7 @@ The boxes were a good start, but now I needed a place to store them. I started e
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/casier1_3.jpg"
@@ -230,7 +230,7 @@ After some research, I found a model of full extension slides on Amazon, availab
 
 <div class="inline-image-container">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="https://m.media-amazon.com/images/I/61StOmAlP4L._AC_SX425_.jpg"
@@ -254,7 +254,7 @@ The result was significantly better.
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/phase1/15.jpg"
@@ -285,7 +285,7 @@ Compared to the previous model, I added a partition that cuts the drawer in two 
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
         
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/menuiserie2.jpg"
@@ -309,7 +309,7 @@ The modular box system allows carrying, moving, and arranging compartments in dr
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/phase1/1.jpg"
@@ -340,7 +340,7 @@ I got inspired by the [Gridfinity](https://www.youtube.com/watch?v=ra_9zU-mnl8) 
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
         
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/alex 3.jpg"
@@ -366,7 +366,7 @@ However the 3D printed boxes and grids idea stuck and I started using it in my p
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
         
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/boxes 1.jpg?"
@@ -401,7 +401,7 @@ I made a one-compartment module to validate the design, and then went on with a 
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
         
         {% include inline-image-item.html
             url="/assets/projects/lego-storage-system/leka 2.jpg"

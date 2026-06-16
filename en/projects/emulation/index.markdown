@@ -162,7 +162,7 @@ For this kind of experiment, the Arduino generates the clock signal. I chose thi
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/002/IMG_7383.JPG"
@@ -190,7 +190,7 @@ The Arduino setup was useful for testing, but in the final system the EEPROM wil
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/002/IMG_7389.JPG"

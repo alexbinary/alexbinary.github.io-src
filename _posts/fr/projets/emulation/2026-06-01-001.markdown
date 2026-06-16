@@ -46,7 +46,7 @@ Lorsque le processeur démarre ou est réinitialisé, il va chercher l'adresse d
 
 <div class="inline-image-container force-desktop-full-width">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-video-item.html
             url="/assets/projects/emulation/001/ADDR.mp4"

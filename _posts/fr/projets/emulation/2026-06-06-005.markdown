@@ -129,7 +129,7 @@ Pour bien valider mes observations, je branche rapidement le signal `/WE` sur un
 
 <div class="inline-image-container">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-video-item.html
             url="/assets/projects/emulation/005/pinMode3.mp4"
@@ -154,7 +154,7 @@ Pour essayer de faire les choses correctement, je parcours les datasheet des dif
 
 <div class="inline-image-container">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/005/delay.png"
@@ -170,7 +170,7 @@ J'interroge ChatGPT qui n'est pas d'une grande aide, mais me permet quand même 
 
 <div class="inline-image-container">
 
-    <div class="inline-image-container-row mobile-column">
+    <div class="inline-image-container-row">
 
         {% include inline-image-item.html
             url="/assets/projects/emulation/005/delay2.png"
