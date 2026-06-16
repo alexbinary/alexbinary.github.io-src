@@ -693,8 +693,7 @@ ul.list-pointer-style li::before {
 
 .post-cards-container {
     display: grid;
-    /* grid-template-columns: 1fr 1fr; */
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 1rem;
 }
 
@@ -738,7 +737,6 @@ ul.list-pointer-style li::before {
 
 .post-card .post-card-meta {
     color: var(--fg-color-1);
-    /* font-size: 0.8rem; */
     margin-bottom: 0;
 }
 
