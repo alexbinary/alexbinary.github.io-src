@@ -47,6 +47,7 @@ lang_en: /
 {% assign posts = site.posts
     | where: "lang", page.lang
     | where: "project_id", empty
+    | sort: "date"
     | limit: 2 %}
 {% if posts != empty %}
     <section>

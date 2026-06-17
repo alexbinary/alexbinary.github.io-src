@@ -39,9 +39,9 @@ From the previous prototypes I had already developed a 3D model of the enclosure
 </div>
 
 
-The first objective before soldering the PCB is to decide which switches to install. I have a collection of very common 6×6 mm tactile switches with various stem heights. The stem height is closely related to the final thickness of the remote, so choosing the right one is important.
+The first objective before soldering the PCB is to decide which switches to install. I have a collection of very common 6×6 mm tactile switches with various stem heights. The stem height is closely related to the final thickness of the remote, so choosing the right one is important. To determine the ideal stem height, I use the 3D model I prepared.
 
-To determine the ideal stem height, I use the 3D model I prepared. First, I take a few measurements to verify the model and adjust it if necessary. I confirm that the PCB is indeed 1.6 mm thick as expected. With the ESP32 installed, the total height is about 6 mm, and with the battery it reaches roughly 7 mm. Since the body of the switches is 4.7 mm high, the battery appears to be the component that determines the minimum enclosure thickness. I update the model accordingly.
+Before going in I take a few measurements to verify the model and adjust it if necessary. I confirm that the PCB is indeed 1.6 mm thick as expected. With the ESP32 installed, the total height is about 6 mm, and with the battery it reaches roughly 7 mm. Since the body of the switches is 4.7 mm high, the battery appears to be the component that determines the minimum enclosure thickness. I update the model accordingly.
 
 Before calculating the required button dimensions, I try to reduce the overall thickness as much as possible. The enclosure of the first prototype was 19 mm thick, and for this new version I'd like to see how thin I can make it. At the very beginning of the project, I built a mock-up to determine the ideal shape and concluded that 10 mm would be a good target thickness. That seems ambitious, but I am curious to see if I eventually achieve it.
 
@@ -265,7 +265,7 @@ I reconnect the battery and hear crackling again. This time I grab a multimeter 
 
 I reconnect the battery while listening carefully, and everything seems fine. Finally. I flip the power switch on and the remote works perfectly.
 
-In the end, there were quite a few issues after soldering, but nothing serious. Everything was resolved quickly, and I can now move on to the enclosure.
+In the end, there were quite a few issues after soldering, but nothing serious (for now). Everything was resolved quickly, and I can now move on to the enclosure.
 
 
 ## Printing the enclosure
@@ -386,7 +386,7 @@ I disconnected everything, unplugged the battery, and connected the board to my 
 
 I noticed that the ESP felt warm, and that immediately reminded me of a previous prototype that had died in a similar fashion. I checked it with a multimeter and the pin that normally outputs 3.3 V was dead, whereas on a working ESP board, I could clearly measure 3.3 V there.
 
-At that point I started questioning myself. This was the second prototype that had failed in the same manner. I began wondering whether I was doing something that ESP boards simply don't tolerate. Something related to the battery or power circuitry.
+At that point I started questioning myself. This was the second prototype that had failed in the same manner. I began wondering whether I was doing something that ESP boards simply don't tolerate. Something related to the battery or power circuitry. Of course the shorts in the battery connector might have had something to do with the failure of this board, but it probably wasn't the whole story.
 
 While I was working on the enclosure I also spent some time discussing the issue with ChatGPT. I mostly use it as a thinking tool and an idea generator. I try to describe the problem and the sequence of events as clearly as possible. Then I read its suggestions and see whether any of them resonate with me. I reply with whatever thoughts come to mind and use the conversation to drive my thinking forward.
 
@@ -442,13 +442,13 @@ I decide to increase the enclosure height by 1 mm. That won't significantly affe
 The button-cap mechanism doesn't feel ideal to me, and I may revisit it in the future. In reality, the biggest issue is that now that the remote has become dramatically thinner, the switch bodies themselves are starting to feel oversized. I make a note to look for thinner switches, assuming such components exist.
 
 
-## End-of-day assessment
+## Closing thoughts
 
 I end the day feeling tired and somewhat discouraged. The exact reason why the ESP boards failed remains unclear, and that leaves me with the impression that the system as a whole is fragile—that the board could die at any moment because of some seemingly harmless action. I really don't like that feeling. The enclosure and the buttons also leave me with mixed impressions. On one hand, the whole thing feels flimsy. On the other hand, there are still friction points. 
 
 Overall, I'm not particularly happy with the result, but I think that's mostly the fatigue and frustrations of the day talking. I try to take a more objective look at what was actually accomplished. I successfully validated that the PCB works and that I can reliably solder components onto it. The PCB allowed me to significantly refine the overall design of the remote control, which was the primary goal of this iteration. That's undeniably positive.
 
-All the remaining issues appear solvable. For the ESP, even though the exact cause of the failures is still unclear, I now have a concrete lead. For the enclosure and buttons, I can explore ways of joining the two halves together, perhaps using screws or magnets. As for the buttons, I've already identified some ultra-low-profile switches that could improve the mechanism.
+All the remaining issues appear solvable. For the ESP, even though the exact cause of the failures is still unclear, I will connect the battery directly and be more careful when manipulating the board. For the enclosure and buttons, I can explore ways of joining the two halves together, perhaps using screws or magnets. As for the buttons, I've already identified some ultra-low-profile switches that could improve the mechanism.
 
 I have a stockpile of PCBs available, which means I can afford to experiment with the mechanical aspects of the design. I'd love to find a way to connect and disconnect the ESP32 board from the PCB without having to solder it every time. That would be ideal. In the future, I could design a dedicated breakout board and connect it to the main PCB using a flat connector. There are plenty of possibilities and thinking about this makes me excited again.
 

@@ -22,7 +22,7 @@ Ces dernières semaines j'ai appri à utiliser KiCad et j'ai conçu mon premier 
 
 ## Mise à jour du modèle 3D et choix des boutons
 
-Pour les prototypes précédents j'avais mis au point un modèle 3D du boitier. Quand j'ai conçu le PCB j'ai mis à jour le modèle pour l'adapter, et j'ai intégré une représentation du PCB en reprenant les dimensions du PCB directement depuis KiCad une fois que le design était à peu près stable. Par la suite j'ai ajusté en continu pour suivre les révisions.
+Pour les prototypes précédents j'avais mis au point un modèle 3D du boitier. Quand j'ai conçu le PCB j'ai mis à jour le modèle pour l'adapter et j'ai intégré une représentation du PCB en reprenant les dimensions du PCB directement depuis KiCad une fois que le design était à peu près stable. Par la suite j'ai ajusté en continu pour suivre les révisions.
 
 
 <div class="inline-image-container">
@@ -39,9 +39,9 @@ Pour les prototypes précédents j'avais mis au point un modèle 3D du boitier. 
 </div>
 
 
-Le premier objectif avant la soudure est de choisir les boutons à souder. J'ai à ma disposition une collection de petits boutons tactiles 6x6mm ultra classiques avec différentes tailles de tiges. La taille de la tige du bouton est étroitement liée à l'épaisseur finale de la télécommande, il est donc important de choisir la bonne.
+Le premier objectif avant la soudure est de choisir les boutons à souder. J'ai à ma disposition une collection de petits boutons tactiles 6x6mm ultra classiques avec différentes tailles de tiges. La taille de la tige du bouton est étroitement liée à l'épaisseur finale de la télécommande, il est donc important de choisir la bonne. Pour déterminer la taille de tige idéale pour les boutons je me sers du modèle 3D que j'ai préparé.
 
-Pour déterminer la taille de tige idéale pour les boutons je me sers du modèle 3D que j'ai préparé. Avant toute chose je refais quelques mesures pour vérifier et ajuster le modèle si nécessaire. Je confirme que l'épaisseur du PCB est bien de 1,6 mm d'épaisseur comme prévu. Avec l'ESP32 dessus j'ai un total d'environ 6 mm, et avec la batterie ça monte à environ 7 mm. La base des boutons culminant à 4.7mm, c'est donc *a priori* la batterie qui conditionne l'épaisseur minimale du boitier. Je modifie le modèle en conséquence.
+Avant toute chose je refais quelques mesures pour vérifier et ajuster le modèle si nécessaire. Je confirme que l'épaisseur du PCB est bien de 1,6 mm d'épaisseur comme prévu. Avec l'ESP32 dessus j'ai un total d'environ 6 mm, et avec la batterie ça monte à environ 7 mm. La base des boutons culminant à 4.7mm, c'est donc *a priori* la batterie qui conditionne l'épaisseur minimale du boitier. Je modifie le modèle en conséquence.
 
 Avant de mesurer la taille nécessaire pour les boutons, je cherche à réduire l'épaisseur globale au minimum. Le boitier du premier prototype fait 19mm, et pour cette nouvelle version j'aimerais voir jusqu'où je peux aller dans la finesse. Au tout début du projet j'avais fabriqué une maquette pour déterminer la forme idéale, et j'avais déterminé 10mm d'épaisseur. Ça parait ambitieux, il serait intéressant de voir si j'arrive un jour à l'atteindre.
 
@@ -49,7 +49,7 @@ Un élément qui joue sur l'épaisseur totale c'est l'espace laissé entre le fo
 
 Mon boitier est construit en deux parties, une pour le dessus et une pour le dessous. Jusque là les fonds faisaient 2mm d'épaisseur. Ça me semblait un minimum pour assurer une bonne rigidité, mais j'ai envie d'essayer 1mm. Avec tous ces changements j'arrive quasiment à 10mm d'épaisseur. Ça m'étonne presque et m'enthousiasme beaucoup.
 
-Le modèle étant à jour, je peux reprendre le calcul des boutons. Je détermine qu'une taille de tige telle qu'une hauteur totale depuis la face inférieure du PCB donne 8mm est idéale. Dans ma collection les modèles les plus proches font soit un peu moins, soit un peu plus.  La tige du bouton sert à guider les capsules qui recouvrent les boutons et j'ai peur que les capsules ne soient pas bien guidées si le bouton est trop petit. Je peux toujours accomoder un bouton un peu trop grand en ajustant la capsule, mais l'inverse semble plus embêtant. Je choisis donc le plus grand.
+Le modèle étant à jour, je peux reprendre le calcul des boutons. Je détermine qu'une taille de tige telle qu'une hauteur totale depuis la face inférieure du PCB donne 8mm est idéale. Dans ma collection les modèles les plus proches font soit un peu moins, soit un peu plus. Dans mon design la tige du bouton est utilisée pour guider les capsules qui recouvrent les boutons et j'ai peur que les capsules ne soient pas bien guidées si le bouton est trop petit. Je peux toujours accomoder un bouton un peu trop grand en ajustant la capsule, mais l'inverse semble plus embêtant. Je choisis donc le plus grand.
 
 
 <div class="inline-image-container force-desktop-full-width">
@@ -66,7 +66,7 @@ Le modèle étant à jour, je peux reprendre le calcul des boutons. Je détermin
 </div>
 
 
-Au final j'ai passé une bonne partie d'une soirée à réfléchir aux dimensions, mesurer les composants, ajuster le modèle et choisir les boutons. J'ai l'impression d'avoir passé bien plus de temps que nécessaire. Je crois que je n'arrivais pas bien à visualiser le lien entre toutes les dimensions qui entrent en jeu. J'ai choisi de placer la ligne de jointure au milieu du port USB, et les calculs se font donc toujours plus ou moins par rapport à lui, et je crois que sur le coup ça m'a un peu embrouillé. J'avais peut-être aussi peur de me tromper dans le choix des boutons et de devoir recommencer la soudure, même si en soit n'est pas bien grave. J'étais peut-être simplement fatigué. Quoi qu'il en soit je n'ai pas lâché l'affaire et j'ai abouti à une situation dont j'étais satisfait et je me sentais prêt à attaquer la soudure le lendemain.
+Au final j'ai passé une bonne partie d'une soirée à réfléchir aux dimensions, mesurer les composants, ajuster le modèle et choisir les boutons. J'ai l'impression d'y avoir passé bien plus de temps que nécessaire. Je crois que je n'arrivais pas bien à visualiser le lien entre toutes les dimensions qui entrent en jeu. J'ai choisi de placer la ligne de jointure au milieu du port USB, et les calculs se font donc toujours plus ou moins par rapport à lui, et je crois que sur le coup ça m'a un peu embrouillé. J'avais peut-être aussi peur de me tromper dans le choix des boutons et de devoir recommencer la soudure, même si en soit ce n'est pas bien grave. J'étais peut-être simplement fatigué. Quoi qu'il en soit je n'ai pas lâché l'affaire et j'ai abouti à une situation dont j'étais satisfait et je me sentais prêt à attaquer la soudure le lendemain.
 
 
 ## Préparation de la soudure
@@ -224,7 +224,7 @@ La carte terminée, je décide de tester le fonctionnement. C'est le moment de v
 
 Initialement aucun bouton ne fonctionne. Je réfléchis un instant. Quand un bouton est enfoncé il est sensé connecter le 3.3V à une des broches de l'ESP32. Je réalise que j'ai oublié de souder la broche du 3.3V sur l'ESP32. J'ai utilisé un *power plane* pour amener le 3.3V aux boutons, et il n'y a donc pas de piste clairement visible qui va à l'ESP. C'est probablement pour ça que quand j'ai déterminé que je n'avais pas besoin de souder toutes les broches j'ai zappé celle-ci. Je vérifie que je n'ai pas oublié d'autres connexions, je corrige, et les boutons fonctionnent désormais.
 
-Maintenant c'est le bouton pour passer à la piste de sous-titres précédente qui ne fonctionne pas. Il est sensé envoyer la touche C. Je vérifie dans un bloc note et effectivement il n'envoie rien. Je vérifie le code mais rien ne me saute aux yeux. Je vérifie les soudures, idem. J'essaie d'amener manuellement le 3.3V sur la broche de l'ESP32 sans passer par le bouton, et il ne se passe rien, alors que le même test sur le broche voisine déclenche bien l'envoie touche correspondante. Ça suggère un problème logiciel. Je me replonge dans le code, et je me souviens quand les précédentes versions j'utilisais la broche A0 pour lire la tension de la batterie. Je n'utilise pas cette fonction ici mais ça interfère probablement. Je décide de supprimer tout le code relatif au suivi de la batterie puisque je mon PCB ne permettra pas d'implémenter ce genre de fonctions de toute façon. Ça résout effectivement le problème.
+Maintenant c'est le bouton pour passer à la piste de sous-titres précédente qui ne fonctionne pas. Il est sensé envoyer la touche C. Je vérifie dans un bloc note et effectivement il n'envoie rien. Je vérifie le code mais rien ne me saute aux yeux. Je vérifie les soudures, idem. J'essaie d'amener manuellement le 3.3V sur la broche de l'ESP32 sans passer par le bouton, et il ne se passe rien, alors que le même test sur le broche voisine déclenche bien l'envoie touche correspondante. Ça suggère un problème logiciel. Je me replonge dans le code, et je me souviens que dans les précédentes versions j'utilisais la broche A0 pour lire la tension de la batterie. Je n'utilise pas cette fonction ici mais ça interfère probablement. Je décide de supprimer tout le code relatif au suivi de la batterie puisque je mon PCB ne permettra pas d'implémenter ce genre de fonctions de toute façon. Ça résout effectivement le problème.
 
 Finalement, c'est le bouton pour naviguer dans les pistes audio qui ne se comporte pas correctement. Il envoie systématiquement deux fois la touche. Les deux boutons sont connectés sur deux broches voisines. En inspectant de près les connexion, je crois voir un minuscule pont de soudure entre les deux. Je nettoie et c'est résolu.
 
@@ -237,7 +237,7 @@ Très rapidement après la connexion, j'entends des crépitements. Je débranche
 
 En inspectant les soudures du connecteur batterie je crois voir une connexion entre les deux pastilles. Je nettoie rapidement, et j'en profite pour enlever les salissures laissées par la soudure sur le reste de la carte et inspecter rapidement toutes les soudures. Je rebranche l'ESP32 au PC et tout fonctionne bien. Je suis rassuré.
 
-Je reconnecte la batterie et j'entends encore des crépitements. Cette fois je vérifie au multimètre et je confirme qu'il y a encore un court circuit entre les bornes du connecteur de la batterie. C'est vraiment le pire endroit pour intervenir car il est situé juste à côté de l'ESP32 et l'endroit n'est pas hyper accessible. C'étais quasiment mes premières soudures de la journée et elles pourraient être mieux. Les pastilles du PCB sont vraiment proches et j'ai mis beaucoup d'étain. J'aspire avec la pompe à désouder et c'est déjà plus propre. Je vérifie au multimètre et c'est tout bon ! J'espère maintenant que la batterie n'a pas subit de dommages.
+Je reconnecte la batterie et j'entends encore des crépitements. Cette fois je vérifie au multimètre et je confirme qu'il y a encore un court circuit entre les bornes du connecteur de la batterie. C'est vraiment le pire endroit pour intervenir car il est situé juste à côté de l'ESP32 et l'endroit n'est pas hyper accessible. C'était quasiment mes premières soudures de la journée et elles pourraient être mieux. Les pastilles du PCB sont vraiment proches et j'ai mis beaucoup d'étain. J'aspire avec la pompe à désouder et c'est déjà plus propre. Je vérifie au multimètre et c'est tout bon ! J'espère maintenant que la batterie n'a pas subit de dommages.
 
 
 <div class="inline-image-container force-desktop-full-width">
@@ -246,12 +246,12 @@ Je reconnecte la batterie et j'entends encore des crépitements. Cette fois je v
 
         {% include inline-image-item.html
             url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7466.JPG"
-            legend="Le connecteur batterie avant nettoyage"
+            legend="Le connecteur batterie avant intervention"
         %}
 
         {% include inline-image-item.html
             url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7468.JPG"
-            legend="Le connecteur batterie après nettoyage"
+            legend="Le connecteur batterie après intervention"
         %}
 
     </div>
@@ -261,12 +261,12 @@ Je reconnecte la batterie et j'entends encore des crépitements. Cette fois je v
 
 Je rebranche en tendant l'oreille, et ça semble ok. Enfin. J'allume l'interrupteur, et la télécommande fonctionne bien.
 
-Finalement il y a eu pas mal de petits soucis après la soudure mais rien de très grave, tout a été vite résolu. Je peux passer au boitier.
+Finalement il y a eu pas mal de petits soucis après la soudure mais rien de très grave (pour l'instant). Tout a été vite résolu. Je peux passer au boitier.
 
 
 ## Impression du boitier
 
-Avant d'imprimer le boitier, je dois encore ajuster l'ouverture pour l'interrupteur on/off. J'attendais de l'avoir soudé pour prendre les dimensions finales car contrairement aux boutons il n'a pas de point de montage totalement défini. J'ai prévu des pastilles rectangulaires sur lesquelles souder les pattes parallèlement au PCB, et la position est donc en partie déterminée lors de la soudure. Le positionnement latéral correspond bien à la position théorique. J'en profite pour réduire la marge pour essayer de faire venir le boitier au plus près du bouton.
+Avant d'imprimer le boitier, je dois encore ajuster l'ouverture pour l'interrupteur on/off. J'attendais de l'avoir soudé pour prendre les dimensions finales car contrairement aux boutons il n'a pas de point de montage totalement défini. Sur le PCB j'ai prévu des pastilles rectangulaires sur lesquelles souder les pattes parallèlement au PCB, et la position est donc en partie déterminée lors de la soudure. Le positionnement latéral correspond bien à la position théorique. J'en profite pour réduire la marge pour essayer de faire venir le boitier au plus près du bouton.
 
 J'ajoute aussi des arrondis sur les angles intérieurs pour améliorer la solidité. Le fait d'avoir réduit l'épaisseur des fonds crée maintenant une zone de pincement dans l'angle du fait de l'arrondi extérieur.
 
@@ -309,9 +309,9 @@ Comme le design est encore expérimental j'imprime une pièce à la fois plutôt
 
 ## Réparation du connecteur batterie
 
-Pendant que je travaillais sur Fusion pour préparer l'impression du boitier j'avais laissé le PCB à côté de moi avec la batterie connectée, et à un moment j'ai à nouveau entendu des crépitements. Cette fois avant de débrancher j'ai eu le temps de voir des étincelles. J'ai eu peur pour la batterie mais elle ne présentait pas de signes de domages, elle n'était même pas chaude. L'ESP lui m'a paru un peu tiède et ça m'inquiétait un peu.
+Pendant que je travaillais sur Fusion pour préparer l'impression du boitier j'avais laissé le PCB à côté de moi avec la batterie connectée, et à un moment j'ai à nouveau entendu des crépitements. Cette fois avant de débrancher j'ai eu le temps de voir des étincelles. J'ai eu peur pour la batterie mais elle ne présentait pas de signes de domages, elle n'était même pas chaude. L'ESP en revanche m'a paru un peu tiède et ça m'inquiétait un peu.
 
-Pendant que le boitier imprime j'inspecte donc à nouveau le connecteur batterie et cette fois il y a du noir. Je nettoie et je remets un coup de pompe à désouder. L'espacement entre les pattes du connecteur est 2mm, c'est peu. J'ai utilisé des pads plus petits que la normale pour éviter qu'ils se touchent mais ils sont c'est peut-être encore trop proches. Après avoir nettoyé je rebranche la batterie, sur le coup ça tient mais quand je joue un peu avec le connecteur ça se met à fumer. Aïe.
+Pendant que le boitier imprime j'inspecte donc à nouveau le connecteur batterie et cette fois il y a du noir. Je nettoie et je remets un coup de pompe à désouder. L'espacement entre les pattes du connecteur est 2mm, c'est peu. J'ai utilisé des pads plus petits que la normale pour éviter qu'ils se touchent mais ils sont peut-être encore trop proches. Après avoir nettoyé je rebranche la batterie, sur le coup ça tient mais quand je joue un peu avec le connecteur ça se met à fumer. Aïe.
 
 
 <div class="inline-image-container">
@@ -367,14 +367,14 @@ L'impression de la partie inférieure du boitier est terminée. J'avais peur que
 </div>
 
 
-Une fois imprimée j'assemble la partie supérieure du boitier, et quelque chose empêche de fermer complètement. Il s'avère que c'est le connecteur batterie. Décidément toujours lui. Je réalise que je ne l'avais pas pris en compte dans mes calculs d'épaisseur du début. En fait il ne fait que 6mm donc ça devrait passer, mais avec les péripéties de la journée il a fini soudé sans être enfoncé complètement. Malgré ça le boitier global est très fin et ça ma plait beaucoup.
+Une fois imprimée j'assemble la partie supérieure du boitier, et quelque chose empêche de fermer complètement. Il s'avère que c'est le connecteur batterie. Décidément toujours lui. Je réalise que je ne l'avais pas pris en compte dans mes calculs d'épaisseur du début. En fait il ne fait que 6mm donc ça devrait passer, mais avec les péripéties de la journée il a fini soudé sans être enfoncé complètement. Malgré ça le boitier global est très fin et ça me plait beaucoup.
 
 J'imprime un capuchon de bouton, je teste, et le boitier ne ferme pas, il y a quasiment 2mm de trop. Il faut donc maintenant ajuster les capuchons. Je note que pour les prochaines versions je peux prendre des boutons plus petits sans soucis, mais clairement pas des plus grands.
 
 
 ## Perte innatendue de l'ESP
 
-Pendant que la partie supérieure du boitier s'imprimait, j'ai testé un peu le système. La connexion bluetooth sautait sporadiquement quand je manipulait la batterie, indiquant que la carte perdait l'alimentation. C'est sans doute préférable à un court circuit, mais pas terrible quand même. Si je ne touchait à rien ça avait l'air de tenir, c'était déjà ça.
+Pendant que la partie supérieure du boitier s'imprimait, j'ai testé un peu le système. La connexion bluetooth sautait sporadiquement quand je manipulais la batterie, indiquant que la carte perdait l'alimentation. C'est sans doute préférable à un court circuit, mais pas terrible quand même. Si je ne touchais à rien ça avait l'air de tenir, c'était déjà ça.
 
 Et puis soudain tout s'est arrêté. J'ai d'abord soupçonné la batterie d'être à plat, alors j'ai essayé de la charger. Je n'ai pas osé brancher la carte au PC par peur des conséquences qu'un court circuit pourrait avoir sur celui-ci (même si en vrai je pense qu'il y a peu de risques). Je l'ai donc branchée au secteur. Ça a fonctionné. J'ai débranché pour inspecter les connexions au multimètre, tout était ok. J'ai rebrancheé au secteur, ça a fonctionné quelques instant et puis à nouveau plus de connexion bluetooth, alors que la carte était toujours branchée au secteur. C'était plutôt mauvais signe.
 
@@ -382,7 +382,7 @@ J'ai débranché et déconnecté la batterie, et branché au PC. ArduinoIDE ne v
 
 J'ai senti que l'ESP était chaude, et ça m'a rappellé un prototype précédent qui est mort de la même manière. J'ai testé au multimètre et la patte qui sort normalement le 3.3V ne sortait rien, alors que sur une ESP qui fonctionne et j'avais bien le 3.3V.
 
-À ce moment là j'ai commencé à sérieusement me remettre en question. C'était le deuxième prototype qui mourrait comme ça. Je me suis dis que je devait faire quelque chose que les ESP ne supportent pas. Quelque chose en rapport avec la batterie ou l'alimentation.
+À ce moment là j'ai commencé à sérieusement me remettre en question. C'était le deuxième prototype qui mourrait comme ça. Je me suis dis que je devais faire quelque chose que les ESP ne supportent pas. Quelque chose en rapport avec la batterie ou l'alimentation. Le court circtuit de la batterie n'avait sans doute pas aidé cette carte là, mais il n'y avait probablement pas que ça.
 
 En parallèle de l'impression et des tests du boîtier, j'ai interrogé ChatGPT. Je m'en sers surtout comme outil de réflexion et comme générateur d'idée. Je m'efforce de présenter le problème et décrire les événements. Je lis ce qu'il répond et vois si des choses me parlent. Je répond ce qui me passe par la tête pour alimenter la réflexion, etc.
 
@@ -394,11 +394,11 @@ La piste principale était que le circuit d'alimentation est mort, mais cela ne 
 
 ChatGPT a également mentionné que le fait que les boutons amènent directement le 3,3 V sur les GPIO peut être dangereux si ceux-ci sont configurés en sortie et positionnés à 0. Il a suggéré : *"Adding a 1 kΩ–10 kΩ series resistor between each button and the GPIO is cheap insurance"*. J'ai trouvé cela intéressant et je le garde en tête.
 
-J'ai également effectué quelques recherches pour voir comment les gens utilisent les ESP avec une batterie et comment ils connectent la batterie aux pastilles de connexion situées sous l'ESP. J'ai aussi cherché à savoir quelles sont les techniques courantes pour utiliser ce genre de connexions dans le cadre d'une liaison carte-à-carte. La technique qui m'a semblé la plus accessible consiste à placer un via en face de la pastille et à faire couler l'étain dedans. Ça m'a laissé un peu perplexe.
+J'ai également effectué quelques recherches pour voir comment les gens utilisent les ESP avec une batterie et comment ils connectent la batterie aux pastilles de connexion situées sous l'ESP. J'ai aussi cherché à savoir quelles sont les techniques courantes pour utiliser ce genre de connexions dans le cadre d'une liaison carte-à-carte. La technique qui m'a semblé la plus accessible consiste à placer un via en face de la pastille et à faire couler l'étain dedans, mais ça m'a laissé un peu perplexe.
 
 J'ai continué à converser avec ChatGPT et, à un moment, il a indiqué : *"The XIAO battery pads are intended for a LiPo connected all the time. Power transients from hot-plugging batteries can stress or even kill the regulator"*. Ça correspondait à ce que j'avais observé. Dans tous les exemples que j'avais vus, les gens soudent directement la batterie sur les pastilles. Je n'aime pas l'idée que la carte soit alimentée en permanence, c'est pour cette raison que j'ai mis un interrupteur marche/arrêt en série avec la batterie. Mais ChatGPT a indiqué que le fait de connecter et déconnecter la batterie, surtout lorsque l'USB est branché en même temps, peut solliciter fortement le module d'alimentation, qui peut finir par lâcher.
 
-J'aime quand un système est robuste, et j'aime tester ses limites. Dans le cas présent j'ai branché/débranché l'USB, connecté/déconnecté la batterie, etc. sans précautions particulières car je m'attends, ou en tout cas je souhaite, que le système supporte ce genre d'usages. Mais les événements récent  semblent indiquer que ce n'est peut-être pas le cas.
+J'aime quand un système est robuste, et j'aime tester ses limites. Dans le cas présent j'ai branché / débranché l'USB, connecté / déconnecté la batterie, etc. sans précautions particulières car je m'attends, ou en tout cas je souhaite, que le système supporte ce genre d'usages. Mais les événements récent  semblent indiquer que ce n'est peut-être pas le cas.
 
 Ce n'est pas une conclusion définitive car le prototype précédent que j'utilise régulièrement survit bien alors que j'ai tendance à déconnecter la batterie avec l'interrupteur plusieurs fois pendant un film, car la batterie ne tient pas très longtemps. Mais peut-être que c'est surtout quand l'USB est branché que ça pose problème.
 
@@ -407,7 +407,7 @@ Quoi qu'il en soit j'ai décidé qu'à partir de ce moment-là je connecterai la
 
 ## Deuxième carte et finalisation du boitier
 
-Le fabriquant du PCBs m'a fournit une dizaine de PCBs donc j'ai de la marge pour recommencer une nouvelle carte. J'ai tous les composants en de multiple exemplaires donc pas de soucis à ce niveau là. J'ai encore deux ESP32 en réserve. Il y a juste les boutons que j'ai en nombre limité. Je n'ai que 10 exemplaires de chaque taille de tige, mais il est toujours possible de s'adapter.
+Le fabriquant du PCB m'a fourni une dizaine d'exemplaires donc j'ai de la marge pour recommencer une nouvelle carte. J'ai tous les composants en de multiple exemplaires donc pas de soucis à ce niveau là. J'ai encore deux ESP32 en réserve. Il y a juste les boutons que j'ai en nombre limité. Je n'ai que 10 exemplaires de chaque taille de tige, mais il est toujours possible de s'adapter.
 
 Je décide donc de souder un nouvel exemplaire du PCB en laissant cette fois de côté tout ce qui touche à la batterie pour déjà voir si ça tient comme ça. Et si c'est le cas je rajouterai la batterie mais je remplacerai l'interrupteur par un fil.
 
@@ -443,9 +443,9 @@ Je termine la journée fatigué et un peu déprimé. Les causes de la perte des 
 
 Je pense que c'est surtout la fatigue et les déconvenues de la journée qui me font voir les choses en noir. J'essaie de faire un bilan objectif da la journée. J'ai validé que le PCB fonctionne et que je peux souder correctement les composants dessus, et le PCB a permi d'affiner significativement le design globale de la télécommande, ce qui était tout l'objectif. C'est très positif.
 
-Tous les problèmes qui subsistent peuvent trouver des solutions. Pour l'ESP, même si la cause exacte de la perte reste floue, je vais essayer de connecter directement la batterie. Pour le boitier et les boutons, je peux trouver comment assembler les deux parties du boitier ensemble, peut-être avec des vis ou des aimants. Pour les boutons, j'ai repéré des boutons ultra plats qui permettrait d'améliorer le mecanisme.
+Tous les problèmes qui subsistent peuvent trouver des solutions. Pour l'ESP, même si la cause exacte de la perte reste floue, je vais essayer de connecter directement la batterie et de faire plus attention dans mes manipulations. Pour le boitier et les boutons, je peux trouver comment assembler les deux parties du boitier ensemble, peut-être avec des vis ou des aimants. Pour les boutons, j'ai repéré des boutons ultra plats qui permettraient d'améliorer le mecanisme.
 
-J'ai un stock de PCBs donc je peux me permettre d'expérimenter les aspects mécaniques. J'aimerais bien trouver une manière de connecter/déconnecter la carte ESP32 sur le PCB sans la souder à chaque fois, ce serait idéal. Dans le futur je peux peut-être faire une *breakout boards* et utiliser un connecteur plat pour la relier à un PCB. Envisager ces possiblités me redonne le moral un peu.
+J'ai un stock de PCBs donc je peux me permettre d'expérimenter les aspects mécaniques. J'aimerais bien trouver une manière de connecter/déconnecter la carte ESP32 sur le PCB sans la souder à chaque fois, ce serait idéal. Dans le futur je peux peut-être faire une carte de dérivation (*breakout board*) et utiliser un connecteur plat pour la relier à un PCB. Envisager ces possiblités me redonne le moral un peu.
 
 
 <div class="inline-image-container">
