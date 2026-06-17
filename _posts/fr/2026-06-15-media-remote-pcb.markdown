@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Mise en place du PCB pour ma télécommande multimédia"
-topics: [soldering, pcb, troubleshooting, 3dmodelling]
+topics: [soudure, pcb, modelisation3d]
 image: /assets/posts/2026-06-15-media-remote-pcb/IMG_7458.JPG
 githubs:
 - https://github.com/alexbinary/media-remote
@@ -152,7 +152,7 @@ Je suis encore débutant en soudure mais je progresse. Depuis que j'ai ma statio
 
         {% include inline-image-item.html
             url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7459.JPG"
-            legend="Premières soudures"
+            legend="Premières soudures de la journée"
         %}
 
     </div>
@@ -237,6 +237,8 @@ Très rapidement après la connexion, j'entends des crépitements. Je débranche
 
 En inspectant les soudures du connecteur batterie je crois voir une connexion entre les deux pastilles. Je nettoie rapidement, et j'en profite pour enlever les salissures laissées par la soudure sur le reste de la carte et inspecter rapidement toutes les soudures. Je rebranche l'ESP32 au PC et tout fonctionne bien. Je suis rassuré.
 
+Je reconnecte la batterie et j'entends encore des crépitements. Cette fois je vérifie au multimètre et je confirme qu'il y a encore un court circuit entre les bornes du connecteur de la batterie. C'est vraiment le pire endroit pour intervenir car il est situé juste à côté de l'ESP32 et l'endroit n'est pas hyper accessible. C'étais quasiment mes premières soudures de la journée et elles pourraient être mieux. Les pastilles du PCB sont vraiment proches et j'ai mis beaucoup d'étain. J'aspire avec la pompe à désouder et c'est déjà plus propre. Je vérifie au multimètre et c'est tout bon ! J'espère maintenant que la batterie n'a pas subit de dommages.
+
 
 <div class="inline-image-container force-desktop-full-width">
 
@@ -256,8 +258,6 @@ En inspectant les soudures du connecteur batterie je crois voir une connexion en
 
 </div>
 
-
-Je reconnecte la batterie et j'entends encore des crépitements. Cette fois je vérifie au multimètre et je confirme qu'il y a encore un court circuit entre les bornes du connecteur de la batterie. C'est vraiment le pire endroit pour intervenir car il est situé juste à côté de l'ESP32 et l'endroit n'est pas hyper accessible. C'étais quasiment mes premières soudures de la journée et elles pourraient être mieux. Les pastilles du PCB sont vraiment proches et j'ai mis beaucoup d'étain. J'aspire avec la pompe à désouder et c'est déjà plus propre. Je vérifie au multimètre et c'est tout bon ! J'espère maintenant que la batterie n'a pas subit de dommages.
 
 Je rebranche en tendant l'oreille, et ça semble ok. Enfin. J'allume l'interrupteur, et la télécommande fonctionne bien.
 
@@ -367,162 +367,55 @@ L'impression de la partie inférieure du boitier est terminée. J'avais peur que
 </div>
 
 
-Pendant que la partie supérieure s'imprime, je teste un peu le système. À la connexion bluetooth qui saute je vois que la carte s'éteint sporadiquement quand je manipule la batterie. C'est sans doute préférable à un court circuit, mais pas terrible quand même. Si je ne touche à rien ça a l'air de tenir, c'est déjà ça.
+Une fois imprimée j'assemble la partie supérieure du boitier, et quelque chose empêche de fermer complètement. Il s'avère que c'est le connecteur batterie. Décidément toujours lui. Je réalise que je ne l'avais pas pris en compte dans mes calculs d'épaisseur du début. En fait il ne fait que 6mm donc ça devrait passer, mais avec les péripéties de la journée il a fini soudé sans être enfoncé complètement. Malgré ça le boitier global est très fin et ça ma plait beaucoup.
 
-Et puis soudain, plus rien. Je soupçonne la batterie d'être à plat, alors je décide de charger. Cependant je n'ose pas brancher au PC par peur des conséquences qu'un court circuit pourrait avoir sur celui-ci (même si en vrai je pense qu'il y a peu de risques). Je la branche donc au secteur. Ça fonctionne. Je débranche pour inspecter les connexions au multimètre, tout est ok. Je rebranche au secteur, ça fonctionne quelques instant et puis à nouveau plus de connexion bluetooth, alors que la carte est branchée au secteur. C'est plutôt mauvais signe.
-
-Je débranche et déconnecte la batterie, et branche au PC. ArduinoIDE ne voit pas la carte. ⚰️
-
-Je sens que l'ESP est chaude, et ça me rappelle un prototype précédent qui est mort de la même manière. Je teste au multimètre et la patte qui sort normalement le 3.3V ne sort rien. Je compare avec une ESP qui fonctionne et j'ai bien le 3.3V.
-
-À ce moment là je commence à sérieusement me remettre en question. C'est le deuxième prototype qui meurt comme ça. Je me dis que je dois faire quelque chose que les ESP ne supportent pas. Quelque chose en rapport avec la batterie ou l'alimentation.
-
-J'envisage de recommencer une nouvelle carte, en laissant la batterie de côté dans un premier temps pour voir si ça survit comme ça. J'ai reçu une dizaine de PCBs donc j'ai de la marge. J'ai tous les composants en de multiple exemplaires. J'ai encore deux ESP32 en réserve. Il y a juste les boutons que j'ai en nombre limité. Je n'ai que 10 exemplaires de chaque taille de tige, mais il est toujours possible de s'adapter. En attendant je veux déjà voir comment ce que donne ceux que j'ai choisi.
-
-J'assemble la partie supérieure du boitier, et quelque chose empêche de fermer complètement. Il s'avère que c'est le connecteur batterie. Décidément toujours lui. J'avoue que je ne l'avais pas pris en compte dans mes calculs d'épaisseur du début. En fait il ne fait que 6mm donc ça devrait passer, mais avec les péripéties de la journée il a fini soudé sans être enfoncé complètement. Malgré ça le boitier global est très fin et ça ma plait beaucoup.
-
-J'imprime un capuchon de bouton, je teste, et le boitier ne ferme pas, il y a quasiment 2mm de trop. Donc pour la prochaine version je peux prendre des boutons plus petits sans soucis, mais clairement pas des plus grands.
+J'imprime un capuchon de bouton, je teste, et le boitier ne ferme pas, il y a quasiment 2mm de trop. Il faut donc maintenant ajuster les capuchons. Je note que pour les prochaines versions je peux prendre des boutons plus petits sans soucis, mais clairement pas des plus grands.
 
 
-## Réflexion sur la mort de l'ESP
+## Perte innatendue de l'ESP
 
-J'aimerais comprendre pourquoi les ESP meurent et comment l'éviter. J'interroge ChatGPT. Je m'en sert surtout comme outil de réflexion et comme générateur d'idée. Je m'efforce de présenter le problème et décrire les événements. Je lis ce qu'il répond et voit si des choses me parlent. Je répond ce qui me passe par la tête pour alimenter la réflexion, etc.
+Pendant que la partie supérieure du boitier s'imprimait, j'ai testé un peu le système. La connexion bluetooth sautait sporadiquement quand je manipulait la batterie, indiquant que la carte perdait l'alimentation. C'est sans doute préférable à un court circuit, mais pas terrible quand même. Si je ne touchait à rien ça avait l'air de tenir, c'était déjà ça.
 
-Je trouve toujours surprenant les tournures du genre *"A failure mode I've **personally** seen on small ESP32 boards"*. J'ai l'impression qu'elles sont de plus en plus fréquentes en ce moment, et je pense qu'elles devraient être évitées.
+Et puis soudain tout s'est arrêté. J'ai d'abord soupçonné la batterie d'être à plat, alors j'ai essayé de la charger. Je n'ai pas osé brancher la carte au PC par peur des conséquences qu'un court circuit pourrait avoir sur celui-ci (même si en vrai je pense qu'il y a peu de risques). Je l'ai donc branchée au secteur. Ça a fonctionné. J'ai débranché pour inspecter les connexions au multimètre, tout était ok. J'ai rebrancheé au secteur, ça a fonctionné quelques instant et puis à nouveau plus de connexion bluetooth, alors que la carte était toujours branchée au secteur. C'était plutôt mauvais signe.
 
-La piste principale c'est que le circuit d'alimentation est mort, mais ça ne m'avance pas vraiment. Parmi les choses qu'il me dit : *"The fact that one board works and others don't suggests a process-related issue rather than a design issue. Solder bridges or conductive debris under the board"* Ça suggère une mauvaise manipulation ou des maltraitances pendant l'assemblage. Il mentionne également des chocs électrostatiques pendant les manipulations. Je devrais peut-être faire plus attention quand je manipule la carte.
+J'ai débranché et déconnecté la batterie, et branché au PC. ArduinoIDE ne voyait pas la carte.
 
-*"The battery pads are tiny and located near sensitive circuitry"*. Les pastilles de connexion pour la batterie m'ont toujours mis mal à l'aise. Ils sont petits et je trouve qu'il n'est pas pratique de venir souder un fil dessus. J'ai effectivement toujours peur d'âbimer la carte en chauffant avec le fer.
+J'ai senti que l'ESP était chaude, et ça m'a rappellé un prototype précédent qui est mort de la même manière. J'ai testé au multimètre et la patte qui sort normalement le 3.3V ne sortait rien, alors que sur une ESP qui fonctionne et j'avais bien le 3.3V.
 
-ChatGPT mentionne également que le fait que les boutons amènent directement le 3.3V sur les GPIO peut être dangereux si jamais ceux-ci sont configurés en sortie et sont positionné à 0. il suggère *"Adding a 1 kΩ–10 kΩ series resistor between each button and the GPIO is cheap insurance"*. Intéressant, je garde ça en tête.
+À ce moment là j'ai commencé à sérieusement me remettre en question. C'était le deuxième prototype qui mourrait comme ça. Je me suis dis que je devait faire quelque chose que les ESP ne supportent pas. Quelque chose en rapport avec la batterie ou l'alimentation.
 
-Je fais également quelques recherches pour voir comment les gens utilisent les ESP avec une batterie, et comment ils connectent la batterie avec les pastilles de connexion situées sous l'ESP. Je fais également quelques recherches pour voir quelles sont les techniques courantes pour utiliser ce genre de connexions dans le cadre d'une connexion carte-à-carte. La technique qui serait la plus à ma portée consiste à placer un via en face de la pastille et faire couler l'étain dedans. Ça ne me parait pas très convaincant.
+En parallèle de l'impression et des tests du boîtier, j'ai interrogé ChatGPT. Je m'en sers surtout comme outil de réflexion et comme générateur d'idée. Je m'efforce de présenter le problème et décrire les événements. Je lis ce qu'il répond et vois si des choses me parlent. Je répond ce qui me passe par la tête pour alimenter la réflexion, etc.
 
-Je continue à converser avec ChatGPT et puis un moment *"The XIAO battery pads are intended for a LiPo connected all the time. Power transients from hot-plugging batteries can stress or even kill the regulator*. Ça correspond à ce que j'ai vu. Dans tous les exemples que j'ai vu les gens soudent directement la batterie sur les pastilles. Je n'aime pas l'idée que la carte soit alimentée en permanence, c'est pour cette raison que j'ai mis un interrupteur on/off en série avec la batterie. Mais ChatGPT indique que connecter/déconnecter la batterie, surtout si l'USB est branché en même temps, peu stresser le module d'alimentation, qui peut finir par lâcher. Il me parait probable que c'est ce qui tue mes cartes. Ceci dit, j'ai déjà pas mal utilisé le dernier prototype et comme la batterie ne tient pas très longtemps j'ai tendance à la déconnecter avec l'interrupteur plusieurs fois pendant un film. Et jusque là la carte survit bien.
+Je trouve toujours surprenant les tournures du genre *"A failure mode I've personally seen on small ESP32 boards"*. J'ai l'impression qu'elles sont de plus en plus fréquentes en ce moment, et je pense qu'elles devraient être évitées.
 
-Je décide qu'à partir de maintenant je connecterai la batterie directement sur l'ESP32. J'utiliserai les modes sommeil si je ne veux pas décharger la batterie trop vite.
+La piste principale était que le circuit d'alimentation est mort, mais cela ne m'a pas vraiment fait avancer. Parmi les choses qu'il m'a dites : *"The fact that one board works and others don't suggests a process-related issue rather than a design issue. Solder bridges or conductive debris under the board"*. Ça suggère une mauvaise manipulation ou des maltraitances pendant l'assemblage. Il a également mentionné des chocs électrostatiques pendant les manipulations. Je devrais peut-être faire plus attention lorsque je manipule la carte.
+
+*"The battery pads are tiny and located near sensitive circuitry"*. Les pastilles de connexion pour la batterie m'ont toujours mis mal à l'aise. Elles sont petites et je trouve qu'il n'est pas pratique d'y souder un fil. J'ai effectivement toujours peur d'abîmer la carte en chauffant avec le fer.
+
+ChatGPT a également mentionné que le fait que les boutons amènent directement le 3,3 V sur les GPIO peut être dangereux si ceux-ci sont configurés en sortie et positionnés à 0. Il a suggéré : *"Adding a 1 kΩ–10 kΩ series resistor between each button and the GPIO is cheap insurance"*. J'ai trouvé cela intéressant et je le garde en tête.
+
+J'ai également effectué quelques recherches pour voir comment les gens utilisent les ESP avec une batterie et comment ils connectent la batterie aux pastilles de connexion situées sous l'ESP. J'ai aussi cherché à savoir quelles sont les techniques courantes pour utiliser ce genre de connexions dans le cadre d'une liaison carte-à-carte. La technique qui m'a semblé la plus accessible consiste à placer un via en face de la pastille et à faire couler l'étain dedans. Ça m'a laissé un peu perplexe.
+
+J'ai continué à converser avec ChatGPT et, à un moment, il a indiqué : *"The XIAO battery pads are intended for a LiPo connected all the time. Power transients from hot-plugging batteries can stress or even kill the regulator"*. Ça correspondait à ce que j'avais observé. Dans tous les exemples que j'avais vus, les gens soudent directement la batterie sur les pastilles. Je n'aime pas l'idée que la carte soit alimentée en permanence, c'est pour cette raison que j'ai mis un interrupteur marche/arrêt en série avec la batterie. Mais ChatGPT a indiqué que le fait de connecter et déconnecter la batterie, surtout lorsque l'USB est branché en même temps, peut solliciter fortement le module d'alimentation, qui peut finir par lâcher.
+
+J'aime quand un système est robuste, et j'aime tester ses limites. Dans le cas présent j'ai branché/débranché l'USB, connecté/déconnecté la batterie, etc. sans précautions particulières car je m'attends, ou en tout cas je souhaite, que le système supporte ce genre d'usages. Mais les événements récent  semblent indiquer que ce n'est peut-être pas le cas.
+
+Ce n'est pas une conclusion définitive car le prototype précédent que j'utilise régulièrement survit bien alors que j'ai tendance à déconnecter la batterie avec l'interrupteur plusieurs fois pendant un film, car la batterie ne tient pas très longtemps. Mais peut-être que c'est surtout quand l'USB est branché que ça pose problème.
+
+Quoi qu'il en soit j'ai décidé qu'à partir de ce moment-là je connecterai la batterie directement sur l'ESP32, et j'utiliserai les modes sommeil si je ne veux pas décharger la batterie trop vite.
 
 
 ## Deuxième carte et finalisation du boitier
 
-Je décide de souder un nouvel exemplaire du PCB en laissant de côté tout ce qui touche à la batterie dans un premier temps pour voir si ça tient comme ça. Et si c'est le cas je rajouterai la batterie mais je remplacerai l'interrupteur par un fil.
+Le fabriquant du PCBs m'a fournit une dizaine de PCBs donc j'ai de la marge pour recommencer une nouvelle carte. J'ai tous les composants en de multiple exemplaires donc pas de soucis à ce niveau là. J'ai encore deux ESP32 en réserve. Il y a juste les boutons que j'ai en nombre limité. Je n'ai que 10 exemplaires de chaque taille de tige, mais il est toujours possible de s'adapter.
 
-C'est reparti pour une séance de soudure. C'est l'occasion de pratiquer. Je développe ma technique. Du coup il y a juste les boutons et les broches de l'ESP à souder, c'est vite vu. J'essaie cette fois de toucher un minimum l'ESP avec mes doigts.
+Je décide donc de souder un nouvel exemplaire du PCB en laissant cette fois de côté tout ce qui touche à la batterie pour déjà voir si ça tient comme ça. Et si c'est le cas je rajouterai la batterie mais je remplacerai l'interrupteur par un fil.
 
-Une fois soudée je teste la carte, tout fonctionne bien du premier coup. Cette fois j'essaie de ne pas trop allumer/éteindre.
+C'est donc reparti pour une séance de soudure. C'est l'occasion de pratiquer. Je développe ma technique. Cette fois il y a juste les boutons et les broches de l'ESP à souder, c'est vite vu. J'essaie cette fois de toucher un minimum l'ESP avec mes doigts.
 
+Une fois soudée je teste la carte, tout fonctionne bien du premier coup. Je laisse branché en USB pendant que je continue sur le boitier, et je vérifie périodiquement que ça fonctionne toujours. Je m'efforce de ne pas brancher/débrancher inutilement.
 
-j'aime vérifier encore et encore que les choses fonctionnent, surement due à l'anxiété
-mais ça peut causer des problèmes
-comme la fois où au collège le prof de physique avait demandé de ramener une pile neuve,
-et j'en avais une avec le testeur intégré, et je n'arrêtais pas de la tester pour m'assurer qu'elle était bien pleine
-quand le prof l'a testé avec son instrument il a dit "elle est pas neuve ta pile"
-j'étais degz
-
-
-
-## Les boutons contre-attaquent
-
-Les boutons avaient cependant une dernière surprise en réserve.
-
-Ils sont trop grands.
-
-Le boîtier ne ferme pas.
-
-Avec le recul, tous les indices étaient déjà là dans les calculs. J'étais simplement trop proche des limites pour que les approximations restent sans conséquence.
-
-Malgré tout, cette erreur apporte une information précieuse.
-
-Les boutons plus petits fonctionneront.
-
-Des boutons plus grands ne fonctionneront pas.
-
-C'est déjà une décision validée.
-
-J'ai également expérimenté différentes profondeurs de capuchons.
-
-Certaines versions semblaient prometteuses dans Fusion 360 mais devenaient inutilisables une fois imprimées, parce que le capuchon venait reposer sur le corps du bouton et empêchait tout clic.
-
-Encore un rappel que le modèle 3D n'est pas la réalité.
-
-
-
-
-
-
-## Une fin de journée mitigée
-
-En terminant la session, je n'étais pas totalement satisfait.
-
-J'avais perdu une ESP32.
-
-Le système batterie me semblait encore fragile.
-
-Le mécanisme des boutons demandait du travail.
-
-Le boîtier nécessitait plusieurs améliorations.
-
-Et pourtant, lorsque je regarde les faits, le bilan est largement positif.
-
-Le PCB est validé.
-
-Le firmware fonctionne.
-
-Le boîtier est beaucoup plus fin qu'avant.
-
-J'ai une piste crédible pour expliquer les défaillances des ESP32.
-
-J'ai remplacé plusieurs hypothèses par des mesures concrètes.
-
-J'ai un prototype fonctionnel.
-
-Objectivement, c'est une bonne journée.
-
-Subjectivement, elle m'a paru désordonnée.
-
-## Quand le projet change de phase
-
-La réflexion la plus importante n'est finalement pas technique.
-
-Jusqu'à présent, ce projet était dans une phase d'exploration.
-
-L'objectif était simplement de répondre à une question :
-
-« Est-ce que ça peut fonctionner ? »
-
-Dans cette phase, il est normal de travailler de manière assez informelle. Les notes sont incomplètes. Les décisions restent dans la tête. La documentation peut attendre.
-
-Mais à un moment donné, le projet change de nature.
-
-Le principal obstacle n'est plus technique.
-
-Il devient organisationnel.
-
-Je pense avoir atteint ce point.
-
-La frustration que je ressens n'est probablement pas liée au matériel lui-même.
-
-C'est plutôt le signal que le mode « exploration » a atteint ses limites.
-
-J'ai maintenant envie de schémas.
-
-De notes de conception.
-
-D'un suivi plus structuré.
-
-De documents qui expliquent pourquoi certaines décisions ont été prises.
-
-Bref, j'ai envie de traiter ce projet davantage comme un produit que comme une expérience.
-
-Et finalement, c'est plutôt une bonne nouvelle.
-
-Cela signifie que la phase de preuve de concept est largement derrière moi.
-
-Le prochain défi n'est plus de faire fonctionner le système.
-
-C'est de le rendre bon.
-
-
+Je réessaye le capuchon de bouton imprimé précédemment, et je décide d'augmenter la hauteur intérieure d'1mm sans changer la hauteur totale du bouton. Sauf que maintenant le capuchon repose sur le corps du bouton et on ne peut pas cliquer. Je refais le point sur les dimensions et détermine que dans l'état actuel j'ai à peine 1mm de marge entre le corps du bouton et le boitier, ce qui est très peu.
 
 
 <div class="inline-image-container">
@@ -530,8 +423,8 @@ C'est de le rendre bon.
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/button-profile.png"
-            legend="___"
+            url="/assets/posts/2026-06-15-media-remote-pcb/remote-cross-section-button.png"
+            legend="Vue en coupe d'un capuchon de bouton"
         %}
 
     </div>
@@ -539,19 +432,20 @@ C'est de le rendre bon.
 </div>
 
 
+Je décide d'augmenter la hauteur du boitier d'1 mm. Ça ne changera pas beaucoup l'épaisseur finale et ça donnera de la marge pour les boutons. Cette fois le boitier ferme, et les boutons fonctionnent, mais ils dépassent très peu du boitier. J'augmente donc la hauteur d'1mm en changeant une cote sur le dessin, mais je ne fais pas attention au fait que cette modification augmente du même coup la hauteur intérieure. Résultat ça ne clique pas. Je corrige et réimprime donc encore un capuchon. Rien de grave mais c'est plus laborieux que nécessaire. On est sur la fin de journée et je manque de concentration. La perte de l'ESP affecte aussi mon moral.
+
+Le système de capuchon pour les boutons ne me parait pas idéal, et je pourrais peut-être le revoir. En fait c'est surtout que maintenant que j'ai drastiquement affiné la télécommande, le corps des boutons commence à être trop grand. Je note de chercher des boutons plus fins si ça existe.
 
 
+## Bilan de la journée
 
+Je termine la journée fatigué et un peu déprimé. Les causes de la perte des ESPs sont encore floues, et ça me donne l'impression que le système dans son ensemble est fragile, que la carte peut mourrir à tout instant au détour d'une manipulation anodine. Et je n'aime pas du tout ça. Le boitier et les boutons me donnent également une mauvaise impression. D'un côté l'ensemble semble fragile, bancal, et d'un autre côté il ya des points de frictions. L'impression générale ne me plait pas.
 
+Je pense que c'est surtout la fatigue et les déconvenues de la journée qui me font voir les choses en noir. J'essaie de faire un bilan objectif da la journée. J'ai validé que le PCB fonctionne et que je peux souder correctement les composants dessus, et le PCB a permi d'affiner significativement le design globale de la télécommande, ce qui était tout l'objectif. C'est très positif.
 
+Tous les problèmes qui subsistent peuvent trouver des solutions. Pour l'ESP, même si la cause exacte de la perte reste floue, je vais essayer de connecter directement la batterie. Pour le boitier et les boutons, je peux trouver comment assembler les deux parties du boitier ensemble, peut-être avec des vis ou des aimants. Pour les boutons, j'ai repéré des boutons ultra plats qui permettrait d'améliorer le mecanisme.
 
-
-
-
-
-
-
-
+J'ai un stock de PCBs donc je peux me permettre d'expérimenter les aspects mécaniques. J'aimerais bien trouver une manière de connecter/déconnecter la carte ESP32 sur le PCB sans la souder à chaque fois, ce serait idéal. Dans le futur je peux peut-être faire une *breakout boards* et utiliser un connecteur plat pour la relier à un PCB. Envisager ces possiblités me redonne le moral un peu.
 
 
 <div class="inline-image-container">
@@ -560,20 +454,7 @@ C'est de le rendre bon.
 
         {% include inline-image-item.html
             url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7485.JPG"
-            legend="___"
-        %}
-
-    </div>
-
-</div>
-
-<div class="inline-image-container">
-
-    <div class="inline-image-container-row">
-
-        {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7495.JPG"
-            legend="___"
+            legend="La nouvelle version à côté de la précédente"
         %}
 
     </div>
@@ -581,6 +462,19 @@ C'est de le rendre bon.
 </div>
 
 
+La dernière conclusion de cette journée, c'est que le projet vient de passer d'une phase de prototypage/preuve de concept à une phase d'améliorations itératives.
+
+Jusque là l'objectif était d'obtenir quelque chose qui fonctionne selon les modalités souhaitées, à savoir une télécommande qui fonctionne sans fils et qu'on peut prendre en main. La priorité était sur les aspects fonctionnels et l'esthétique et la rigueur de construction passaient en second. Je ne faisais pas trop attention au confort d'utilisation, je prenais des marges disproportionnées pour être sûr que ça passe, etc. 
+
+Désormais le fonctionnement est établi et je cherche à rendre les choses propres et élégantes. Je veux que les choses soient précises, minimales, et robustes. Ça demande de calculer les choses avec précisions, d'intégrer ensemble plusieurs paramètres concurrents, d'itérer avec des variations mineures, et de garder trace de ce qui fonctionne ou pas.
+
+Je ne m'étais pas vraiment rendu compte de ce changement d'objectif et j'ai continué sur ma lancée. Mais je comprends maintenant que j'ai atteint les limites du mode de fonctionnement initial. Le projet est mûr pour passer à la phase suivante, et il est nécessaire d'adapter la méthode.
 
 
+## La suite
 
+Je vais utiliser la nouvelle version sans batterie et voir si elle survit. Si c'est le cas je reconnecterai la batterie sans interrupteur, et je me pencherai sur les modes sommeil de l'ESP32.
+
+En parallèle je vais continuer à réfléchir à améliorer le boitier et le mecanisme des boutons. J'ai plusieurs idées pour l'assemblage des deux parties du boitier. Je tiens à ce que les choses restent démontables donc la colle est hors de propos. J'ai déjà commandé les boutons ultra plats qui devraient permettre de faire des boutons plus robustes, si je suis en mesure de les souder sur le PCB existant.
+
+Et en faisant tout ça, je vais formaliser davantage le projet en faisant une fiche de suivi qui comportera des notes de conception, des diagrammes et des équations qui formalisent les relations entre les paramètres, des tableaux comparatifs des solutions envisagées, etc, à la manière de ce que j'ai déjà fait pour d'autres projets.
