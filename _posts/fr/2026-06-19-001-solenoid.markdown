@@ -1,0 +1,282 @@
+---
+layout: post
+title: "Tentative de fabrication d'un solenoïde"
+topics: []
+image: /assets/posts/2026-06-19-001-solenoid/IMG_7520.JPG
+permalink: /fr/billets/2026/06/19/001
+lang: fr
+lang_en: /en/posts/2026/06/19/001
+---
+
+
+## Introduction
+
+Pour comprendre le fonctionnement des moteurs éléctriques, je me suis donné comme projet de fabriquer un moteur *brushless* à courant continu (BLDC). La première étape est de fabriquer des bobinages capable de créer un champ magnétique, qu'on appelle aussi *solénoïde*. Comme toujours, je veux partir de la base et commencer par explorer les principes fondamentaux de construction d'une bobine.
+
+J'ai fait des études d'ingénieur et je comprends le principe de base de fonctionnement d'un moteur et des bobinages. Cependant les cours théoriques n'apportent qu'une compréhension limitée des choses. Je veux développer une compréhension fine et une expérience pratique sur le sujet.
+
+Mon premier objectif est de créer une bobine simple et constater la présence d'un champ magnétique lorsqu'elle est alimentée. Par la suite j'envisage de faire un montage avec plusieurs bobines et de développer une logique de contrôle pour mettre en rotation une pièce mobile.
+
+
+## Préparatifs
+
+La première étape est de trouver le fils de cuivre. Il faut un fil émaillé. Le but est que le courant circule dans toutes les spires de la bobine. 
+
+Je m'interroge sur la manière d'alimenter la bobine, parce que dans le fond ça revient à faire un court-circuit, et ça me semble dangereux sur le principe. Je détermine que je peux mettre une résistance en série pour limiter le courant.
+
+Je fais des recherches pour déterminer l'ordre de grandeur de la force magnétique que je peux obtenir et identifier les paramètres importants. 
+
+B = μ0.N.I / (2R)
+
+J'évalue la force des aimants que j'ai et prends ça comme référence.
+
+Je détermine que j'ai besoin d'un coeur ferreux pour augmenter la force magnétique. Je trouve des vis qui me restent de mes projets menuiserie. Je vérifie qu'elles sont attirées par les aimants.
+
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/posts/2026-06-19-001-solenoid/IMG_7518.JPG"
+            legend="__"
+        %}
+
+    </div>
+
+</div>
+
+
+Je peux limiter le courant donc il n'y a normalement pas de danger de ce côté là, par contre le vrai danger vient du dégagement de chaleur. 
+
+P = U.I = RI^2
+
+Je fais un tableau de calcul qui rassemble le courant, la force magnétique, et la chaleur dissipée. Ça me permet de trouver un jeu de paramètre avec lequel je suis à l'aise pour les premiers tests.
+
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/posts/2026-06-19-001-solenoid/tableau.png"
+            legend="__"
+        %}
+
+    </div>
+
+</div>
+
+
+## Préparation de la bobine
+
+Je tente une première bobine en enroulant une centaine de tours autour de la vis. Le fil est assez rigide, ce n'est pas facile de faire propre, surtout sur les dernières couches.
+
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/posts/2026-06-19-001-solenoid/IMG_7501.JPG"
+            legend="__"
+        %}
+
+    </div>
+
+</div>
+
+
+Le premier sujet c'est de traiter le fil émaillé pour pouvoir faire des connexions électriques aux bornes de la bobine. Je me documente et trouve deux techniques principales : gratter mécaniquement avec une lame, et chauffer/étamer au fer à souder. 
+
+J'essaie la technique du fer. Je place le fer chaud sur le fil, il ne se passe pas grand chose, j'insiste, je frotte, pas grand chose. J'amène de l'étain, ça perle, j'insiste, et au bout d'un moment le fil devient blanc. J'imagine qu'une fine couche d'étain s'est déposée, mais je me demande si l'email en dessous est parti.
+
+Je fais pareil sur l'autre borne mais quand je mesure la conductivité rien. J'essaie de gratter mais j'ai du mal à trouver une bonne technique. Je crois que j'ai réussi à enlever une partie de l'email. Je teste la conductivité mais toujours rien.
+
+Je demande à ChatGPT et il me confirme les méthodes.
+
+Je décide alors de tester avec un bout de fil découpé pour l'occasion pour ne pas ruiner les broches de ma bobine. Je ressors cette fois un vieux fer à souder, avec une plus grosse pointe, car j'ai peur d'abimer le mien que j'utilise pour de la précision, et je ne veux pas le laisser trop chauffer à vide.
+
+En insistant un peu et en amenant de l'étain au bout d'un moment l'étain se dépose. Je teste la conductivité et ça passe. Je reprends donc ma bobine et cette fois j'arrive à rendre les bornes conductrices.
+
+J'avais mesuré la résistance aux bornes de la bobine avant d'étamer les broches et j'avais lu infini comme attendu. Je teste maintenant avec les bornes étamées et je lis une valeur proche de 20 ohms.
+
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/posts/2026-06-19-001-solenoid/IMG_7503.JPG"
+            legend="__"
+        %}
+
+    </div>
+
+</div>
+
+
+## Premier test
+
+Je prépare le montage pour l'alimentation. Je travaille sur une planche de bois pour protéger le table au cas où il y a un problème de chauffe. Je branche mon alimentation sur une prise murale avec une rallonge pour limiter les risques pour mon installation informatique en cas de problème.
+
+Je connecte une broche de la bobine à l'alimentation, et de l'autre côté je connecte une résistance. Je veux garder un oeil sur le courant, alors l'idée est de fermer la boucle avec le multimètre. Ça permet au passage une connexion/déconnexion rapide plutôt que souder ou utiliser des connecteurs plus permanents.
+
+J'enroule aussi un bout de filament de PLA pour imprimante 3D autour de la vis et un peu d'étain pour détecter si jamais la vis devient trop chaude.
+
+Le circuit fermé, le courant mesuré est d'environ 23 mA, conforme aux calculs.
+
+Je teste avec une petits vis, et celle-ci n'est pas le moins du monde attirée par la bobine.
+
+
+## Deuxième bobine
+
+Pendant les manipulations, j'ai pris plusieurs petites décharges accidentelles en touchant la vis. Ça indique un contact électrique entre le fil de la bobine et la vis, ce qui ne devrait pas être le cas. 
+
+Je vérifie la continuité entre la bobine et la vis au multimètre et je confirme le diagnostic.
+
+Je sais que l'email est assez fragile et qu'il est facile de l'endomager et de créer des contacts. Si le fil est endomagé à plusieurs endroits il y a des courts-circuits au sein de la bobine et ce n'est pas bon, ça réduit grandement le fonctionnement.
+
+L'idéal serait de refaire une bobine avec un bout de fil neuf, mais avant de consommer plus de ressources (en quantité limitées) je décide de tester différentes choses et d'améliorer ma technique de bobinage.
+
+Je décide de refaire le bobinage en essayant de faire quelque chose de plus régulier, et cette fois je met un bout de scotch sur la vis pour isoler. Je bricole un support en bois pour manipuler la vis plus facilement et éviter de la toucher à la main par la suite.
+
+Ce support améliore nettement le confort de bobinage et permet d'obtenir quelque chose de beaucoup plus propre. Il n'est pas facile de distinguer visuellement les différentes couches, et pour aider j'ajoute du scotch entre certaines passes.
+
+Le principal problème vient du fil lui-même : ayant déjà servi lors du premier essai, il est maintenant torsadé et garde des déformations qui compliquent le bobinage, surtout vers la fin.
+
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/posts/2026-06-19-001-solenoid/IMG_7509.JPG"
+            legend="__"
+        %}
+
+    </div>
+
+</div>
+
+
+Je vérifie la continuité avec la vis : cette fois, l'isolation semble correcte.
+
+Je mesure la résistance, le multimètre n'arrive pas à se stabiliser. J'avais déjà ce genre de problème au début quand j'essayais de mesurer mes résistances, je soupçonne un problème avec le multimètre.
+
+J'alimente la bobine. Toujours aucun magnétisme visible.
+
+
+## Coil winding machine
+
+Je continue sur l'idée de recommencer avec du fil neuf, mais avant je veux parfaire ma technique de bobinage, et pour ça j'ai besoin d'outils.
+
+Je regarde un peu comment font les gens, il existe des machines dédiées à ça. Je veux aller au plus simple quitte à complexifier ensuite. La base est de pouvoir tendre et guider le fil correctement. Il faut donc un support qui tienne le noyau et permette de tourner avec un minimum de force.
+
+J'envisage un temps un mécanisme pour faire tourner la vis, puis je me dis que dans tous les cas il faudrait mettre un cylindre en plastique autour de la vis et enrouler dessus. À ce moment là pas besoin de faire tourner la vis, c'est cette pièce qu'il faut tourner.
+
+Finalement je dessine une sorte de bobine avec des encoches, et en un mécanisme pour entrainer la bobine. Le challenge est toujours de dessiner des pièces faciles à imprimer en 3D. En plus dans ce cas certaines pièces doivent pouvoir supporter des efforts et l'orientation d'impression est importante. J'opte pour découper le mecanismes en plusieurs pièces.
+
+Je réfléchis un peu et essaie de visualiser un mécanisme, mais je n'arrive pas bien à voir tous les détails. Je me lance dans le dessin en me disant que ça viendra en faisant. Je dessine une première version et en effet ça m'aide à y voir plus clair.
+
+Une fois la vision claire je reprends le dessin de zéro.
+
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/posts/2026-06-19-001-solenoid/IMG_7522.JPG"
+            legend="__"
+        %}
+
+    </div>
+
+</div>
+
+
+
+
+
+
+Plutôt que de continuer à bricoler dans les mêmes conditions, je décide de prendre du recul.
+
+Mon objectif devient alors double :
+
+1. M'entraîner à réaliser un bobinage propre.
+2. Recommencer avec du fil neuf.
+
+Je réfléchis à plusieurs solutions et l'idée de fabriquer des outils dédiés en impression 3D commence à s'imposer.
+
+## Une après-midi de conception
+
+Je passe finalement une bonne partie de l'après-midi à modéliser puis imprimer un mécanisme destiné à faciliter le bobinage.
+
+Après assemblage, les premiers résultats sont encourageants.
+
+Je mesure environ 40 Ω sur la nouvelle bobine, ce qui semble cohérent.
+
+Je réalise alors un nouveau test sous tension.
+
+Malgré tous ces efforts, aucun magnétisme perceptible n'apparaît encore.
+
+## Conclusion provisoire
+
+Même si l'objectif initial n'est pas encore atteint, cette série d'expériences a permis d'identifier plusieurs problèmes :
+
+* le désémaillage du fil est plus délicat que prévu ;
+* un bobinage peut facilement entrer en contact avec son noyau métallique ;
+* le fil réutilisé risque de subir des dommages invisibles ;
+* la qualité mécanique du bobinage influence fortement la fiabilité des mesures.
+
+La prochaine étape sera probablement de repartir de zéro avec du fil neuf et un système de bobinage plus rigoureux afin d'éliminer les variables restantes.
+
+Pour l'instant, l'électroaimant refuse toujours de devenir un électroaimant.
+
+
+
+
+
+
+
+
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/posts/2026-06-19-001-solenoid/IMG_7506.JPG"
+            legend="__"
+        %}
+
+    </div>
+
+</div>
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/posts/2026-06-19-001-solenoid/IMG_7512.JPG"
+            legend="__"
+        %}
+
+    </div>
+
+</div>
+
+<div class="inline-image-container">
+
+    <div class="inline-image-container-row">
+
+        {% include inline-image-item.html
+            url="/assets/posts/2026-06-19-001-solenoid/IMG_7520.JPG"
+            legend="__"
+        %}
+
+    </div>
+
+</div>

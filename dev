@@ -53,6 +53,12 @@ case "$1" in
 	photo)
 		magick $2 -strip -interlace Plane -quality 75 $2
 		;;
+	photos)
+		shopt -s nullglob
+		for file in $2/IMG_*.JPG; do
+    		./dev photo "$file"
+		done
+		;;
 	*)
 		echo "Usage: dev {open|start|startnolive|deploy|newproject|gif|video|stab|crop|photo}"
 		;;
