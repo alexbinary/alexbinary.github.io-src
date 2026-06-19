@@ -1,5 +1,12 @@
+{% assign r = posts.size | modulo: 2 %}
+{% if r == 0 %}
+    {% assign even = true %}
+{% else %}
+    {% assign odd = true %}
+{% endif %}
+
 {% for post in posts %}
-    <article class="post-card">
+    <article class="post-card {% if odd %} odd {% endif %}" >
         <a href="{{ post.url }}">
             <img src="{{ post.image_thumbnail | default: post.image }}">
             <div class="post-card-content">

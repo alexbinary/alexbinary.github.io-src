@@ -47,8 +47,7 @@ lang_en: /
 {% assign posts = site.posts
     | where: "lang", page.lang
     | where: "project_id", empty
-    | sort: "date"
-    | limit: 2 %}
+    | sort: "date" %}
 {% if posts != empty %}
     <section>
         {% include heading-with-icon.html text="Mes derniers billets" icon="📝" %}

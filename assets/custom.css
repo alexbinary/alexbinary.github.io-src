@@ -717,6 +717,13 @@ math {
     }
 }
 
+@media (min-width: 600px) {
+
+    .post-card.odd:first-child {
+        display: none;
+    }
+}
+
 .post-card {
     padding: 8px;
     border-radius: 8px;
