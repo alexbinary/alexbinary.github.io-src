@@ -2,7 +2,7 @@
 layout: post
 title: "Mise en place du PCB pour ma télécommande multimédia"
 topics: [soudure, pcb, modelisation3d]
-image: /assets/posts/2026-06-15-media-remote-pcb/IMG_7458.JPG
+image: /assets/posts/2026-06-15-001-media-remote-pcb/IMG_7458.JPG
 githubs:
 - https://github.com/alexbinary/media-remote
 permalink: /fr/billets/2026/06/15/001
@@ -30,7 +30,7 @@ Pour les prototypes précédents j'avais mis au point un modèle 3D du boitier. 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/vue3d.png"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/vue3d.png"
             legend="Le modèle 3D du boitier (couvercle masqué) avec une représentation du PCB"
         %}
 
@@ -57,7 +57,7 @@ Le modèle étant à jour, je peux reprendre le calcul des boutons. Je détermin
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/remote-cross-section.png"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/remote-cross-section.png"
             legend="Vue en coupe du boitier avec le PCB à l'intérieur et les boutons"
         %}
 
@@ -79,7 +79,7 @@ Avant de me lancer je réfléchis à l'ordre de soudure des composants. Je me di
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7458.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7458.JPG"
             legend="Tout est prêt pour passer à la soudure"
         %}
 
@@ -96,7 +96,7 @@ En observant le PCB je suis soudain pris d'un doute et je vérifie sur le schém
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/schematic.png"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/schematic.png"
             legend="Le schéma électrique de la télécommande"
         %}
 
@@ -113,7 +113,7 @@ Au passage je mets à jour le code Arduino puisque la correspondance entre les b
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/code.png"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/code.png"
             legend="Code qui définit la correspondance entre les boutons et les broches"
         %}
 
@@ -132,7 +132,7 @@ Par rapport au prototype précédent j'ai ajouté un bouton pour permettre le d�
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/vlc-shortcuts.png"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/vlc-shortcuts.png"
             legend="Un racourci VLC existe pour 'Passer à la piste audio suivante', mais pas pour la piste précédente"
         %}
 
@@ -151,7 +151,7 @@ Je suis encore débutant en soudure mais je progresse. Depuis que j'ai ma statio
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7459.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7459.JPG"
             legend="Premières soudures de la journée"
         %}
 
@@ -172,7 +172,7 @@ J'étais parti pour souder toutes les broches, mais sur le moment je me souviens
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7462.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7462.JPG"
             legend='Technique "du fil de couture"'
         %}
 
@@ -182,12 +182,12 @@ J'étais parti pour souder toutes les broches, mais sur le moment je me souviens
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7488.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7488.JPG"
             legend="Résultat des soudures de l'ESP32 (dessous)"
         %}
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7489.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7489.JPG"
             legend="Résultat des soudures de l'ESP32 (dessus)"
         %}
 
@@ -204,12 +204,12 @@ Les dernières soudures visent à relier les pastilles dédiées à la batterie 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7464.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7464.JPG"
             legend="Le PCB comparé à la perfboard précédente (dessus)"
         %}
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7465.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7465.JPG"
             legend="Le PCB comparé à la perfboard précédente (dessous)"
         %}
 
@@ -245,12 +245,12 @@ Je reconnecte la batterie et j'entends encore des crépitements. Cette fois je v
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7466.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7466.JPG"
             legend="Le connecteur batterie avant intervention"
         %}
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7468.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7468.JPG"
             legend="Le connecteur batterie après intervention"
         %}
 
@@ -276,12 +276,12 @@ J'ajoute aussi des arrondis sur les angles intérieurs pour améliorer la solidi
     <div class="inline-image-container-row force-mobile-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/remote-cross-section2-corner.png"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/remote-cross-section2-corner.png"
             legend="Coins avant"
         %}
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/remote-cross-section1-corner.png"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/remote-cross-section1-corner.png"
             legend="Coins après"
         %}
 
@@ -298,7 +298,7 @@ Comme le design est encore expérimental j'imprime une pièce à la fois plutôt
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7477.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7477.JPG"
             legend="La première pièce du boitier imprimée"
         %}
 
@@ -319,7 +319,7 @@ Pendant que le boitier imprime j'inspecte donc à nouveau le connecteur batterie
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7470.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7470.JPG"
             legend="Le connecteur batterie après avoir fait des étincelles"
         %}
 
@@ -336,7 +336,7 @@ Le connecteur empêche de voir la totalité des soudures et il y a peut-être de
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7472.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7472.JPG"
             legend="Une pastille s'est décollé "
         %}
 
@@ -358,7 +358,7 @@ L'impression de la partie inférieure du boitier est terminée. J'avais peur que
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7481.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7481.JPG"
             legend="Le PCB installé dans le boitier"
         %}
 
@@ -423,7 +423,7 @@ Je réessaye le capuchon de bouton imprimé précédemment, et je décide d'augm
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/remote-cross-section-button.png"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/remote-cross-section-button.png"
             legend="Vue en coupe d'un capuchon de bouton"
         %}
 
@@ -453,7 +453,7 @@ J'ai un stock de PCBs donc je peux me permettre d'expérimenter les aspects méc
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7485.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7485.JPG"
             legend="La nouvelle version à côté de la précédente"
         %}
 

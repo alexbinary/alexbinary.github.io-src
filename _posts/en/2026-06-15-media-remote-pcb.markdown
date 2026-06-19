@@ -2,7 +2,7 @@
 layout: post
 title: "Assembling the PCB for my media remote controller"
 topics: [soldering, pcb, troubleshooting, 3dmodelling]
-image: /assets/posts/2026-06-15-media-remote-pcb/IMG_7458.JPG
+image: /assets/posts/2026-06-15-001-media-remote-pcb/IMG_7458.JPG
 githubs:
 - https://github.com/alexbinary/media-remote
 permalink: /en/posts/2026/06/15/001
@@ -30,7 +30,7 @@ From the previous prototypes I had already developed a 3D model of the enclosure
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/vue3d.png"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/vue3d.png"
             legend="The enclosure's 3D model (lid hidden) with a mock of the PCB"
         %}
 
@@ -57,7 +57,7 @@ With the model updated, I can return to the button calculations. I determine tha
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/remote-cross-section.png"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/remote-cross-section.png"
             legend="Cross-sectional view of the enclosure showing the PCB and buttons"
         %}
 
@@ -81,7 +81,7 @@ Before getting started, I think about the order in which the components should b
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7458.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7458.JPG"
             legend="Everything is ready for soldering"
         %}
 
@@ -98,7 +98,7 @@ While examining the PCB, I suddenly become doubtful and check the schematic to v
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/schematic.png"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/schematic.png"
             legend="The remote control schematic"
         %}
 
@@ -115,7 +115,7 @@ While I'm at it, I update the Arduino code because the button-to-pin mapping has
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/code.png"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/code.png"
             legend="Code defining the mapping between buttons and GPIO pins"
         %}
 
@@ -136,7 +136,7 @@ I therefore decided that both buttons would simply switch to the next audio trac
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/vlc-shortcuts.png"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/vlc-shortcuts.png"
             legend="VLC provides a shortcut for 'Next audio track', but not for 'Previous audio track' ?"
         %}
 
@@ -155,7 +155,7 @@ I'm still a beginner when it comes to soldering, but I'm making progress. Ever s
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7459.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7459.JPG"
             legend="First solder joints of the day"
         %}
 
@@ -176,7 +176,7 @@ I had initially planned to solder every pin, but then I remembered that most of 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7462.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7462.JPG"
             legend='"Sewing thread" technique'
         %}
 
@@ -186,12 +186,12 @@ I had initially planned to solder every pin, but then I remembered that most of 
 <div class="inline-image-container-row">
 
     {% include inline-image-item.html
-        url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7488.JPG"
+        url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7488.JPG"
         legend="ESP32 solder joints (bottom side)"
     %}
 
     {% include inline-image-item.html
-        url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7489.JPG"
+        url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7489.JPG"
         legend="ESP32 solder joints (top side)"
     %}
 
@@ -208,12 +208,12 @@ The final solder joints connect the battery pads located underneath the ESP32 to
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7464.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7464.JPG"
             legend="The new PCB compared to the previous perfboard version (top view)"
         %}
 
     {% include inline-image-item.html
-        url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7465.JPG"
+        url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7465.JPG"
         legend="The new PCB compared to the previous perfboard version (bottom view)"
     %}
 
@@ -249,12 +249,12 @@ I reconnect the battery and hear crackling again. This time I grab a multimeter 
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7466.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7466.JPG"
             legend="The battery connector before"
         %}
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7468.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7468.JPG"
             legend="The battery connector after"
         %}
 
@@ -280,12 +280,12 @@ I also add fillets to the inner corners to improve strength. Reducing the wall t
     <div class="inline-image-container-row force-mobile-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/remote-cross-section2-corner.png"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/remote-cross-section2-corner.png"
             legend="Corners before"
         %}
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/remote-cross-section1-corner.png"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/remote-cross-section1-corner.png"
             legend="Corners after"
         %}
 
@@ -302,7 +302,7 @@ Since the design is still experimental, I print one part at a time instead of pr
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7477.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7477.JPG"
             legend="The first printed enclosure part"
         %}
 
@@ -323,7 +323,7 @@ While the enclosure is printing I inspect the battery connector again and I noti
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7470.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7470.JPG"
             legend="The battery connector after producing sparks"
         %}
 
@@ -340,7 +340,7 @@ The connector blocks the view of part of the solder joints, and there may be def
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7472.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7472.JPG"
             legend="One of the pads lifted off the PCB"
         %}
 
@@ -362,7 +362,7 @@ The lower half of the enclosure has finished printing. I was worried that a bott
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7481.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7481.JPG"
             legend="The PCB installed in the enclosure"
         %}
 
@@ -428,7 +428,7 @@ I revisit the button cap I printed earlier and decide to increase its internal h
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/remote-cross-section-button.png"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/remote-cross-section-button.png"
             legend="Cross-sectional view of a button cap"
         %}
 
@@ -458,7 +458,7 @@ I have a stockpile of PCBs available, which means I can afford to experiment wit
     <div class="inline-image-container-row">
 
         {% include inline-image-item.html
-            url="/assets/posts/2026-06-15-media-remote-pcb/IMG_7485.JPG"
+            url="/assets/posts/2026-06-15-001-media-remote-pcb/IMG_7485.JPG"
             legend="The new version next to the previous one"
         %}
 
