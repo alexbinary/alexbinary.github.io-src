@@ -334,6 +334,18 @@ ul.list-pointer-style li::before {
 
 
 
+/* ---- Maths */
+
+math {
+
+    display: block;
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 2rem;
+}
+
+
+
 /* ---- Inline images */
 
 
