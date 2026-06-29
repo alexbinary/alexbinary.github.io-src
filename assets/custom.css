@@ -336,7 +336,7 @@ ul.list-pointer-style li::before {
 
 /* ---- Maths */
 
-math {
+math:not(.inline) {
 
     display: block;
     text-align: center;

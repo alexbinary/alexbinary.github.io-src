@@ -1,0 +1,14 @@
+---
+layout: project_post
+project_id: ec2e67a6-246f-484e-abc7-6387aa07874a
+entry: "001"
+title: Transformations géométrique en SwiftUI et Canvas
+topics: [geometrie, maths, swiftui, programmation]
+image: 
+githubs:
+- https://github.com/alexbinary/OpticsSimulator
+permalink: /en/projects/optics-simulator/posts/001
+lang: en
+lang_fr: /fr/projets/simulateur-optique/billets/001
+---
+

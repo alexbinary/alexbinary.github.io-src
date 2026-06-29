@@ -1,0 +1,995 @@
+---
+layout: project_post
+project_id: ec2e67a6-246f-484e-abc7-6387aa07874a
+entry: "001"
+title: Transformations géométrique en SwiftUI et Canvas
+topics: [geometrie, maths, swiftui, programmation]
+image: 
+githubs:
+- https://github.com/alexbinary/OpticsSimulator
+permalink: /fr/projets/simulateur-optique/billets/001
+lang: fr
+lang_en: /en/projects/optics-simulator/posts/001
+---
+
+## Introduction
+
+J'avance dans le développement de mon logiciel de simulation d'optique, et je veux maintenant pouvoir placer les objets librement en 2D. Pour l'instant les objets sont restreint à un axe optique prédéfini. Ça simplifie grandement le problème et ça m'a permit de prendre de l'exprience avec le codage de la simulation. Je veux maintenant m'affranchir de cette limite.
+
+Avant de réfléchir à l'aspect simulation, il faut déjà créer un espace dans lequel l'utilisateur peut positionner et orienter les objets. Je veux également permettre de se déplacer, zoomer, tourner, etc.
+
+Repartant de zéro dans un premier temps, j'ai écris du code rapidement, intuitivement, en utilisant les possibilités de transformation offertes par l'API Canvas de SwiftUI. L'idée est d'utiliser les transformations de contexte pour toujours dessiner dans le repère transformé.
+
+Je défini 3 transformations appliquées dans cet ordre : translation, rotation, échelle. J'ai commencé par implémenter des mécanismes de contrôle simples pour agir sur ces transformations en fonction d'événements de la souris. C'était assez simple, j'ai tâtonné un peu parfois mais jamais très longtemps.
+
+Une fois les contrôles de base en place, j'ai voulu améliorer, en faisant notamment en sorte que le zoom soit centré autour de la souris et non du centre du repère. Et là c'était plus compliqué. J'ai du me pencher plus sérieusement sur le fonctionnement des transformations et notamment comment elles se combinent entre elles.
+
+Il s'agit en effet dans ce cas d'appliquer une translation qui vient compenser le décalage engendré par le zoom. Ce n'est pas trivial à première vue.
+
+L'avantage des transformations du contexte c'est justement de ne pas avoir à faire les calculs et se poser la question de comment combiner les transformations entre elles mais dans certains cas il est nécessaire de comprendre.
+
+J'ai commencé par établir les formules de transformation pour les cas simples : translation, échelle.
+Puis échelle par rapport à un point.
+
+Le plus difficile a été de comprendre de quoi on parle. J'avais en fait besoin de la notion de coordonnées à l'écran et coordonnées dans le monde. Le but est en effet d'avoir un point du monde qui reste fixe à l'écran, c'est-à-dire dont les coordonnées écran correspondantes sont inchangées après la transformation.
+
+On part d'une coordonnée dans le monde, et on lui fait subir des transformation pour obtenir la coordonnée à laquelle elle doit s'afficher sur l'écran pour réfléter les transformations du viewport.
+
+Après avoir pris le temps de dérouler les calculs soigneusement j'ai obtenu une première formule que j'ai implémentée et ça fonctionnait. C'était très satisfaisant.
+
+J'ai ensuite ajouté la rotation. C'était un peu plus compliqué et j'ai du faire appel à des formules trigo (dont j'avais l'existence en tête grâce à mon master de cet année).
+
+Une fois le zoom implémenter, j'ai implémenté le centrage sur le contenu (fit), et les calculs ont resservi. Sur ce point j'ai eu quelques difficultés avec l'implémentation en code puisque le moment où je change les valeurs du viewport pendant le calcul peut perturber le résultat. Dans le zoom il faut appliquer à la fin, ici avant.
+
+J'ai voulu ensuite corriger la rotation pour faire comme le zoom (tourner autour d'un point arbitraire).
+J'ai repris les calculs et il s'avère que les résultats sont proches.
+
+Une fois que tout fonctionnait bien, j'ai réanalysé les formules pour bien comprendre ce que j'avais entre les mains. En fait on a une formule générale applicable à rotation + zoom combinés. Dans tous les cas il s'agit de déterminer la translation à appliquer pour faire en sorte qu'un point donné dans les coordonées du monde se retrouve à un point donnée dans les coordonnées de l'écran. Dans le zoom/rotation c'est le point sous la souris qui doit rester sous la souris, dans le cas du fit c'est le centre de la bounding box qui doit venir au centre de l'écran.
+
+
+## Calculs
+
+### Échelle à l'origine
+
+Si on pose <math class="inline"><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>;</mo><msub><mi>y</mi><mn>1</mn></msub><mo>)</mo></math> les coordonnées d'origine et <math class="inline"><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>;</mo><msub><mi>y</mi><mn>2</mn></msub><mo>)</mo></math> les coordonnéees transformées, pour une échelle à l'origine de facteur <math class="inline"><mi>s</mi></math> on a :
+
+<div class="inline-image-container">
+    <div class="inline-image-container-row">
+        {% include inline-image-item.html
+            url="/assets/projects/optics-simulator/001/scale1.png"
+        %}
+    </div>
+</div>
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>2</mn></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>2</mn></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>1</mn></msub><mo>×</mo><mi>s</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>1</mn></msub><mo>×</mo><mi>s</mi></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+
+### Translation
+
+De même, pour une translation d'une distance <math class="inline"><mo>(</mo><msub><mi>x</mi><mi>t</mi></msub><mo>;</mo><msub><mi>y</mi><mi>t</mi></msub><mo>)</mo></math> :
+
+<div class="inline-image-container">
+    <div class="inline-image-container-row">
+        {% include inline-image-item.html
+            url="/assets/projects/optics-simulator/001/translation1.png"
+        %}
+    </div>
+</div>
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>2</mn></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>2</mn></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>1</mn></msub>
+        <mo>+</mo>
+        <msub><mi>x</mi><mi>t</mi></msub>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>1</mn></msub>
+        <mo>+</mo>
+        <msub><mi>y</mi><mi>t</mi></msub>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+
+### Échelle autour d'un point
+
+Regardons maintenant l'échelle autour d'un point arbitraire <math class="inline"><mo>A</mo><mo>(</mo><msub><mi>x</mi><mi>A</mi></msub><mo>;</mo><msub><mi>y</mi><mi>A</mi></msub><mo>)</mo></math> :
+
+<div class="inline-image-container">
+    <div class="inline-image-container-row">
+        {% include inline-image-item.html
+            url="/assets/projects/optics-simulator/001/scale2.png"
+        %}
+    </div>
+</div>
+
+On peut exprimer P1 par rapport à A :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>1</mn></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>1</mn></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mi>A</mi></msub>
+        <mo>+</mo>
+        <mo>(</mo>
+          <msub><mi>x</mi><mn>1</mn></msub>
+          <mo>-</mo>
+          <msub><mi>x</mi><mi>A</mi></msub>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mi>A</mi></msub>
+        <mo>+</mo>
+        <mo>(</mo>
+          <msub><mi>y</mi><mn>1</mn></msub>
+          <mo>-</mo>
+          <msub><mi>y</mi><mi>A</mi></msub>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+De même on peut exprimer P2 par rapport à A :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>2</mn></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>2</mn></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mi>A</mi></msub>
+        <mo>+</mo>
+        <mo>(</mo>
+          <msub><mi>x</mi><mn>2</mn></msub>
+          <mo>-</mo>
+          <msub><mi>x</mi><mi>A</mi></msub>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mi>A</mi></msub>
+        <mo>+</mo>
+        <mo>(</mo>
+          <msub><mi>y</mi><mn>2</mn></msub>
+          <mo>-</mo>
+          <msub><mi>y</mi><mi>A</mi></msub>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+On applique ensuite l'échelle par rapport à A :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>2</mn></msub>
+          <mo>-</mo>
+          <msub><mi>x</mi><mi>A</mi></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>2</mn></msub>
+          <mo>-</mo>
+          <msub><mi>y</mi><mi>A</mi></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><mo>(</mo>
+          <msub><mi>x</mi><mn>1</mn></msub>
+          <mo>-</mo>
+          <msub><mi>x</mi><mi>A</mi></msub>
+          <mo>)</mo>
+          <mo>×</mo>
+          <mi>s</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd><mo>(</mo>
+          <msub><mi>y</mi><mn>1</mn></msub>
+          <mo>-</mo>
+          <msub><mi>y</mi><mi>A</mi></msub>
+          <mo>)</mo>
+          <mo>×</mo>
+          <mi>s</mi></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+Ce qui donne au final :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>2</mn></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>2</mn></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mi>A</mi></msub>
+        <mo>+</mo>
+        <mo>(</mo>
+          <msub><mi>x</mi><mn>1</mn></msub>
+          <mo>-</mo>
+          <msub><mi>x</mi><mi>A</mi></msub>
+          <mo>)</mo>
+          <mo>×</mo>
+          <mi>s</mi>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mi>A</mi></msub>
+        <mo>+</mo>
+        <mo>(</mo>
+          <msub><mi>y</mi><mn>1</mn></msub>
+          <mo>-</mo>
+          <msub><mi>y</mi><mi>A</mi></msub>
+          <mo>)</mo>
+          <mo>×</mo>
+          <mi>s</mi>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+
+### Translation puis échelle
+
+<div class="inline-image-container">
+    <div class="inline-image-container-row">
+        {% include inline-image-item.html
+            url="/assets/projects/optics-simulator/001/trans-scale1.png"
+        %}
+    </div>
+</div>
+
+La translation par le point A s'écrit :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>2</mn></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>2</mn></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>1</mn></msub>
+        <mo>+</mo>
+        <msub><mi>x</mi><mi>A</mi></msub>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>1</mn></msub>
+        <mo>+</mo>
+        <msub><mi>y</mi><mi>A</mi></msub>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+L'échelle autour du point A s'écrit :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>3</mn></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>3</mn></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mi>A</mi></msub>
+        <mo>+</mo>
+        <mo>(</mo>
+          <msub><mi>x</mi><mn>2</mn></msub>
+          <mo>-</mo>
+          <msub><mi>x</mi><mi>A</mi></msub>
+          <mo>)</mo>
+          <mo>×</mo>
+          <mi>s</mi>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mi>A</mi></msub>
+        <mo>+</mo>
+        <mo>(</mo>
+          <msub><mi>y</mi><mn>2</mn></msub>
+          <mo>-</mo>
+          <msub><mi>y</mi><mi>A</mi></msub>
+          <mo>)</mo>
+          <mo>×</mo>
+          <mi>s</mi>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+En combinant les deux on a donc :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>3</mn></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>3</mn></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mi>A</mi></msub>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>1</mn></msub>
+          <mo>×</mo>
+          <mi>s</mi>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mi>A</mi></msub>
+          <mo>+</mo>
+          <msub><mi>y</mi><mn>1</mn></msub>
+          <mo>×</mo>
+          <mi>s</mi>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+Quand je vois cette expression mon premier réflexe est de me dire que c'est commutatif.
+
+
+### Rotation autour de l'origine
+
+Pour la rotation c'est un peu plus complexe. L'astuce est de passer en coordonnées polaires et d'utiliser les formules trigo.
+
+<div class="inline-image-container">
+    <div class="inline-image-container-row">
+        {% include inline-image-item.html
+            url="/assets/projects/optics-simulator/001/rotation1.png"
+        %}
+    </div>
+</div>
+
+Le point de départ peut s'exprimer ainsi:
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>1</mn></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>1</mn></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <mi>r</mi><mo>.</mo>
+          <mi>cos</mi><mo>(</mo>
+          <msub><mi>&#x03B1;</mi><mn>0</mn></msub>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mi>r</mi><mo>.</mo>
+          <mi>sin</mi><mo>(</mo>
+          <msub><mi>&#x03B1;</mi><mn>0</mn></msub>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+Idem pour le point d'arrivée :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>2</mn></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>2</mn></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <mi>r</mi><mo>.</mo>
+          <mi>cos</mi><mo>(</mo>
+          <msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>+</mo><mi>&#x03B1;</mi>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mi>r</mi><mo>.</mo>
+          <mi>sin</mi><mo>(</mo>
+          <msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>+</mo><mi>&#x03B1;</mi>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+Par définition de la rotation, l'angle de rotation s'ajoute à l'angle initial et le rayon est inchangé.
+
+L'objectif est d'exprimer <math class="inline"><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>;</mo><msub><mi>y</mi><mn>2</mn></msub><mo>)</mo></math> en fonction de <math class="inline"><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>;</mo><msub><mi>y</mi><mn>1</mn></msub><mo>)</mo></math>. Pour ça on peut utiliser les formules trigo :
+
+<math>
+    <mtable columnalign="left">
+        <mtr>
+            <mtd>
+                <mi>cos</mi><mo>(</mo>
+                <msub><mi>&#x03B1;</mi><mn>0</mn></msub>
+                <mo>+</mo><mi>&#x03B1;</mi><mo>)</mo>
+                <mo>=</mo>
+                <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
+                <mo>.</mo>
+                <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+                <mo>-</mo>
+                <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
+                <mo>.</mo>
+                <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+            </mtd>
+        </mtr>
+        <mtr>
+            <mtd>
+                <mi>sin</mi><mo>(</mo>
+                <msub><mi>&#x03B1;</mi><mn>0</mn></msub>
+                <mo>+</mo><mi>&#x03B1;</mi><mo>)</mo>
+                <mo>=</mo>
+                <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
+                <mo>.</mo>
+                <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+                <mo>+</mo>
+                <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
+                <mo>.</mo>
+                <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+            </mtd>
+        </mtr>
+    </mtable>
+</math>
+
+Ce qui donne :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>2</mn></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>2</mn></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <mi>r</mi><mo>.</mo>
+          <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
+            <mo>.</mo>
+            <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+            <mo>-</mo>
+            <mi>r</mi><mo>.</mo>
+            <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
+            <mo>.</mo>
+            <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mi>r</mi><mo>.</mo>
+          <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
+            <mo>.</mo>
+            <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+            <mo>+</mo>
+            <mi>r</mi><mo>.</mo>
+            <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
+            <mo>.</mo>
+            <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+On reconnait les expressions de <math class="inline"><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>;</mo><msub><mi>y</mi><mn>1</mn></msub><mo>)</mo></math>, on peut donc écrire :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>2</mn></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>2</mn></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mn>1</mn></msub>
+            <mo>.</mo>
+            <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+            <mo>-</mo>
+            <msub><mi>y</mi><mn>1</mn></msub>
+            <mo>.</mo>
+            <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mn>1</mn></msub>
+            <mo>.</mo>
+            <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+            <mo>+</mo>
+            <msub><mi>x</mi><mn>1</mn></msub>
+            <mo>.</mo>
+            <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+
+### Rotation autour d'un point
+
+<div class="inline-image-container">
+    <div class="inline-image-container-row">
+        {% include inline-image-item.html
+            url="/assets/projects/optics-simulator/001/rotation2.png"
+        %}
+    </div>
+</div>
+
+On peut exprimer le point de départ en coordonnées polaires par rapport à A :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>1</mn></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>1</mn></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+            <msub><mi>x</mi><mn>A</mn></msub>
+            <mo>+</mo>
+          <mi>r</mi><mo>.</mo>
+          <mi>cos</mi><mo>(</mo>
+          <msub><mi>&#x03B1;</mi><mn>0</mn></msub>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+        <msub><mi>y</mi><mn>A</mn></msub>
+            <mo>+</mo>
+          <mi>r</mi><mo>.</mo>
+          <mi>sin</mi><mo>(</mo>
+          <msub><mi>&#x03B1;</mi><mn>0</mn></msub>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+Qu'on peut aussi écrire comme ça :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>1</mn></msub>
+            <mo>-</mo>
+        <msub><mi>x</mi><mn>A</mn></msub>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>1</mn></msub>
+            <mo>-</mo>
+        <msub><mi>y</mi><mn>A</mn></msub>
+            </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <mi>r</mi><mo>.</mo>
+          <mi>cos</mi><mo>(</mo>
+          <msub><mi>&#x03B1;</mi><mn>0</mn></msub>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mi>r</mi><mo>.</mo>
+          <mi>sin</mi><mo>(</mo>
+          <msub><mi>&#x03B1;</mi><mn>0</mn></msub>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+On peut exprimer le point d'arrivée en coordonnées polaires par rapport à A :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>2</mn></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>2</mn></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+            <msub><mi>x</mi><mn>A</mn></msub>
+            <mo>+</mo>
+          <mi>r</mi><mo>.</mo>
+          <mi>cos</mi><mo>(</mo>
+          <msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>+</mo><mi>&#x03B1;</mi>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+        <msub><mi>y</mi><mn>A</mn></msub>
+            <mo>+</mo>
+          <mi>r</mi><mo>.</mo>
+          <mi>sin</mi><mo>(</mo>
+          <msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>+</mo><mi>&#x03B1;</mi>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+Avec la formule trigo ça donne :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>2</mn></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>2</mn></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+            <msub><mi>x</mi><mn>A</mn></msub>
+            <mo>+</mo>
+          <mi>r</mi><mo>.</mo>
+          <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
+                <mo>.</mo>
+                <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+                <mo>-</mo>
+                <mi>r</mi><mo>.</mo>
+                <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
+                <mo>.</mo>
+                <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+        <msub><mi>y</mi><mn>A</mn></msub>
+            <mo>+</mo>
+          <mi>r</mi><mo>.</mo>
+          <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
+                <mo>.</mo>
+                <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+                <mo>+</mo>
+                <mi>r</mi><mo>.</mo>
+                <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
+                <mo>.</mo>
+                <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+En remplaçant avec les expressions trouvées pour le point de départ :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>2</mn></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>2</mn></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+            <msub><mi>x</mi><mn>A</mn></msub>
+            <mo>+</mo>
+            <mo>(</mo>
+            <msub><mi>x</mi><mn>1</mn></msub>
+            <mo>-</mo>
+            <msub><mi>x</mi><mn>A</mn></msub>
+            <mo>)</mo>
+            <mo>.</mo>
+            <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+            <mo>-</mo>
+            <mo>(</mo>
+            <msub><mi>y</mi><mn>1</mn></msub>
+            <mo>-</mo>
+            <msub><mi>y</mi><mn>A</mn></msub>
+            <mo>)</mo>
+            <mo>.</mo>
+            <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+        <msub><mi>y</mi><mn>A</mn></msub>
+            <mo>+</mo>
+            <mo>(</mo>
+            <msub><mi>y</mi><mn>1</mn></msub>
+            <mo>-</mo>
+            <msub><mi>y</mi><mn>A</mn></msub>
+            <mo>)</mo>
+            <mo>.</mo>
+            <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+            <mo>+</mo>
+            <mo>(</mo>
+            <msub><mi>x</mi><mn>1</mn></msub>
+            <mo>-</mo>
+            <msub><mi>x</mi><mn>A</mn></msub>
+            <mo>)</mo>
+            <mo>.</mo>
+            <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+
+### Séquence translation, rotation, échelle
+
+
+Translation to A:
+
+	x2 = x1 + xA
+	y2 = y1 + yA
+
+Rotation a around point A:
+
+	x2 = xA + (x1-xA).cos(a) - (y1-yA).sin(a)
+	y2 = yA + (y1-yA).cos(a) + (x1-xA).sin(a)
+
+Scale s from point A:
+
+	x2 = xA + (x1-xA)*s
+	y2 = yA + (y1-yA)*s
+
+--
+
+	x2 = x1 + xA
+	y2 = y1 + yA
+
+	x3 = xA + (x2-xA).cos(a) - (y2-yA).sin(a)
+	y3 = yA + (y2-yA).cos(a) + (x2-xA).sin(a)
+
+	x4 = xA + (x3-xA)*s
+	y4 = yA + (y3-yA)*s
+
+--
+
+	x4 = xA + ((x2-xA).cos(a) - (y2-yA).sin(a))*s
+	y4 = yA + ((y2-yA).cos(a) + (x2-xA).sin(a))*s
+
+	x4 = xA + (x1.cos(a) - y1.sin(a))*s
+	y4 = yA + (y1.cos(a) + x1.sin(a))*s
+
+	x4 = xA + x1.s.cos(a) - y1.s.sin(a)
+	y4 = yA + y1.s.cos(a) + x1.s.sin(a)
+
+
+## Transformation du viewport
+
+On considère donc deux jeux de transformations
+
+	xs1 = xT1 + xc.s1.cos(a1) - yc.s1.sin(a1)
+	ys1 = yT1 + yc.s1.cos(a1) + xc.s1.sin(a1)
+
+	xs2 = xT2 + xc.s2.cos(a2) - yc.s2.sin(a2)
+	ys2 = yT2 + yc.s2.cos(a2) + xc.s2.sin(a2)
+
+Pour un zoom et/ou une rotation centré autour d'un point arbitraire,
+l'objectif est de trouver T2
+de sorte que xs1 = xs2
+
+Pour un recentrage du viewport en appliquant éventuellement un zoom et une rotation,
+l'objectif est de trouver T2
+de sorte que xs2=0
+
+
+En fait dans les deux cas on détermine la valeur cible de xs2, et on résout
+Dans le premier cas c'est la valeur de la souris dans les coordonées de la vue (qu'on connait sans avoir besoin de transformer)
+Dans les autres cas c'est le centre de l'écran
+
+Le point centre de transformation dans les coordonnées transformées
+dans le premier cas c'est la position (transformée) de la souris
+dans le second cas c'est la position du centre de la bounding box
