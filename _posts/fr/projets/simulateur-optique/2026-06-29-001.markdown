@@ -2,7 +2,7 @@
 layout: project_post
 project_id: ec2e67a6-246f-484e-abc7-6387aa07874a
 entry: "001"
-title: Transformations géométrique en SwiftUI et Canvas
+title: Plongée dans les transformations affines en SwiftUI et Canvas
 topics: [geometrie, maths, swiftui, programmation]
 image: 
 githubs:
@@ -16,50 +16,23 @@ lang_en: /en/projects/optics-simulator/posts/001
 
 J'avance dans le développement de mon logiciel de simulation d'optique, et je veux maintenant pouvoir placer les objets librement en 2D. Pour l'instant les objets sont restreint à un axe optique prédéfini. Ça simplifie grandement le problème et ça m'a permit de prendre de l'exprience avec le codage de la simulation. Je veux maintenant m'affranchir de cette limite.
 
-Avant de réfléchir à l'aspect simulation, il faut déjà créer un espace dans lequel l'utilisateur peut positionner et orienter les objets. Je veux également permettre de se déplacer, zoomer, tourner, etc.
+Avant de réfléchir à l'aspect simulation, la première étape est de créer un espace de travail dans lequel l'utilisateur peut positionner et orienter les objets. Je veux créer un espace virtuellement infini dans lequel l'utilisateur peut déplacer librement, zoomer, tourner, etc.
 
-Repartant de zéro dans un premier temps, j'ai écris du code rapidement, intuitivement, en utilisant les possibilités de transformation offertes par l'API Canvas de SwiftUI. L'idée est d'utiliser les transformations de contexte pour toujours dessiner dans le repère transformé.
+J'expérimente en repartant de zéro. J'ai rapidement quelque chose de fonctionnel en utilisant les possibilités offertes par les API Swift, mais quand je veux implémenter des fonctions plus complexes je suis contraint de me plonger dans les détails mathématiques de transformations affines. Le plus difficile a été de bien formuler le problème. J'ai fini par obtenir des équations que j'ai pu implémenter avec succès en code.
 
-Je défini 3 transformations appliquées dans cet ordre : translation, rotation, échelle. J'ai commencé par implémenter des mécanismes de contrôle simples pour agir sur ces transformations en fonction d'événements de la souris. C'était assez simple, j'ai tâtonné un peu parfois mais jamais très longtemps.
-
-Une fois les contrôles de base en place, j'ai voulu améliorer, en faisant notamment en sorte que le zoom soit centré autour de la souris et non du centre du repère. Et là c'était plus compliqué. J'ai du me pencher plus sérieusement sur le fonctionnement des transformations et notamment comment elles se combinent entre elles.
-
-Il s'agit en effet dans ce cas d'appliquer une translation qui vient compenser le décalage engendré par le zoom. Ce n'est pas trivial à première vue.
-
-L'avantage des transformations du contexte c'est justement de ne pas avoir à faire les calculs et se poser la question de comment combiner les transformations entre elles mais dans certains cas il est nécessaire de comprendre.
-
-J'ai commencé par établir les formules de transformation pour les cas simples : translation, échelle.
-Puis échelle par rapport à un point.
-
-Le plus difficile a été de comprendre de quoi on parle. J'avais en fait besoin de la notion de coordonnées à l'écran et coordonnées dans le monde. Le but est en effet d'avoir un point du monde qui reste fixe à l'écran, c'est-à-dire dont les coordonnées écran correspondantes sont inchangées après la transformation.
-
-On part d'une coordonnée dans le monde, et on lui fait subir des transformation pour obtenir la coordonnée à laquelle elle doit s'afficher sur l'écran pour réfléter les transformations du viewport.
-
-Après avoir pris le temps de dérouler les calculs soigneusement j'ai obtenu une première formule que j'ai implémentée et ça fonctionnait. C'était très satisfaisant.
-
-J'ai ensuite ajouté la rotation. C'était un peu plus compliqué et j'ai du faire appel à des formules trigo (dont j'avais l'existence en tête grâce à mon master de cet année).
-
-Une fois le zoom implémenter, j'ai implémenté le centrage sur le contenu (fit), et les calculs ont resservi. Sur ce point j'ai eu quelques difficultés avec l'implémentation en code puisque le moment où je change les valeurs du viewport pendant le calcul peut perturber le résultat. Dans le zoom il faut appliquer à la fin, ici avant.
-
-J'ai voulu ensuite corriger la rotation pour faire comme le zoom (tourner autour d'un point arbitraire).
-J'ai repris les calculs et il s'avère que les résultats sont proches.
-
-Une fois que tout fonctionnait bien, j'ai réanalysé les formules pour bien comprendre ce que j'avais entre les mains. En fait on a une formule générale applicable à rotation + zoom combinés. Dans tous les cas il s'agit de déterminer la translation à appliquer pour faire en sorte qu'un point donné dans les coordonées du monde se retrouve à un point donnée dans les coordonnées de l'écran. Dans le zoom/rotation c'est le point sous la souris qui doit rester sous la souris, dans le cas du fit c'est le centre de la bounding box qui doit venir au centre de l'écran.
+Une fois que tout fonctionnait bien, j'ai réanalysé les formules pour bien comprendre ce que j'avais entre les mains, et j'ai pu généraliser l'approche et voir les trois opérations comme une seule avec des paramètres différents.
 
 
 ## La base
 
-D'abord le canvas fonctionne avec une origine en haut à gauche et Y croissant vers le bas, alors que les événements de la souris sont rapportés avec une origine en bas à gauche et Y croissant vers le haut.
+Comme précédemment, l'espace de travail est implémenté avec une vue `Canvas` dans laquelle je dessine les objets. Cette fois j'utilise les événements de souris/trackpad complexes comme le scroll, pinch, et la rotation combinés aux touches de modifications pour se déplacer dans l'espace de travail virtuel.
 
-J'applique donc une première échelle avec y:-1 pour retourner le repère vers le haut puis une translation de -H pour ramener l'origine en bas. À ce stade on a donc les coordonnées de la vue qui coïncident avec les coordonnées du canvas, de sorte que si on prend directement les coordonnées de la souris et qu'on trace un point à ces coordonnées, le point apparait suivre la souris. C'est important car ça donne une référence commune pour la suite.
+L'origine du `Canvas` est située en haut à gauche, les valeurs X sont croissantes vers la droite et les valeurs Y sont croissantes vers le bas. Les événements de la souris en revanche sont rapportés avec une origine en bas à gauche et Y croissant vers le haut.
 
-<div class="inline-image-container force-desktop-full-width">
-    <div class="inline-image-container-row">
-        {% include inline-video-item.html
-            url="/assets/projects/optics-simulator/001/video3.mp4"
-        %}
-    </div>
-</div>
+On a donc déjà une première série de transformations à appliquer. D'abord une mise à l'échelle d'un facteur `-1` sur l'axe Y pour retourner le repère vers le haut, puis une translation de la hauteur de la fenêtre vers le bas pour ramener l'origine dans le coin inférieur gauche.
+
+À ce stade les coordonnées de la vue coïncident avec les coordonnées du canvas. C'est-à-dire que si par exemple on dessine un objet en spécifiant les coordonnées (100,200) dans le `Canvas`, il apparaitra aux coordonnées (100,200) à l'écran. En particulier, ça permet de prendre directement les coordonnées de la souris pour dessiner un point qui semble suivre la souris.
+
 <div class="inline-image-container">
     <div class="inline-image-container-row">
         {% include inline-image-item.html
@@ -68,15 +41,16 @@ J'applique donc une première échelle avec y:-1 pour retourner le repère vers 
     </div>
 </div>
 
-Partant de là, je commence par appliquer une translation pour amener l'origine du dessin au centre de l'écran. Maintenant si on dessine un point en (0;0) il n'apparait plus en bas à gauche mais au centre de l'écran.
-
 <div class="inline-image-container force-desktop-full-width">
     <div class="inline-image-container-row">
-        {% include inline-image-item.html
-            url="/assets/projects/optics-simulator/001/screen1.png"
+        {% include inline-video-item.html
+            url="/assets/projects/optics-simulator/001/video3.mp4"
         %}
     </div>
 </div>
+
+Ensuite j'applique une translation pour amener l'origine du dessin au centre de l'écran. Maintenant si on dessine un point en (0;0) il n'apparait plus en bas à gauche mais au centre de l'écran.
+
 <div class="inline-image-container">
     <div class="inline-image-container-row">
         {% include inline-image-item.html
@@ -85,15 +59,16 @@ Partant de là, je commence par appliquer une translation pour amener l'origine 
     </div>
 </div>
 
-De là j'applique successivement une translation, rotation, et mise à l'échelle.
-
 <div class="inline-image-container force-desktop-full-width">
     <div class="inline-image-container-row">
-        {% include inline-video-item.html
-            url="/assets/projects/optics-simulator/001/video1.mp4"
+        {% include inline-image-item.html
+            url="/assets/projects/optics-simulator/001/screen1.png"
         %}
     </div>
 </div>
+
+À ce stage on est globalement là où en était déjà dans la version actuelle. Les changements apparaissent maintenant. J'applique désormais successivement une translation, une rotation, et une mise à l'échelle.
+
 <div class="inline-image-container">
     <div class="inline-image-container-row">
         {% include inline-image-item.html
@@ -102,17 +77,16 @@ De là j'applique successivement une translation, rotation, et mise à l'échell
     </div>
 </div>
 
-J'ai maintenant besoin de convertir la souris dans le repère transformé. 
-
-En tâtonant un peu je trouve que ce code fonctionne :
-
 <div class="inline-image-container force-desktop-full-width">
     <div class="inline-image-container-row">
         {% include inline-video-item.html
-            url="/assets/projects/optics-simulator/001/video4.mp4"
+            url="/assets/projects/optics-simulator/001/video1.mp4"
         %}
     </div>
 </div>
+
+La dernière étape est de voir si je peux récupérer les coordonnées de la souris dans le repère transformé. En tâtonant un peu je trouve que ce code fonctionne :
+
 <div class="inline-image-container">
     <div class="inline-image-container-row">
         {% include inline-image-item.html
@@ -121,12 +95,27 @@ En tâtonant un peu je trouve que ce code fonctionne :
     </div>
 </div>
 
+<div class="inline-image-container force-desktop-full-width">
+    <div class="inline-image-container-row">
+        {% include inline-video-item.html
+            url="/assets/projects/optics-simulator/001/video4.mp4"
+        %}
+    </div>
+</div>
 
-## Recherche de formalisme
+On a donc maintenant un espace de travail dans lequel on peut se déplacer librement.
 
-Jusque là, le zoom et la rotation se font à partir de l'origine du repère. Ce n'est pas très ergonomique. Je veux qu'ils se fassent autour de la position de la souris.
+Cependant, le zoom et la rotation se font à partir de l'origine du repère, et ce n'est pas très ergonomique. Je veux qu'ils se fassent autour de la position de la souris.
 
-Cette fois ce n'est pas trivial et je ne sais pas bien comment aborder le problème.
+Je veux aussi implémenter une fonction qui permet de centrer la vue sur une zone donnée en adaptant le zoom si nécessaire. J'ai testé des choses mais la tâche s'est avéré moins simple que prévu.
+
+
+Je peux maintenant passer à l'amélioration du zoom et de la rotation. 
+
+
+## Premières recherches d'un formalisme
+
+Le problème du zoom et de la rotation n'est pas trivial et je ne sais pas bien comment aborder le problème.
 
 Je me concentre sur le zoom dans un premier temps.
 
@@ -142,6 +131,7 @@ Je me dis que le fait qu'il y ait une translation en amont complexifie le probl�
     <div class="inline-image-container-row">
         {% include inline-image-item.html
             url="/assets/projects/optics-simulator/001/draft2.JPG"
+            legend="Premier brouillon"
         %}
     </div>
 </div>
@@ -154,6 +144,7 @@ J'écris une première équation en me basant sur les transformations de repère
     <div class="inline-image-container-row">
         {% include inline-image-item.html
             url="/assets/projects/optics-simulator/001/draft3.JPG"
+            legend="Recherche d'une équation"
         %}
     </div>
 </div>
@@ -168,6 +159,7 @@ J'essaie ensuite de combiner une translation puis une mise à l'échelle à part
     <div class="inline-image-container-row">
         {% include inline-image-item.html
             url="/assets/projects/optics-simulator/001/draft1.JPG"
+            legend="On repart des bases"
         %}
     </div>
 </div>
@@ -182,12 +174,13 @@ Je déduis une nouvelle expression de la translation. Ça me parait un peu trop 
     <div class="inline-image-container-row">
         {% include inline-image-item.html
             url="/assets/projects/optics-simulator/001/draft4.JPG"
+            legend="Meilleure équation"
         %}
     </div>
 </div>
 
 
-## Formalise complet
+## Développement du formalisme
 
 Il faut maintenant ajouter la rotation.
 
@@ -1323,124 +1316,11 @@ L'expression qu'on obtient ici transforme des coordonnées dans le monde en coor
 On est prêt à reprendre les équations du début.
 
 
-
-
-
-
-
-
-
-
-## Analyse
-
-
-On serait tenté de transformer les coordonnées de la souris de la même manière qu'on a transformé le repère. Mais en réalité c'est l'inverse qu'il faut faire.
-
-En effet, ce qu'on a fait jusque là permet d'afficher un point dont les coordonnées sont définies dans le monde sur un point de l'écran de sorte à respecter les transformations appliquées au monde par rapport à la fenêtre.
-
-Par exemple, si on définit que le monde est décalé de XY par rapport à la fenêtre, alors les coordonnées du point sur la fenêtre seront celles du point dans le monde +XY.
-
-Pour une translation seule c'est facile à voir, ça devient tout de suite moins évident si on rajoute une rotation et une mise à l'échelle.
-
-La transformation transforme donc les coordonnées mondes en coordonnées écran.
-
-Nous ce qu'on veut, c'est transformer des coordonnées écran (la souris) en coordonnées monde. C'est donc bien la transformée inverse qu'on doit faire.
-
-
-
-## Zoom centré
-
-
-
-
-
-
-
-La question c'est comment définir la transformée inverse.
-
-
-
-
-Pour transformer le repère on utilise des transformations successive, chacune s'appliquant sur la base des précédentes. C'est simple à composer et à comprendre. Mais ce n'est pas la même chose que de transformer les coordonnées d'un point. Quand on transforme les coordonnées d'un point chaque transformation laisse le repère inchangé.
-
-
-
-
-
-
-
-<div class="inline-image-container force-desktop-full-width">
-    <div class="inline-image-container-row">
-        {% include inline-video-item.html
-            url="/assets/projects/optics-simulator/001/video2.mp4"
-        %}
-    </div>
-</div>
-
-
-## Analyse complète
-
-
-
-
-### Translation
-
-De même, pour une translation d'une distance <math class="inline"><mo>(</mo><msub><mi>x</mi><mi>t</mi></msub><mo>;</mo><msub><mi>y</mi><mi>t</mi></msub><mo>)</mo></math> :
-
-<div class="inline-image-container">
-    <div class="inline-image-container-row">
-        {% include inline-image-item.html
-            url="/assets/projects/optics-simulator/001/translation1.png"
-        %}
-    </div>
-</div>
-
-<math>
-  <mrow>
-    <mo>(</mo>
-    <mtable>
-      <mtr>
-        <mtd><msub><mi>x</mi><mn>2</mn></msub></mtd>
-      </mtr>
-      <mtr>
-        <mtd><msub><mi>y</mi><mn>2</mn></msub></mtd>
-      </mtr>
-    </mtable>
-    <mo>)</mo>
-    <mo>=</mo>
-    <mo>(</mo>
-    <mtable>
-      <mtr>
-        <mtd><msub><mi>x</mi><mn>1</mn></msub>
-        <mo>+</mo>
-        <msub><mi>x</mi><mi>t</mi></msub>
-        </mtd>
-      </mtr>
-      <mtr>
-        <mtd><msub><mi>y</mi><mn>1</mn></msub>
-        <mo>+</mo>
-        <msub><mi>y</mi><mi>t</mi></msub>
-        </mtd>
-      </mtr>
-    </mtable>
-    <mo>)</mo>
-  </mrow>
-</math>
-
-
-
-
-
-
-
-
-
-
-
-
 ## Transformation du viewport
 
-Au début j'ai travaillé avec une paire de formules :
+Au début j'ai travaillé avec une paire de formules, une pour l'état avant la transformation (translation T1, rotation a1 et zoom s1) et une pour l'état après la transformation (translation T2, rotation a2 et zoom s2). J'ai compris après qu'en fait une seule suffit.
+
+Je pose (xc;yc) les coordonnées du point qui sert de centre de rotation dans les coordonnées transformées, et (xs;ys) sont les coordonnées écran correspondantes.
 
 <math>
   <mrow>
@@ -1550,7 +1430,482 @@ Au début j'ai travaillé avec une paire de formules :
   </mrow>
 </math>
 
-Mais finalement une seule suffit :
+
+### Zoom compensé
+
+Dans le cas du zoom compensé :
+- l'angle ne change pas, on a a1 = a2 = a
+- le point central correspond au point sous la souris
+- le but est que le point écran soit le même avant et après
+
+On a donc :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mi>T1</mi></msub>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <msub><mi>s</mi><mn>1</mn></msub>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>-</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <msub><mi>s</mi><mn>1</mn></msub>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mi>T1</mi></msub>
+          <mo>+</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <msub><mi>s</mi><mn>1</mn></msub>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <msub><mi>s</mi><mn>1</mn></msub>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mi>T2</mi></msub>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <msub><mi>s</mi><mn>2</mn></msub>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>-</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <msub><mi>s</mi><mn>2</mn></msub>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mi>T2</mi></msub>
+          <mo>+</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <msub><mi>s</mi><mn>2</mn></msub>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <msub><mi>s</mi><mn>2</mn></msub>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+On cherche T2 :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mi>T2</mi></msub>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mi>T2</mi></msub>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mi>T1</mi></msub>
+          <mo>+</mo>
+          <mo>(</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <msub><mi>s</mi><mn>1</mn></msub>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>-</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <msub><mi>s</mi><mn>1</mn></msub>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>)</mo>
+          <mo>-</mo>
+          <mo>(</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <msub><mi>s</mi><mn>2</mn></msub>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>-</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <msub><mi>s</mi><mn>2</mn></msub>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mi>T1</mi></msub>
+          <mo>+</mo>
+          <mo>(</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <msub><mi>s</mi><mn>1</mn></msub>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <msub><mi>s</mi><mn>1</mn></msub>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>)</mo>
+          <mo>-</mo>
+          <mo>(</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <msub><mi>s</mi><mn>2</mn></msub>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <msub><mi>s</mi><mn>2</mn></msub>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+On peut factoriser :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mi>T2</mi></msub>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mi>T2</mi></msub>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mi>T1</mi></msub>
+          <mo>+</mo>
+          <mo>(</mo>
+          <msub><mi>s</mi><mn>1</mn></msub>
+          <mo>-</mo>
+          <msub><mi>s</mi><mn>2</mn></msub>
+          <mo>)</mo>
+          <mo>(</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>-</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mi>T1</mi></msub>
+          <mo>+</mo>
+          <mo>(</mo>
+          <msub><mi>s</mi><mn>1</mn></msub>
+          <mo>-</mo>
+          <msub><mi>s</mi><mn>2</mn></msub>
+          <mo>)</mo>
+          <mo>(</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+On se rappelle qu'une translation est toujours appliquée pour centrer le dessin, et la translation qu'on spécifie s'ajoute à celle-ci.
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+            <msub><mi>x</mi><mi>T1</mi></msub>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+            <msub><mi>y</mi><mi>T1</mi></msub>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mn>T0</mn></msub>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>T1/0</mn></msub>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mn>T0</mn></msub>
+          <mo>+</mo>
+          <msub><mi>y</mi><mn>T1/0</mn></msub>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+            <msub><mi>x</mi><mi>T2</mi></msub>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+            <msub><mi>y</mi><mi>T2</mi></msub>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mn>T0</mn></msub>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>T2/0</mn></msub>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mn>T0</mn></msub>
+          <mo>+</mo>
+          <msub><mi>y</mi><mn>T2/0</mn></msub>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+Si on remplace dans l'expression précédente ça se simplifie :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mi>T2/0</mi></msub>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mi>T2/0</mi></msub>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mi>T1/0</mi></msub>
+          <mo>+</mo>
+          <mo>(</mo>
+          <msub><mi>s</mi><mn>1</mn></msub>
+          <mo>-</mo>
+          <msub><mi>s</mi><mn>2</mn></msub>
+          <mo>)</mo>
+          <mo>(</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>-</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mi>T1/0</mi></msub>
+          <mo>+</mo>
+          <mo>(</mo>
+          <msub><mi>s</mi><mn>1</mn></msub>
+          <mo>-</mo>
+          <msub><mi>s</mi><mn>2</mn></msub>
+          <mo>)</mo>
+          <mo>(</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+Si on cherche de combien il faut décaler la translation existante, on obtient :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <mi>dx</mi>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mi>dy</mi>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <mo>(</mo>
+          <msub><mi>s</mi><mn>1</mn></msub>
+          <mo>-</mo>
+          <msub><mi>s</mi><mn>2</mn></msub>
+          <mo>)</mo>
+          <mo>(</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>-</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mo>(</mo>
+          <msub><mi>s</mi><mn>1</mn></msub>
+          <mo>-</mo>
+          <msub><mi>s</mi><mn>2</mn></msub>
+          <mo>)</mo>
+          <mo>(</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+J'implémente dans le code, et ça fonctionne parfaitement.
+
+<div class="inline-image-container">
+    <div class="inline-image-container-row">
+        {% include inline-image-item.html
+            url="/assets/projects/optics-simulator/001/code5.png"
+        %}
+    </div>
+</div>
+
+
+### Centrage sur une zone
+
+Fort de ce succès, je revisite la fonction de centrage que j'avais bricolé.
+
+Je comprends que je peux utiliser les équations précédentes.
+
+Il s'agit cette fois de trouver la translation à appliquer pour que le centre de la zone à centrer se retrouve au centre de l'écran, après application éventuelle d'une mise à l'échelle et d'une rotation.
+
+Partant de la formule générale :
 
 <math>
   <mrow>
@@ -1606,17 +1961,655 @@ Mais finalement une seule suffit :
   </mrow>
 </math>
 
-Tous les problèmes reviennent à trouver la translation à appliquer en connaissant la rotation et l'échelle finale, de sorte qu'un point donné du monde finisse à un point donné de l'écran.
+On cherche T :
 
-Pour un zoom et/ou une rotation centré autour d'un point arbitraire,
-le point sous la souris doit rester au même point à l'écran.
-La rotation et/ou l'échelle finales sont définies par un incrément des valeurs initiales.
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>T</mn></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>T</mn></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mi>s</mi></msub>
+          <mo>-</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mo>(</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>-</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mi>s</mi></msub>
+          <mo>-</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mo>(</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+Encore une fois on peut travailler en prenant en compte la translation de base :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mn>T/0</mn></msub>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mn>T/0</mn></msub>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mi>s</mi></msub>
+          <mo>-</mo>
+          <msub><mi>x</mi><mi>T0</mi></msub>
+          <mo>-</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mo>(</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>-</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mi>s</mi></msub>
+          <mo>-</mo>
+          <msub><mi>y</mi><mi>T0</mi></msub>
+          <mo>-</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mo>(</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+On veut positionner au centre de l'écran, et T0 correspond justement au centre de l'écran. On a donc :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+            <msub><mi>x</mi><mi>s</mi></msub>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+            <msub><mi>y</mi><mi>s</mi></msub>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mn>T0</mn></msub>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mn>T0</mn></msub>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+Il faut donc définir la translation à :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mn>T/0</mn></msub>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mn>T/0</mn></msub>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <mo>-</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mo>(</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>-</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mo>-</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mo>(</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+Dans mon cas j'avais mis la rotation à 0. Je vérifie que les équations donnent bien les même résultats dans le cas où la rotation vaut 0.
+
+Dans le code, ça fonctionne parfaitement.
+
+<div class="inline-image-container">
+    <div class="inline-image-container-row">
+        {% include inline-image-item.html
+            url="/assets/projects/optics-simulator/001/code6.png"
+        %}
+    </div>
+</div>
+
+
+### Rotation compensée
+
+Pour la rotation on peut utiliser la même approche que pour le zoom, sauf que cette fois c'est le zoom qui ne change pas, on a s2=s1=s.
+
+On a donc :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mi>T1</mi></msub>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>1</mi></msub><mo>)</mo>
+          <mo>-</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>1</mi></msub><mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mi>T1</mi></msub>
+          <mo>+</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>1</mi></msub><mo>)</mo>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>1</mi></msub><mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mi>T2</mi></msub>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>2</mi></msub><mo>)</mo>
+          <mo>-</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>2</mi></msub><mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mi>T2</mi></msub>
+          <mo>+</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>2</mi></msub><mo>)</mo>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>2</mi></msub><mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+On cherche T2 :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mi>T2</mi></msub>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mi>T2</mi></msub>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mi>T1</mi></msub>
+          <mo>+</mo>
+          <mo>(</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>1</mi></msub><mo>)</mo>
+          <mo>-</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>1</mi></msub><mo>)</mo>
+          <mo>)</mo>
+          <mo>-</mo>
+          <mo>(</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>2</mi></msub><mo>)</mo>
+          <mo>-</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>2</mi></msub><mo>)</mo>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mi>T1</mi></msub>
+          <mo>+</mo>
+          <mo>(</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>1</mi></msub><mo>)</mo>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>1</mi></msub><mo>)</mo>
+          <mo>)</mo>
+          <mo>-</mo>
+          <mo>(</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>2</mi></msub><mo>)</mo>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>2</mi></msub><mo>)</mo>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+On peut factoriser :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mi>T2</mi></msub>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mi>T2</mi></msub>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mi>T1</mi></msub>
+          <mo>+</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mo>(</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mo>(</mo>
+          <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>1</mi></msub><mo>)</mo>
+          <mo>-</mo>
+          <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>2</mi></msub><mo>)</mo>
+          <mo>)</mo>
+          <mo>-</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mo>(</mo>
+          <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>1</mi></msub><mo>)</mo>
+          <mo>-</mo>
+          <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>2</mi></msub><mo>)</mo>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mi>T1</mi></msub>
+          <mo>+</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mo>(</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mo>(</mo>
+          <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>1</mi></msub><mo>)</mo>
+          <mo>-</mo>
+          <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>2</mi></msub><mo>)</mo>
+          <mo>)</mo>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mo>(</mo>
+          <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>1</mi></msub><mo>)</mo>
+          <mo>-</mo>
+          <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>2</mi></msub><mo>)</mo>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+Si on cherche de combien il faut décaler la translation existante, on obtient :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <mi>dx</mi>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mi>dy</mi>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mo>(</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mo>(</mo>
+          <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>1</mi></msub><mo>)</mo>
+          <mo>-</mo>
+          <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>2</mi></msub><mo>)</mo>
+          <mo>)</mo>
+          <mo>-</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mo>(</mo>
+          <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>1</mi></msub><mo>)</mo>
+          <mo>-</mo>
+          <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>2</mi></msub><mo>)</mo>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mo>(</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mo>(</mo>
+          <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>1</mi></msub><mo>)</mo>
+          <mo>-</mo>
+          <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>2</mi></msub><mo>)</mo>
+          <mo>)</mo>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mo>(</mo>
+          <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>1</mi></msub><mo>)</mo>
+          <mo>-</mo>
+          <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mi>2</mi></msub><mo>)</mo>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+J'implémente dans le code, et ça fonctionne parfaitement.
+
+<div class="inline-image-container">
+    <div class="inline-image-container-row">
+        {% include inline-image-item.html
+            url="/assets/projects/optics-simulator/001/code7.png"
+        %}
+    </div>
+</div>
+
+Voilà le résultat final comparé à avant :
+
+<div class="inline-image-container force-desktop-full-width">
+    <div class="inline-image-container-row">
+        {% include inline-video-item.html
+            url="/assets/projects/optics-simulator/001/video1.mp4"
+        %}
+    </div>
+</div>
+
+<div class="inline-image-container force-desktop-full-width">
+    <div class="inline-image-container-row">
+        {% include inline-video-item.html
+            url="/assets/projects/optics-simulator/001/video2.mp4"
+        %}
+    </div>
+</div>
+
+
+## Analyse
+
+Les trois équations que j'ai trouvées se ressemblent beaucoup sans être complètement identiques, mais je soupçonne qu'il y a un principe commun.
+
+En fait, tous les problèmes reviennent à trouver la translation à appliquer en connaissant la rotation et l'échelle finale, de sorte qu'un point donné du monde finisse à un point donné de l'écran.
+
+Pour le zoom et la rotation centré autour d'un point arbitraire, c'est le point sous la souris qui doit rester au même point à l'écran. Il s'agit en fait de la même opération, et on pourrait très bien combiner un zoom et une rotation dans la même opération.
 
 Noter qu'on a toujours accès à la position de la souris à la fois dans le monde et sur l'écran.
 
-Pour un recentrage du viewport,
-le centre de la bounding box doit finir au centre de l'écran.
-La rotation et/ou l'échelle finales sont définies par un calcul sur la bounding box et la taille de la fenêtre.
+Pour un recentrage du viewport, c'est le centre de la bounding box qui doit finir au centre de l'écran. La rotation et le facteur d'échelle finales sont définies par un calcul sur la bounding box et la taille de la fenêtre.
+
+En fait la seule formule qui compte est :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>s</mn></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>s</mn></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mi>T</mi></msub>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>-</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mi>T</mi></msub>
+          <mo>+</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+Comme on cherche la translation :
 
 <math>
   <mrow>
@@ -1680,7 +2673,7 @@ La rotation et/ou l'échelle finales sont définies par un calcul sur la boundin
   </mrow>
 </math>
 
-En réalité, on spécifie toujours la translation par rapport à une translation de base toujours appliquée :
+On cherche la translation relative à la translation de base :
 
 <math>
   <mrow>
@@ -1688,12 +2681,12 @@ En réalité, on spécifie toujours la translation par rapport à une translatio
     <mtable>
       <mtr>
         <mtd>
-            <msub><mi>x</mi><mi>T</mi></msub>
+            <msub><mi>x</mi><mi>T/0</mi></msub>
         </mtd>
       </mtr>
       <mtr>
         <mtd>
-            <msub><mi>y</mi><mi>T</mi></msub>
+            <msub><mi>y</mi><mi>T/0</mi></msub>
         </mtd>
       </mtr>
     </mtable>
@@ -1703,16 +2696,44 @@ En réalité, on spécifie toujours la translation par rapport à une translatio
     <mtable>
       <mtr>
         <mtd>
+          <msub><mi>x</mi><mn>s</mn></msub>
+          <mo>-</mo>
           <msub><mi>x</mi><mn>T0</mn></msub>
-          <mo>+</mo>
-          <msub><mi>x</mi><mn>T1</mn></msub>
+          <mo>-</mo>
+          <mo>(</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>-</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>)</mo>
         </mtd>
       </mtr>
       <mtr>
         <mtd>
+          <msub><mi>y</mi><mn>s</mn></msub>
+          <mo>-</mo>
           <msub><mi>y</mi><mn>T0</mn></msub>
+          <mo>-</mo>
+          <mo>(</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
           <mo>+</mo>
-          <msub><mi>y</mi><mn>T1</mn></msub>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>)</mo>
         </mtd>
       </mtr>
     </mtable>
@@ -1720,7 +2741,7 @@ En réalité, on spécifie toujours la translation par rapport à une translatio
   </mrow>
 </math>
 
-On cherche donc à exprimer T1:
+On peut exprimer les coordonnées écran en tenant compte de la translation de base. On peut poser :
 
 <math>
   <mrow>
@@ -1728,12 +2749,12 @@ On cherche donc à exprimer T1:
     <mtable>
       <mtr>
         <mtd>
-            <msub><mi>x</mi><mi>T1</mi></msub>
+            <msub><mi>x</mi><mi>s/0</mi></msub>
         </mtd>
       </mtr>
       <mtr>
         <mtd>
-            <msub><mi>y</mi><mi>T1</mi></msub>
+            <msub><mi>y</mi><mi>s/0</mi></msub>
         </mtd>
       </mtr>
     </mtable>
@@ -1743,14 +2764,14 @@ On cherche donc à exprimer T1:
     <mtable>
       <mtr>
         <mtd>
-          <msub><mi>x</mi><mn>T</mn></msub>
+          <msub><mi>x</mi><mn>s</mn></msub>
           <mo>-</mo>
           <msub><mi>x</mi><mn>T0</mn></msub>
         </mtd>
       </mtr>
       <mtr>
         <mtd>
-          <msub><mi>y</mi><mn>T</mn></msub>
+          <msub><mi>y</mi><mn>s</mn></msub>
           <mo>-</mo>
           <msub><mi>y</mi><mn>T0</mn></msub>
         </mtd>
@@ -1759,3 +2780,223 @@ On cherche donc à exprimer T1:
     <mo>)</mo>
   </mrow>
 </math>
+
+Ce qui permet d'écrire :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+            <msub><mi>x</mi><mi>T/0</mi></msub>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+            <msub><mi>y</mi><mi>T/0</mi></msub>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <msub><mi>x</mi><mn>s/0</mn></msub>
+          <mo>-</mo>
+          <mo>(</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>-</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <msub><mi>y</mi><mn>s/0</mn></msub>
+          <mo>-</mo>
+          <mo>(</mo>
+          <msub><mi>y</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>+</mo>
+          <msub><mi>x</mi><mn>c</mn></msub>
+          <mo>.</mo>
+          <mi>s</mi>
+          <mo>.</mo>
+          <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+Dans le cas du zoom et de la rotation :
+- (xc;yc) est la position de la souris en coordonnées monde, avant la transformation
+- (xs/0;ys/0) est la position de la souris en coordonnées écran relativement au centre
+
+Dans le cas du centrage :
+- (xc;yc) est le centre de la zone à centrer en coordonnées monde
+- (xs/0;ys/0) est la position du centre de la zone à centrer en coordonnées écran relativement au centre
+
+
+J'ai créé une fonction générique appelée par les 3 opérations. Ça fonctionne bien.
+
+<div class="inline-image-container force-desktop-full-width">
+    <div class="inline-image-container-row free-width">
+        {% include inline-image-item.html
+            url="/assets/projects/optics-simulator/001/code8.png"
+        %}
+        {% include inline-image-item.html
+            url="/assets/projects/optics-simulator/001/code9.png"
+        %}
+    </div>
+</div>
+
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+On serait tenté de transformer les coordonnées de la souris de la même manière qu'on a transformé le repère. Mais en réalité c'est l'inverse qu'il faut faire.
+
+En effet, ce qu'on a fait jusque là permet d'afficher un point dont les coordonnées sont définies dans le monde sur un point de l'écran de sorte à respecter les transformations appliquées au monde par rapport à la fenêtre.
+
+Par exemple, si on définit que le monde est décalé de XY par rapport à la fenêtre, alors les coordonnées du point sur la fenêtre seront celles du point dans le monde +XY.
+
+Pour une translation seule c'est facile à voir, ça devient tout de suite moins évident si on rajoute une rotation et une mise à l'échelle.
+
+La transformation transforme donc les coordonnées mondes en coordonnées écran.
+
+Nous ce qu'on veut, c'est transformer des coordonnées écran (la souris) en coordonnées monde. C'est donc bien la transformée inverse qu'on doit faire.
+
+
+
+
+
+
+La question c'est comment définir la transformée inverse.
+
+
+
+
+Pour transformer le repère on utilise des transformations successive, chacune s'appliquant sur la base des précédentes. C'est simple à composer et à comprendre. Mais ce n'est pas la même chose que de transformer les coordonnées d'un point. Quand on transforme les coordonnées d'un point chaque transformation laisse le repère inchangé.
+
+
+
+
+
+
+
+
+
+### Translation
+
+De même, pour une translation d'une distance <math class="inline"><mo>(</mo><msub><mi>x</mi><mi>t</mi></msub><mo>;</mo><msub><mi>y</mi><mi>t</mi></msub><mo>)</mo></math> :
+
+<div class="inline-image-container">
+    <div class="inline-image-container-row">
+        {% include inline-image-item.html
+            url="/assets/projects/optics-simulator/001/translation1.png"
+        %}
+    </div>
+</div>
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>2</mn></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>2</mn></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>1</mn></msub>
+        <mo>+</mo>
+        <msub><mi>x</mi><mi>t</mi></msub>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>1</mn></msub>
+        <mo>+</mo>
+        <msub><mi>y</mi><mi>t</mi></msub>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+-
+
+
+
+
+
+
+
+
+Repartant de zéro dans un premier temps, j'ai écris du code rapidement, intuitivement, en utilisant les possibilités de transformation offertes par l'API Canvas de SwiftUI. L'idée est d'utiliser les transformations de contexte pour toujours dessiner dans le repère transformé.
+
+Je défini 3 transformations appliquées dans cet ordre : translation, rotation, échelle. J'ai commencé par implémenter des mécanismes de contrôle simples pour agir sur ces transformations en fonction d'événements de la souris. C'était assez simple, j'ai tâtonné un peu parfois mais jamais très longtemps.
+
+Une fois les contrôles de base en place, j'ai voulu améliorer, en faisant notamment en sorte que le zoom soit centré autour de la souris et non du centre du repère. Et là c'était plus compliqué. J'ai du me pencher plus sérieusement sur le fonctionnement des transformations et notamment comment elles se combinent entre elles.
+
+Il s'agit en effet dans ce cas d'appliquer une translation qui vient compenser le décalage engendré par le zoom. Ce n'est pas trivial à première vue.
+
+L'avantage des transformations du contexte c'est justement de ne pas avoir à faire les calculs et se poser la question de comment combiner les transformations entre elles mais dans certains cas il est nécessaire de comprendre.
+
+J'ai commencé par établir les formules de transformation pour les cas simples : translation, échelle.
+Puis échelle par rapport à un point.
+
+Le plus difficile a été de comprendre de quoi on parle. J'avais en fait besoin de la notion de coordonnées à l'écran et coordonnées dans le monde. Le but est en effet d'avoir un point du monde qui reste fixe à l'écran, c'est-à-dire dont les coordonnées écran correspondantes sont inchangées après la transformation.
+
+On part d'une coordonnée dans le monde, et on lui fait subir des transformation pour obtenir la coordonnée à laquelle elle doit s'afficher sur l'écran pour réfléter les transformations du viewport.
+
+Après avoir pris le temps de dérouler les calculs soigneusement j'ai obtenu une première formule que j'ai implémentée et ça fonctionnait. C'était très satisfaisant.
+
+J'ai ensuite ajouté la rotation. C'était un peu plus compliqué et j'ai du faire appel à des formules trigo (dont j'avais l'existence en tête grâce à mon master de cet année).
+
+Une fois le zoom implémenter, j'ai implémenté le centrage sur le contenu (fit), et les calculs ont resservi. Sur ce point j'ai eu quelques difficultés avec l'implémentation en code puisque le moment où je change les valeurs du viewport pendant le calcul peut perturber le résultat. Dans le zoom il faut appliquer à la fin, ici avant.
+
+J'ai voulu ensuite corriger la rotation pour faire comme le zoom (tourner autour d'un point arbitraire).
+J'ai repris les calculs et il s'avère que les résultats sont proches.
+
+Une fois que tout fonctionnait bien, j'ai réanalysé les formules pour bien comprendre ce que j'avais entre les mains. En fait on a une formule générale applicable à rotation + zoom combinés. Dans tous les cas il s'agit de déterminer la translation à appliquer pour faire en sorte qu'un point donné dans les coordonées du monde se retrouve à un point donnée dans les coordonnées de l'écran. Dans le zoom/rotation c'est le point sous la souris qui doit rester sous la souris, dans le cas du fit c'est le centre de la bounding box qui doit venir au centre de l'écran.
+
+
+
