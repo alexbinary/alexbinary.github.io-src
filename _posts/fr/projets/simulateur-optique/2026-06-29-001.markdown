@@ -47,7 +47,7 @@ J'ai repris les calculs et il s'avère que les résultats sont proches.
 Une fois que tout fonctionnait bien, j'ai réanalysé les formules pour bien comprendre ce que j'avais entre les mains. En fait on a une formule générale applicable à rotation + zoom combinés. Dans tous les cas il s'agit de déterminer la translation à appliquer pour faire en sorte qu'un point donné dans les coordonées du monde se retrouve à un point donnée dans les coordonnées de l'écran. Dans le zoom/rotation c'est le point sous la souris qui doit rester sous la souris, dans le cas du fit c'est le centre de la bounding box qui doit venir au centre de l'écran.
 
 
-## Fonctionnement
+## La base
 
 D'abord le canvas fonctionne avec une origine en haut à gauche et Y croissant vers le bas, alors que les événements de la souris sont rapportés avec une origine en bas à gauche et Y croissant vers le haut.
 
@@ -102,23 +102,131 @@ De là j'applique successivement une translation, rotation, et mise à l'échell
     </div>
 </div>
 
+J'ai maintenant besoin de convertir la souris dans le repère transformé. 
 
-
+En tâtonant un peu je trouve que ce code fonctionne :
 
 <div class="inline-image-container force-desktop-full-width">
     <div class="inline-image-container-row">
         {% include inline-video-item.html
-            url="/assets/projects/optics-simulator/001/video2.mp4"
+            url="/assets/projects/optics-simulator/001/video4.mp4"
+        %}
+    </div>
+</div>
+<div class="inline-image-container">
+    <div class="inline-image-container-row">
+        {% include inline-image-item.html
+            url="/assets/projects/optics-simulator/001/code4.png"
         %}
     </div>
 </div>
 
 
-## Calculs
+## Recherche de formalisme
 
-### Échelle à l'origine
+Jusque là, le zoom et la rotation se font à partir de l'origine du repère. Ce n'est pas très ergonomique. Je veux qu'ils se fassent autour de la position de la souris.
 
-Si on pose <math class="inline"><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>;</mo><msub><mi>y</mi><mn>1</mn></msub><mo>)</mo></math> les coordonnées d'origine et <math class="inline"><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>;</mo><msub><mi>y</mi><mn>2</mn></msub><mo>)</mo></math> les coordonnéees transformées, pour une échelle à l'origine de facteur <math class="inline"><mi>s</mi></math> on a :
+Cette fois ce n'est pas trivial et je ne sais pas bien comment aborder le problème.
+
+Je me concentre sur le zoom dans un premier temps.
+
+J'essaie de poser le problème sur un papier brouillon. 
+
+Je comprends rapidement que le but est d'ajouter une translation après le zoom pour compenser le mouvement du point qui est sensé rester au centre.
+
+J'obtiens un premier résultat, j'essaie de l'implémenter dans le code mais ça ne fonctionne pas bien. 
+
+Je me dis que le fait qu'il y ait une translation en amont complexifie le problème. Je tâtonne un peu mais je ne parviens pas à trouver un code qui fonctionne.
+
+<div class="inline-image-container">
+    <div class="inline-image-container-row">
+        {% include inline-image-item.html
+            url="/assets/projects/optics-simulator/001/draft2.JPG"
+        %}
+    </div>
+</div>
+
+J'essaie alors de formaliser une équation entre les coordonnées écran et les coordonnées monde.
+
+J'écris une première équation en me basant sur les transformations de repère que j'ai faites dans le code. J'en déduis une expression de la translation à appliquer, mais ce n'est toujours pas bon.
+
+<div class="inline-image-container">
+    <div class="inline-image-container-row">
+        {% include inline-image-item.html
+            url="/assets/projects/optics-simulator/001/draft3.JPG"
+        %}
+    </div>
+</div>
+
+J'entreprends alors de mettre en équations les transformations plus rigoureusement.
+
+Je commence simple avec la mise à l'échelle depuis l'origine, puis depuis un point arbitraire.
+
+J'essaie ensuite de combiner une translation puis une mise à l'échelle à partir du point d'origine translaté. Rien de très compliqué.
+
+<div class="inline-image-container">
+    <div class="inline-image-container-row">
+        {% include inline-image-item.html
+            url="/assets/projects/optics-simulator/001/draft1.JPG"
+        %}
+    </div>
+</div>
+
+De là je retente une relation entre les coordonnées écran et monde, et je me rend compte que les transformations s'appliquent en fait dans l'ordre inverse que ce que j'avais initialement pensé.
+
+En y réfléchissant c'est logique. Si on fait translation, rotation, échelle, comme la translation s'applique en premier, elle n'est pas affectée par les autres opérations. En terme de coordonnées, ça revient donc à l'appliquer en dernier.
+
+Je déduis une nouvelle expression de la translation. Ça me parait un peu trop simple, mais en fait ça fonctionne. C'était encourageant !
+
+<div class="inline-image-container">
+    <div class="inline-image-container-row">
+        {% include inline-image-item.html
+            url="/assets/projects/optics-simulator/001/draft4.JPG"
+        %}
+    </div>
+</div>
+
+
+## Formalise complet
+
+Il faut maintenant ajouter la rotation.
+
+Je décide de m'appliquer et je commence par formaliser proprement les résultats que j'ai déjà obtenus avant de continuer.
+
+
+### Échelle autour de l'origine
+
+Je pose <math class="inline"><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>;</mo><msub><mi>y</mi><mn>1</mn></msub><mo>)</mo></math> les coordonnées du point de départ et <math class="inline"><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>;</mo><msub><mi>y</mi><mn>2</mn></msub><mo>)</mo></math> les coordonnéees du point transformé.
+
+Pour une échelle de facteur <math class="inline"><mi>s</mi></math> autour de l'origine on a :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>2</mn></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>2</mn></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>1</mn></msub><mo>.</mo><mi>s</mi></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>1</mn></msub><mo>.</mo><mi>s</mi></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+Schéma pour visualiser :
 
 <div class="inline-image-container">
     <div class="inline-image-container-row">
@@ -128,175 +236,12 @@ Si on pose <math class="inline"><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>;
     </div>
 </div>
 
-<math>
-  <mrow>
-    <mo>(</mo>
-    <mtable>
-      <mtr>
-        <mtd><msub><mi>x</mi><mn>2</mn></msub></mtd>
-      </mtr>
-      <mtr>
-        <mtd><msub><mi>y</mi><mn>2</mn></msub></mtd>
-      </mtr>
-    </mtable>
-    <mo>)</mo>
-    <mo>=</mo>
-    <mo>(</mo>
-    <mtable>
-      <mtr>
-        <mtd><msub><mi>x</mi><mn>1</mn></msub><mo>×</mo><mi>s</mi></mtd>
-      </mtr>
-      <mtr>
-        <mtd><msub><mi>y</mi><mn>1</mn></msub><mo>×</mo><mi>s</mi></mtd>
-      </mtr>
-    </mtable>
-    <mo>)</mo>
-  </mrow>
-</math>
-
-
-### Translation
-
-De même, pour une translation d'une distance <math class="inline"><mo>(</mo><msub><mi>x</mi><mi>t</mi></msub><mo>;</mo><msub><mi>y</mi><mi>t</mi></msub><mo>)</mo></math> :
-
-<div class="inline-image-container">
-    <div class="inline-image-container-row">
-        {% include inline-image-item.html
-            url="/assets/projects/optics-simulator/001/translation1.png"
-        %}
-    </div>
-</div>
-
-<math>
-  <mrow>
-    <mo>(</mo>
-    <mtable>
-      <mtr>
-        <mtd><msub><mi>x</mi><mn>2</mn></msub></mtd>
-      </mtr>
-      <mtr>
-        <mtd><msub><mi>y</mi><mn>2</mn></msub></mtd>
-      </mtr>
-    </mtable>
-    <mo>)</mo>
-    <mo>=</mo>
-    <mo>(</mo>
-    <mtable>
-      <mtr>
-        <mtd><msub><mi>x</mi><mn>1</mn></msub>
-        <mo>+</mo>
-        <msub><mi>x</mi><mi>t</mi></msub>
-        </mtd>
-      </mtr>
-      <mtr>
-        <mtd><msub><mi>y</mi><mn>1</mn></msub>
-        <mo>+</mo>
-        <msub><mi>y</mi><mi>t</mi></msub>
-        </mtd>
-      </mtr>
-    </mtable>
-    <mo>)</mo>
-  </mrow>
-</math>
-
 
 ### Échelle autour d'un point
 
-Regardons maintenant l'échelle autour d'un point arbitraire <math class="inline"><mo>A</mo><mo>(</mo><msub><mi>x</mi><mi>A</mi></msub><mo>;</mo><msub><mi>y</mi><mi>A</mi></msub><mo>)</mo></math> :
+On pose <math class="inline"><mo>(</mo><msub><mi>x</mi><mi>A</mi></msub><mo>;</mo><msub><mi>y</mi><mi>A</mi></msub><mo>)</mo></math> les coordonnées du point A.
 
-<div class="inline-image-container">
-    <div class="inline-image-container-row">
-        {% include inline-image-item.html
-            url="/assets/projects/optics-simulator/001/scale2.png"
-        %}
-    </div>
-</div>
-
-On peut exprimer P1 par rapport à A :
-
-<math>
-  <mrow>
-    <mo>(</mo>
-    <mtable>
-      <mtr>
-        <mtd><msub><mi>x</mi><mn>1</mn></msub></mtd>
-      </mtr>
-      <mtr>
-        <mtd><msub><mi>y</mi><mn>1</mn></msub></mtd>
-      </mtr>
-    </mtable>
-    <mo>)</mo>
-    <mo>=</mo>
-    <mo>(</mo>
-    <mtable>
-      <mtr>
-        <mtd><msub><mi>x</mi><mi>A</mi></msub>
-        <mo>+</mo>
-        <mo>(</mo>
-          <msub><mi>x</mi><mn>1</mn></msub>
-          <mo>-</mo>
-          <msub><mi>x</mi><mi>A</mi></msub>
-          <mo>)</mo>
-        </mtd>
-      </mtr>
-      <mtr>
-        <mtd><msub><mi>y</mi><mi>A</mi></msub>
-        <mo>+</mo>
-        <mo>(</mo>
-          <msub><mi>y</mi><mn>1</mn></msub>
-          <mo>-</mo>
-          <msub><mi>y</mi><mi>A</mi></msub>
-          <mo>)</mo>
-        </mtd>
-      </mtr>
-    </mtable>
-    <mo>)</mo>
-  </mrow>
-</math>
-
-De même on peut exprimer P2 par rapport à A :
-
-<math>
-  <mrow>
-    <mo>(</mo>
-    <mtable>
-      <mtr>
-        <mtd><msub><mi>x</mi><mn>2</mn></msub></mtd>
-      </mtr>
-      <mtr>
-        <mtd><msub><mi>y</mi><mn>2</mn></msub></mtd>
-      </mtr>
-    </mtable>
-    <mo>)</mo>
-    <mo>=</mo>
-    <mo>(</mo>
-    <mtable>
-      <mtr>
-        <mtd><msub><mi>x</mi><mi>A</mi></msub>
-        <mo>+</mo>
-        <mo>(</mo>
-          <msub><mi>x</mi><mn>2</mn></msub>
-          <mo>-</mo>
-          <msub><mi>x</mi><mi>A</mi></msub>
-          <mo>)</mo>
-        </mtd>
-      </mtr>
-      <mtr>
-        <mtd><msub><mi>y</mi><mi>A</mi></msub>
-        <mo>+</mo>
-        <mo>(</mo>
-          <msub><mi>y</mi><mn>2</mn></msub>
-          <mo>-</mo>
-          <msub><mi>y</mi><mi>A</mi></msub>
-          <mo>)</mo>
-        </mtd>
-      </mtr>
-    </mtable>
-    <mo>)</mo>
-  </mrow>
-</math>
-
-On applique ensuite l'échelle par rapport à A :
+Par définition, l'échelle dilate les distances au point A, on a donc :
 
 <math>
   <mrow>
@@ -323,7 +268,7 @@ On applique ensuite l'échelle par rapport à A :
           <mo>-</mo>
           <msub><mi>x</mi><mi>A</mi></msub>
           <mo>)</mo>
-          <mo>×</mo>
+          <mo>.</mo>
           <mi>s</mi></mtd>
       </mtr>
       <mtr>
@@ -332,7 +277,7 @@ On applique ensuite l'échelle par rapport à A :
           <mo>-</mo>
           <msub><mi>y</mi><mi>A</mi></msub>
           <mo>)</mo>
-          <mo>×</mo>
+          <mo>.</mo>
           <mi>s</mi></mtd>
       </mtr>
     </mtable>
@@ -365,7 +310,7 @@ Ce qui donne au final :
           <mo>-</mo>
           <msub><mi>x</mi><mi>A</mi></msub>
           <mo>)</mo>
-          <mo>×</mo>
+          <mo>.</mo>
           <mi>s</mi>
         </mtd>
       </mtr>
@@ -377,7 +322,7 @@ Ce qui donne au final :
           <mo>-</mo>
           <msub><mi>y</mi><mi>A</mi></msub>
           <mo>)</mo>
-          <mo>×</mo>
+          <mo>.</mo>
           <mi>s</mi>
         </mtd>
       </mtr>
@@ -386,8 +331,22 @@ Ce qui donne au final :
   </mrow>
 </math>
 
+Schéma pour visualiser :
+
+<div class="inline-image-container">
+    <div class="inline-image-container-row">
+        {% include inline-image-item.html
+            url="/assets/projects/optics-simulator/001/scale2.png"
+        %}
+    </div>
+</div>
+
 
 ### Translation puis échelle
+
+On effectue d'abord une translation, puis une échelle autour de l'origine translatée.
+
+Schéma pour visualiser :
 
 <div class="inline-image-container">
     <div class="inline-image-container-row">
@@ -397,7 +356,7 @@ Ce qui donne au final :
     </div>
 </div>
 
-La translation par le point A s'écrit :
+La translation s'écrit :
 
 <math>
   <mrow>
@@ -431,7 +390,7 @@ La translation par le point A s'écrit :
   </mrow>
 </math>
 
-L'échelle autour du point A s'écrit :
+On a vu que l'échelle autour du point A s'écrit :
 
 <math>
   <mrow>
@@ -456,7 +415,7 @@ L'échelle autour du point A s'écrit :
           <mo>-</mo>
           <msub><mi>x</mi><mi>A</mi></msub>
           <mo>)</mo>
-          <mo>×</mo>
+          <mo>.</mo>
           <mi>s</mi>
         </mtd>
       </mtr>
@@ -468,8 +427,48 @@ L'échelle autour du point A s'écrit :
           <mo>-</mo>
           <msub><mi>y</mi><mi>A</mi></msub>
           <mo>)</mo>
-          <mo>×</mo>
+          <mo>.</mo>
           <mi>s</mi>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+Or on a :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+            <msub><mi>x</mi><mn>2</mn></msub>
+            <mo>-</mo>
+            <msub><mi>x</mi><mi>A</mi></msub>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+            <msub><mi>y</mi><mn>2</mn></msub>
+            <mo>-</mo>
+            <msub><mi>y</mi><mi>A</mi></msub>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+            <msub><mi>x</mi><mn>1</mn></msub>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+            <msub><mi>y</mi><mn>1</mn></msub>
         </mtd>
       </mtr>
     </mtable>
@@ -498,7 +497,7 @@ En combinant les deux on a donc :
         <mtd><msub><mi>x</mi><mi>A</mi></msub>
           <mo>+</mo>
           <msub><mi>x</mi><mn>1</mn></msub>
-          <mo>×</mo>
+          <mo>.</mo>
           <mi>s</mi>
         </mtd>
       </mtr>
@@ -506,7 +505,7 @@ En combinant les deux on a donc :
         <mtd><msub><mi>y</mi><mi>A</mi></msub>
           <mo>+</mo>
           <msub><mi>y</mi><mn>1</mn></msub>
-          <mo>×</mo>
+          <mo>.</mo>
           <mi>s</mi>
         </mtd>
       </mtr>
@@ -515,22 +514,16 @@ En combinant les deux on a donc :
   </mrow>
 </math>
 
-Quand je vois cette expression mon premier réflexe est de me dire que c'est commutatif.
+Quand je vois cette expression mon premier réflexe est de me dire que l'ordre des opérations n'a pas d'importance, mais ce n'est peut-être pas si simple.
 
 
 ### Rotation autour de l'origine
 
-Pour la rotation c'est un peu plus complexe. L'astuce est de passer en coordonnées polaires et d'utiliser les formules trigo.
+Passons maintenant à la rotation.
 
-<div class="inline-image-container">
-    <div class="inline-image-container-row">
-        {% include inline-image-item.html
-            url="/assets/projects/optics-simulator/001/rotation1.png"
-        %}
-    </div>
-</div>
+L'astuce est de passer en coordonnées polaires et de se rappeler ses formules trigo (le master spé que j'ai fait cette année fait que j'ai l'existence de ces formules en tête, [Wikipédia](https://fr.wikipedia.org/wiki/Formule_de_trigonom%C3%A9trie) fait le reste).
 
-Le point de départ peut s'exprimer ainsi:
+On peut exprimer le point de départ comme suit :
 
 <math>
   <mrow>
@@ -568,7 +561,7 @@ Le point de départ peut s'exprimer ainsi:
   </mrow>
 </math>
 
-Idem pour le point d'arrivée :
+Par définition de la rotation, l'angle de rotation s'ajoute à l'angle initial et le rayon est inchangé. Le point transformé s'écrit donc :
 
 <math>
   <mrow>
@@ -606,46 +599,54 @@ Idem pour le point d'arrivée :
   </mrow>
 </math>
 
-Par définition de la rotation, l'angle de rotation s'ajoute à l'angle initial et le rayon est inchangé.
+Schéma pour visualiser :
 
-L'objectif est d'exprimer <math class="inline"><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>;</mo><msub><mi>y</mi><mn>2</mn></msub><mo>)</mo></math> en fonction de <math class="inline"><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>;</mo><msub><mi>y</mi><mn>1</mn></msub><mo>)</mo></math>. Pour ça on peut utiliser les formules trigo :
+<div class="inline-image-container">
+    <div class="inline-image-container-row">
+        {% include inline-image-item.html
+            url="/assets/projects/optics-simulator/001/rotation1.png"
+        %}
+    </div>
+</div>
+
+L'objectif est d'exprimer <math class="inline"><mo>(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>;</mo><msub><mi>y</mi><mn>2</mn></msub><mo>)</mo></math> en fonction de <math class="inline"><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>;</mo><msub><mi>y</mi><mn>1</mn></msub><mo>)</mo></math>. Pour ça on peut utiliser les formules trigo pour décomposer les sinus et cosinus :
 
 <math>
     <mtable columnalign="left">
         <mtr>
             <mtd>
                 <mi>cos</mi><mo>(</mo>
-                <msub><mi>&#x03B1;</mi><mn>0</mn></msub>
-                <mo>+</mo><mi>&#x03B1;</mi><mo>)</mo>
+                <msub><mi>a</mi></msub>
+                <mo>+</mo><mi>b</mi><mo>)</mo>
                 <mo>=</mo>
-                <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
+                <mi>cos</mi><mo>(</mo><msub><mi>a</mi></msub><mo>)</mo>
                 <mo>.</mo>
-                <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+                <mi>cos</mi><mo>(</mo><mi>b</mi><mo>)</mo>
                 <mo>-</mo>
-                <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
+                <mi>sin</mi><mo>(</mo><msub><mi>a</mi></msub><mo>)</mo>
                 <mo>.</mo>
-                <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+                <mi>sin</mi><mo>(</mo><mi>b</mi><mo>)</mo>
             </mtd>
         </mtr>
         <mtr>
             <mtd>
                 <mi>sin</mi><mo>(</mo>
-                <msub><mi>&#x03B1;</mi><mn>0</mn></msub>
-                <mo>+</mo><mi>&#x03B1;</mi><mo>)</mo>
+                <msub><mi>a</mi></msub>
+                <mo>+</mo><mi>b</mi><mo>)</mo>
                 <mo>=</mo>
-                <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
+                <mi>sin</mi><mo>(</mo><msub><mi>a</mi></msub><mo>)</mo>
                 <mo>.</mo>
-                <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+                <mi>cos</mi><mo>(</mo><mi>b</mi><mo>)</mo>
                 <mo>+</mo>
-                <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
+                <mi>cos</mi><mo>(</mo><msub><mi>a</mi></msub><mo>)</mo>
                 <mo>.</mo>
-                <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+                <mi>sin</mi><mo>(</mo><mi>b</mi><mo>)</mo>
             </mtd>
         </mtr>
     </mtable>
 </math>
 
-Ce qui donne :
+On peut donc réécrire le point transformé :
 
 <math>
   <mrow>
@@ -693,7 +694,45 @@ Ce qui donne :
   </mrow>
 </math>
 
-On reconnait les expressions de <math class="inline"><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>;</mo><msub><mi>y</mi><mn>1</mn></msub><mo>)</mo></math>, on peut donc écrire :
+Or on a vu que :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <mi>r</mi><mo>.</mo>
+          <mi>cos</mi><mo>(</mo>
+          <msub><mi>&#x03B1;</mi><mn>0</mn></msub>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mi>r</mi><mo>.</mo>
+          <mi>sin</mi><mo>(</mo>
+          <msub><mi>&#x03B1;</mi><mn>0</mn></msub>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>1</mn></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>1</mn></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+On peut donc remplacer et on obtient :
 
 <math>
   <mrow>
@@ -740,15 +779,9 @@ On reconnait les expressions de <math class="inline"><mo>(</mo><msub><mi>x</mi><
 
 ### Rotation autour d'un point
 
-<div class="inline-image-container">
-    <div class="inline-image-container-row">
-        {% include inline-image-item.html
-            url="/assets/projects/optics-simulator/001/rotation2.png"
-        %}
-    </div>
-</div>
+La rotation autour d'un point arbitraire ne change pas beaucoup de choses.
 
-On peut exprimer le point de départ en coordonnées polaires par rapport à A :
+Les points s'expriment cette fois comme ça :
 
 <math>
   <mrow>
@@ -790,52 +823,6 @@ On peut exprimer le point de départ en coordonnées polaires par rapport à A :
   </mrow>
 </math>
 
-Qu'on peut aussi écrire comme ça :
-
-<math>
-  <mrow>
-    <mo>(</mo>
-    <mtable>
-      <mtr>
-        <mtd><msub><mi>x</mi><mn>1</mn></msub>
-            <mo>-</mo>
-        <msub><mi>x</mi><mn>A</mn></msub>
-        </mtd>
-      </mtr>
-      <mtr>
-        <mtd><msub><mi>y</mi><mn>1</mn></msub>
-            <mo>-</mo>
-        <msub><mi>y</mi><mn>A</mn></msub>
-            </mtd>
-      </mtr>
-    </mtable>
-    <mo>)</mo>
-    <mo>=</mo>
-    <mo>(</mo>
-    <mtable>
-      <mtr>
-        <mtd>
-          <mi>r</mi><mo>.</mo>
-          <mi>cos</mi><mo>(</mo>
-          <msub><mi>&#x03B1;</mi><mn>0</mn></msub>
-          <mo>)</mo>
-        </mtd>
-      </mtr>
-      <mtr>
-        <mtd>
-          <mi>r</mi><mo>.</mo>
-          <mi>sin</mi><mo>(</mo>
-          <msub><mi>&#x03B1;</mi><mn>0</mn></msub>
-          <mo>)</mo>
-        </mtd>
-      </mtr>
-    </mtable>
-    <mo>)</mo>
-  </mrow>
-</math>
-
-On peut exprimer le point d'arrivée en coordonnées polaires par rapport à A :
-
 <math>
   <mrow>
     <mo>(</mo>
@@ -876,7 +863,17 @@ On peut exprimer le point d'arrivée en coordonnées polaires par rapport à A :
   </mrow>
 </math>
 
-Avec la formule trigo ça donne :
+Schéma pour visualiser :
+
+<div class="inline-image-container">
+    <div class="inline-image-container-row">
+        {% include inline-image-item.html
+            url="/assets/projects/optics-simulator/001/rotation2.png"
+        %}
+    </div>
+</div>
+
+Avec la même formule trigo que tout à l'heure on obtient :
 
 <math>
   <mrow>
@@ -897,30 +894,30 @@ Avec la formule trigo ça donne :
         <mtd>
             <msub><mi>x</mi><mn>A</mn></msub>
             <mo>+</mo>
-          <mi>r</mi><mo>.</mo>
-          <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
-                <mo>.</mo>
-                <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
-                <mo>-</mo>
-                <mi>r</mi><mo>.</mo>
-                <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
-                <mo>.</mo>
-                <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+            <mi>r</mi><mo>.</mo>
+            <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
+            <mo>.</mo>
+            <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+            <mo>-</mo>
+            <mi>r</mi><mo>.</mo>
+            <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
+            <mo>.</mo>
+            <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
         </mtd>
       </mtr>
       <mtr>
         <mtd>
         <msub><mi>y</mi><mn>A</mn></msub>
             <mo>+</mo>
-          <mi>r</mi><mo>.</mo>
-          <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
-                <mo>.</mo>
-                <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
-                <mo>+</mo>
-                <mi>r</mi><mo>.</mo>
-                <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
-                <mo>.</mo>
-                <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+            <mi>r</mi><mo>.</mo>
+            <mi>sin</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
+            <mo>.</mo>
+            <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
+            <mo>+</mo>
+            <mi>r</mi><mo>.</mo>
+            <mi>cos</mi><mo>(</mo><msub><mi>&#x03B1;</mi><mn>0</mn></msub><mo>)</mo>
+            <mo>.</mo>
+            <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
         </mtd>
       </mtr>
     </mtable>
@@ -928,7 +925,53 @@ Avec la formule trigo ça donne :
   </mrow>
 </math>
 
-En remplaçant avec les expressions trouvées pour le point de départ :
+On a vu que :
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+          <mi>r</mi><mo>.</mo>
+          <mi>cos</mi><mo>(</mo>
+          <msub><mi>&#x03B1;</mi><mn>0</mn></msub>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+          <mi>r</mi><mo>.</mo>
+          <mi>sin</mi><mo>(</mo>
+          <msub><mi>&#x03B1;</mi><mn>0</mn></msub>
+          <mo>)</mo>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd>
+            <msub><mi>x</mi><mn>1</mn></msub>
+            <mo>-</mo>
+            <msub><mi>x</mi><mn>A</mn></msub>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd>
+            <msub><mi>y</mi><mn>1</mn></msub>
+            <mo>-</mo>
+            <msub><mi>y</mi><mn>A</mn></msub>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+On peut donc remplacer et on obtient :
 
 <math>
   <mrow>
@@ -993,9 +1036,15 @@ En remplaçant avec les expressions trouvées pour le point de départ :
 </math>
 
 
-### Séquence translation, rotation, échelle
+### On combine tout
 
-La translation s'écrit :
+Mon code applique successivement une translation, une rotation, et une échelle.
+
+Voyons comment on peut combiner tout ce qu'on vient de voir pour calculer cette transformation combinée.
+
+Rappelons d'abord les transformations :
+
+Translation :
 
 <math>
   <mrow>
@@ -1029,43 +1078,7 @@ La translation s'écrit :
   </mrow>
 </math>
 
-Qu'on peut aussi écrire :
-
-<math>
-  <mrow>
-    <mo>(</mo>
-    <mtable>
-      <mtr>
-        <mtd><msub><mi>x</mi><mn>2</mn></msub>
-        <mo>-</mo>
-        <msub><mi>x</mi><mn>A</mn></msub>
-        </mtd>
-      </mtr>
-      <mtr>
-        <mtd><msub><mi>y</mi><mn>2</mn></msub>
-        <mo>-</mo>
-        <msub><mi>y</mi><mi>A</mi></msub></mtd>
-      </mtr>
-    </mtable>
-    <mo>)</mo>
-    <mo>=</mo>
-    <mo>(</mo>
-    <mtable>
-      <mtr>
-        <mtd>
-        <msub><mi>x</mi><mi>1</mi></msub>
-        </mtd>
-      </mtr>
-      <mtr>
-        <mtd><msub><mi>y</mi><mn>1</mn></msub>
-        </mtd>
-      </mtr>
-    </mtable>
-    <mo>)</mo>
-  </mrow>
-</math>
-
-La rotation autour d'un point A s'écrit :
+Rotation autour de A :
 
 <math>
   <mrow>
@@ -1129,75 +1142,7 @@ La rotation autour d'un point A s'écrit :
   </mrow>
 </math>
 
-Qu'on peut aussi écrire :
-
-<math>
-  <mrow>
-    <mo>(</mo>
-    <mtable>
-      <mtr>
-        <mtd>
-          <msub><mi>x</mi><mn>3</mn></msub>
-          <mo>-</mo>
-          <msub><mi>x</mi><mn>A</mn></msub>
-        </mtd>
-      </mtr>
-      <mtr>
-        <mtd>
-          <msub><mi>y</mi><mn>3</mn></msub>
-          <mo>-</mo>
-          <msub><mi>y</mi><mn>A</mn></msub>
-        </mtd>
-      </mtr>
-    </mtable>
-    <mo>)</mo>
-    <mo>=</mo>
-    <mo>(</mo>
-    <mtable>
-      <mtr>
-        <mtd>
-            <mo>(</mo>
-            <msub><mi>x</mi><mn>2</mn></msub>
-            <mo>-</mo>
-            <msub><mi>x</mi><mn>A</mn></msub>
-            <mo>)</mo>
-            <mo>.</mo>
-            <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
-            <mo>-</mo>
-            <mo>(</mo>
-            <msub><mi>y</mi><mn>2</mn></msub>
-            <mo>-</mo>
-            <msub><mi>y</mi><mn>A</mn></msub>
-            <mo>)</mo>
-            <mo>.</mo>
-            <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
-        </mtd>
-      </mtr>
-      <mtr>
-        <mtd>
-            <mo>(</mo>
-            <msub><mi>y</mi><mn>2</mn></msub>
-            <mo>-</mo>
-            <msub><mi>y</mi><mn>A</mn></msub>
-            <mo>)</mo>
-            <mo>.</mo>
-            <mi>cos</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
-            <mo>+</mo>
-            <mo>(</mo>
-            <msub><mi>x</mi><mn>2</mn></msub>
-            <mo>-</mo>
-            <msub><mi>x</mi><mn>A</mn></msub>
-            <mo>)</mo>
-            <mo>.</mo>
-            <mi>sin</mi><mo>(</mo><mi>&#x03B1;</mi><mo>)</mo>
-        </mtd>
-      </mtr>
-    </mtable>
-    <mo>)</mo>
-  </mrow>
-</math>
-
-L'échelle autour d'un point A s'écrit :
+Échelle autour de A :
 
 <math>
   <mrow>
@@ -1222,7 +1167,7 @@ L'échelle autour d'un point A s'écrit :
           <mo>-</mo>
           <msub><mi>x</mi><mi>A</mi></msub>
           <mo>)</mo>
-          <mo>×</mo>
+          <mo>.</mo>
           <mi>s</mi>
         </mtd>
       </mtr>
@@ -1234,7 +1179,7 @@ L'échelle autour d'un point A s'écrit :
           <mo>-</mo>
           <msub><mi>y</mi><mi>A</mi></msub>
           <mo>)</mo>
-          <mo>×</mo>
+          <mo>.</mo>
           <mi>s</mi>
         </mtd>
       </mtr>
@@ -1243,7 +1188,7 @@ L'échelle autour d'un point A s'écrit :
   </mrow>
 </math>
 
-En substituant l'expression de la rotation :
+En substituant 3 par 2 :
 
 <math>
   <mrow>
@@ -1315,7 +1260,7 @@ En substituant l'expression de la rotation :
   </mrow>
 </math>
 
-En substituant l'expression de la translation :
+En substituant 2 par 1 :
 
 <math>
   <mrow>
@@ -1371,7 +1316,126 @@ En substituant l'expression de la translation :
   </mrow>
 </math>
 
-Là on a l'expression des coordonnées sur l'écran qui correspondent aux coordonnées dans le monde après transformation du viewport.
+Une chose à comprendre ici, que je n'avais pas forcément bien visualisé sur le moment. On fait ici des transformations de coordonnées d'un point, mais on ne change pas de repère. C'est-à-dire que le point A qu'on pose au début n'est pas affecté par les transformations. C'est différent des transformations de repère que je fais dans le code.
+
+L'expression qu'on obtient ici transforme des coordonnées dans le monde en coordonnées sur l'écran.
+
+On est prêt à reprendre les équations du début.
+
+
+
+
+
+
+
+
+
+
+## Analyse
+
+
+On serait tenté de transformer les coordonnées de la souris de la même manière qu'on a transformé le repère. Mais en réalité c'est l'inverse qu'il faut faire.
+
+En effet, ce qu'on a fait jusque là permet d'afficher un point dont les coordonnées sont définies dans le monde sur un point de l'écran de sorte à respecter les transformations appliquées au monde par rapport à la fenêtre.
+
+Par exemple, si on définit que le monde est décalé de XY par rapport à la fenêtre, alors les coordonnées du point sur la fenêtre seront celles du point dans le monde +XY.
+
+Pour une translation seule c'est facile à voir, ça devient tout de suite moins évident si on rajoute une rotation et une mise à l'échelle.
+
+La transformation transforme donc les coordonnées mondes en coordonnées écran.
+
+Nous ce qu'on veut, c'est transformer des coordonnées écran (la souris) en coordonnées monde. C'est donc bien la transformée inverse qu'on doit faire.
+
+
+
+## Zoom centré
+
+
+
+
+
+
+
+La question c'est comment définir la transformée inverse.
+
+
+
+
+Pour transformer le repère on utilise des transformations successive, chacune s'appliquant sur la base des précédentes. C'est simple à composer et à comprendre. Mais ce n'est pas la même chose que de transformer les coordonnées d'un point. Quand on transforme les coordonnées d'un point chaque transformation laisse le repère inchangé.
+
+
+
+
+
+
+
+<div class="inline-image-container force-desktop-full-width">
+    <div class="inline-image-container-row">
+        {% include inline-video-item.html
+            url="/assets/projects/optics-simulator/001/video2.mp4"
+        %}
+    </div>
+</div>
+
+
+## Analyse complète
+
+
+
+
+### Translation
+
+De même, pour une translation d'une distance <math class="inline"><mo>(</mo><msub><mi>x</mi><mi>t</mi></msub><mo>;</mo><msub><mi>y</mi><mi>t</mi></msub><mo>)</mo></math> :
+
+<div class="inline-image-container">
+    <div class="inline-image-container-row">
+        {% include inline-image-item.html
+            url="/assets/projects/optics-simulator/001/translation1.png"
+        %}
+    </div>
+</div>
+
+<math>
+  <mrow>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>2</mn></msub></mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>2</mn></msub></mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+    <mo>=</mo>
+    <mo>(</mo>
+    <mtable>
+      <mtr>
+        <mtd><msub><mi>x</mi><mn>1</mn></msub>
+        <mo>+</mo>
+        <msub><mi>x</mi><mi>t</mi></msub>
+        </mtd>
+      </mtr>
+      <mtr>
+        <mtd><msub><mi>y</mi><mn>1</mn></msub>
+        <mo>+</mo>
+        <msub><mi>y</mi><mi>t</mi></msub>
+        </mtd>
+      </mtr>
+    </mtable>
+    <mo>)</mo>
+  </mrow>
+</math>
+
+
+
+
+
+
+
+
+
+
 
 
 ## Transformation du viewport
