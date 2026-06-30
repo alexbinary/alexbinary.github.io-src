@@ -14,9 +14,18 @@ lang_en: /en/projects/optics-simulator/posts/001
 
 ## Introduction
 
-J'avance dans le développement de mon [logiciel de simulation d'optique](/fr/projets/simulateur-optique), et je veux maintenant pouvoir placer les objets librement en 2D. Pour l'instant les objets sont restreint à un axe optique prédéfini. Ça simplifie grandement le problème et ça m'a permit de prendre de l'exprience avec le codage de la simulation. Je veux maintenant m'affranchir de cette limite.
+La version actuelle de mon [logiciel de simulation d'optique](/fr/projets/simulateur-optique) restreint le placement des objets à un axe optique prédéfini. Ça simplifie grandement le problème et ça m'a permit de prendre de l'exprience avec le codage de la simulation. Je veux maintenant m'affranchir de cette limite et permettre de placer les objets librement dans un espace en 2 dimensions.
 
-Avant de réfléchir à l'aspect simulation, la première étape est de créer un espace de travail dans lequel l'utilisateur peut positionner et orienter les objets. Je veux créer un espace virtuellement infini dans lequel l'utilisateur peut déplacer librement, zoomer, tourner, etc.
+La zone de travail de la version actuelle de l'application est assez rudimentaire. Je suis allé au plus simple pour me concentrer sur l'aspect simulation. Les objets sont placés sur un axe optique qui s'étent d'un bout à l'autre de la zone de dessin, et la position des objets le long de l'axe est définie au moyen d'une glissières dont la position du curseur correspond à la position de l'objet sur l'axe : si le curseur est complètement à gauche l'objet est tout à gauche de l'axe optique, s'il est tout à droite l'objet est tout à droite de l'axe.
+
+Pour la version en une dimension j'avais utilisé des sliders pour le positionnement des objets, c'était plus facile que de gérer les mouvements à la souris.
+
+Je pourrais garder la même chose pour la 2D, mais j'ai envie de faire quelque chose de plus complet.
+Je veux que l'utilisateur puisse positionner les éléments à la souris.
+
+La version 1D travaillait dans un espace qui ne dépasse pas de la fenêtre. Je veux maintenant créer un espace infini.
+
+Avant de réfléchir à la simulation de la lumière dans une configuration 2D arbitraire, qui promet d'être un challenge intéressant, la première étape est de créer un espace de travail dans lequel l'utilisateur peut positionner et orienter les objets. Je veux créer un espace virtuellement infini dans lequel l'utilisateur peut déplacer librement, zoomer, tourner, etc.
 
 J'expérimente en repartant de zéro. J'ai rapidement quelque chose de fonctionnel en utilisant les possibilités offertes par les API Swift, mais quand je veux implémenter des fonctions plus complexes je suis contraint de me plonger dans les détails mathématiques de transformations affines. Le plus difficile a été de bien formuler le problème. J'ai fini par obtenir des équations que j'ai pu implémenter avec succès en code.
 
