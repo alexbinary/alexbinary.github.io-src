@@ -14,9 +14,19 @@
       <a href="{{ page.url | append: url_suffix }}">
         {{ posts | size }}
         {% if page.lang == 'en' %}
-          posts in this project
+          {% if posts.size == 1 %}
+            post
+          {% else %}
+            posts
+          {% endif %}
+          in this project
         {% else %}
-          billets dans ce projet
+          {% if posts.size == 1 %}
+            billet
+          {% else %}
+            billets
+          {% endif %}
+          dans ce projet
         {% endif %}
         →
       </a>

@@ -3,8 +3,8 @@ layout: project_post
 project_id: ec2e67a6-246f-484e-abc7-6387aa07874a
 entry: "001"
 title: Plongée dans les transformations affines en SwiftUI et Canvas
-topics: [geometrie, maths, swiftui, programmation]
-image: 
+topics: [maths, geometrie, programmation, swift]
+image: /assets/projects/optics-simulator/001/illus.png
 githubs:
 - https://github.com/alexbinary/OpticsSimulator
 permalink: /fr/projets/simulateur-optique/billets/001
@@ -14,7 +14,7 @@ lang_en: /en/projects/optics-simulator/posts/001
 
 ## Introduction
 
-J'avance dans le développement de mon logiciel de simulation d'optique, et je veux maintenant pouvoir placer les objets librement en 2D. Pour l'instant les objets sont restreint à un axe optique prédéfini. Ça simplifie grandement le problème et ça m'a permit de prendre de l'exprience avec le codage de la simulation. Je veux maintenant m'affranchir de cette limite.
+J'avance dans le développement de mon [logiciel de simulation d'optique](/fr/projets/simulateur-optique), et je veux maintenant pouvoir placer les objets librement en 2D. Pour l'instant les objets sont restreint à un axe optique prédéfini. Ça simplifie grandement le problème et ça m'a permit de prendre de l'exprience avec le codage de la simulation. Je veux maintenant m'affranchir de cette limite.
 
 Avant de réfléchir à l'aspect simulation, la première étape est de créer un espace de travail dans lequel l'utilisateur peut positionner et orienter les objets. Je veux créer un espace virtuellement infini dans lequel l'utilisateur peut déplacer librement, zoomer, tourner, etc.
 
@@ -2856,13 +2856,11 @@ Dans le cas du centrage :
 
 J'ai créé une fonction générique appelée par les 3 opérations. Ça fonctionne bien.
 
-<div class="inline-image-container force-desktop-full-width">
-    <div class="inline-image-container-row free-width">
+<div class="inline-image-container">
+    <div class="inline-image-container-row">
         {% include inline-image-item.html
-            url="/assets/projects/optics-simulator/001/code8.png"
-        %}
-        {% include inline-image-item.html
-            url="/assets/projects/optics-simulator/001/code9.png"
+            url="/assets/projects/optics-simulator/001/code10.png"
+            legend="Code final"
         %}
     </div>
 </div>

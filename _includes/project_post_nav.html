@@ -14,24 +14,26 @@
   | first
 %}
 
-<div class="project-post-navigation">
-  <p class="project-post-navigation-item" {% if prev %}{% else %} style="visibility: hidden;" {% endif %}>
-    <a href="{{ page.url | replace: page.entry, prev.entry }}">←
-      {% if page.lang == 'en' %}
-        Previous post
-      {% else %}
-        Billet précédent
-      {% endif %}
-    </a>
-  </p>
-  <p class="project-post-navigation-item" {% if next %}{% else %} style="visibility: hidden;" {% endif %}>
-    <a href="{{ page.url | replace: page.entry, next.entry }}">
-      {% if page.lang == 'en' %}
-        Next post
-      {% else %}
-        Billet suivant
-      {% endif %}
-      →
-    </a>
-  </p>
-</div>
+{% if prev or next %}
+  <div class="project-post-navigation">
+    <p class="project-post-navigation-item" {% if prev %}{% else %} style="visibility: hidden;" {% endif %}>
+      <a href="{{ page.url | replace: page.entry, prev.entry }}">←
+        {% if page.lang == 'en' %}
+          Previous post
+        {% else %}
+          Billet précédent
+        {% endif %}
+      </a>
+    </p>
+    <p class="project-post-navigation-item" {% if next %}{% else %} style="visibility: hidden;" {% endif %}>
+      <a href="{{ page.url | replace: page.entry, next.entry }}">
+        {% if page.lang == 'en' %}
+          Next post
+        {% else %}
+          Billet suivant
+        {% endif %}
+        →
+      </a>
+    </p>
+  </div>
+{% endif %}

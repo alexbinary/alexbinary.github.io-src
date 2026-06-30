@@ -14,6 +14,9 @@
   name:
     en: Optics simulator
     fr: Simulateur optique
+  url:
+    en: /en/projects/optics-simulator/
+    fr: /fr/projets/simulateur-optique
   teaser:
     en: Developing a graphical simulation software to understand light and optical systems
     fr: Développement d'un logiciel de simulation graphique pour comprendre le fonctionnement de la lumière et des systèmes optiques
