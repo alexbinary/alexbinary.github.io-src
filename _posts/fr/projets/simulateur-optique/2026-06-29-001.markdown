@@ -14,13 +14,11 @@ lang_en: /en/projects/optics-simulator/posts/001
 
 ## Introduction
 
-Dans la version actuelle de mon [logiciel de simulation d'optique](/fr/projets/simulateur-optique), le placement des objets est contraint à un axe optique unique, et des glissères permettent définir la position des objets sur l'axe relativement à la taille de la fenêtre. Je veux maintenant faire évoluer le logiciel pour permettre de placer les objets plus librement.
+Dans la version actuelle de mon [logiciel de simulation d'optique](/fr/projets/simulateur-optique), le placement des objets est contraint à un axe optique unique. Je veux maintenant faire évoluer le logiciel pour permettre de placer les objets plus librement dans un esapce à deux dimensions.
 
-Le but est de créer un espace de travail dans lequel l'utilisateur peut utiliser la souris pour positionner et orienter librement les objets dans un espace en deux dimensions. Je veux également que l'espace soit virtuellement infini et indépendant de la taille de la fenêtre, et que l'utilisateur puisse se déplacer librement, zoomer, tourner, etc, à la manière de ce qui se fait dans de nombreux logiciels.
+Je veux créer un espace de travail dans lequel l'utilisateur peut utiliser la souris pour positionner et orienter librement les objets en deux dimensions. Je veux que l'espace soit virtuellement infini et indépendant de la taille de la fenêtre, et que l'utilisateur puisse se déplacer librement, zoomer, tourner, à la manière de ce qui se fait dans d'autres logiciels.
 
-Je me concentre dans un premier temps sur l'implémentation de l'espace de travail, la simulation optique viendra par la suite. L'implémentation d'un tel espace demande de faire appel à des transformations géométriques. J'utilise toujours SwiftUI et l'API Canvas, qui propose les briques élémentaires pour ce genre de choses.
-
-Le fonctionnement étant totalement différent de la version actuelle, je décide de repartir de zéro. Le principe de base est implémenté rapidement sans grande difficultés, mais les fonctions plus complexes faisant notamment intervenir la position de la souris me contraignent à me plonger dans les détails mathématiques des transformations affines. Le plus difficile est en fait de formuler correctement le problème, les calculs sont ensuite relativement simples.
+Le fonctionnement étant totalement différent de celui de la version actuelle, je décide de repartir de zéro. Le principe de base est implémenté rapidement grâce aux fonctions disponibles dans SwiftUI et l'API Canvas, mais les fonctions plus complexes me contraignent à me plonger dans les détails mathématiques des transformations affines. Le plus difficile est en fait de formuler correctement le problème, les calculs sont ensuite relativement simples.
 
 Une analyse mathématique rigoureuse des différents problèmes m'a permi d'obtenir des équations que j'ai pu implémenter en code avec succès. Une seconde passe d'analyse m'a permi de voir que les trois problèmes étudiés ont un socle commun, et j'ai réorganisé le code en conséquence.
 
@@ -29,65 +27,56 @@ Dans ce billet je raconte le cheminement.
 
 ## Implémentation du fonctionnement de base
 
-Comme précédemment, l'espace de travail est implémenté avec une vue `Canvas` dans laquelle je dessine les objets. Cette fois j'utilise les événements de souris/trackpad complexes comme le scroll, pinch, et la rotation combinés aux touches Cmd, Alt, et Shift pour se déplacer dans l'espace de travail virtuel.
-
 En SwiftUI, l'origine du `Canvas` est située en haut à gauche, avec les valeurs X croissantes vers la droite et les valeurs Y croissantes vers le bas. Les événements de la souris en revanche sont rapportés avec une origine en bas à gauche et Y croissant vers le haut.
 
-J'applique donc une première série de transformations du repère avant de dessiner sur le canvas. D'abord une mise à l'échelle d'un facteur `-1` sur l'axe Y pour retourner le repère vers le haut, puis une translation de la hauteur de la fenêtre vers le bas pour ramener l'origine dans le coin inférieur gauche.
+J'applique donc une première série de transformations du repère pour aligner les repères avant de dessiner sur le canvas. D'abord une mise à l'échelle d'un facteur `-1` sur l'axe Y pour retourner le repère vers le haut, puis une translation de la hauteur de la fenêtre vers le bas pour ramener l'origine dans le coin inférieur gauche.
 
 À ce stade les coordonnées de la vue coïncident avec les coordonnées du canvas. C'est-à-dire que si par exemple on dessine un objet en spécifiant les coordonnées (100,200) dans le `Canvas`, il apparaitra aux coordonnées (100,200) à l'écran. En particulier, ça permet de prendre directement les coordonnées de la souris pour dessiner un point qui semble suivre la souris.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
     <div class="inline-image-container-row">
         {% include inline-image-item.html
             url="/assets/projects/optics-simulator/001/code11.png"
             legend="Transformation minimale pour faire correspondre les coordonnées du canvas et de la vue"
         %}
     </div>
-</div>
-
-<div class="inline-image-container force-desktop-full-width">
     <div class="inline-image-container-row">
         {% include inline-video-item.html
             url="/assets/projects/optics-simulator/001/video5.mp4"
-            legend="Le dessin s'affiche exactement sous la souris"
+            legend="Le repère du canvas est aligné avec celui de la vue"
         %}
     </div>
 </div>
 
-J'applique ensuite une translation pour amener l'origine du dessin au centre de l'écran. Maintenant si on dessine un point en (0;0) il n'apparait plus en bas à gauche mais au centre de l'écran. Ça veut dire aussi qu'on ne peut plus utiliser les coordonnées de la souris tels quels, mais il faut compenser la transformation.
+J'applique ensuite une translation pour amener l'origine du dessin au centre de l'écran. Ainsi si on dessine un point en (0;0) il n'apparait plus en bas à gauche mais au centre de l'écran. Ça veut dire aussi qu'on ne peut plus utiliser les coordonnées de la souris tels quels, il faut compenser la transformation.
 
-<div class="inline-image-container">
+<div class="inline-image-container force-desktop-full-width">
     <div class="inline-image-container-row">
         {% include inline-image-item.html
             url="/assets/projects/optics-simulator/001/code1.png"
             legend="Transformations amenant l'origine du canvas au centre de l'écran"
         %}
-    </div>
-</div>
-
-<div class="inline-image-container force-desktop-full-width">
-    <div class="inline-image-container-row">
+      </div>
+      <div class="inline-image-container-row">
         {% include inline-video-item.html
             url="/assets/projects/optics-simulator/001/video3.mp4"
-            legend="Le dessin s'affiche toujours exactement sous la souris"
+            legend="Le repère du canvas est maintenant centré sur la vue"
         %}
     </div>
 </div>
 
-Jusque là rien de fou par rapport à ce qu'on avait déjà dans la version actuelle. Mais c'est ici que les choses se complexifient. J'applique désormais successivement une translation, une rotation, et une mise à l'échelle. Cette fois pour conserver l'alignement des coordonnées de la souris il faut compenser toutes ces transformations. Le code est assez simple à trouver. (Pour une raison inconnue le dessin tremble dans la capture d'écran, ce n'est pas le cas en vrai)
+Jusque là rien de fou par rapport à ce qu'on avait déjà dans la version actuelle. Mais c'est ici que les choses se complexifient. J'applique désormais successivement une translation, une rotation, et une mise à l'échelle, et j'utilise les événements de souris/trackpad comme le scroll, le pinch, et la rotation pour modifier leurs valeurs. Pour conserver l'alignement des coordonnées de la souris il faut compenser chacune des transformations. Le code est assez simple à trouver.
 
-<div class="inline-image-container">
+(Pour une raison inconnue le dessin tremble dans la capture d'écran, ce n'est pas le cas en vrai)
+
+<div class="inline-image-container force-desktop-full-width">
     <div class="inline-image-container-row">
         {% include inline-image-item.html
             url="/assets/projects/optics-simulator/001/code2.png"
-            legend="Toutes les transformations"
+            legend="Transformation complète de l'espace de travail"
         %}
-    </div>
-</div>
-
-<div class="inline-image-container force-desktop-full-width">
-    <div class="inline-image-container-row">
+      </div>
+      <div class="inline-image-container-row">
         {% include inline-video-item.html
             url="/assets/projects/optics-simulator/001/video6.mp4"
             legend="Visualisation de toutes les transformations"
@@ -95,73 +84,64 @@ Jusque là rien de fou par rapport à ce qu'on avait déjà dans la version actu
     </div>
 </div>
 
-On a donc maintenant un espace de travail dans lequel on peut se déplacer librement.
+Et voici ce que ça donne à l'usage :
 
-Cependant, le zoom et la rotation se font à partir de l'origine du repère, et ce n'est pas très ergonomique. Je veux qu'ils se fassent autour de la position de la souris. Je veux aussi implémenter une fonction qui permet de centrer la vue sur une zone donnée en adaptant le zoom si nécessaire. J'ai testé des choses mais la tâche s'est avéré moins simple que prévu.
+<div class="inline-image-container force-desktop-full-width">
+    <div class="inline-image-container-row">
+        {% include inline-video-item.html
+            url="/assets/projects/optics-simulator/001/video1.mp4"
+            legend="Visualisation des transformations avec un objet"
+        %}
+    </div>
+</div>
+
+On a désormais un espace de travail dans lequel on peut se déplacer librement. Cependant, le zoom et la rotation se font toujours à partir de l'origine du repère, et ce n'est pas très ergonomique. Je veux qu'ils se fassent autour de la position de la souris. Je veux aussi implémenter une fonction qui permet de centrer la vue sur une zone donnée en adaptant le zoom si nécessaire.
+
+Après quelques expérimentations, la tâche s'est révélée plus complexe que prévu.
 
 
-## Premières recherches d'un formalisme
+## Recherches d'un formalisme
 
-Le problème du zoom et de la rotation n'est pas trivial et je ne sais pas bien comment aborder le problème.
-
-Je me concentre sur le zoom dans un premier temps.
-
-J'essaie de poser le problème sur un papier brouillon. 
-
-Je comprends rapidement que le but est d'ajouter une translation après le zoom pour compenser le mouvement du point qui est sensé rester au centre.
-
-J'obtiens un premier résultat, j'essaie de l'implémenter dans le code mais ça ne fonctionne pas bien. 
-
-Je me dis que le fait qu'il y ait une translation en amont complexifie le problème. Je tâtonne un peu mais je ne parviens pas à trouver un code qui fonctionne.
+Je me concentre sur le zoom dans un premier temps. Au début je ne sais pas bien comment aborder le problème, alors j'essaie de le poser sur un papier brouillon. Je comprends rapidement que le but est d'ajouter une translation après le zoom pour compenser le mouvement du point qui est sensé rester au centre. J'obtiens un premier résultat, mais l'implémentation dans le code ne fonctionne pas bien. Je me dis que le fait qu'il y ait une translation en amont complexifie le problème. Je tâtonne un peu mais je ne parviens pas à trouver un code qui fonctionne.
 
 <div class="inline-image-container">
     <div class="inline-image-container-row">
         {% include inline-image-item.html
             url="/assets/projects/optics-simulator/001/draft2.JPG"
-            legend="Premier brouillon"
+            legend="Première tentative de poser le problème"
         %}
     </div>
 </div>
 
-J'essaie alors de formaliser une équation entre les coordonnées écran et les coordonnées monde.
-
-J'écris une première équation en me basant sur les transformations de repère que j'ai faites dans le code. J'en déduis une expression de la translation à appliquer, mais ce n'est toujours pas bon.
+J'essaie alors de formaliser une équation entre les coordonnées dans le dessin et les coordonnées correspondantes à l'écran après transformations. J'écris une première équation en me basant sur les transformations de repère que j'ai faites dans le code. En essayant d'égaliser les points à l'écran, je déduis une expression de la translation à appliquer, mais ce n'est toujours pas bon.
 
 <div class="inline-image-container">
     <div class="inline-image-container-row">
         {% include inline-image-item.html
             url="/assets/projects/optics-simulator/001/draft3.JPG"
-            legend="Recherche d'une équation"
+            legend="Première tentative de mise en équation"
         %}
     </div>
 </div>
 
-J'entreprends alors de mettre en équations les transformations plus rigoureusement.
-
-Je commence simple avec la mise à l'échelle depuis l'origine, puis depuis un point arbitraire.
-
-J'essaie ensuite de combiner une translation puis une mise à l'échelle à partir du point d'origine translaté. Rien de très compliqué.
+J'entreprends alors de mettre en équations les transformations plus rigoureusement. Je commence simple avec la mise à l'échelle depuis l'origine, puis depuis un point arbitraire. J'essaie ensuite de combiner une translation puis une mise à l'échelle à partir du point d'origine translaté. C'est assez simple.
 
 <div class="inline-image-container">
     <div class="inline-image-container-row">
         {% include inline-image-item.html
             url="/assets/projects/optics-simulator/001/draft1.JPG"
-            legend="On repart des bases"
+            legend="Mise en équation des transformations simples"
         %}
     </div>
 </div>
 
-De là je retente une relation entre les coordonnées écran et monde, et je me rend compte que les transformations s'appliquent en fait dans l'ordre inverse que ce que j'avais initialement pensé.
-
-En y réfléchissant c'est logique. Si on fait translation, rotation, échelle, comme la translation s'applique en premier, elle n'est pas affectée par les autres opérations. En terme de coordonnées, ça revient donc à l'appliquer en dernier.
-
-Je déduis une nouvelle expression de la translation. Ça me parait un peu trop simple, mais en fait ça fonctionne. C'était encourageant !
+De là je retente une relation entre les coordonnées écran et monde, et je me rend compte que les transformations s'appliquent en fait dans l'ordre inverse que ce que j'avais initialement pensé. Je déduis une nouvelle expression de la translation. Ça me parait un peu trop simple, mais en fait ça fonctionne. C'est encourageant !
 
 <div class="inline-image-container">
     <div class="inline-image-container-row">
         {% include inline-image-item.html
             url="/assets/projects/optics-simulator/001/draft4.JPG"
-            legend="Meilleure équation"
+            legend="Lien entre coordonnées écran et coordonnées monde"
         %}
     </div>
 </div>
