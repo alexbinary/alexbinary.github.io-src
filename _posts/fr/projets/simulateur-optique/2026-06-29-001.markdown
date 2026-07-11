@@ -14,7 +14,7 @@ lang_en: /en/projects/optics-simulator/posts/001
 
 ## Introduction
 
-Dans la version actuelle de mon [logiciel de simulation d'optique](/fr/projets/simulateur-optique), le placement des objets est contraint à un axe optique unique. Je veux maintenant faire évoluer le logiciel pour permettre de placer les objets plus librement dans un esapce à deux dimensions.
+Dans la version actuelle de mon [logiciel de simulation d'optique](/fr/projets/simulateur-optique), le placement des objets est contraint à un axe optique unique. Je veux faire évoluer le logiciel pour permettre de placer les objets plus librement dans un esapce à deux dimensions.
 
 Je veux créer un espace de travail dans lequel l'utilisateur peut utiliser la souris pour positionner et orienter librement les objets en deux dimensions. Je veux que l'espace soit virtuellement infini et indépendant de la taille de la fenêtre, et que l'utilisateur puisse se déplacer librement, zoomer, tourner, à la manière de ce qui se fait dans d'autres logiciels.
 
@@ -29,7 +29,7 @@ Dans ce billet je raconte le cheminement.
 
 En SwiftUI, l'origine du `Canvas` est située en haut à gauche, avec les valeurs X croissantes vers la droite et les valeurs Y croissantes vers le bas. Les événements de la souris en revanche sont rapportés avec une origine en bas à gauche et Y croissant vers le haut.
 
-J'applique donc une première série de transformations du repère pour aligner les repères avant de dessiner sur le canvas. D'abord une mise à l'échelle d'un facteur `-1` sur l'axe Y pour retourner le repère vers le haut, puis une translation de la hauteur de la fenêtre vers le bas pour ramener l'origine dans le coin inférieur gauche.
+J'applique donc une première série de transformations pour aligner les repères avant de dessiner sur le canvas. D'abord une mise à l'échelle d'un facteur `-1` sur l'axe Y pour retourner le repère vers le haut, puis une translation de la hauteur de la fenêtre vers le bas pour ramener l'origine dans le coin inférieur gauche.
 
 À ce stade les coordonnées de la vue coïncident avec les coordonnées du canvas. C'est-à-dire que si par exemple on dessine un objet en spécifiant les coordonnées (100,200) dans le `Canvas`, il apparaitra aux coordonnées (100,200) à l'écran. En particulier, ça permet de prendre directement les coordonnées de la souris pour dessiner un point qui semble suivre la souris.
 
@@ -65,7 +65,7 @@ J'applique ensuite une translation pour amener l'origine du dessin au centre de 
     </div>
 </div>
 
-Jusque là rien de fou par rapport à ce qu'on avait déjà dans la version actuelle. Mais c'est ici que les choses se complexifient. J'applique désormais successivement une translation, une rotation, et une mise à l'échelle, et j'utilise les événements de souris/trackpad comme le scroll, le pinch, et la rotation pour modifier leurs valeurs. Pour conserver l'alignement des coordonnées de la souris il faut compenser chacune des transformations. Le code est assez simple à trouver.
+Les choses se compliquent à partir de maintenant. J'applique désormais successivement une translation, une rotation, et une mise à l'échelle, et j'utilise les événements de souris/trackpad comme le scroll, le pinch, et la rotation pour modifier leurs valeurs. Pour conserver l'alignement des coordonnées de la souris il faut compenser chacune des transformations. Le code est assez simple à trouver.
 
 (Pour une raison inconnue le dessin tremble dans la capture d'écran, ce n'est pas le cas en vrai)
 
