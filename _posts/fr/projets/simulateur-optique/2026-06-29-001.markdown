@@ -14,7 +14,7 @@ lang_en: /en/projects/optics-simulator/posts/001
 
 ## Introduction
 
-Dans la version actuelle de mon [logiciel de simulation d'optique](/fr/projets/simulateur-optique), le placement des objets est contraint à un axe optique unique. Je veux faire évoluer le logiciel pour permettre de placer les objets plus librement dans un esapce à deux dimensions.
+Dans l'état actuel de mon [logiciel de simulation d'optique](/fr/projets/simulateur-optique), le placement des objets est contraint à un axe optique unique. Je veux faire évoluer le logiciel pour permettre de placer les objets plus librement dans un esapce à deux dimensions.
 
 Je veux créer un espace de travail dans lequel l'utilisateur peut utiliser la souris pour positionner et orienter librement les objets en deux dimensions. Je veux que l'espace soit virtuellement infini et indépendant de la taille de la fenêtre, et que l'utilisateur puisse se déplacer librement, zoomer, tourner, à la manière de ce qui se fait dans d'autres logiciels.
 
@@ -65,7 +65,7 @@ J'applique ensuite une translation pour amener l'origine du dessin au centre de 
     </div>
 </div>
 
-Les choses se compliquent à partir de maintenant. J'applique désormais successivement une translation, une rotation, et une mise à l'échelle, et j'utilise les événements de souris/trackpad comme le scroll, le pinch, et la rotation pour modifier leurs valeurs. Pour conserver l'alignement des coordonnées de la souris il faut compenser chacune des transformations. Le code est assez simple à trouver.
+Les choses se compliquent à partir de maintenant. Pour implémenter l'espace infini, j'applique successivement une translation, une rotation, et une mise à l'échelle, et j'utilise les événements de souris/trackpad comme le scroll, le pinch, et la rotation pour modifier les valeurs. Pour conserver l'alignement des coordonnées de la souris il faut compenser chacune des transformations. Le code est assez simple à trouver.
 
 (Pour une raison inconnue le dessin tremble dans la capture d'écran, ce n'est pas le cas en vrai)
 
@@ -89,7 +89,7 @@ Et voici ce que ça donne à l'usage :
 <div class="inline-image-container force-desktop-full-width">
     <div class="inline-image-container-row">
         {% include inline-video-item.html
-            url="/assets/projects/optics-simulator/001/video1.mp4"
+            url="/assets/projects/optics-simulator/001/video8.mp4"
             legend="Visualisation des transformations avec un objet"
         %}
     </div>
@@ -97,10 +97,10 @@ Et voici ce que ça donne à l'usage :
 
 On a désormais un espace de travail dans lequel on peut se déplacer librement. Cependant, le zoom et la rotation se font toujours à partir de l'origine du repère, et ce n'est pas très ergonomique. Je veux qu'ils se fassent autour de la position de la souris. Je veux aussi implémenter une fonction qui permet de centrer la vue sur une zone donnée en adaptant le zoom si nécessaire.
 
-Après quelques expérimentations, la tâche s'est révélée plus complexe que prévu.
+Après quelques expérimentations, ces tâches se sont révélées plus complexes que prévu.
 
 
-## Recherches d'un formalisme
+## Recherche d'un formalisme
 
 Je me concentre sur le zoom dans un premier temps. Au début je ne sais pas bien comment aborder le problème, alors j'essaie de le poser sur un papier brouillon. Je comprends rapidement que le but est d'ajouter une translation après le zoom pour compenser le mouvement du point qui est sensé rester au centre. J'obtiens un premier résultat, mais l'implémentation dans le code ne fonctionne pas bien. Je me dis que le fait qu'il y ait une translation en amont complexifie le problème. Je tâtonne un peu mais je ne parviens pas à trouver un code qui fonctionne.
 
@@ -146,12 +146,12 @@ De là je retente une relation entre les coordonnées écran et monde, et je me 
     </div>
 </div>
 
+Il faut maintenant prendre en compte la rotation.
+
 
 ## Développement du formalisme
 
-Il faut maintenant ajouter la rotation.
-
-Je décide de m'appliquer et je commence par formaliser proprement les résultats que j'ai déjà obtenus avant de continuer.
+Pour gérer la rotation, je décide de développer proprement les équations. Je m'applique et je commence par formaliser proprement les résultats que j'ai déjà obtenus avant de continuer.
 
 
 ### Échelle autour de l'origine
