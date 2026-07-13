@@ -1860,11 +1860,7 @@ J'implémente dans le code, et ça fonctionne parfaitement.
 
 ### Centrage sur une zone
 
-Fort de ce succès, je revisite la fonction de centrage que j'avais bricolé.
-
-Je comprends que je peux utiliser les équations précédentes.
-
-Il s'agit cette fois de trouver la translation à appliquer pour que le centre de la zone à centrer se retrouve au centre de l'écran, après application éventuelle d'une mise à l'échelle et d'une rotation.
+Non content de ce succès, je revisite la fonction de centrage que j'avais bricolé. Je comprends que je peux utiliser les équations précédentes. Cette il ne s'agit pas de faire en sorte que les points avant et après soit les mêmes, mais de faire en sorte que le centre de la zone à centrer se retrouve au centre de l'écran, après application éventuelle d'une mise à l'échelle et d'une rotation.
 
 Partant de la formule générale :
 
@@ -2078,7 +2074,7 @@ On veut positionner au centre de l'écran, et T0 correspond justement au centre 
   </mrow>
 </math>
 
-Il faut donc définir la translation à :
+La translation recherchée est donc :
 
 <math>
   <mrow>
@@ -2136,9 +2132,9 @@ Il faut donc définir la translation à :
   </mrow>
 </math>
 
-Dans mon cas j'avais mis la rotation à 0. Je vérifie que les équations donnent bien les même résultats dans le cas où la rotation vaut 0.
+Lors de mes essais j'avais mis la rotation à 0, et je retombe bien sur la même chose avec les équations que je viens de trouver dans le cas où la rotation vaut 0.
 
-Dans le code, ça fonctionne parfaitement.
+J'implémente les nouvelles équations dans le cas général et ça fonctionne parfaitement.
 
 <div class="inline-image-container">
     <div class="inline-image-container-row">
@@ -2151,7 +2147,7 @@ Dans le code, ça fonctionne parfaitement.
 
 ### Rotation compensée
 
-Pour la rotation on peut utiliser la même approche que pour le zoom, sauf que cette fois c'est le zoom qui ne change pas, on a s2=s1=s.
+Je passe maintenant à la rotation. Même principe que pour le zoom, on veut que la rotation se fasse autour de la position de la souris, et il faut donc trouver la translation à appliquer pour que le point correspondant soit au même endoit avant et après. On peut donc reprendre les équations, et cette fois c'est le zoom qui ne change pas, on a s2=s1=s.
 
 On a donc :
 
@@ -2489,6 +2485,7 @@ Voilà le résultat final comparé à avant :
     <div class="inline-image-container-row">
         {% include inline-video-item.html
             url="/assets/projects/optics-simulator/001/video1.mp4"
+            legend="Transformations autour du centre de repère"
         %}
     </div>
 </div>
@@ -2497,24 +2494,23 @@ Voilà le résultat final comparé à avant :
     <div class="inline-image-container-row">
         {% include inline-video-item.html
             url="/assets/projects/optics-simulator/001/video2.mp4"
+            legend="Transformations autour de la souris"
         %}
     </div>
 </div>
 
 
-## Analyse
+## Analyse des résultats et simplifications
 
 Les trois équations que j'ai trouvées se ressemblent beaucoup sans être complètement identiques, mais je soupçonne qu'il y a un principe commun.
 
-En fait, tous les problèmes reviennent à trouver la translation à appliquer en connaissant la rotation et l'échelle finale, de sorte qu'un point donné du monde finisse à un point donné de l'écran.
+En fait, les trois problèmes reviennent à trouver la translation à appliquer pour qu'un point donné du monde finisse à un point donné de l'écran, en tenant compte de la rotation et mise à l'échelle.
 
-Pour le zoom et la rotation centré autour d'un point arbitraire, c'est le point sous la souris qui doit rester au même point à l'écran. Il s'agit en fait de la même opération, et on pourrait très bien combiner un zoom et une rotation dans la même opération.
+Pour le zoom et la rotation centrés autour d'un point arbitraire, il faut trouver la translation à appliquer après la transformation pour que le point qui était sous la souris avant la transformation soit au même point à l'écran après la transformation.
 
-Noter qu'on a toujours accès à la position de la souris à la fois dans le monde et sur l'écran.
+Pour un recentrage du viewport, c'est le centre de la bounding box qui doit se retrouver au centre de l'écran, la rotation et le facteur d'échelle finaux étant définis par un calcul sur la bounding box et la taille de la fenêtre.
 
-Pour un recentrage du viewport, c'est le centre de la bounding box qui doit finir au centre de l'écran. La rotation et le facteur d'échelle finales sont définies par un calcul sur la bounding box et la taille de la fenêtre.
-
-En fait la seule formule qui compte est :
+En fait la seule formule qui compte est celle qui permet de calculer la position à l'écran <math class="inline"><mo>(</mo><msub><mi>x</mi><mi>s</mi></msub><mo>;</mo><msub><mi>y</mi><mi>s</mi></msub><mo>)</mo></math> qui correpond à un point du monde <math class="inline"><mo>(</mo><msub><mi>x</mi><mi>c</mi></msub><mo>;</mo><msub><mi>y</mi><mi>c</mi></msub><mo>)</mo></math> :
 
 <math>
   <mrow>
@@ -2570,7 +2566,7 @@ En fait la seule formule qui compte est :
   </mrow>
 </math>
 
-Comme on cherche la translation :
+Puisqu'on cherche la translation on peut écrire :
 
 <math>
   <mrow>
@@ -2634,7 +2630,7 @@ Comme on cherche la translation :
   </mrow>
 </math>
 
-On cherche la translation relative à la translation de base :
+Et comme la translation est relative à la translation de base, on a :
 
 <math>
   <mrow>
@@ -2702,7 +2698,7 @@ On cherche la translation relative à la translation de base :
   </mrow>
 </math>
 
-On peut exprimer les coordonnées écran en tenant compte de la translation de base. On peut poser :
+On peut alors exprimer les coordonnées écran en tenant compte de la translation de base :
 
 <math>
   <mrow>
@@ -2742,7 +2738,7 @@ On peut exprimer les coordonnées écran en tenant compte de la translation de b
   </mrow>
 </math>
 
-Ce qui permet d'écrire :
+Ce qui donne :
 
 <math>
   <mrow>
@@ -2807,12 +2803,12 @@ Ce qui permet d'écrire :
 </math>
 
 Dans le cas du zoom et de la rotation :
-- (xc;yc) est la position de la souris en coordonnées monde, avant la transformation
-- (xs/0;ys/0) est la position de la souris en coordonnées écran relativement au centre
+- <math class="inline"><mo>(</mo><msub><mi>x</mi><mi>c</mi></msub><mo>;</mo><msub><mi>y</mi><mi>c</mi></msub><mo>)</mo></math> est la position de la souris en coordonnées monde, avant la transformation
+- <math class="inline"><mo>(</mo><msub><mi>x</mi><mi>s/0</mi></msub><mo>;</mo><msub><mi>y</mi><mi>s/0</mi></msub><mo>)</mo></math> est la position de la souris en coordonnées écran relativement au centre
 
 Dans le cas du centrage :
-- (xc;yc) est le centre de la zone à centrer en coordonnées monde
-- (xs/0;ys/0) est la position du centre de la zone à centrer en coordonnées écran relativement au centre
+- <math class="inline"><mo>(</mo><msub><mi>x</mi><mi>c</mi></msub><mo>;</mo><msub><mi>y</mi><mi>c</mi></msub><mo>)</mo></math> est le centre de la zone à centrer en coordonnées monde
+- <math class="inline"><mo>(</mo><msub><mi>x</mi><mi>s/0</mi></msub><mo>;</mo><msub><mi>y</mi><mi>s/0</mi></msub><mo>)</mo></math> est la position du centre de la zone à centrer en coordonnées écran relativement au centre
 
 
 J'ai créé une fonction générique appelée par les 3 opérations. Ça fonctionne bien.
