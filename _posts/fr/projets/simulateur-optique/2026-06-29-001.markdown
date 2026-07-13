@@ -151,7 +151,7 @@ Il faut maintenant prendre en compte la rotation.
 
 ## Développement du formalisme
 
-Pour gérer la rotation, je décide de développer proprement les équations. Je m'applique et je commence par formaliser proprement les résultats que j'ai déjà obtenus avant de continuer.
+A partir de là, je décide de développer proprement les équations. Avant d'aborder la rotation, je commence par formaliser proprement les résultats que j'ai déjà obtenus.
 
 
 ### Échelle autour de l'origine
@@ -201,7 +201,7 @@ Schéma pour visualiser :
 
 On pose <math class="inline"><mo>(</mo><msub><mi>x</mi><mi>A</mi></msub><mo>;</mo><msub><mi>y</mi><mi>A</mi></msub><mo>)</mo></math> les coordonnées du point A.
 
-Par définition, l'échelle dilate les distances au point A, on a donc :
+Par définition, l'échelle dilate les distances par rapport au point A, on a donc :
 
 <math>
   <mrow>
@@ -474,14 +474,10 @@ En combinant les deux on a donc :
   </mrow>
 </math>
 
-Quand je vois cette expression mon premier réflexe est de me dire que l'ordre des opérations n'a pas d'importance, mais ce n'est peut-être pas si simple.
-
 
 ### Rotation autour de l'origine
 
-Passons maintenant à la rotation.
-
-L'astuce est de passer en coordonnées polaires et de se rappeler ses formules trigo (le master spé que j'ai fait cette année fait que j'ai l'existence de ces formules en tête, [Wikipédia](https://fr.wikipedia.org/wiki/Formule_de_trigonom%C3%A9trie) fait le reste).
+Pour la rotation, l'astuce est de passer en coordonnées polaires et de se rappeler ses [formules trigo](https://fr.wikipedia.org/wiki/Formule_de_trigonom%C3%A9trie).
 
 On peut exprimer le point de départ comme suit :
 
@@ -885,7 +881,7 @@ Avec la même formule trigo que tout à l'heure on obtient :
   </mrow>
 </math>
 
-On a vu que :
+Or on a vu que :
 
 <math>
   <mrow>
@@ -1276,18 +1272,16 @@ En substituant 2 par 1 :
   </mrow>
 </math>
 
-Une chose à comprendre ici, que je n'avais pas forcément bien visualisé sur le moment. On fait ici des transformations de coordonnées d'un point, mais on ne change pas de repère. C'est-à-dire que le point A qu'on pose au début n'est pas affecté par les transformations. C'est différent des transformations de repère que je fais dans le code.
+L'expression qu'on obtient ici transforme des coordonnées dans le monde en coordonnées sur l'écran. Une chose à comprendre ici, que je n'avais pas forcément bien visualisé sur le moment, c'est qu'on fait ici des transformations de coordonnées d'un point, mais on ne change pas de repère. C'est-à-dire que le point A qu'on pose au début n'est pas affecté par les transformations. C'est différent des transformations de repère que je fais dans le code.
 
-L'expression qu'on obtient ici transforme des coordonnées dans le monde en coordonnées sur l'écran.
-
-On est prêt à reprendre les équations du début.
+On est désormais prêt à reprendre les équations du début.
 
 
 ## Transformation du viewport
 
-Au début j'ai travaillé avec une paire de formules, une pour l'état avant la transformation (translation T1, rotation a1 et zoom s1) et une pour l'état après la transformation (translation T2, rotation a2 et zoom s2). J'ai compris après qu'en fait une seule suffit.
+Je travaille avec une paire de formules, une pour l'état avant la transformation (translation T1, rotation a1 et zoom s1) et une pour l'état après la transformation (translation T2, rotation a2 et zoom s2).
 
-Je pose (xc;yc) les coordonnées du point qui sert de centre de rotation dans les coordonnées transformées, et (xs;ys) sont les coordonnées écran correspondantes.
+Je pose <math class="inline"><mo>(</mo><msub><mi>x</mi><mn>c</mn></msub><mo>;</mo><msub><mi>y</mi><mn>c</mn></msub><mo>)</mo></math> les coordonnées du point qui sert de centre de rotation dans les coordonnées transformées, et <math class="inline"><mo>(</mo><msub><mi>x</mi><mn>s</mn></msub><mo>;</mo><msub><mi>y</mi><mn>s</mn></msub><mo>)</mo></math> sont les coordonnées écran correspondantes.
 
 <math>
   <mrow>
@@ -1647,7 +1641,7 @@ On peut factoriser :
   </mrow>
 </math>
 
-On se rappelle qu'une translation est toujours appliquée pour centrer le dessin, et la translation qu'on spécifie s'ajoute à celle-ci.
+La translation qu'on cherche s'ajoute à la translation de base appliquée pour centrer le dessin :
 
 <math>
   <mrow>
